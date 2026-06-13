@@ -1,0 +1,32 @@
+name: Daily bounty feed
+
+on:
+  schedule:
+    - cron: '17 8 * * *'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  build-feed:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - run: node scripts/build-feed.mjs
+        env:
+          GITHUB_TOKEN: ${{ github.token }}
+      - name: Commit feed changes
+        run: |
+          if [ -z "$(git status --porcelain -- feed/latest.json feed/latest.csv)" ]; then
+            echo "No feed changes."
+            exit 0
+          fi
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add feed/latest.json feed/latest.csv
+          git commit -m "Update daily bounty feed"
+          git push

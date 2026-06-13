@@ -54,6 +54,7 @@ const elements = {
   token: document.querySelector('#token'),
   limit: document.querySelector('#limit'),
   scanButton: document.querySelector('#scanButton'),
+  copyShareLink: document.querySelector('#copyShareLink'),
   saveWatchlist: document.querySelector('#saveWatchlist'),
   exportCsv: document.querySelector('#exportCsv'),
   savedWatchlists: document.querySelector('#savedWatchlists'),
@@ -69,6 +70,14 @@ const elements = {
 };
 
 elements.token.value = sessionStorage.getItem('githubToken') ?? '';
+
+function applyUrlState() {
+  const params = new URLSearchParams(window.location.search);
+  const preset = presets.find((item) => item.id === params.get('preset'));
+  if (preset) selectedPreset = preset;
+  if (params.has('q')) elements.keywords.value = params.get('q') ?? '';
+  if (['20', '40', '80'].includes(params.get('limit'))) elements.limit.value = params.get('limit');
+}
 
 function renderPresets() {
   elements.presets.innerHTML = '';
@@ -89,6 +98,27 @@ function renderPresets() {
 function buildQuery() {
   const extra = elements.keywords.value.trim();
   return [selectedPreset.query, extra].filter(Boolean).join(' ');
+}
+
+function buildShareUrl() {
+  const url = new URL(window.location.href);
+  url.search = '';
+  url.searchParams.set('preset', selectedPreset.id);
+  const extra = elements.keywords.value.trim();
+  if (extra) url.searchParams.set('q', extra);
+  url.searchParams.set('limit', elements.limit.value);
+  return url.toString();
+}
+
+async function copyShareLink() {
+  const shareUrl = buildShareUrl();
+  window.history.replaceState(null, '', shareUrl);
+  try {
+    await navigator.clipboard.writeText(shareUrl);
+    elements.statusText.textContent = 'Share link copied to clipboard.';
+  } catch (_error) {
+    elements.statusText.textContent = shareUrl;
+  }
 }
 
 function readWatchlists() {
@@ -455,8 +485,10 @@ function escapeHtml(value) {
 }
 
 elements.form.addEventListener('submit', scanGitHub);
+elements.copyShareLink.addEventListener('click', copyShareLink);
 elements.saveWatchlist.addEventListener('click', saveCurrentWatchlist);
 elements.exportCsv.addEventListener('click', exportCsv);
 elements.addressInput.addEventListener('input', classifyAddress);
+applyUrlState();
 renderPresets();
 renderWatchlists();

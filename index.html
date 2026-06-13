@@ -19,7 +19,10 @@
           Find GitHub issues with real payout signals before you spend hours on the wrong bounty.
         </p>
       </div>
-      <a class="repo-link" href="https://github.com/go165/bounty-radar" target="_blank" rel="noreferrer">GitHub</a>
+      <div class="top-actions">
+        <a class="repo-link secondary-link" href="feed/latest.json" target="_blank" rel="noreferrer">Feed</a>
+        <a class="repo-link" href="https://github.com/go165/bounty-radar" target="_blank" rel="noreferrer">GitHub</a>
+      </div>
     </header>
 
     <main>
@@ -30,6 +33,7 @@
             <p>Rank open GitHub issues by payout clarity, payment rails, and repository quality.</p>
           </div>
           <div class="panel-actions">
+            <button id="copyShareLink" class="secondary" type="button">Copy Link</button>
             <button id="saveWatchlist" class="secondary" type="button">Save Watchlist</button>
             <button id="exportCsv" class="secondary" type="button" disabled>Export CSV</button>
           </div>
@@ -50,7 +54,7 @@
           </label>
           <label>
             GitHub token (optional, session only)
-            <input id="token" type="password" placeholder="ghp_... for higher rate limits" autocomplete="off" />
+            <input id="token" type="password" placeholder="token for higher rate limits" autocomplete="off" />
           </label>
           <label>
             Max results
