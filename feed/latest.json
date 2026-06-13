@@ -1,9 +1,9 @@
 {
-  "generated_at": "2026-06-13T19:04:31.005Z",
+  "generated_at": "2026-06-13T19:11:54.469Z",
   "source": "https://github.com/go165/bounty-radar",
   "demo": "https://go165.github.io/bounty-radar/",
   "methodology": "Heuristic GitHub issue triage based on payout terms, payment rails, amount text, labels, and payout address shapes.",
-  "count": 46,
+  "count": 47,
   "items": [
     {
       "score": 72,
@@ -189,22 +189,6 @@
       "addresses": []
     },
     {
-      "score": 46,
-      "preset": "high-signal",
-      "preset_name": "High-signal bounties",
-      "repo": "j2commerce/j2commerce",
-      "title": "Feature: shared order-transaction ledger (core) so all payment plugins track multi-charge / partial-payment / refund consistently",
-      "url": "https://github.com/j2commerce/j2commerce/issues/1184",
-      "updated_at": "2026-06-13T19:02:16Z",
-      "labels": [],
-      "signals": [
-        "bounty",
-        "USDC/Base",
-        "amount"
-      ],
-      "addresses": []
-    },
-    {
       "score": 38,
       "preset": "x402",
       "preset_name": "x402 paid APIs",
@@ -346,6 +330,23 @@
     },
     {
       "score": 30,
+      "preset": "high-signal",
+      "preset_name": "High-signal bounties",
+      "repo": "taverns-red/toast-stats",
+      "title": "Toast Stats Roadmap (META_EPIC)",
+      "url": "https://github.com/taverns-red/toast-stats/issues/606",
+      "updated_at": "2026-06-13T19:09:49Z",
+      "labels": [
+        "roadmap"
+      ],
+      "signals": [
+        "bounty",
+        "USDC/Base"
+      ],
+      "addresses": []
+    },
+    {
+      "score": 30,
       "preset": "mergework",
       "preset_name": "MergeWork / MRWK",
       "repo": "Scottcjn/rustchain-bounties",
@@ -363,38 +364,12 @@
       "score": 28,
       "preset": "high-signal",
       "preset_name": "High-signal bounties",
-      "repo": "mashplan/learn_anything",
-      "title": "Make WorkOS session refresh survive browser restart in production",
-      "url": "https://github.com/mashplan/learn_anything/issues/17",
-      "updated_at": "2026-06-13T19:02:41Z",
+      "repo": "SIN-Shop-Center/SIN-webshop-01",
+      "title": "P0. CJ-Wallet aufladen ($50 Mindestbetrag) + Auto-Pay aktivieren",
+      "url": "https://github.com/SIN-Shop-Center/SIN-webshop-01/issues/31",
+      "updated_at": "2026-06-13T19:07:53Z",
       "labels": [
-        "ready-for-human"
-      ],
-      "signals": [
-        "bounty",
-        "amount"
-      ],
-      "addresses": []
-    },
-    {
-      "score": 28,
-      "preset": "high-signal",
-      "preset_name": "High-signal bounties",
-      "repo": "openclaw/clawhub",
-      "title": "Request: Re-link @gingiris to GitHub account Gingiris-1031 (cannot publish updates)",
-      "url": "https://github.com/openclaw/clawhub/issues/2555",
-      "updated_at": "2026-06-13T19:02:39Z",
-      "labels": [
-        "P2",
-        "clawsweeper:source-repro",
-        "clawsweeper:no-new-fix-pr",
-        "clawsweeper:fix-shape-clear",
-        "clawsweeper:needs-maintainer-review",
-        "clawsweeper:needs-product-decision",
-        "clawsweeper:needs-security-review",
-        "impact:security",
-        "impact:auth-provider",
-        "issue-rating: 🦞 diamond lobster"
+        "bug"
       ],
       "signals": [
         "bounty",
@@ -503,7 +478,7 @@
       "repo": "a2aproject/A2A",
       "title": "Proposal: minimal Ed25519 + RFC 9421 signing extension for A2A messages",
       "url": "https://github.com/a2aproject/A2A/issues/1829",
-      "updated_at": "2026-06-13T18:48:28Z",
+      "updated_at": "2026-06-13T19:10:23Z",
       "labels": [],
       "signals": [
         "USDC/Base"
@@ -511,15 +486,77 @@
       "addresses": []
     },
     {
+      "score": 18,
+      "preset": "x402",
+      "preset_name": "x402 paid APIs",
+      "repo": "autumngarage/conductor",
+      "title": "Tool Failure: conductor error in autumngarage",
+      "url": "https://github.com/autumngarage/conductor/issues/580",
+      "updated_at": "2026-06-13T19:05:32Z",
+      "labels": [
+        "bug",
+        "alchemist-error"
+      ],
+      "signals": [
+        "x402"
+      ],
+      "addresses": []
+    },
+    {
+      "score": 16,
+      "preset": "x402",
+      "preset_name": "x402 paid APIs",
+      "repo": "autumngarage/sentinel",
+      "title": "Show budget/spend tracking during and after scans",
+      "url": "https://github.com/autumngarage/sentinel/issues/10",
+      "updated_at": "2026-06-13T19:10:37Z",
+      "labels": [
+        "alchemist-test-error",
+        "alchemist-error"
+      ],
+      "signals": [
+        "amount"
+      ],
+      "addresses": []
+    },
+    {
       "score": 12,
       "preset": "high-signal",
       "preset_name": "High-signal bounties",
-      "repo": "cristiangilsanz/qrew",
-      "title": "refactor: extract sales with reservations, queue, fraud engine, and inventory ownership (R5)",
-      "url": "https://github.com/cristiangilsanz/qrew/issues/186",
-      "updated_at": "2026-06-13T19:04:23Z",
+      "repo": "inertialabsxyz/proveno",
+      "title": "feat(contracts): DepegInsuranceMarket settlement contract",
+      "url": "https://github.com/inertialabsxyz/proveno/issues/56",
+      "updated_at": "2026-06-13T19:11:42Z",
+      "labels": [],
+      "signals": [
+        "bounty"
+      ],
+      "addresses": []
+    },
+    {
+      "score": 12,
+      "preset": "high-signal",
+      "preset_name": "High-signal bounties",
+      "repo": "jonikanerva/spot-price",
+      "title": "Phase 3 — add OpenWeatherMap weather features to the FI price forecast",
+      "url": "https://github.com/jonikanerva/spot-price/issues/77",
+      "updated_at": "2026-06-13T19:11:40Z",
+      "labels": [],
+      "signals": [
+        "bounty"
+      ],
+      "addresses": []
+    },
+    {
+      "score": 12,
+      "preset": "high-signal",
+      "preset_name": "High-signal bounties",
+      "repo": "manos-grigorakis/logistics-platform",
+      "title": "Suppliers: Backend",
+      "url": "https://github.com/manos-grigorakis/logistics-platform/issues/170",
+      "updated_at": "2026-06-13T19:11:15Z",
       "labels": [
-        "refactor"
+        "feature"
       ],
       "signals": [
         "bounty"
@@ -530,12 +567,12 @@
       "score": 12,
       "preset": "high-signal",
       "preset_name": "High-signal bounties",
-      "repo": "cristiangilsanz/qrew",
-      "title": "refactor: extract payments and publish payment success as a saga event (R2)",
-      "url": "https://github.com/cristiangilsanz/qrew/issues/183",
-      "updated_at": "2026-06-13T19:04:22Z",
+      "repo": "cauta/ghostlite",
+      "title": "[GHOST] Content gating — members-only posts with signup wall",
+      "url": "https://github.com/cauta/ghostlite/issues/106",
+      "updated_at": "2026-06-13T19:10:17Z",
       "labels": [
-        "refactor"
+        "enhancement"
       ],
       "signals": [
         "bounty"
@@ -546,6 +583,55 @@
       "score": 12,
       "preset": "high-signal",
       "preset_name": "High-signal bounties",
+      "repo": "amir-homous/RingoStrike",
+      "title": "[Backend] Add Ringo Agenda next-action summary",
+      "url": "https://github.com/amir-homous/RingoStrike/issues/169",
+      "updated_at": "2026-06-13T19:09:25Z",
+      "labels": [
+        "backend"
+      ],
+      "signals": [
+        "bounty"
+      ],
+      "addresses": []
+    },
+    {
+      "score": 12,
+      "preset": "high-signal",
+      "preset_name": "High-signal bounties",
+      "repo": "charles-openclaw/charles-microbounties",
+      "title": "[bounty] nitro 3 beta types field points to missing lib/index.d.mts",
+      "url": "https://github.com/charles-openclaw/charles-microbounties/issues/1414",
+      "updated_at": "2026-06-13T19:06:47Z",
+      "labels": [],
+      "signals": [
+        "bounty"
+      ],
+      "addresses": []
+    },
+    {
+      "score": 12,
+      "preset": "high-signal",
+      "preset_name": "High-signal bounties",
+      "repo": "ELares/IronCache",
+      "title": "[RESEARCH]: Define the advisor objective metric (throughput-per-core/memory, not raw hit ratio)",
+      "url": "https://github.com/ELares/IronCache/issues/89",
+      "updated_at": "2026-06-13T19:06:22Z",
+      "labels": [
+        "research",
+        "area:performance",
+        "area:ai",
+        "wave:3"
+      ],
+      "signals": [
+        "bounty"
+      ],
+      "addresses": []
+    },
+    {
+      "score": 12,
+      "preset": "x402",
+      "preset_name": "x402 paid APIs",
       "repo": "norman-finance/norman-mcp-server",
       "title": "Add MCP tools for suppliers (Lieferanten) and PayBill (Eingangsrechnungen)",
       "url": "https://github.com/norman-finance/norman-mcp-server/issues/72",
@@ -555,75 +641,6 @@
         "enhancement",
         "question"
       ],
-      "signals": [
-        "bounty"
-      ],
-      "addresses": []
-    },
-    {
-      "score": 12,
-      "preset": "high-signal",
-      "preset_name": "High-signal bounties",
-      "repo": "CodySwannGT/advisory-rankings",
-      "title": "PRD: Branch Network Explorer",
-      "url": "https://github.com/CodySwannGT/advisory-rankings/issues/1217",
-      "updated_at": "2026-06-13T19:03:03Z",
-      "labels": [
-        "enhancement",
-        "prd-ticketed",
-        "priority:medium",
-        "codex",
-        "codex-automation",
-        "component:web",
-        "component:data"
-      ],
-      "signals": [
-        "bounty"
-      ],
-      "addresses": []
-    },
-    {
-      "score": 12,
-      "preset": "high-signal",
-      "preset_name": "High-signal bounties",
-      "repo": "FutureGadget/ai-sota-feed-bot",
-      "title": "Daily AI Digest - 2026-06-13",
-      "url": "https://github.com/FutureGadget/ai-sota-feed-bot/issues/97",
-      "updated_at": "2026-06-13T19:01:46Z",
-      "labels": [],
-      "signals": [
-        "bounty"
-      ],
-      "addresses": []
-    },
-    {
-      "score": 12,
-      "preset": "high-signal",
-      "preset_name": "High-signal bounties",
-      "repo": "onpaj/Anela.Heblo",
-      "title": "[arch-review] Leaflet: AddChunksAsync raw SQL silently drops the Summary column",
-      "url": "https://github.com/onpaj/Anela.Heblo/issues/2998",
-      "updated_at": "2026-06-13T19:01:05Z",
-      "labels": [
-        "tech-debt",
-        "agent",
-        "feat:done",
-        "arch-review"
-      ],
-      "signals": [
-        "bounty"
-      ],
-      "addresses": []
-    },
-    {
-      "score": 12,
-      "preset": "high-signal",
-      "preset_name": "High-signal bounties",
-      "repo": "oleg3479881328-code/Project-Execution-OS",
-      "title": "Reels Factory MVP — AWS smoke test #2, 3-second I2V clip, and AMI capture",
-      "url": "https://github.com/oleg3479881328-code/Project-Execution-OS/issues/55",
-      "updated_at": "2026-06-13T19:01:00Z",
-      "labels": [],
       "signals": [
         "bounty"
       ],
@@ -645,16 +662,13 @@
     },
     {
       "score": 0,
-      "preset": "x402",
-      "preset_name": "x402 paid APIs",
-      "repo": "opsre/Thanks-Mirror",
-      "title": "🔗 链接检查报告",
-      "url": "https://github.com/opsre/Thanks-Mirror/issues/1105",
-      "updated_at": "2026-06-13T19:02:56Z",
-      "labels": [
-        "report",
-        "automated issue"
-      ],
+      "preset": "high-signal",
+      "preset_name": "High-signal bounties",
+      "repo": "OpenSIN-Code/web_search_bundle",
+      "title": "🎯 Projektplan: sin-websearch – Der Unified Intelligence Gateway für OpenSIN",
+      "url": "https://github.com/OpenSIN-Code/web_search_bundle/issues/1",
+      "updated_at": "2026-06-13T19:11:24Z",
+      "labels": [],
       "signals": [],
       "addresses": []
     },
@@ -665,7 +679,7 @@
       "repo": "sethdford/shipwright",
       "title": "Stage Result Semantic Cache with Content-Addressed Deduplication",
       "url": "https://github.com/sethdford/shipwright/issues/653",
-      "updated_at": "2026-06-13T19:02:08Z",
+      "updated_at": "2026-06-13T19:08:24Z",
       "labels": [
         "ready-to-build",
         "shipwright",
@@ -679,39 +693,12 @@
       "score": 0,
       "preset": "high-signal",
       "preset_name": "High-signal bounties",
-      "repo": "majkinetor/musicbrainz-userscripts",
-      "title": "Qobuz provider",
-      "url": "https://github.com/majkinetor/musicbrainz-userscripts/issues/201",
-      "updated_at": "2026-06-13T19:01:49Z",
+      "repo": "peleduri/zero-day-pulse",
+      "title": "🚨 Zero Day Pulse — Active Vulnerability Tracker",
+      "url": "https://github.com/peleduri/zero-day-pulse/issues/7",
+      "updated_at": "2026-06-13T19:06:57Z",
       "labels": [
-        "enhancement",
-        "area | platform check"
-      ],
-      "signals": [],
-      "addresses": []
-    },
-    {
-      "score": 0,
-      "preset": "x402",
-      "preset_name": "x402 paid APIs",
-      "repo": "ValveSoftware/Source-1-Games",
-      "title": "[TF2] part of All Hallow's Hatte is missing phong, rimlighting, and jarate support on the spooky lights part of it due to a VMT error & missing lightwarp",
-      "url": "https://github.com/ValveSoftware/Source-1-Games/issues/8067",
-      "updated_at": "2026-06-13T19:01:33Z",
-      "labels": [],
-      "signals": [],
-      "addresses": []
-    },
-    {
-      "score": 0,
-      "preset": "x402",
-      "preset_name": "x402 paid APIs",
-      "repo": "autumngarage/alchemist",
-      "title": "Error comments recommend alchemist-skip label that may not exist",
-      "url": "https://github.com/autumngarage/alchemist/issues/252",
-      "updated_at": "2026-06-13T19:00:38Z",
-      "labels": [
-        "alchemist-error"
+        "zero-day-pulse"
       ],
       "signals": [],
       "addresses": []
@@ -723,7 +710,7 @@
       "repo": "AaditJha/Tpf2MapExporter",
       "title": "Export Freezes Game, crashed",
       "url": "https://github.com/AaditJha/Tpf2MapExporter/issues/7",
-      "updated_at": "2026-06-13T18:57:58Z",
+      "updated_at": "2026-06-13T19:06:27Z",
       "labels": [],
       "signals": [],
       "addresses": []
@@ -732,16 +719,13 @@
       "score": 0,
       "preset": "x402",
       "preset_name": "x402 paid APIs",
-      "repo": "jeysson/qatrion",
-      "title": "[COND-03] Adicionar institution_id em AUDIT_TRAIL_BY_USER query",
-      "url": "https://github.com/jeysson/qatrion/issues/402",
-      "updated_at": "2026-06-13T18:57:23Z",
+      "repo": "opsre/Thanks-Mirror",
+      "title": "🔗 链接检查报告",
+      "url": "https://github.com/opsre/Thanks-Mirror/issues/1105",
+      "updated_at": "2026-06-13T19:02:56Z",
       "labels": [
-        "bug",
-        "fase-4",
-        "agente:dev",
-        "priority:high",
-        "size:small"
+        "report",
+        "automated issue"
       ],
       "signals": [],
       "addresses": []
