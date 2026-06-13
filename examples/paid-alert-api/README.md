@@ -4,6 +4,8 @@ This example turns the generated Bounty Radar feed into a small alert API with a
 
 The payment check is intentionally a demo header, not production x402 verification. Replace `isPaymentSatisfied()` with a real x402 facilitator verification step before charging users or agents.
 
+For a reusable paid API starter with `.well-known/x402`, Cloudflare Worker, and official Express x402 examples, see https://github.com/go165/x402-paid-api-starter and the deployment guide in `docs/paid-alert-api.md`.
+
 ## Run
 
 ```bash
