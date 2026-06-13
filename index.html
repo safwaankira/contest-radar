@@ -27,12 +27,16 @@
         <div class="panel-header">
           <div>
             <h2 id="scan-title">Scan presets</h2>
-            <p>Use a preset, add keywords, then scan GitHub issues.</p>
+            <p>Rank open GitHub issues by payout clarity, payment rails, and repository quality.</p>
           </div>
-          <button id="exportCsv" class="secondary" type="button" disabled>Export CSV</button>
+          <div class="panel-actions">
+            <button id="saveWatchlist" class="secondary" type="button">Save Watchlist</button>
+            <button id="exportCsv" class="secondary" type="button" disabled>Export CSV</button>
+          </div>
         </div>
 
         <div id="presets" class="preset-grid" aria-label="Search presets"></div>
+        <div id="savedWatchlists" class="watchlist-row" aria-label="Saved watchlists"></div>
 
         <form id="searchForm" class="search-form">
           <label>
@@ -81,6 +85,10 @@
           <span id="rateLimit">unknown</span>
           <small>rate limit</small>
         </div>
+        <div>
+          <span id="savedCount">0</span>
+          <small>watchlists</small>
+        </div>
       </section>
 
       <section class="results-section" aria-labelledby="results-title">
@@ -102,6 +110,7 @@
           </div>
           <h3><a data-title target="_blank" rel="noreferrer"></a></h3>
           <p data-summary></p>
+          <div class="repo-stats" data-repo-stats></div>
           <div class="signals" data-signals></div>
           <div class="addresses" data-addresses></div>
         </div>

@@ -24,6 +24,8 @@ Bounty Radar makes that triage fast without asking for your GitHub token by defa
 - **Preset searches** for high-signal bounty issues, Base/USDC work, x402 paid APIs, and MergeWork/MRWK opportunities.
 - **Custom GitHub issue search** with optional minimum payout keyword filtering.
 - **Payout signal score** based on title/body labels, payment rail terms, reward amounts, and address hints.
+- **Best-effort repository quality signals** for stars, forks, recent push activity, and archived status.
+- **Saved watchlists** in local storage for repeated bounty scans.
 - **Address extraction** for EVM `0x...`, Stellar `G...`, and MRWK `mrwk1...`-style addresses.
 - **CSV export** for shortlists.
 - **No backend**: runs as static HTML/CSS/JS on GitHub Pages.
@@ -60,15 +62,26 @@ The score is intentionally simple and visible:
 | Amount-like text (`$250`, `100 USDC`, `500 MRWK`) | +16 |
 | Payout address present | +20 |
 | Issue labels include bounty/reward/help wanted | +8 |
+| Repository quality: stars, forks, recent push activity | +3 to +15 |
 | Stale issue penalty | -8 |
 
 This is triage, not financial advice. Always inspect the issue, sponsor, repository history, and payout terms yourself.
 
+Repository quality metadata is fetched sequentially and capped to avoid burning unauthenticated GitHub API limits. Add a token for higher limits when scanning large result sets.
+
+## Opportunity Assessment
+
+- **TAM / audience**: independent developers, agent builders, open-source maintainers, and onchain bounty operators who need faster paid-work discovery.
+- **Differentiation**: GitHub-native bounty triage focused on payout credibility, not another generic issue search or closed marketplace.
+- **Star-worthy hook**: a static, inspectable tool that developers can bookmark, run locally, and extend with their own bounty rails.
+- **Monetization path**: hosted alerts, JSON feeds, webhooks, and x402-paid API access for teams and autonomous coding agents.
+- **7-day demo feasibility**: the browser demo is already live; the next compounding features are daily digests, validators, and shareable feeds.
+
 ## 7-Day Roadmap
 
-- Day 1: Static dashboard, presets, scoring, CSV export.
-- Day 2: Add saved watchlists in local storage.
-- Day 3: Add GitHub repo reputation panel: stars, recent merges, sponsor links.
+- Day 1: Static dashboard, presets, scoring, CSV export. Shipped.
+- Day 2: Add saved watchlists in local storage. Shipped.
+- Day 3: Add GitHub repo reputation panel: stars, forks, and activity signals. Shipped.
 - Day 4: Add payout rail validators for Base, Stellar, MRWK, and TipLink.
 - Day 5: Add GitHub Actions daily digest mode.
 - Day 6: Add hosted JSON feed for starred watchlists.

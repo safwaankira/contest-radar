@@ -116,6 +116,13 @@ main {
   align-items: flex-start;
 }
 
+.panel-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  justify-content: flex-end;
+}
+
 .panel-header p,
 .section-title p {
   color: var(--muted);
@@ -154,6 +161,55 @@ main {
   color: var(--muted);
   font-size: 13px;
   line-height: 1.35;
+}
+
+.watchlist-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  min-height: 34px;
+  margin: -8px 0 18px;
+}
+
+.watchlist-row:empty::before {
+  content: "No saved watchlists yet.";
+  color: var(--muted);
+  font-size: 13px;
+}
+
+.watchlist-chip {
+  display: inline-flex;
+  gap: 8px;
+  align-items: center;
+  border: 1px solid var(--line);
+  border-radius: 999px;
+  padding: 6px 8px 6px 10px;
+  background: #fff;
+  color: #29374a;
+  font-size: 13px;
+  font-weight: 700;
+}
+
+.watchlist-chip button {
+  display: grid;
+  place-items: center;
+  width: 22px;
+  height: 22px;
+  padding: 0;
+  border-color: transparent;
+  border-radius: 999px;
+  background: #edf1f6;
+  color: #304158;
+  line-height: 1;
+}
+
+.watchlist-chip .watchlist-load {
+  display: inline;
+  width: auto;
+  height: auto;
+  padding: 0;
+  background: transparent;
+  color: #29374a;
 }
 
 .search-form,
@@ -196,7 +252,7 @@ output {
 
 .status-strip {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
+  grid-template-columns: repeat(4, 1fr);
   gap: 1px;
   margin: 18px 0 26px;
   overflow: hidden;
@@ -266,6 +322,13 @@ output {
   line-height: 1.5;
 }
 
+.repo-stats {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin: 0 0 12px;
+}
+
 .pill {
   border: 1px solid var(--line);
   border-radius: 999px;
@@ -301,6 +364,11 @@ output {
   .panel-header,
   .section-title {
     display: block;
+  }
+
+  .panel-actions {
+    justify-content: flex-start;
+    margin-top: 16px;
   }
 
   .repo-link {

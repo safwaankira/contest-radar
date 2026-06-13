@@ -39,6 +39,11 @@ const addressPatterns = [
   { type: 'MRWK', regex: /mrwk1[a-z0-9]{20,80}/gi },
 ];
 
+const WATCHLIST_KEY = 'bounty-radar-watchlists';
+const REPO_STATS_LIMIT = 12;
+const repoCache = new Map();
+let apiRateRemaining = null;
+
 let selectedPreset = presets[0];
 let currentResults = [];
 
@@ -49,7 +54,10 @@ const elements = {
   token: document.querySelector('#token'),
   limit: document.querySelector('#limit'),
   scanButton: document.querySelector('#scanButton'),
+  saveWatchlist: document.querySelector('#saveWatchlist'),
   exportCsv: document.querySelector('#exportCsv'),
+  savedWatchlists: document.querySelector('#savedWatchlists'),
+  savedCount: document.querySelector('#savedCount'),
   results: document.querySelector('#results'),
   resultCount: document.querySelector('#resultCount'),
   topScore: document.querySelector('#topScore'),
@@ -83,6 +91,77 @@ function buildQuery() {
   return [selectedPreset.query, extra].filter(Boolean).join(' ');
 }
 
+function readWatchlists() {
+  try {
+    const value = JSON.parse(localStorage.getItem(WATCHLIST_KEY) ?? '[]');
+    return Array.isArray(value) ? value : [];
+  } catch (_error) {
+    return [];
+  }
+}
+
+function writeWatchlists(watchlists) {
+  localStorage.setItem(WATCHLIST_KEY, JSON.stringify(watchlists.slice(0, 12)));
+  renderWatchlists();
+}
+
+function saveCurrentWatchlist() {
+  const extra = elements.keywords.value.trim();
+  const watchlist = {
+    id: `${selectedPreset.id}:${extra}:${elements.limit.value}`,
+    presetId: selectedPreset.id,
+    presetName: selectedPreset.name,
+    keywords: extra,
+    limit: elements.limit.value,
+  };
+  const watchlists = readWatchlists().filter((item) => item.id !== watchlist.id);
+  writeWatchlists([watchlist, ...watchlists]);
+  elements.statusText.textContent = `Saved watchlist: ${watchlistLabel(watchlist)}.`;
+}
+
+function renderWatchlists() {
+  const watchlists = readWatchlists();
+  elements.savedWatchlists.innerHTML = '';
+  elements.savedCount.textContent = String(watchlists.length);
+
+  for (const watchlist of watchlists) {
+    const chip = document.createElement('span');
+    chip.className = 'watchlist-chip';
+
+    const load = document.createElement('button');
+    load.type = 'button';
+    load.textContent = watchlistLabel(watchlist);
+    load.title = 'Load watchlist';
+    load.className = 'watchlist-load';
+    load.addEventListener('click', () => loadWatchlist(watchlist));
+
+    const remove = document.createElement('button');
+    remove.type = 'button';
+    remove.textContent = 'x';
+    remove.title = 'Remove watchlist';
+    remove.addEventListener('click', () => removeWatchlist(watchlist.id));
+
+    chip.append(load, remove);
+    elements.savedWatchlists.append(chip);
+  }
+}
+
+function loadWatchlist(watchlist) {
+  selectedPreset = presets.find((preset) => preset.id === watchlist.presetId) ?? selectedPreset;
+  elements.keywords.value = watchlist.keywords ?? '';
+  elements.limit.value = watchlist.limit ?? '40';
+  renderPresets();
+  elements.statusText.textContent = `Loaded watchlist: ${watchlistLabel(watchlist)}.`;
+}
+
+function removeWatchlist(id) {
+  writeWatchlists(readWatchlists().filter((watchlist) => watchlist.id !== id));
+}
+
+function watchlistLabel(watchlist) {
+  return [watchlist.presetName, watchlist.keywords].filter(Boolean).join(' + ');
+}
+
 async function scanGitHub(event) {
   event.preventDefault();
   const token = elements.token.value.trim();
@@ -109,7 +188,7 @@ async function scanGitHub(event) {
     const response = await fetch(url, {
       headers: token ? { Authorization: `Bearer ${token}` } : {},
     });
-    elements.rateLimit.textContent = response.headers.get('x-ratelimit-remaining') ?? 'unknown';
+    updateRateLimit(response.headers.get('x-ratelimit-remaining'));
 
     if (!response.ok) {
       const message = await response.text();
@@ -120,6 +199,7 @@ async function scanGitHub(event) {
     currentResults = (payload.items ?? [])
       .map(scoreIssue)
       .sort((a, b) => b.score - a.score || new Date(b.updatedAt) - new Date(a.updatedAt));
+    await enrichWithRepoStats(currentResults, token);
     renderResults(currentResults);
   } catch (error) {
     elements.results.innerHTML = `<div class="empty">${escapeHtml(error.message)}</div>`;
@@ -172,8 +252,67 @@ function scoreIssue(issue) {
     labels,
     signals: [...new Set(signals)],
     addresses,
+    repoStats: null,
     score: Math.max(0, score),
   };
+}
+
+async function enrichWithRepoStats(results, token) {
+  const repos = [...new Set(results.map((result) => result.repo).filter((repo) => repo !== 'unknown/repo'))]
+    .slice(0, REPO_STATS_LIMIT);
+  for (const repo of repos) {
+    if (apiRateRemaining === 0) break;
+    await fetchRepoStats(repo, token);
+  }
+
+  for (const result of results) {
+    const stats = repoCache.get(result.repo) ?? null;
+    result.repoStats = stats;
+    const qualityPoints = repoQualityPoints(stats);
+    if (qualityPoints > 0) {
+      result.score += qualityPoints;
+      result.signals = [...new Set([...result.signals, 'repo quality'])];
+    }
+  }
+
+  results.sort((a, b) => b.score - a.score || new Date(b.updatedAt) - new Date(a.updatedAt));
+}
+
+async function fetchRepoStats(repo, token) {
+  if (repoCache.has(repo)) return repoCache.get(repo);
+
+  try {
+    const response = await fetch(`https://api.github.com/repos/${repo}`, {
+      headers: token ? { Authorization: `Bearer ${token}` } : {},
+    });
+    updateRateLimit(response.headers.get('x-ratelimit-remaining'));
+    if (!response.ok) throw new Error(`${response.status} ${response.statusText}`);
+
+    const data = await response.json();
+    const stats = {
+      stars: data.stargazers_count ?? 0,
+      forks: data.forks_count ?? 0,
+      openIssues: data.open_issues_count ?? 0,
+      updatedAt: data.pushed_at ?? data.updated_at,
+      archived: Boolean(data.archived),
+    };
+    repoCache.set(repo, stats);
+    return stats;
+  } catch (_error) {
+    repoCache.set(repo, null);
+    return null;
+  }
+}
+
+function repoQualityPoints(stats) {
+  if (!stats || stats.archived) return 0;
+  let points = 0;
+  if (stats.stars >= 1000) points += 8;
+  else if (stats.stars >= 100) points += 5;
+  else if (stats.stars >= 25) points += 3;
+  if (stats.forks >= 50) points += 3;
+  if ((Date.now() - new Date(stats.updatedAt).getTime()) / 86400000 <= 45) points += 4;
+  return points;
 }
 
 function extractAddresses(text) {
@@ -218,10 +357,21 @@ function renderResults(results) {
     title.textContent = result.title;
     title.href = result.url;
     node.querySelector('[data-summary]').textContent = result.summary;
+    node.querySelector('[data-repo-stats]').append(...repoStatNodes(result.repoStats));
     node.querySelector('[data-signals]').append(...pillNodes(result.signals, 'signal'));
     node.querySelector('[data-addresses]').append(...pillNodes(result.addresses.map((a) => `${a.type}: ${shorten(a.value)}`), 'address'));
     elements.results.append(node);
   }
+}
+
+function repoStatNodes(stats) {
+  if (!stats) return [createPill('repo stats unavailable', '')];
+  return [
+    createPill(`${formatNumber(stats.stars)} stars`, ''),
+    createPill(`${formatNumber(stats.forks)} forks`, ''),
+    createPill(`pushed ${formatDate(stats.updatedAt)}`, ''),
+    createPill(stats.archived ? 'archived' : 'active repo', 'signal'),
+  ];
 }
 
 function pillNodes(values, className) {
@@ -286,6 +436,16 @@ function formatDate(value) {
   return new Intl.DateTimeFormat(undefined, { month: 'short', day: 'numeric' }).format(new Date(value));
 }
 
+function formatNumber(value) {
+  return new Intl.NumberFormat(undefined, { notation: 'compact', maximumFractionDigits: 1 }).format(value);
+}
+
+function updateRateLimit(value) {
+  if (value === null) return;
+  apiRateRemaining = Number(value);
+  elements.rateLimit.textContent = value;
+}
+
 function shorten(value) {
   return value.length > 18 ? `${value.slice(0, 10)}...${value.slice(-6)}` : value;
 }
@@ -295,6 +455,8 @@ function escapeHtml(value) {
 }
 
 elements.form.addEventListener('submit', scanGitHub);
+elements.saveWatchlist.addEventListener('click', saveCurrentWatchlist);
 elements.exportCsv.addEventListener('click', exportCsv);
 elements.addressInput.addEventListener('input', classifyAddress);
 renderPresets();
+renderWatchlists();
