@@ -30,7 +30,7 @@
 - Day 4: Shareable preset URLs for launch posts and community review. Shipped.
 - Day 5: GitHub Actions daily digest mode. Shipped.
 - Day 6: Public JSON/CSV feed for agents and dashboards. Shipped.
-- Day 7: x402-paid alert API prototype.
+- Day 7: x402-paid alert API prototype. Shipped as `examples/paid-alert-api`.
 
 ## Legal Publishing Checklist
 
@@ -52,6 +52,6 @@
 
 - Repository: https://github.com/go165/bounty-radar
 - Demo: https://go165.github.io/bounty-radar/
-- Current shipped hooks: payout scoring, address classification, CSV export, saved watchlists, shareable URLs, capped best-effort repository quality signals, daily JSON/CSV feed.
+- Current shipped hooks: payout scoring, address classification, CSV export, saved watchlists, shareable URLs, capped best-effort repository quality signals, daily JSON/CSV feed, 402-style paid alert API prototype.
 - Feed: https://go165.github.io/bounty-radar/feed/latest.json
 - Stars: track manually from GitHub repository page.
