@@ -2,7 +2,7 @@
 
 **Find GitHub issues with real payout signals before you spend hours on the wrong bounty.**
 
-Bounty Radar is a zero-backend dashboard for developers and agent builders who hunt paid open-source work. It searches GitHub issues, scores payout credibility signals, highlights Base/USDC/x402/MergeWork keywords, extracts payout addresses, and exports a shortlist you can review before opening a PR.
+Bounty Radar is a zero-backend dashboard for developers and agent builders who hunt paid open-source work. It opens with a hosted daily shortlist, can run fresh GitHub issue searches in the browser, scores payout credibility signals, highlights Base/USDC/x402/MergeWork keywords, extracts payout addresses, and exports a shortlist you can review before opening a PR.
 
 The browser checker now includes payout lint warnings for common irreversible-payment mistakes such as malformed EVM addresses, zero addresses, bad EIP-55 checksums, non-checksummed EVM addresses, and USDC text without explicit chain context. Use [Payout Address Lint](https://github.com/go165/payout-address-lint) when you want the same idea as a reusable CLI or GitHub Action in a bounty repository.
 
@@ -28,6 +28,7 @@ Bounty Radar makes that triage fast without asking for your GitHub token by defa
 ## Features
 
 - **Preset searches** for high-signal bounty issues, Base/USDC work, x402 paid APIs, and MergeWork/MRWK opportunities.
+- **Live hosted shortlist** loaded from the daily JSON feed so the demo has useful results immediately.
 - **Custom GitHub issue search** with optional minimum payout keyword filtering.
 - **Payout signal score** based on title/body labels, payment rail terms, reward amounts, address hints, and payout lint risk.
 - **Best-effort repository quality signals** for stars, forks, recent push activity, and archived status.
@@ -55,10 +56,10 @@ Then open http://localhost:8080.
 
 ## Usage
 
-1. Pick a preset such as `Base / USDC` or `x402 paid APIs`.
-2. Add optional keywords like `good first issue`, `bug`, `docs`, or a specific ecosystem.
-3. Click **Copy Link** to share the exact search, or **Scan GitHub** to run it.
-4. Sort by payout score and inspect the top results.
+1. Open the demo to see the latest hosted shortlist from `feed/latest.json`.
+2. Pick a preset such as `Base / USDC` or `x402 paid APIs` for a fresh browser-side scan.
+3. Add optional keywords like `good first issue`, `bug`, `docs`, or a specific ecosystem.
+4. Click **Copy Link** to share the exact search, or **Scan GitHub** to run it.
 5. Export CSV before deciding what to work on.
 
 Example share URL:
@@ -101,6 +102,7 @@ Repository quality metadata is fetched sequentially and capped to avoid burning 
 - Day 4: Add shareable preset URLs for launch posts and community review. Shipped.
 - Day 5: Add GitHub Actions daily digest mode. Shipped.
 - Day 6: Add hosted JSON/CSV feed for agents and dashboards. Shipped.
+- Day 6.5: Auto-load the hosted feed into the demo so visitors see real current opportunities immediately. Shipped.
 - Day 7: Ship API/webhook plan for paid alerts. Shipped as `examples/paid-alert-api`.
 
 ## Monetization Path

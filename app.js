@@ -48,6 +48,7 @@ const usdcTerms = /\b(usdc|usd coin|stablecoin)\b/i;
 const chainTerms = /\b(base|base mainnet|base sepolia|eip155:8453|eip155:84532|ethereum|mainnet|sepolia)\b/i;
 
 const WATCHLIST_KEY = 'bounty-radar-watchlists';
+const FEED_URL = 'feed/latest.json';
 const REPO_STATS_LIMIT = 12;
 const repoCache = new Map();
 let apiRateRemaining = null;
@@ -62,6 +63,7 @@ const elements = {
   token: document.querySelector('#token'),
   limit: document.querySelector('#limit'),
   scanButton: document.querySelector('#scanButton'),
+  loadDailyFeed: document.querySelector('#loadDailyFeed'),
   copyShareLink: document.querySelector('#copyShareLink'),
   saveWatchlist: document.querySelector('#saveWatchlist'),
   exportCsv: document.querySelector('#exportCsv'),
@@ -246,6 +248,66 @@ async function scanGitHub(event) {
     elements.scanButton.disabled = false;
     elements.scanButton.textContent = 'Scan GitHub';
   }
+}
+
+async function loadDailyFeed() {
+  elements.loadDailyFeed.disabled = true;
+  elements.loadDailyFeed.textContent = 'Loading...';
+  elements.statusText.textContent = 'Loading the latest hosted bounty feed.';
+  elements.results.innerHTML = '<div class="empty">Loading the daily JSON feed...</div>';
+
+  try {
+    const response = await fetch(FEED_URL, { cache: 'no-cache' });
+    if (!response.ok) throw new Error(`${response.status} ${response.statusText}`);
+
+    const feed = await response.json();
+    currentResults = (feed.items ?? [])
+      .map(normalizeFeedItem)
+      .sort((a, b) => b.score - a.score || new Date(b.updatedAt) - new Date(a.updatedAt));
+    renderResults(currentResults);
+    elements.rateLimit.textContent = 'feed';
+    elements.statusText.textContent = `Loaded ${currentResults.length} issues from the hosted feed generated ${formatDateTime(feed.generated_at)}.`;
+  } catch (error) {
+    currentResults = [];
+    elements.results.innerHTML = `<div class="empty">Hosted feed unavailable: ${escapeHtml(error.message)}</div>`;
+    elements.resultCount.textContent = '0';
+    elements.topScore.textContent = '0';
+    elements.exportCsv.disabled = true;
+    elements.statusText.textContent = 'Feed load failed. Use Scan GitHub for a live search.';
+  } finally {
+    elements.loadDailyFeed.disabled = false;
+    elements.loadDailyFeed.textContent = 'Load Feed';
+  }
+}
+
+function normalizeFeedItem(item) {
+  const addresses = Array.isArray(item.addresses) ? item.addresses : [];
+  const signals = Array.isArray(item.signals) ? item.signals : [];
+  const labels = Array.isArray(item.labels) ? item.labels : [];
+  const addressText = addresses.map((address) => address.value).join(' ');
+  const payoutFindings = lintPayoutText(`${item.title ?? ''}\n${addressText}`, { allowNoAddress: true }).findings;
+
+  return {
+    title: item.title ?? 'Untitled issue',
+    url: item.url,
+    repo: item.repo ?? 'unknown/repo',
+    updatedAt: item.updated_at,
+    summary: feedSummary(item, signals, labels),
+    labels,
+    signals,
+    addresses,
+    payoutFindings,
+    repoStats: null,
+    score: Number(item.score ?? 0),
+  };
+}
+
+function feedSummary(item, signals, labels) {
+  const parts = [];
+  if (item.preset_name || item.preset) parts.push(`Preset: ${item.preset_name ?? item.preset}`);
+  if (signals.length > 0) parts.push(`Signals: ${signals.join(', ')}`);
+  if (labels.length > 0) parts.push(`Labels: ${labels.slice(0, 5).join(', ')}`);
+  return parts.join('. ') || 'Daily feed item from the hosted GitHub bounty radar.';
 }
 
 function scoreIssue(issue) {
@@ -575,6 +637,16 @@ function formatDate(value) {
   return new Intl.DateTimeFormat(undefined, { month: 'short', day: 'numeric' }).format(new Date(value));
 }
 
+function formatDateTime(value) {
+  if (!value) return 'recently';
+  return new Intl.DateTimeFormat(undefined, {
+    month: 'short',
+    day: 'numeric',
+    hour: '2-digit',
+    minute: '2-digit',
+  }).format(new Date(value));
+}
+
 function formatNumber(value) {
   return new Intl.NumberFormat(undefined, { notation: 'compact', maximumFractionDigits: 1 }).format(value);
 }
@@ -594,6 +666,7 @@ function escapeHtml(value) {
 }
 
 elements.form.addEventListener('submit', scanGitHub);
+elements.loadDailyFeed.addEventListener('click', loadDailyFeed);
 elements.copyShareLink.addEventListener('click', copyShareLink);
 elements.saveWatchlist.addEventListener('click', saveCurrentWatchlist);
 elements.exportCsv.addEventListener('click', exportCsv);
@@ -601,3 +674,4 @@ elements.addressInput.addEventListener('input', classifyAddress);
 applyUrlState();
 renderPresets();
 renderWatchlists();
+loadDailyFeed();
