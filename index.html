@@ -1,0 +1,113 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta
+      name="description"
+      content="A static GitHub bounty radar for finding paid open-source issues with USDC, Base, x402, MRWK, and payout address signals."
+    />
+    <title>Bounty Radar</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <header class="topbar">
+      <div>
+        <p class="eyebrow">Open-source work discovery</p>
+        <h1>Bounty Radar</h1>
+        <p class="lede">
+          Find GitHub issues with real payout signals before you spend hours on the wrong bounty.
+        </p>
+      </div>
+      <a class="repo-link" href="https://github.com/go165/bounty-radar" target="_blank" rel="noreferrer">GitHub</a>
+    </header>
+
+    <main>
+      <section class="control-panel" aria-labelledby="scan-title">
+        <div class="panel-header">
+          <div>
+            <h2 id="scan-title">Scan presets</h2>
+            <p>Use a preset, add keywords, then scan GitHub issues.</p>
+          </div>
+          <button id="exportCsv" class="secondary" type="button" disabled>Export CSV</button>
+        </div>
+
+        <div id="presets" class="preset-grid" aria-label="Search presets"></div>
+
+        <form id="searchForm" class="search-form">
+          <label>
+            Extra keywords
+            <input
+              id="keywords"
+              type="text"
+              placeholder="good first issue bug docs python base"
+              autocomplete="off"
+            />
+          </label>
+          <label>
+            GitHub token (optional, session only)
+            <input id="token" type="password" placeholder="ghp_... for higher rate limits" autocomplete="off" />
+          </label>
+          <label>
+            Max results
+            <select id="limit">
+              <option value="20">20</option>
+              <option value="40" selected>40</option>
+              <option value="80">80</option>
+            </select>
+          </label>
+          <button id="scanButton" type="submit">Scan GitHub</button>
+        </form>
+
+        <div class="mini-tools" aria-label="Payout address checker">
+          <label>
+            Payout address checker
+            <input id="addressInput" type="text" placeholder="Paste 0x..., G..., or mrwk1..." autocomplete="off" />
+          </label>
+          <output id="addressResult">Paste an address to classify it.</output>
+        </div>
+      </section>
+
+      <section class="status-strip" aria-live="polite">
+        <div>
+          <span id="resultCount">0</span>
+          <small>results</small>
+        </div>
+        <div>
+          <span id="topScore">0</span>
+          <small>top score</small>
+        </div>
+        <div>
+          <span id="rateLimit">unknown</span>
+          <small>rate limit</small>
+        </div>
+      </section>
+
+      <section class="results-section" aria-labelledby="results-title">
+        <div class="section-title">
+          <h2 id="results-title">Shortlist</h2>
+          <p id="statusText">Choose a preset and scan to build a ranked issue list.</p>
+        </div>
+        <div id="results" class="results-grid"></div>
+      </section>
+    </main>
+
+    <template id="resultCardTemplate">
+      <article class="result-card">
+        <div class="score" data-score></div>
+        <div class="result-body">
+          <div class="result-meta">
+            <span data-repo></span>
+            <span data-updated></span>
+          </div>
+          <h3><a data-title target="_blank" rel="noreferrer"></a></h3>
+          <p data-summary></p>
+          <div class="signals" data-signals></div>
+          <div class="addresses" data-addresses></div>
+        </div>
+      </article>
+    </template>
+
+    <script src="app.js" type="module"></script>
+  </body>
+</html>
