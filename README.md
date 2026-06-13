@@ -102,6 +102,10 @@ Repository quality metadata is fetched sequentially and capped to avoid burning 
 - Be transparent that the scoring is heuristic and requires manual verification.
 - Do not claim a bounty is guaranteed unless the linked issue states payout terms clearly.
 
+## Contributing
+
+Contributions are welcome when they improve real payout discovery or make the scoring model easier to inspect. Start with [CONTRIBUTING.md](CONTRIBUTING.md) and include public evidence for new payout rails, presets, or scoring signals.
+
 ## Suggested Launch Posts
 
 Short version:
