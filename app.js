@@ -1,3 +1,6 @@
+import { keccak_256 } from 'https://esm.sh/@noble/hashes@1.8.0/sha3';
+import { bytesToHex } from 'https://esm.sh/@noble/hashes@1.8.0/utils';
+
 const presets = [
   {
     id: 'high-signal',
@@ -38,6 +41,11 @@ const addressPatterns = [
   { type: 'Stellar', regex: /G[A-Z2-7]{55}/g },
   { type: 'MRWK', regex: /mrwk1[a-z0-9]{20,80}/gi },
 ];
+
+const evmCandidatePattern = /0x[a-fA-F0-9]{6,64}/g;
+const evmExactPattern = /^0x[a-fA-F0-9]{40}$/;
+const usdcTerms = /\b(usdc|usd coin|stablecoin)\b/i;
+const chainTerms = /\b(base|base mainnet|base sepolia|eip155:8453|eip155:84532|ethereum|mainnet|sepolia)\b/i;
 
 const WATCHLIST_KEY = 'bounty-radar-watchlists';
 const REPO_STATS_LIMIT = 12;
@@ -260,9 +268,16 @@ function scoreIssue(issue) {
   }
 
   const addresses = extractAddresses(text);
+  const payoutLint = lintPayoutText(text, { allowNoAddress: true });
   if (addresses.length > 0) {
     signals.push('payout address');
     score += 20;
+  }
+  if (payoutLint.findings.length > 0) {
+    signals.push('payout risk');
+    score -= payoutLint.findings.some((finding) => finding.severity === 'error') ? 10 : 4;
+  } else if (addresses.length > 0) {
+    signals.push('payout lint clean');
   }
 
   const daysOld = (Date.now() - new Date(issue.updated_at).getTime()) / 86400000;
@@ -282,6 +297,7 @@ function scoreIssue(issue) {
     labels,
     signals: [...new Set(signals)],
     addresses,
+    payoutFindings: payoutLint.findings,
     repoStats: null,
     score: Math.max(0, score),
   };
@@ -355,6 +371,84 @@ function extractAddresses(text) {
   return uniqueBy(matches, (item) => `${item.type}:${item.value.toLowerCase()}`);
 }
 
+function lintPayoutText(text, options = {}) {
+  const findings = [];
+  const addresses = extractAddresses(text);
+
+  for (const match of text.matchAll(evmCandidatePattern)) {
+    const address = match[0];
+    const context = text.slice(Math.max(0, match.index - 140), Math.min(text.length, match.index + 180));
+
+    if (!evmExactPattern.test(address)) {
+      findings.push({
+        severity: 'error',
+        code: 'evm-invalid-shape',
+        message: `${address} looks like an EVM address but is not exactly 20 bytes of hex.`,
+      });
+      continue;
+    }
+
+    if (/^0x0{40}$/i.test(address)) {
+      findings.push({
+        severity: 'error',
+        code: 'evm-zero-address',
+        message: 'The EVM zero address is not a valid payout recipient.',
+      });
+    }
+
+    if (hasUppercaseHex(address) && !isValidEip55(address)) {
+      findings.push({
+        severity: 'error',
+        code: 'evm-bad-checksum',
+        message: `${address} has uppercase hex but fails EIP-55 checksum validation.`,
+      });
+    }
+
+    if (!hasUppercaseHex(address)) {
+      findings.push({
+        severity: 'warning',
+        code: 'evm-no-checksum',
+        message: `${address} is not checksummed. Prefer EIP-55 for irreversible payouts.`,
+      });
+    }
+
+    if (usdcTerms.test(context) && !chainTerms.test(context)) {
+      findings.push({
+        severity: 'warning',
+        code: 'usdc-chain-ambiguous',
+        message: 'USDC payout text mentions an EVM address but does not name a chain such as Base mainnet or eip155:8453.',
+      });
+    }
+  }
+
+  if (addresses.length === 0 && !options.allowNoAddress) {
+    findings.push({
+      severity: 'warning',
+      code: 'no-address-found',
+      message: 'No payout address was found. Add an explicit address or state that payout happens off-platform.',
+    });
+  }
+
+  return { addresses, findings: uniqueBy(findings, (finding) => `${finding.severity}:${finding.code}:${finding.message}`) };
+}
+
+function hasUppercaseHex(address) {
+  return /[A-F]/.test(address.slice(2));
+}
+
+function isValidEip55(address) {
+  if (!evmExactPattern.test(address)) return false;
+  const body = address.slice(2);
+  const lower = body.toLowerCase();
+  const hash = bytesToHex(keccak_256(new TextEncoder().encode(lower)));
+
+  for (let i = 0; i < lower.length; i += 1) {
+    const expected = Number.parseInt(hash[i], 16) >= 8 ? lower[i].toUpperCase() : lower[i];
+    if (body[i] !== expected) return false;
+  }
+  return true;
+}
+
 function summarize(body) {
   const text = (body ?? '')
     .replace(/```[\s\S]*?```/g, ' ')
@@ -389,9 +483,17 @@ function renderResults(results) {
     node.querySelector('[data-summary]').textContent = result.summary;
     node.querySelector('[data-repo-stats]').append(...repoStatNodes(result.repoStats));
     node.querySelector('[data-signals]').append(...pillNodes(result.signals, 'signal'));
-    node.querySelector('[data-addresses]').append(...pillNodes(result.addresses.map((a) => `${a.type}: ${shorten(a.value)}`), 'address'));
+    node.querySelector('[data-addresses]').append(...payoutPills(result));
     elements.results.append(node);
   }
+}
+
+function payoutPills(result) {
+  const pills = result.addresses.map((address) => createPill(`${address.type}: ${shorten(address.value)}`, 'address'));
+  for (const finding of result.payoutFindings) {
+    pills.push(createPill(`${finding.severity}: ${finding.code}`, `payout-${finding.severity}`));
+  }
+  return pills.length > 0 ? pills : [createPill('no payout address found', '')];
 }
 
 function repoStatNodes(stats) {
@@ -446,10 +548,17 @@ function classifyAddress() {
     elements.addressResult.textContent = 'Paste an address to classify it.';
     return;
   }
+  const lint = lintPayoutText(value);
   const match = addressPatterns.find((pattern) => new RegExp(`^${pattern.regex.source}$`, pattern.regex.flags.replace('g', '')).test(value));
-  elements.addressResult.textContent = match
-    ? `${match.type} payout address shape detected. Verify ownership and network before paying.`
-    : 'Unknown address shape. Treat as unverified until the bounty owner documents payout instructions.';
+  const prefix = match
+    ? `${match.type} payout address shape detected.`
+    : lint.addresses.length > 0
+      ? `${lint.addresses.length} payout address${lint.addresses.length === 1 ? '' : 'es'} detected in pasted text.`
+      : 'Unknown address shape.';
+  const findingText = lint.findings.length > 0
+    ? ` ${lint.findings.map((finding) => `${finding.severity}: ${finding.message}`).join(' ')}`
+    : ' No lint findings. Still verify ownership and network before paying.';
+  elements.addressResult.textContent = `${prefix}${findingText}`;
 }
 
 function uniqueBy(items, keyFn) {

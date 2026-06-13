@@ -362,6 +362,18 @@ output {
   border-color: #bfd0f7;
 }
 
+.pill.payout-warning {
+  color: #7a4300;
+  background: #fff5dc;
+  border-color: #f4d28d;
+}
+
+.pill.payout-error {
+  color: #8a1f17;
+  background: #ffebe8;
+  border-color: #f1b4ad;
+}
+
 .empty {
   padding: 32px;
   border: 1px dashed var(--line);
