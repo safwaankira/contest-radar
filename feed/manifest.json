@@ -6,8 +6,8 @@
   "latest_json": "https://go165.github.io/bounty-radar/feed/latest.json",
   "latest_csv": "https://go165.github.io/bounty-radar/feed/latest.csv",
   "schema": "https://go165.github.io/bounty-radar/feed/schema.json",
-  "generated_at": "2026-06-14T02:06:01.134Z",
-  "count": 48,
+  "generated_at": "2026-06-14T11:08:27.840Z",
+  "count": 46,
   "refresh": {
     "cadence": "daily",
     "github_actions_workflow": "Daily bounty feed"

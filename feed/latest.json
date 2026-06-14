@@ -1,11 +1,11 @@
 {
-  "generated_at": "2026-06-14T02:06:01.134Z",
+  "generated_at": "2026-06-14T11:08:27.840Z",
   "source": "https://github.com/go165/bounty-radar",
   "demo": "https://go165.github.io/bounty-radar/",
   "manifest": "https://go165.github.io/bounty-radar/feed/manifest.json",
   "schema": "https://go165.github.io/bounty-radar/feed/schema.json",
   "methodology": "Heuristic GitHub issue triage based on payout terms, payment rails, amount text, labels, and payout address shapes.",
-  "count": 48,
+  "count": 46,
   "items": [
     {
       "score": 72,
@@ -25,6 +25,45 @@
       "signals": [
         "bounty",
         "USDC/Base",
+        "MRWK/MergeWork",
+        "amount",
+        "label match"
+      ],
+      "addresses": []
+    },
+    {
+      "score": 54,
+      "preset": "mergework",
+      "preset_name": "MergeWork / MRWK",
+      "repo": "ramimbo/mergework",
+      "title": "MRWK bounty: 150 MRWK - contributor profiles and proof explorer improvements",
+      "url": "https://github.com/ramimbo/mergework/issues/1010",
+      "updated_at": "2026-06-14T06:39:50Z",
+      "labels": [
+        "mrwk:bounty"
+      ],
+      "signals": [
+        "bounty",
+        "MRWK/MergeWork",
+        "amount",
+        "label match"
+      ],
+      "addresses": []
+    },
+    {
+      "score": 54,
+      "preset": "mergework",
+      "preset_name": "MergeWork / MRWK",
+      "repo": "ramimbo/mergework",
+      "title": "MRWK bounty: 40 MRWK - review open MergeWork PRs with evidence, round 20",
+      "url": "https://github.com/ramimbo/mergework/issues/933",
+      "updated_at": "2026-06-14T05:10:58Z",
+      "labels": [
+        "mrwk:bounty",
+        "review"
+      ],
+      "signals": [
+        "bounty",
         "MRWK/MergeWork",
         "amount",
         "label match"
@@ -74,25 +113,6 @@
       "preset": "mergework",
       "preset_name": "MergeWork / MRWK",
       "repo": "ramimbo/mergework",
-      "title": "MRWK bounty: 150 MRWK - contributor profiles and proof explorer improvements",
-      "url": "https://github.com/ramimbo/mergework/issues/1010",
-      "updated_at": "2026-06-13T21:38:03Z",
-      "labels": [
-        "mrwk:bounty"
-      ],
-      "signals": [
-        "bounty",
-        "MRWK/MergeWork",
-        "amount",
-        "label match"
-      ],
-      "addresses": []
-    },
-    {
-      "score": 54,
-      "preset": "mergework",
-      "preset_name": "MergeWork / MRWK",
-      "repo": "ramimbo/mergework",
       "title": "MRWK bounty: 200 MRWK - public API and OpenAPI client contract completion",
       "url": "https://github.com/ramimbo/mergework/issues/944",
       "updated_at": "2026-06-13T20:36:54Z",
@@ -103,46 +123,6 @@
         "mrwk:bounty",
         "tests",
         "api"
-      ],
-      "signals": [
-        "bounty",
-        "MRWK/MergeWork",
-        "amount",
-        "label match"
-      ],
-      "addresses": []
-    },
-    {
-      "score": 54,
-      "preset": "base-usdc",
-      "preset_name": "Base / USDC",
-      "repo": "tenstorrent/tt-metal",
-      "title": "[Bounty $2500] Create infrastructure to automatically choose the most optimal configuration for matmul.",
-      "url": "https://github.com/tenstorrent/tt-metal/issues/38114",
-      "updated_at": "2026-06-13T20:05:46Z",
-      "labels": [
-        "bounty",
-        "bounty_difficulty/hard"
-      ],
-      "signals": [
-        "bounty",
-        "USDC/Base",
-        "amount",
-        "label match"
-      ],
-      "addresses": []
-    },
-    {
-      "score": 54,
-      "preset": "mergework",
-      "preset_name": "MergeWork / MRWK",
-      "repo": "ramimbo/mergework",
-      "title": "MRWK bounty: 40 MRWK - review open MergeWork PRs with evidence, round 20",
-      "url": "https://github.com/ramimbo/mergework/issues/933",
-      "updated_at": "2026-06-13T18:21:24Z",
-      "labels": [
-        "mrwk:bounty",
-        "review"
       ],
       "signals": [
         "bounty",
@@ -174,18 +154,85 @@
       "addresses": []
     },
     {
-      "score": 48,
+      "score": 50,
       "preset": "base-usdc",
       "preset_name": "Base / USDC",
-      "repo": "Scottcjn/rustchain-bounties",
-      "title": "[Bounty #1102 claim: 5 RTC] Bottube #1412 - /api/ergo/info returns 404",
-      "url": "https://github.com/Scottcjn/rustchain-bounties/issues/14037",
-      "updated_at": "2026-06-14T00:34:46Z",
+      "repo": "UnitOneAI/SecuritySkills",
+      "title": "[REVIEW] segmentation: add dual-stack and egress bypass gates",
+      "url": "https://github.com/UnitOneAI/SecuritySkills/issues/2518",
+      "updated_at": "2026-06-14T10:28:17Z",
       "labels": [],
       "signals": [
         "bounty",
         "USDC/Base",
-        "x402"
+        "payout address"
+      ],
+      "addresses": [
+        {
+          "type": "EVM",
+          "value": "0x1f0130669ca6fd02e025a984cc038f139df19a2f"
+        }
+      ]
+    },
+    {
+      "score": 50,
+      "preset": "base-usdc",
+      "preset_name": "Base / USDC",
+      "repo": "UnitOneAI/SecuritySkills",
+      "title": "[REVIEW] ai-data-privacy: add RAG authorization freshness and overfetch evidence gates",
+      "url": "https://github.com/UnitOneAI/SecuritySkills/issues/2525",
+      "updated_at": "2026-06-14T10:13:15Z",
+      "labels": [],
+      "signals": [
+        "bounty",
+        "USDC/Base",
+        "payout address"
+      ],
+      "addresses": [
+        {
+          "type": "EVM",
+          "value": "0x1f0130669ca6fd02e025a984cc038f139df19a2f"
+        }
+      ]
+    },
+    {
+      "score": 50,
+      "preset": "base-usdc",
+      "preset_name": "Base / USDC",
+      "repo": "UnitOneAI/SecuritySkills",
+      "title": "[REVIEW] containment: add Kubernetes controller-aware quarantine gates",
+      "url": "https://github.com/UnitOneAI/SecuritySkills/issues/2514",
+      "updated_at": "2026-06-14T09:52:13Z",
+      "labels": [],
+      "signals": [
+        "bounty",
+        "USDC/Base",
+        "payout address"
+      ],
+      "addresses": [
+        {
+          "type": "EVM",
+          "value": "0x1f0130669ca6fd02e025a984cc038f139df19a2f"
+        }
+      ]
+    },
+    {
+      "score": 36,
+      "preset": "base-usdc",
+      "preset_name": "Base / USDC",
+      "repo": "claude-builders-bounty/claude-builders-bounty",
+      "title": "[BOUNTY $50] SKILL: Generate a structured CHANGELOG from git history",
+      "url": "https://github.com/claude-builders-bounty/claude-builders-bounty/issues/1",
+      "updated_at": "2026-06-14T09:23:24Z",
+      "labels": [
+        "bounty",
+        "skill",
+        "good first issue"
+      ],
+      "signals": [
+        "bounty",
+        "amount",
+        "label match"
       ],
       "addresses": []
     },
@@ -194,13 +241,14 @@
       "preset": "base-usdc",
       "preset_name": "Base / USDC",
       "repo": "Spectral-Finance/lux",
-      "title": "Hyperliquid Integration and Perpetual Trading $900",
-      "url": "https://github.com/Spectral-Finance/lux/issues/82",
-      "updated_at": "2026-06-14T01:33:27Z",
+      "title": "Uniswap V3 Integration and Liquidity Management $900",
+      "url": "https://github.com/Spectral-Finance/lux/issues/78",
+      "updated_at": "2026-06-14T08:54:05Z",
       "labels": [
         "bounty",
         "web3",
-        "exchanges"
+        "exchanges",
+        "in-progress"
       ],
       "signals": [
         "bounty",
@@ -216,7 +264,7 @@
       "repo": "SecureBananaLabs/bug-bounty",
       "title": "Low Handing Fruit Automation",
       "url": "https://github.com/SecureBananaLabs/bug-bounty/issues/743",
-      "updated_at": "2026-06-14T01:32:05Z",
+      "updated_at": "2026-06-14T08:44:01Z",
       "labels": [
         "bug",
         "documentation",
@@ -240,9 +288,9 @@
       "preset": "base-usdc",
       "preset_name": "Base / USDC",
       "repo": "Spectral-Finance/lux",
-      "title": "PancakeSwap Integration and Yield Farming $750",
-      "url": "https://github.com/Spectral-Finance/lux/issues/79",
-      "updated_at": "2026-06-14T00:31:48Z",
+      "title": "SushiSwap Integration and Cross-Chain Bridge Support $750",
+      "url": "https://github.com/Spectral-Finance/lux/issues/80",
+      "updated_at": "2026-06-14T08:41:13Z",
       "labels": [
         "bounty",
         "web3",
@@ -259,21 +307,34 @@
       "score": 36,
       "preset": "base-usdc",
       "preset_name": "Base / USDC",
-      "repo": "warpspeedopen-source/warpspeed-bounties",
-      "title": "[PAID BOUNTY - $750] Email Threads API",
-      "url": "https://github.com/warpspeedopen-source/warpspeed-bounties/issues/4",
-      "updated_at": "2026-06-13T20:38:12Z",
+      "repo": "Spectral-Finance/lux",
+      "title": "Web3 Authentication and Authorization Framework $1,000",
+      "url": "https://github.com/Spectral-Finance/lux/issues/77",
+      "updated_at": "2026-06-14T07:32:26Z",
       "labels": [
-        "help wanted",
         "bounty",
-        "expert",
-        "paid",
-        "open",
-        "nodejs",
-        "prisma",
-        "typescript",
-        "backend",
-        "API"
+        "web3",
+        "infrastructure"
+      ],
+      "signals": [
+        "bounty",
+        "amount",
+        "label match"
+      ],
+      "addresses": []
+    },
+    {
+      "score": 36,
+      "preset": "base-usdc",
+      "preset_name": "Base / USDC",
+      "repo": "Spectral-Finance/lux",
+      "title": "Smart Contract Event Monitoring System $1,500",
+      "url": "https://github.com/Spectral-Finance/lux/issues/75",
+      "updated_at": "2026-06-14T07:32:03Z",
+      "labels": [
+        "bounty",
+        "web3",
+        "infrastructure"
       ],
       "signals": [
         "bounty",
@@ -305,12 +366,45 @@
     },
     {
       "score": 30,
-      "preset": "mergework",
-      "preset_name": "MergeWork / MRWK",
+      "preset": "high-signal",
+      "preset_name": "High-signal bounties",
+      "repo": "cklxx/arle",
+      "title": "[phase-3] SOPD umbrella — self-training LoRA OPD (训推一体): 自更新 + 升级",
+      "url": "https://github.com/cklxx/arle/issues/90",
+      "updated_at": "2026-06-14T11:04:04Z",
+      "labels": [
+        "enhancement",
+        "phase-3"
+      ],
+      "signals": [
+        "bounty",
+        "USDC/Base"
+      ],
+      "addresses": []
+    },
+    {
+      "score": 30,
+      "preset": "x402",
+      "preset_name": "x402 paid APIs",
+      "repo": "Scottcjn/rustchain-bounties",
+      "title": "[Bounty #1102 claim: 5 RTC] Bottube #1428 - register gemini_bp (PR #1429)",
+      "url": "https://github.com/Scottcjn/rustchain-bounties/issues/14057",
+      "updated_at": "2026-06-14T10:47:09Z",
+      "labels": [],
+      "signals": [
+        "bounty",
+        "USDC/Base"
+      ],
+      "addresses": []
+    },
+    {
+      "score": 30,
+      "preset": "x402",
+      "preset_name": "x402 paid APIs",
       "repo": "Scottcjn/rustchain-bounties",
       "title": "[CLAIM] Beacon Atlas Tier A — HermesBountyOps registration + proof of commerce (Bounty #3418, 5 RTC)",
       "url": "https://github.com/Scottcjn/rustchain-bounties/issues/13634",
-      "updated_at": "2026-06-14T01:57:37Z",
+      "updated_at": "2026-06-14T10:46:21Z",
       "labels": [],
       "signals": [
         "bounty",
@@ -322,13 +416,45 @@
       "score": 28,
       "preset": "high-signal",
       "preset_name": "High-signal bounties",
-      "repo": "oreoshake-s-team/browslatro",
-      "title": "feat(ai): integrate the skip-tag expert into the policy benchmarks",
-      "url": "https://github.com/oreoshake-s-team/browslatro/issues/1305",
-      "updated_at": "2026-06-14T02:03:13Z",
+      "repo": "UnitOneAI/SecuritySkills",
+      "title": "[NEW SKILL] customer-managed-webhook-destination-review",
+      "url": "https://github.com/UnitOneAI/SecuritySkills/issues/2428",
+      "updated_at": "2026-06-14T11:05:58Z",
+      "labels": [],
+      "signals": [
+        "bounty",
+        "amount"
+      ],
+      "addresses": []
+    },
+    {
+      "score": 28,
+      "preset": "high-signal",
+      "preset_name": "High-signal bounties",
+      "repo": "onehumancorp/mono",
+      "title": "Implement Autonomous Quote & Deposit Link Generation Pipeline",
+      "url": "https://github.com/onehumancorp/mono/issues/28165",
+      "updated_at": "2026-06-14T11:04:43Z",
       "labels": [
-        "advisor",
-        "training"
+        "agent-report"
+      ],
+      "signals": [
+        "bounty",
+        "amount"
+      ],
+      "addresses": []
+    },
+    {
+      "score": 28,
+      "preset": "high-signal",
+      "preset_name": "High-signal bounties",
+      "repo": "anthropics/claude-code",
+      "title": "[BUG] Max 5x plan incorrectly downgraded to Free after Max 20x refund (Fable 5 government removal, June 13 2026)",
+      "url": "https://github.com/anthropics/claude-code/issues/68251",
+      "updated_at": "2026-06-14T11:03:57Z",
+      "labels": [
+        "bug",
+        "area:cost"
       ],
       "signals": [
         "bounty",
@@ -343,7 +469,7 @@
       "repo": "devpool-directory/devpool-directory",
       "title": "Launch Another DoraHacks Bounty Post",
       "url": "https://github.com/devpool-directory/devpool-directory/issues/5924",
-      "updated_at": "2026-06-14T00:16:57Z",
+      "updated_at": "2026-06-14T09:51:05Z",
       "labels": [
         "Priority: 1 (Normal)",
         "Time: <15 Minutes",
@@ -362,7 +488,7 @@
       "repo": "devpool-directory/devpool-directory",
       "title": "Implement Differential Reward Distribution for Reopened Issues",
       "url": "https://github.com/devpool-directory/devpool-directory/issues/5012",
-      "updated_at": "2026-06-14T00:16:48Z",
+      "updated_at": "2026-06-14T09:50:56Z",
       "labels": [
         "Time: <1 Day",
         "Priority: 2 (Medium)",
@@ -375,66 +501,13 @@
       "addresses": []
     },
     {
-      "score": 28,
-      "preset": "base-usdc",
-      "preset_name": "Base / USDC",
-      "repo": "Scottcjn/rustchain-bounties",
-      "title": "[BOUNTY: 20 RTC] Design a Xonotic RustChain Arena Map (level)",
-      "url": "https://github.com/Scottcjn/rustchain-bounties/issues/14014",
-      "updated_at": "2026-06-13T23:27:40Z",
-      "labels": [],
-      "signals": [
-        "bounty",
-        "amount"
-      ],
-      "addresses": []
-    },
-    {
-      "score": 20,
-      "preset": "high-signal",
-      "preset_name": "High-signal bounties",
-      "repo": "Dipraise1/Engram",
-      "title": "[benchmarks] Retrieval benchmark suite — recall@K vs Pinecone, Weaviate, pgvector",
-      "url": "https://github.com/Dipraise1/Engram/issues/24",
-      "updated_at": "2026-06-14T02:04:34Z",
-      "labels": [
-        "help wanted",
-        "bounty",
-        "performance"
-      ],
-      "signals": [
-        "bounty",
-        "label match"
-      ],
-      "addresses": []
-    },
-    {
-      "score": 20,
-      "preset": "base-usdc",
-      "preset_name": "Base / USDC",
-      "repo": "Scottcjn/rustchain-bounties",
-      "title": "[ONBOARD: 1 RTC] Star + Review an Open PR",
-      "url": "https://github.com/Scottcjn/rustchain-bounties/issues/2782",
-      "updated_at": "2026-06-13T22:17:53Z",
-      "labels": [
-        "good first issue",
-        "bounty",
-        "onboarding"
-      ],
-      "signals": [
-        "bounty",
-        "label match"
-      ],
-      "addresses": []
-    },
-    {
       "score": 20,
       "preset": "base-usdc",
       "preset_name": "Base / USDC",
       "repo": "microg/GmsCore",
       "title": "[BOUNTY] RCS Support [14999$]",
       "url": "https://github.com/microg/GmsCore/issues/2994",
-      "updated_at": "2026-06-13T20:37:43Z",
+      "updated_at": "2026-06-14T09:29:50Z",
       "labels": [
         "enhancement",
         "bounty"
@@ -449,15 +522,27 @@
       "score": 18,
       "preset": "x402",
       "preset_name": "x402 paid APIs",
-      "repo": "vhspace/goldenmcp",
-      "title": "[web] Marketing landing page — Vertex-style hero + nav",
-      "url": "https://github.com/vhspace/goldenmcp/issues/108",
-      "updated_at": "2026-06-14T02:05:21Z",
+      "repo": "a2aproject/A2A",
+      "title": "Proposal: minimal Ed25519 + RFC 9421 signing extension for A2A messages",
+      "url": "https://github.com/a2aproject/A2A/issues/1829",
+      "updated_at": "2026-06-14T11:00:55Z",
+      "labels": [],
+      "signals": [
+        "USDC/Base"
+      ],
+      "addresses": []
+    },
+    {
+      "score": 18,
+      "preset": "x402",
+      "preset_name": "x402 paid APIs",
+      "repo": "autumngarage/alchemist",
+      "title": "Report Conductor runtime version in worker failure comments",
+      "url": "https://github.com/autumngarage/alchemist/issues/253",
+      "updated_at": "2026-06-14T11:00:44Z",
       "labels": [
-        "enhancement",
-        "epic/web",
-        "estimate:4h",
-        "epic/demo-ui"
+        "bug",
+        "alchemist-error"
       ],
       "signals": [
         "x402"
@@ -468,18 +553,16 @@
       "score": 18,
       "preset": "x402",
       "preset_name": "x402 paid APIs",
-      "repo": "vhspace/goldenmcp",
-      "title": "[infra] Deploy GoldenMCP demo web app to Vercel",
-      "url": "https://github.com/vhspace/goldenmcp/issues/106",
-      "updated_at": "2026-06-14T01:57:14Z",
+      "repo": "autumngarage/touchstone",
+      "title": "merge-gate fix-mode: conductor exec auto-commits cause ambiguous-fixed, hook-blocked, and stale-checkpoint failures (4 recovery cycles in 24h)",
+      "url": "https://github.com/autumngarage/touchstone/issues/463",
+      "updated_at": "2026-06-14T10:45:28Z",
       "labels": [
-        "epic/infra",
-        "epic/web",
-        "P0",
-        "estimate:4h"
+        "bug",
+        "alchemist-error"
       ],
       "signals": [
-        "x402"
+        "USDC/Base"
       ],
       "addresses": []
     },
@@ -487,28 +570,14 @@
       "score": 12,
       "preset": "high-signal",
       "preset_name": "High-signal bounties",
-      "repo": "2i2c-org/team-compass",
-      "title": "Broken links in documentation",
-      "url": "https://github.com/2i2c-org/team-compass/issues/1121",
-      "updated_at": "2026-06-14T02:03:39Z",
-      "labels": [],
-      "signals": [
-        "bounty"
-      ],
-      "addresses": []
-    },
-    {
-      "score": 12,
-      "preset": "high-signal",
-      "preset_name": "High-signal bounties",
-      "repo": "markdconnelly/ImperionCRM",
-      "title": "Epic: Employee time tracking — website-authoritative timesheets + Autotask documentation + QuickBooks reconciliation (ADR-0082)",
-      "url": "https://github.com/markdconnelly/ImperionCRM/issues/458",
-      "updated_at": "2026-06-14T02:02:28Z",
+      "repo": "xactiq/ContractorOS",
+      "title": "🔴 Daily Diagnostic — 2026-06-14 (signup bug from #11 still unresolved)",
+      "url": "https://github.com/xactiq/ContractorOS/issues/13",
+      "updated_at": "2026-06-14T11:08:12Z",
       "labels": [
-        "enhancement",
-        "epic",
-        "time-tracking"
+        "diagnostic-report",
+        "critical",
+        "owner-approval-required"
       ],
       "signals": [
         "bounty"
@@ -519,14 +588,12 @@
       "score": 12,
       "preset": "high-signal",
       "preset_name": "High-signal bounties",
-      "repo": "markdconnelly/ImperionCRM_Backend",
-      "title": "Epic: Employee time tracking — processes (Autotask Time Ticket + QuickBooks + reconciliation) (ADR-0082)",
-      "url": "https://github.com/markdconnelly/ImperionCRM_Backend/issues/106",
-      "updated_at": "2026-06-14T02:02:12Z",
+      "repo": "chromiecraft/chromiecraft",
+      "title": "[Quest] - Recipe of the Kaldorei",
+      "url": "https://github.com/chromiecraft/chromiecraft/issues/9706",
+      "updated_at": "2026-06-14T11:07:42Z",
       "labels": [
-        "enhancement",
-        "epic",
-        "time-tracking"
+        "Needs Triage"
       ],
       "signals": [
         "bounty"
@@ -537,14 +604,17 @@
       "score": 12,
       "preset": "high-signal",
       "preset_name": "High-signal bounties",
-      "repo": "markdconnelly/ImperionCRM_LocalPipelineEnrichment",
-      "title": "Epic: Employee time tracking — scheduled bulk ingestion (Autotask TimeEntry + QuickBooks) (ADR-0082)",
-      "url": "https://github.com/markdconnelly/ImperionCRM_LocalPipelineEnrichment/issues/165",
-      "updated_at": "2026-06-14T02:01:58Z",
+      "repo": "jacobcy/vibe-coding-control-center",
+      "title": "refactor(services): retire residual re-export compatibility surface after modularization",
+      "url": "https://github.com/jacobcy/vibe-coding-control-center/issues/2697",
+      "updated_at": "2026-06-14T11:07:32Z",
       "labels": [
-        "enhancement",
-        "epic",
-        "time-tracking"
+        "type/refactor",
+        "scope/python",
+        "tech-debt",
+        "roadmap/epic",
+        "orchestra-scanned",
+        "orchestra-governed"
       ],
       "signals": [
         "bounty"
@@ -555,11 +625,15 @@
       "score": 12,
       "preset": "high-signal",
       "preset_name": "High-signal bounties",
-      "repo": "FutureGadget/ai-sota-feed-bot",
-      "title": "Daily AI Digest - 2026-06-14",
-      "url": "https://github.com/FutureGadget/ai-sota-feed-bot/issues/114",
-      "updated_at": "2026-06-14T02:01:44Z",
-      "labels": [],
+      "repo": "A-Guy-educ/A-Guy",
+      "title": "feat(admin): Payment \"Needs Attention\" dashboard widget",
+      "url": "https://github.com/A-Guy-educ/A-Guy/issues/2619",
+      "updated_at": "2026-06-14T11:05:17Z",
+      "labels": [
+        "priority:P2",
+        "feature",
+        "kody:done"
+      ],
       "signals": [
         "bounty"
       ],
@@ -567,40 +641,12 @@
     },
     {
       "score": 12,
-      "preset": "x402",
-      "preset_name": "x402 paid APIs",
-      "repo": "charles-openclaw/charles-microbounties",
-      "title": "[bounty] eslint-plugin-comment-length lacks homepage and bugs.url metadata",
-      "url": "https://github.com/charles-openclaw/charles-microbounties/issues/1454",
-      "updated_at": "2026-06-14T01:55:03Z",
-      "labels": [],
-      "signals": [
-        "bounty"
-      ],
-      "addresses": []
-    },
-    {
-      "score": 12,
-      "preset": "x402",
-      "preset_name": "x402 paid APIs",
-      "repo": "charles-openclaw/charles-microbounties",
-      "title": "[bounty] lit-dom-expressions lacks homepage and bugs.url metadata",
-      "url": "https://github.com/charles-openclaw/charles-microbounties/issues/1450",
-      "updated_at": "2026-06-14T01:46:06Z",
-      "labels": [],
-      "signals": [
-        "bounty"
-      ],
-      "addresses": []
-    },
-    {
-      "score": 12,
-      "preset": "base-usdc",
-      "preset_name": "Base / USDC",
-      "repo": "Scottcjn/rustchain-bounties",
-      "title": "[TOOL CLAIM: 30 RTC] RustChain Bounty Radar - autonomous bounty triage CLI",
-      "url": "https://github.com/Scottcjn/rustchain-bounties/issues/13776",
-      "updated_at": "2026-06-14T00:37:50Z",
+      "preset": "high-signal",
+      "preset_name": "High-signal bounties",
+      "repo": "ai-hero-dev/cohort-004-project",
+      "title": "RFC: Deepen the lesson-completion / progression workflow into a single module",
+      "url": "https://github.com/ai-hero-dev/cohort-004-project/issues/60",
+      "updated_at": "2026-06-14T11:05:00Z",
       "labels": [],
       "signals": [
         "bounty"
@@ -614,7 +660,7 @@
       "repo": "Scottcjn/rustchain-bounties",
       "title": "[Bounty #1102 claim: 5 RTC] Bottube #1414 - /api/videos accepts `limit` as alias for `per_page` (PR #1415)",
       "url": "https://github.com/Scottcjn/rustchain-bounties/issues/14039",
-      "updated_at": "2026-06-14T00:34:41Z",
+      "updated_at": "2026-06-14T10:18:30Z",
       "labels": [],
       "signals": [
         "bounty"
@@ -637,14 +683,18 @@
     },
     {
       "score": 0,
-      "preset": "x402",
-      "preset_name": "x402 paid APIs",
-      "repo": "autumngarage/touchstone",
-      "title": "pre-push swift-test hook inherits Git env and breaks nested git tests",
-      "url": "https://github.com/autumngarage/touchstone/issues/462",
-      "updated_at": "2026-06-14T02:05:41Z",
+      "preset": "high-signal",
+      "preset_name": "High-signal bounties",
+      "repo": "AI-Shipping-Labs/website",
+      "title": "Staff email notification when a known user joins Slack",
+      "url": "https://github.com/AI-Shipping-Labs/website/issues/959",
+      "updated_at": "2026-06-14T11:07:47Z",
       "labels": [
-        "alchemist-error"
+        "P2",
+        "email",
+        "community",
+        "integration",
+        "groomed"
       ],
       "signals": [],
       "addresses": []
@@ -653,10 +703,10 @@
       "score": 0,
       "preset": "high-signal",
       "preset_name": "High-signal bounties",
-      "repo": "arkavo-org/VRMMetalKit",
-      "title": "Crowd: GPU hardware occlusion queries for background avatars",
-      "url": "https://github.com/arkavo-org/VRMMetalKit/issues/199",
-      "updated_at": "2026-06-14T02:04:39Z",
+      "repo": "teslamate-org/teslamate",
+      "title": "TeslaApi.Error 403 on v4.0.0",
+      "url": "https://github.com/teslamate-org/teslamate/issues/5399",
+      "updated_at": "2026-06-14T11:07:19Z",
       "labels": [],
       "signals": [],
       "addresses": []
@@ -665,58 +715,27 @@
       "score": 0,
       "preset": "high-signal",
       "preset_name": "High-signal bounties",
-      "repo": "cody-hutson/pmo-platform",
-      "title": "Stage 5 Solutioning — #23 (parallel-launch-quota-budget-gate)",
-      "url": "https://github.com/cody-hutson/pmo-platform/issues/784",
-      "updated_at": "2026-06-14T02:03:49Z",
+      "repo": "robinostlund/homeassistant-volkswagencarnet",
+      "title": "Volkswagen API access restrictions, EU Data Act concerns, and impact on existing integrations",
+      "url": "https://github.com/robinostlund/homeassistant-volkswagencarnet/issues/977",
+      "updated_at": "2026-06-14T11:06:25Z",
       "labels": [
-        "sub-task"
+        "enhancement"
       ],
       "signals": [],
       "addresses": []
     },
     {
       "score": 0,
-      "preset": "high-signal",
-      "preset_name": "High-signal bounties",
-      "repo": "jeremypease/swugl",
-      "title": "Clarify free trial CTA — applies to Family Plan only",
-      "url": "https://github.com/jeremypease/swugl/issues/6",
-      "updated_at": "2026-06-14T02:03:34Z",
+      "preset": "x402",
+      "preset_name": "x402 paid APIs",
+      "repo": "autumngarage/sentinel",
+      "title": "Add update and doctor commands (autumn-garage doctrine 0008)",
+      "url": "https://github.com/autumngarage/sentinel/issues/118",
+      "updated_at": "2026-06-14T11:05:31Z",
       "labels": [
         "enhancement",
-        "ux"
-      ],
-      "signals": [],
-      "addresses": []
-    },
-    {
-      "score": 0,
-      "preset": "high-signal",
-      "preset_name": "High-signal bounties",
-      "repo": "huggingface/trl",
-      "title": "GRPO Trainer + Peft + Gradient checkpointing doesn't work",
-      "url": "https://github.com/huggingface/trl/issues/3089",
-      "updated_at": "2026-06-14T02:03:19Z",
-      "labels": [
-        "🐛 bug",
-        "⚡ PEFT",
-        "🏋 GRPO"
-      ],
-      "signals": [],
-      "addresses": []
-    },
-    {
-      "score": 0,
-      "preset": "high-signal",
-      "preset_name": "High-signal bounties",
-      "repo": "zhangr011/paper-war",
-      "title": "Statistics bug: Kills != opposing Losses + Commander Kills over-counted",
-      "url": "https://github.com/zhangr011/paper-war/issues/18",
-      "updated_at": "2026-06-14T02:01:58Z",
-      "labels": [
-        "bug",
-        "needs-triage"
+        "alchemist-error"
       ],
       "signals": [],
       "addresses": []
