@@ -1,5 +1,10 @@
 # Bounty Radar
 
+[![CI](https://github.com/go165/bounty-radar/actions/workflows/ci.yml/badge.svg)](https://github.com/go165/bounty-radar/actions/workflows/ci.yml)
+[![Daily feed](https://github.com/go165/bounty-radar/actions/workflows/daily-feed.yml/badge.svg)](https://github.com/go165/bounty-radar/actions/workflows/daily-feed.yml)
+[![Demo](https://img.shields.io/badge/demo-GitHub%20Pages-blue)](https://go165.github.io/bounty-radar/)
+[![Feed](https://img.shields.io/badge/feed-JSON%2FCSV-green)](https://go165.github.io/bounty-radar/feed/latest.json)
+
 **Find GitHub issues with real payout signals before you spend hours on the wrong bounty.**
 
 Bounty Radar is a zero-backend dashboard for developers and agent builders who hunt paid open-source work. It opens with a hosted daily shortlist, can run fresh GitHub issue searches in the browser, scores payout credibility signals, highlights Base/USDC/x402/MergeWork keywords, extracts payout addresses, and exports a shortlist you can review before opening a PR.
@@ -58,11 +63,17 @@ python3 -m http.server 8080
 
 Then open http://localhost:8080.
 
-Run the agent-friendly shortlist CLI without installing runtime dependencies:
+Try the hosted feed in 30 seconds:
 
 ```bash
 npm test
 npm run shortlist -- --min-score 50 --require-amount --require-rail --limit 10
+node scripts/shortlist.mjs --feed https://go165.github.io/bounty-radar/feed/latest.json --preset x402 --format markdown
+```
+
+Run the agent-friendly shortlist CLI without installing runtime dependencies:
+
+```bash
 npm run shortlist -- --preset mergework --format json
 npm run shortlist -- --feed feed/latest.json --signal 'x402|USDC|MRWK' --format csv
 ```
@@ -137,6 +148,8 @@ The scheduled feed is generated from the same public GitHub issue signals as the
 - Schema: https://go165.github.io/bounty-radar/feed/schema.json
 
 Agents and dashboards can start from the [agent handoff guide](docs/agent-handoff.md) for endpoint contracts, a minimal consumer, and review rules.
+
+Use [examples/github-action-digest.yml](examples/github-action-digest.yml) to post a filtered bounty shortlist to a GitHub Actions job summary on a schedule or manual dispatch.
 
 Use the included CLI when an agent or CI job needs a filtered shortlist instead
 of the full feed:

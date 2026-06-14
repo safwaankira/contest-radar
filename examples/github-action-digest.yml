@@ -1,0 +1,51 @@
+name: Bounty Radar digest
+
+on:
+  schedule:
+    - cron: '35 8 * * *'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  digest:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Fetch high-signal bounty shortlist
+        run: |
+          node --input-type=module <<'NODE' >> "$GITHUB_STEP_SUMMARY"
+          const feedUrl = 'https://go165.github.io/bounty-radar/feed/latest.json';
+          const response = await fetch(feedUrl, {
+            headers: { accept: 'application/json', 'user-agent': 'bounty-radar-digest' },
+          });
+          if (!response.ok) throw new Error(`Feed request failed: ${response.status}`);
+
+          const feed = await response.json();
+          const rows = (feed.items ?? [])
+            .filter((item) => Number(item.score) >= 50)
+            .filter((item) => (item.signals ?? []).some((signal) => /amount|USDC|Base|x402|MRWK|MergeWork/i.test(signal)))
+            .sort((a, b) => Number(b.score) - Number(a.score))
+            .slice(0, 10);
+
+          console.log('# Bounty Radar digest');
+          console.log('');
+          console.log(`Generated: ${feed.generated_at ?? 'unknown'}`);
+          console.log('');
+
+          if (rows.length === 0) {
+            console.log('No matching bounty issues found.');
+            process.exit(0);
+          }
+
+          console.log('| Score | Repo | Signals | Issue |');
+          console.log('| ---: | --- | --- | --- |');
+          for (const item of rows) {
+            const signals = (item.signals ?? []).join(', ').replaceAll('|', '\\|');
+            const title = String(item.title ?? 'Untitled').replaceAll('|', '\\|');
+            console.log(`| ${item.score} | ${item.repo} | ${signals} | [${title}](${item.url}) |`);
+          }
+          NODE
