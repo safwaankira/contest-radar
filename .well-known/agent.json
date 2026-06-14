@@ -1,0 +1,40 @@
+{
+  "name": "Bounty Radar",
+  "description": "Static GitHub bounty intelligence feed for developers and coding agents, scored for payout clarity, payment rails, amount text, labels, and address hints.",
+  "homepage": "https://go165.github.io/bounty-radar/",
+  "repository": "https://github.com/go165/bounty-radar",
+  "license": "MIT",
+  "category": "developer-tools",
+  "audience": [
+    "coding agents",
+    "open-source maintainers",
+    "bounty hunters",
+    "paid API builders"
+  ],
+  "endpoints": {
+    "feed": "https://go165.github.io/bounty-radar/feed/latest.json",
+    "csv": "https://go165.github.io/bounty-radar/feed/latest.csv",
+    "manifest": "https://go165.github.io/bounty-radar/feed/manifest.json",
+    "schema": "https://go165.github.io/bounty-radar/feed/schema.json",
+    "llms": "https://go165.github.io/bounty-radar/llms.txt"
+  },
+  "capabilities": [
+    "daily GitHub bounty shortlist",
+    "payout signal scoring",
+    "Base/USDC/x402/MergeWork rail detection",
+    "payout address extraction",
+    "agent-readable JSON and CSV exports",
+    "zero-dependency shortlist CLI",
+    "402-style paid alert API prototype"
+  ],
+  "integration": {
+    "cli": "npm run shortlist -- --min-score 50 --require-amount --require-rail --format markdown",
+    "paid_api_adapter": "https://github.com/go165/x402-paid-api-starter",
+    "docs": "https://go165.github.io/bounty-radar/docs/agent-handoff.md"
+  },
+  "limitations": [
+    "Scores are heuristic triage signals, not payout guarantees.",
+    "Consumers must verify issue terms, sponsor reputation, and payment rules before doing work.",
+    "Do not use the feed for automated spam comments, bulk outreach, or misleading bounty claims."
+  ]
+}

@@ -1,0 +1,40 @@
+# Bounty Radar
+
+> Static GitHub bounty intelligence feed for developers and coding agents.
+
+Bounty Radar helps developers and coding agents shortlist GitHub issues with
+public payout signals before investing time in a PR. It scores bounty/reward
+keywords, Base/USDC/x402/MergeWork payment rail terms, amount-like text,
+payout address hints, labels, repository quality, and stale issue risk.
+
+Live app: https://go165.github.io/bounty-radar/
+Repository: https://github.com/go165/bounty-radar
+Agent discovery: https://go165.github.io/bounty-radar/.well-known/agent.json
+
+## Machine-Readable Endpoints
+
+- JSON feed: https://go165.github.io/bounty-radar/feed/latest.json
+- CSV feed: https://go165.github.io/bounty-radar/feed/latest.csv
+- Manifest: https://go165.github.io/bounty-radar/feed/manifest.json
+- JSON Schema: https://go165.github.io/bounty-radar/feed/schema.json
+
+## Local Commands
+
+```bash
+npm test
+npm run shortlist -- --min-score 50 --require-amount --require-rail --limit 10
+npm run shortlist -- --preset x402 --format json
+```
+
+## Integration Notes
+
+- Use `docs/agent-handoff.md` for endpoint contracts, a minimal consumer, CLI
+  filters, and review rules.
+- Use `examples/github-action-digest.yml` to publish a scheduled shortlist to a
+  GitHub Actions job summary.
+- Use `examples/paid-alert-api` or `x402-paid-api-starter` to wrap the feed as a
+  402-style paid alert API.
+- Treat scores as triage hints. Verify payout terms, maintainer history,
+  acceptance criteria, and payment rules manually before opening a PR.
+- Do not use the feed for spam comments, bulk outreach, or misleading bounty
+  claims.
