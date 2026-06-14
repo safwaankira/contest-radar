@@ -1,0 +1,24 @@
+{
+  "name": "bounty-radar",
+  "version": "0.1.0",
+  "description": "Static GitHub bounty radar with agent-readable feeds and payout signal scoring.",
+  "type": "module",
+  "scripts": {
+    "build:feed": "node scripts/build-feed.mjs",
+    "shortlist": "node scripts/shortlist.mjs",
+    "test": "node --test test/*.test.mjs"
+  },
+  "keywords": [
+    "bounty",
+    "github-bounties",
+    "paid-open-source",
+    "x402",
+    "usdc",
+    "base",
+    "agent-tools"
+  ],
+  "license": "MIT",
+  "engines": {
+    "node": ">=20"
+  }
+}

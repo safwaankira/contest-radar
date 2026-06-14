@@ -32,6 +32,29 @@ console.table(shortlist.map((item) => ({
 })));
 ```
 
+## Shortlist CLI
+
+Use the zero-dependency CLI when an agent, cron job, or CI workflow needs a
+small filtered list without embedding feed parsing code:
+
+```bash
+npm run shortlist -- --min-score 50 --require-amount --require-rail --limit 10
+npm run shortlist -- --preset mergework --format json
+npm run shortlist -- --feed feed/latest.json --signal 'x402|USDC|MRWK' --format csv
+```
+
+Useful filters:
+
+| Option | Purpose |
+| --- | --- |
+| `--min-score 60` | Ignore weak payout-signal matches. |
+| `--preset x402` | Focus on one feed preset. |
+| `--repo owner/name` | Inspect one repository from the feed. |
+| `--signal 'USDC|MRWK'` | Require a matching signal label. |
+| `--require-amount` | Require explicit amount text. |
+| `--require-rail` | Require a USDC/Base/x402/MRWK rail signal. |
+| `--format markdown` | Emit Markdown, JSON, or CSV for handoff. |
+
 ## Paid API Adapter
 
 Use `x402-paid-api-starter` when the feed should become a paid API surface:
