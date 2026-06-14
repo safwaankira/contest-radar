@@ -1,0 +1,26 @@
+{
+  "name": "Bounty Radar daily feed",
+  "description": "Machine-readable GitHub bounty issue shortlist scored for payout clarity, payment rails, amount text, labels, and payout address hints.",
+  "homepage": "https://go165.github.io/bounty-radar/",
+  "repository": "https://github.com/go165/bounty-radar",
+  "latest_json": "https://go165.github.io/bounty-radar/feed/latest.json",
+  "latest_csv": "https://go165.github.io/bounty-radar/feed/latest.csv",
+  "schema": "https://go165.github.io/bounty-radar/feed/schema.json",
+  "generated_at": "2026-06-14T02:06:01.134Z",
+  "count": 48,
+  "refresh": {
+    "cadence": "daily",
+    "github_actions_workflow": "Daily bounty feed"
+  },
+  "intended_consumers": [
+    "developer dashboards",
+    "coding agents",
+    "bounty triage scripts",
+    "x402 paid API adapters"
+  ],
+  "limitations": [
+    "Scores are heuristic triage signals, not payout guarantees.",
+    "Consumers should verify issue terms, sponsor reputation, and payment rules before doing work.",
+    "Unauthenticated GitHub search can miss private, rate-limited, or recently indexed issues."
+  ]
+}

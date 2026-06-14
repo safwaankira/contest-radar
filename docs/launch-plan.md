@@ -11,7 +11,7 @@
 
 - **TAM / audience**: high enough for a developer tool because paid OSS work, onchain bounties, and coding agents all need reliable task discovery.
 - **Differentiation**: narrow payout-signal triage across GitHub issues, instead of another marketplace that requires project owners to list work manually.
-- **Propagation hook**: developers can share a search preset, CSV shortlist, or hosted JSON feed when discussing bounty quality.
+- **Propagation hook**: developers can share a search preset, CSV shortlist, hosted JSON feed, or manifest/schema pair when discussing bounty quality.
 - **Monetization path**: hosted alerts, webhooks, public feeds, and x402-paid machine-readable bounty intelligence.
 - **7-day demo fit**: static UI is live now; daily digest and feed endpoints can ship without changing the public demo surface.
 
@@ -30,6 +30,7 @@
 - Day 4: Shareable preset URLs for launch posts and community review. Shipped.
 - Day 5: GitHub Actions daily digest mode. Shipped.
 - Day 6: Public JSON/CSV feed for agents and dashboards. Shipped.
+- Day 6.5: Feed manifest, JSON Schema, and agent handoff guide. Shipped.
 - Day 7: x402-paid alert API prototype. Shipped as `examples/paid-alert-api`.
 
 ## Legal Publishing Checklist
@@ -53,5 +54,6 @@
 - Repository: https://github.com/go165/bounty-radar
 - Demo: https://go165.github.io/bounty-radar/
 - Current shipped hooks: payout scoring, address classification, CSV export, saved watchlists, shareable URLs, capped best-effort repository quality signals, daily JSON/CSV feed, 402-style paid alert API prototype.
+- Agent handoff: https://github.com/go165/bounty-radar/blob/main/docs/agent-handoff.md
 - Feed: https://go165.github.io/bounty-radar/feed/latest.json
 - Stars: track manually from GitHub repository page.

@@ -1,0 +1,106 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://go165.github.io/bounty-radar/feed/schema.json",
+  "title": "Bounty Radar Feed",
+  "type": "object",
+  "required": ["generated_at", "source", "demo", "methodology", "count", "items"],
+  "properties": {
+    "generated_at": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "source": {
+      "type": "string",
+      "format": "uri"
+    },
+    "demo": {
+      "type": "string",
+      "format": "uri"
+    },
+    "manifest": {
+      "type": "string",
+      "format": "uri"
+    },
+    "schema": {
+      "type": "string",
+      "format": "uri"
+    },
+    "methodology": {
+      "type": "string"
+    },
+    "count": {
+      "type": "integer",
+      "minimum": 0
+    },
+    "items": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/item"
+      }
+    }
+  },
+  "$defs": {
+    "item": {
+      "type": "object",
+      "required": ["score", "preset", "preset_name", "repo", "title", "url", "updated_at", "labels", "signals", "addresses"],
+      "properties": {
+        "score": {
+          "type": "number",
+          "minimum": 0
+        },
+        "preset": {
+          "type": "string"
+        },
+        "preset_name": {
+          "type": "string"
+        },
+        "repo": {
+          "type": "string",
+          "pattern": "^[^/]+/[^/]+$"
+        },
+        "title": {
+          "type": "string"
+        },
+        "url": {
+          "type": "string",
+          "format": "uri"
+        },
+        "updated_at": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "labels": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "signals": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "addresses": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/address"
+          }
+        }
+      }
+    },
+    "address": {
+      "type": "object",
+      "required": ["type", "value"],
+      "properties": {
+        "type": {
+          "type": "string",
+          "enum": ["EVM", "Stellar", "MRWK"]
+        },
+        "value": {
+          "type": "string"
+        }
+      }
+    }
+  }
+}

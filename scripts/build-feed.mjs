@@ -73,6 +73,8 @@ const feed = {
   generated_at: new Date().toISOString(),
   source: 'https://github.com/go165/bounty-radar',
   demo: 'https://go165.github.io/bounty-radar/',
+  manifest: 'https://go165.github.io/bounty-radar/feed/manifest.json',
+  schema: 'https://go165.github.io/bounty-radar/feed/schema.json',
   methodology: 'Heuristic GitHub issue triage based on payout terms, payment rails, amount text, labels, and payout address shapes.',
   count: items.length,
   items: items.slice(0, 40),
@@ -81,7 +83,37 @@ const feed = {
 await mkdir('feed', { recursive: true });
 await writeFile('feed/latest.json', `${JSON.stringify(feed, null, 2)}\n`);
 await writeFile('feed/latest.csv', toCsv(feed.items));
+await writeFile('feed/manifest.json', `${JSON.stringify(buildManifest(feed), null, 2)}\n`);
 console.log(`Wrote ${feed.count} items to feed/latest.json`);
+
+function buildManifest(feed) {
+  return {
+    name: 'Bounty Radar daily feed',
+    description: 'Machine-readable GitHub bounty issue shortlist scored for payout clarity, payment rails, amount text, labels, and payout address hints.',
+    homepage: feed.demo,
+    repository: feed.source,
+    latest_json: 'https://go165.github.io/bounty-radar/feed/latest.json',
+    latest_csv: 'https://go165.github.io/bounty-radar/feed/latest.csv',
+    schema: feed.schema,
+    generated_at: feed.generated_at,
+    count: feed.count,
+    refresh: {
+      cadence: 'daily',
+      github_actions_workflow: 'Daily bounty feed',
+    },
+    intended_consumers: [
+      'developer dashboards',
+      'coding agents',
+      'bounty triage scripts',
+      'x402 paid API adapters',
+    ],
+    limitations: [
+      'Scores are heuristic triage signals, not payout guarantees.',
+      'Consumers should verify issue terms, sponsor reputation, and payment rules before doing work.',
+      'Unauthenticated GitHub search can miss private, rate-limited, or recently indexed issues.',
+    ],
+  };
+}
 
 function scoreIssue(issue, preset) {
   const text = `${issue.title ?? ''}\n${issue.body ?? ''}`;
