@@ -24,6 +24,7 @@ Agent discovery: https://go165.github.io/bounty-radar/.well-known/agent.json
 npm test
 npm run shortlist -- --min-score 50 --require-amount --require-rail --limit 10
 npm run shortlist -- --preset x402 --format json
+npm run audit:shortlist -- --limit 8 --require-rail --min-amount-usd 50 --max-competition-score 40
 ```
 
 ## Integration Notes
@@ -32,6 +33,9 @@ npm run shortlist -- --preset x402 --format json
   filters, and review rules.
 - Use `examples/github-action-digest.yml` to publish a scheduled shortlist to a
   GitHub Actions job summary.
+- Use `docs/claim-before-coding.md` and
+  `examples/github-action-claim-before-coding.yml` to audit issue comments and
+  related PRs before choosing bounty work.
 - Use `examples/paid-alert-api` or `x402-paid-api-starter` to wrap the feed as a
   402-style paid alert API.
 - Treat scores as triage hints. Verify payout terms, maintainer history,

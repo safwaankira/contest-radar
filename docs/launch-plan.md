@@ -32,6 +32,7 @@
 - Day 6: Public JSON/CSV feed for agents and dashboards. Shipped.
 - Day 6.5: Feed manifest, JSON Schema, and agent handoff guide. Shipped.
 - Day 7: x402-paid alert API prototype. Shipped as `examples/paid-alert-api`.
+- Day 7.5: Claim-before-coding audit workflow for competition checks. Shipped.
 
 ## Legal Publishing Checklist
 
@@ -54,6 +55,7 @@
 - Repository: https://github.com/go165/bounty-radar
 - Demo: https://go165.github.io/bounty-radar/
 - Current shipped hooks: payout scoring, address classification, CSV export, saved watchlists, shareable URLs, capped best-effort repository quality signals, daily JSON/CSV feed, zero-dependency shortlist CLI, 402-style paid alert API prototype.
+- Claim audit: https://github.com/go165/bounty-radar/blob/main/docs/claim-before-coding.md
 - Agent handoff: https://github.com/go165/bounty-radar/blob/main/docs/agent-handoff.md
 - Feed: https://go165.github.io/bounty-radar/feed/latest.json
 - Stars: track manually from GitHub repository page.

@@ -1,0 +1,42 @@
+name: Bounty claim audit
+
+on:
+  schedule:
+    - cron: '12 9 * * *'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  audit:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+
+      - name: Clone Bounty Radar
+        run: git clone --depth 1 https://github.com/go165/bounty-radar.git .bounty-radar
+
+      - name: Audit claim-ready bounty candidates
+        working-directory: .bounty-radar
+        env:
+          GITHUB_TOKEN: ${{ github.token }}
+        run: |
+          {
+            echo '# Bounty claim audit'
+            echo
+            echo 'High-signal candidates after payout, risk, and competition filters.'
+            echo
+            npm run audit:shortlist -- \
+              --feed https://go165.github.io/bounty-radar/feed/latest.json \
+              --limit 8 \
+              --require-rail \
+              --min-amount-usd 50 \
+              --max-risk-score 25 \
+              --max-competition-score 40 \
+              --max-comments-full-audit 80 \
+              --max-related-pulls 12 \
+              --search-limit 20
+          } >> "$GITHUB_STEP_SUMMARY"

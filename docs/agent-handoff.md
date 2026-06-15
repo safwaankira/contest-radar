@@ -57,6 +57,20 @@ Useful filters:
 | `--require-rail` | Require a USDC/Base/x402/MRWK rail signal. |
 | `--format markdown` | Emit Markdown, JSON, or CSV for handoff. |
 
+## Claim-Before-Coding Audit
+
+Use the audit command before a coding agent claims work or starts a PR. It
+combines feed filters with issue comments and related pull request checks:
+
+```bash
+npm run audit:shortlist -- --limit 8 --require-rail --min-amount-usd 50 --max-competition-score 40
+```
+
+The command keeps `consider` recommendations by default and drops issues with
+high competition, accepted/merged competing work, hidden-context risk, wallet
+secret risk, manual signup friction, or weak payout signals. For a scheduled
+workflow, copy [examples/github-action-claim-before-coding.yml](../examples/github-action-claim-before-coding.yml).
+
 ## Paid API Adapter
 
 Use `x402-paid-api-starter` when the feed should become a paid API surface:
@@ -77,5 +91,6 @@ The adapter normalizes `score`, `preset`, `repo`, `signals`, `labels`,
   rules before opening a PR.
 - Prefer issues with explicit amount, payout rail, maintainer confirmation, and
   recent project activity.
+- Run the claim-before-coding audit before posting a claim or implementation.
 - Avoid automated comments or mass outreach. Use the feed to pick work, not to
   spam project maintainers.

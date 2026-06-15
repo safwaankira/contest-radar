@@ -21,6 +21,8 @@ Agent discovery: https://go165.github.io/bounty-radar/.well-known/agent.json
 
 LLM context: https://go165.github.io/bounty-radar/llms.txt
 
+Claim-before-coding workflow: [docs/claim-before-coding.md](docs/claim-before-coding.md)
+
 Paid alert API deployment guide: [docs/paid-alert-api.md](docs/paid-alert-api.md)
 
 ![Bounty Radar screenshot](docs/screenshot.png)
@@ -49,6 +51,7 @@ Bounty Radar makes that triage fast without asking for your GitHub token by defa
 - **Machine-readable feed manifest and JSON Schema** for automation that should validate the feed before consuming it.
 - **Agent discovery metadata and `llms.txt`** for directories, coding agents, and LLM-powered workflows.
 - **Zero-dependency shortlist CLI** for coding agents and CI jobs that need Markdown, JSON, or CSV output from the hosted feed.
+- **Claim-before-coding audit** that checks comments and related PRs before a developer or agent spends time on a bounty.
 - **Paid alert API prototype** with a free preview route and a 402-style paid endpoint.
 - **x402 paid API deployment guide** for turning the feed into an agent-readable paid alert API.
 - **Address extraction and linting** for EVM `0x...`, Stellar `G...`, and MRWK `mrwk1...`-style addresses.
@@ -81,6 +84,12 @@ Run the agent-friendly shortlist CLI without installing runtime dependencies:
 ```bash
 npm run shortlist -- --preset mergework --format json
 npm run shortlist -- --feed feed/latest.json --signal 'x402|USDC|MRWK' --format csv
+```
+
+Audit competition before opening a claim or PR:
+
+```bash
+npm run audit:shortlist -- --limit 8 --require-rail --min-amount-usd 50 --max-competition-score 40
 ```
 
 ## Usage
@@ -133,6 +142,7 @@ Repository quality metadata is fetched sequentially and capped to avoid burning 
 - Day 6: Add hosted JSON/CSV feed for agents and dashboards. Shipped.
 - Day 6.5: Auto-load the hosted feed into the demo so visitors see real current opportunities immediately. Shipped.
 - Day 7: Ship API/webhook plan for paid alerts. Shipped as `examples/paid-alert-api`.
+- Day 7.5: Add claim-before-coding audit workflow for competition and duplicate PR checks. Shipped.
 
 ## Monetization Path
 
@@ -157,6 +167,8 @@ The scheduled feed is generated from the same public GitHub issue signals as the
 Agents and dashboards can start from the [agent handoff guide](docs/agent-handoff.md) for endpoint contracts, a minimal consumer, and review rules.
 
 Use [examples/github-action-digest.yml](examples/github-action-digest.yml) to post a filtered bounty shortlist to a GitHub Actions job summary on a schedule or manual dispatch.
+
+Use [examples/github-action-claim-before-coding.yml](examples/github-action-claim-before-coding.yml) when you want the same digest plus comment and related-PR competition checks before choosing work.
 
 Use the included CLI when an agent or CI job needs a filtered shortlist instead
 of the full feed:
