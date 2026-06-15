@@ -1,0 +1,23 @@
+{
+  "$schema": "https://static.modelcontextprotocol.io/schemas/2025-12-11/server.schema.json",
+  "name": "io.github.go165/bounty-radar",
+  "title": "Bounty Radar",
+  "description": "Search a hosted GitHub bounty feed for paid open-source issues with USDC, Base, x402, MRWK, amount, and payout-address signals.",
+  "repository": {
+    "url": "https://github.com/go165/bounty-radar",
+    "source": "github"
+  },
+  "websiteUrl": "https://go165.github.io/bounty-radar/",
+  "version": "0.1.0",
+  "packages": [
+    {
+      "registryType": "npm",
+      "identifier": "bounty-radar",
+      "version": "0.1.0",
+      "runtimeHint": "npx",
+      "transport": {
+        "type": "stdio"
+      }
+    }
+  ]
+}

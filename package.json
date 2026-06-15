@@ -3,6 +3,12 @@
   "version": "0.1.0",
   "description": "Static GitHub bounty radar with agent-readable feeds and payout signal scoring.",
   "type": "module",
+  "mcpName": "io.github.go165/bounty-radar",
+  "bin": {
+    "bounty-radar": "./scripts/mcp-server.mjs",
+    "bounty-radar-mcp": "./scripts/mcp-server.mjs",
+    "bounty-radar-shortlist": "./scripts/shortlist.mjs"
+  },
   "scripts": {
     "build:feed": "node scripts/build-feed.mjs",
     "audit:candidate": "node scripts/audit-candidate.mjs",
@@ -21,6 +27,21 @@
     "agent-tools"
   ],
   "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/go165/bounty-radar.git"
+  },
+  "homepage": "https://go165.github.io/bounty-radar/",
+  "bugs": {
+    "url": "https://github.com/go165/bounty-radar/issues"
+  },
+  "files": [
+    "scripts/mcp-server.mjs",
+    "scripts/shortlist.mjs",
+    "server.json",
+    "README.md",
+    "LICENSE"
+  ],
   "engines": {
     "node": ">=20"
   }

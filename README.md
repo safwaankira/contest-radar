@@ -115,6 +115,8 @@ The server exposes:
 | `search_bounties` | Filter the hosted or local feed by score, preset, rail, amount, opportunity class, effort score, and output format. |
 | `get_bounty` | Fetch one feed item by GitHub issue URL so an agent can inspect the exact payout signals and decision notes. |
 
+The npm package metadata includes `mcpName: io.github.go165/bounty-radar`, executable bins for the MCP server and shortlist CLI, and a `server.json` manifest for MCP Registry publishing. Publishing still requires a public npm release followed by `mcp-publisher publish`.
+
 Audit competition before opening a claim or PR:
 
 ```bash

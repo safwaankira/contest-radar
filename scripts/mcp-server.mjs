@@ -1,3 +1,4 @@
+#!/usr/bin/env node
 import { pathToFileURL } from 'node:url';
 import { loadFeed, buildShortlist, formatShortlist } from './shortlist.mjs';
 
