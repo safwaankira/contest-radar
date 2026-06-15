@@ -28,7 +28,7 @@ const signalPatterns = [
   { label: 'USDC/Base', regex: /\b(USDC|Base|Coinbase|onchain|stablecoin)\b/i, points: 18 },
   { label: 'x402', regex: /\b(x402|HTTP 402|402 Payment Required|paid API)\b/i, points: 18 },
   { label: 'MRWK/MergeWork', regex: /\b(MRWK|MergeWork|mrwk:bounty|mrwk1)\b/i, points: 18 },
-  { label: 'amount', regex: /(\$|USD|USDC|MRWK)\s?\d|\d+\s?(USD|USDC|MRWK)/i, points: 16 },
+  { label: 'amount', regex: /(\$|USD|USDC|MRWK)[ \t]?\d|\d+[ \t]?(USD|USDC|MRWK)/i, points: 16 },
 ];
 
 const riskPatterns = [
@@ -54,13 +54,19 @@ const riskPatterns = [
     label: 'kyc-or-account-friction',
     severity: 'manual',
     penalty: 24,
-    regex: /\b(KYC|identity verification|tax form|W-9|W8BEN|bank account|invoice required|manual payout|Devpost account|login required|account required)\b/i,
+    regex: /\b(KYC|identity verification|tax form|W-9|W8BEN|bank account|invoice required|manual payout|Upwork|freelancer profile|Devpost account|login required|account required|needs-human)\b/i,
   },
   {
     label: 'competition-noise',
     severity: 'high',
     penalty: 22,
     regex: /\b(duplicate|already implemented|winner selected|accepted solution|merged solution|many PRs|first come first served|first to merge|assigned to|claimed by)\b/i,
+  },
+  {
+    label: 'internal-agent-dispatch',
+    severity: 'blocker',
+    penalty: 70,
+    regex: /\b(GOLD STANDARD AUTOPILOT|SHIP TO MAIN|parallel\s+\d+h\s+session|autopilot-(?:next|bd)|internal dispatch|agent dispatch)\b/i,
   },
 ];
 
@@ -182,6 +188,7 @@ function scoreIssue(issue, preset) {
   const riskFlags = analyzeRisk(text, labelText);
   const riskScore = riskFlags.reduce((total, flag) => total + flag.penalty, 0);
   const manualFriction = riskFlags.some((flag) => flag.severity === 'manual');
+  const amountUsd = extractLargestAmountUsd(text);
 
   return {
     score: Math.max(0, rawScore - riskScore),
@@ -198,6 +205,7 @@ function scoreIssue(issue, preset) {
     labels,
     signals: [...new Set(signals)],
     addresses,
+    amount_usd: amountUsd,
   };
 }
 
@@ -222,6 +230,21 @@ function extractAddresses(text) {
   return uniqueBy(matches, (item) => `${item.type}:${item.value.toLowerCase()}`);
 }
 
+function extractLargestAmountUsd(text) {
+  const amounts = [];
+  const patterns = [
+    /\$[ \t]?([\d,]+(?:\.\d+)?)/g,
+    /\b([\d,]+(?:\.\d+)?)[ \t]?(?:USD|USDC)\b/gi,
+  ];
+  for (const pattern of patterns) {
+    for (const match of text.matchAll(pattern)) {
+      const value = Number(String(match[1]).replaceAll(',', ''));
+      if (Number.isFinite(value)) amounts.push(value);
+    }
+  }
+  return amounts.length > 0 ? Math.max(...amounts) : null;
+}
+
 function uniqueBy(items, keyFn) {
   const seenKeys = new Set();
   return items.filter((item) => {
@@ -233,11 +256,12 @@ function uniqueBy(items, keyFn) {
 }
 
 function toCsv(rows) {
-  const header = ['score', 'raw_score', 'risk_score', 'preset', 'repo', 'title', 'url', 'updated_at', 'signals', 'risk_flags', 'manual_friction', 'addresses'];
+  const header = ['score', 'raw_score', 'risk_score', 'amount_usd', 'preset', 'repo', 'title', 'url', 'updated_at', 'signals', 'risk_flags', 'manual_friction', 'addresses'];
   const values = rows.map((item) => [
     item.score,
     item.raw_score,
     item.risk_score,
+    item.amount_usd ?? '',
     item.preset,
     item.repo,
     item.title,

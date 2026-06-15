@@ -22,6 +22,26 @@ test('extractPullNumbers reads pull links and PR references', () => {
   );
 });
 
+test('summarizeCompetition counts plain claim comments', () => {
+  const summary = summarizeCompetition({
+    issue: {
+      number: 1,
+      title: 'Bounty',
+      state: 'open',
+      html_url: 'https://github.com/owner/repo/issues/1',
+      updated_at: '2026-06-14T00:00:00Z',
+    },
+    comments: [
+      { body: '## Bounty Claim — Working on this', author_association: 'NONE' },
+      { body: '[CLAIM] AI agent implementing this bounty', author_association: 'NONE' },
+    ],
+    pullRequests: [],
+  });
+
+  assert.equal(summary.counts.claim_comments, 2);
+  assert.equal(summary.recommendation, 'avoid-unless-clearly-superior');
+});
+
 test('summarizeCompetition recommends avoiding crowded claims', () => {
   const summary = summarizeCompetition({
     issue: {

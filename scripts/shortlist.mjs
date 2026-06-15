@@ -31,6 +31,7 @@ export function buildShortlist(feed, options = {}) {
     allowManualFriction = true,
     maxRiskScore = Number.POSITIVE_INFINITY,
     excludeRisk = [],
+    minAmountUsd = 0,
   } = options;
   const signalRegex = signal ? new RegExp(signal, 'i') : null;
   const excludeRiskRegexes = excludeRisk.map((value) => new RegExp(value, 'i'));
@@ -42,6 +43,7 @@ export function buildShortlist(feed, options = {}) {
     .filter((item) => !signalRegex || item.signals?.some((value) => signalRegex.test(value)))
     .filter((item) => !requireAmount || item.signals?.some((value) => /amount/i.test(value)))
     .filter((item) => !requireRail || item.signals?.some((value) => /USDC|Base|x402|MRWK|MergeWork/i.test(value)))
+    .filter((item) => Number(item.amount_usd ?? 0) >= minAmountUsd)
     .filter((item) => Number(item.risk_score ?? 0) <= maxRiskScore)
     .filter((item) => allowManualFriction || !item.manual_friction)
     .filter((item) => !rejectContextLeak || !hasRisk(item, /hidden-context-leak|secret-or-wallet-risk/i))
@@ -95,6 +97,7 @@ export function parseArgs(argv) {
     allowManualFriction: true,
     maxRiskScore: Number.POSITIVE_INFINITY,
     excludeRisk: [],
+    minAmountUsd: 0,
   };
 
   for (let i = 0; i < argv.length; i += 1) {
@@ -118,6 +121,7 @@ export function parseArgs(argv) {
     else if (arg === '--reject-context-leak') options.rejectContextLeak = true;
     else if (arg === '--no-manual-friction') options.allowManualFriction = false;
     else if (arg === '--max-risk-score') options.maxRiskScore = parseNonNegativeNumber(next(), '--max-risk-score');
+    else if (arg === '--min-amount-usd') options.minAmountUsd = parseNonNegativeNumber(next(), '--min-amount-usd');
     else if (arg === '--exclude-risk') options.excludeRisk.push(next());
     else if (arg === '--help' || arg === '-h') options.help = true;
     else throw new Error(`Unknown option: ${arg}`);
@@ -144,6 +148,7 @@ Options:
   --reject-context-leak      Exclude issues that ask for hidden/system/startup context or wallet-secret actions.
   --no-manual-friction       Exclude issues that require signup, manual approval, KYC, or account-heavy work.
   --max-risk-score <number>  Maximum risk penalty to include. Default: no cap.
+  --min-amount-usd <number>  Minimum parsed USD/USDC amount to include. Default: 0.
   --exclude-risk <regex>     Exclude a matching risk flag label. Can be repeated.
   --format <type>            markdown, json, or csv. Default: markdown.
   -h, --help                 Show this help.
@@ -164,11 +169,12 @@ function parseNonNegativeNumber(value, flag) {
 
 function toCsv(items) {
   const rows = [
-    ['score', 'raw_score', 'risk_score', 'preset', 'repo', 'title', 'url', 'updated_at', 'signals', 'risk_flags', 'manual_friction', 'addresses'],
+    ['score', 'raw_score', 'risk_score', 'amount_usd', 'preset', 'repo', 'title', 'url', 'updated_at', 'signals', 'risk_flags', 'manual_friction', 'addresses'],
     ...items.map((item) => [
       item.score,
       item.raw_score ?? item.score,
       item.risk_score ?? 0,
+      item.amount_usd ?? '',
       item.preset,
       item.repo,
       item.title,

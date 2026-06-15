@@ -43,7 +43,7 @@ export function extractPullNumbers(text) {
 }
 
 export function summarizeCompetition({ issue, comments, pullRequests }) {
-  const claimComments = comments.filter((comment) => /\/claim\b|submitted\s+#\d+|submitted .*pull\/\d+/i.test(comment.body ?? ''));
+  const claimComments = comments.filter((comment) => /(?:\/claim\b|\[claim\]|\bclaiming\b|\bbounty claim\b|I'd like to claim|I would like to claim)|submitted\s+#\d+|submitted .*pull\/\d+/i.test(comment.body ?? ''));
   const maintainerAccepted = comments.filter((comment) =>
     ['OWNER', 'MEMBER', 'COLLABORATOR'].includes(comment.author_association ?? '') &&
     /\b(winner selected|rewarded|approved for payout|bounty paid|merged (?:in|as)|accepted (?:solution|implementation|winner|submission|PR|pull request))\b/i.test(comment.body ?? ''),
@@ -142,13 +142,16 @@ async function github(pathOrUrl) {
   return response.json();
 }
 
-async function fetchAll(path) {
+async function fetchAll(path, options = {}) {
   const rows = [];
   let url = `https://api.github.com${path}${path.includes('?') ? '&' : '?'}per_page=100`;
   while (url) {
     const response = await fetch(url, { headers });
     if (!response.ok) throw new Error(`GitHub API failed: ${response.status} ${await response.text()}`);
     rows.push(...(await response.json()));
+    if (rows.length >= (options.maxRows ?? Number.POSITIVE_INFINITY)) {
+      return rows.slice(0, options.maxRows);
+    }
     const link = response.headers.get('link') ?? '';
     url = parseNextLink(link);
   }
@@ -167,14 +170,24 @@ async function main() {
     return;
   }
 
+  process.stdout.write(`${JSON.stringify(await auditCandidate(options), null, 2)}\n`);
+}
+
+export async function auditCandidate(options) {
   const { repo, number } = parseIssueRef(options);
   const issue = await github(`/repos/${repo}/issues/${number}`);
-  const comments = await fetchAll(`/repos/${repo}/issues/${number}/comments`);
+  if (options.maxCommentsForFullAudit && Number(issue.comments ?? 0) > options.maxCommentsForFullAudit) {
+    return noisyIssueSummary(issue, options.maxCommentsForFullAudit);
+  }
+
+  const comments = await fetchAll(`/repos/${repo}/issues/${number}/comments`, {
+    maxRows: options.maxComments ?? Number.POSITIVE_INFINITY,
+  });
   const text = `${issue.body ?? ''}\n${comments.map((comment) => comment.body ?? '').join('\n')}`;
   const pullNumbers = uniqueNumbers([
     ...extractPullNumbers(text),
-    ...(await searchRelatedPullNumbers(repo, number, issue.title ?? '')),
-  ]);
+    ...(await searchRelatedPullNumbers(repo, number, issue.title ?? '', options.searchLimit ?? 50)),
+  ]).slice(0, options.maxRelatedPulls ?? Number.POSITIVE_INFINITY);
   const pullRequests = [];
   for (const pullNumber of pullNumbers) {
     try {
@@ -194,10 +207,35 @@ async function main() {
     }
   }
 
-  process.stdout.write(`${JSON.stringify(summarizeCompetition({ issue, comments, pullRequests }), null, 2)}\n`);
+  return summarizeCompetition({ issue, comments, pullRequests });
 }
 
-async function searchRelatedPullNumbers(repo, issueNumber, issueTitle) {
+function noisyIssueSummary(issue, maxCommentsForFullAudit) {
+  return {
+    recommendation: 'avoid-unless-clearly-superior',
+    reasons: [`comment volume ${issue.comments} exceeds full-audit limit ${maxCommentsForFullAudit}`],
+    competition_score: Number(issue.comments ?? 0) * 2,
+    issue: {
+      number: issue.number,
+      title: issue.title,
+      state: issue.state,
+      url: issue.html_url,
+      updated_at: issue.updated_at,
+    },
+    counts: {
+      comments: issue.comments ?? 0,
+      claim_comments: null,
+      maintainer_accepted_comments: null,
+      related_pull_requests: null,
+      open_pull_requests: null,
+      merged_pull_requests: null,
+      approval_mentions: null,
+    },
+    related_pull_requests: [],
+  };
+}
+
+async function searchRelatedPullNumbers(repo, issueNumber, issueTitle, searchLimit = 50) {
   const titlePhrase = issueTitle
     .replace(/[^\w\s-]/g, ' ')
     .split(/\s+/)
@@ -215,7 +253,7 @@ async function searchRelatedPullNumbers(repo, issueNumber, issueTitle) {
     url.searchParams.set('q', query);
     url.searchParams.set('sort', 'updated');
     url.searchParams.set('order', 'desc');
-    url.searchParams.set('per_page', '50');
+    url.searchParams.set('per_page', String(Math.min(50, searchLimit)));
     try {
       const payload = await github(url.href);
       for (const item of payload.items ?? []) {

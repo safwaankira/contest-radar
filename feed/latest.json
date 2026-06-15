@@ -1,11 +1,11 @@
 {
-  "generated_at": "2026-06-15T00:29:53.148Z",
+  "generated_at": "2026-06-15T01:07:49.229Z",
   "source": "https://github.com/go165/bounty-radar",
   "demo": "https://go165.github.io/bounty-radar/",
   "manifest": "https://go165.github.io/bounty-radar/feed/manifest.json",
   "schema": "https://go165.github.io/bounty-radar/feed/schema.json",
   "methodology": "Heuristic GitHub issue triage based on payout terms, payment rails, amount text, labels, payout address shapes, and negative risk signals such as hidden-context leakage, manual access friction, KYC/account requirements, and competition noise.",
-  "count": 47,
+  "count": 43,
   "items": [
     {
       "score": 50,
@@ -39,32 +39,8 @@
         "amount",
         "label match"
       ],
-      "addresses": []
-    },
-    {
-      "score": 36,
-      "raw_score": 36,
-      "risk_score": 0,
-      "risk_flags": [],
-      "manual_friction": false,
-      "preset": "high-signal",
-      "preset_name": "High-signal bounties",
-      "repo": "COMMENCINGTHESCOURGE/erdos-straus-solver",
-      "title": "[BOUNTY $75] Lightning AI L40S/A100 GPU compute dormant — litai SDK unused",
-      "url": "https://github.com/COMMENCINGTHESCOURGE/erdos-straus-solver/issues/3",
-      "updated_at": "2026-06-15T00:29:40Z",
-      "labels": [
-        "enhancement",
-        "bounty",
-        "automation",
-        "gpu"
-      ],
-      "signals": [
-        "bounty",
-        "amount",
-        "label match"
-      ],
-      "addresses": []
+      "addresses": [],
+      "amount_usd": null
     },
     {
       "score": 36,
@@ -77,7 +53,7 @@
       "repo": "claude-builders-bounty/claude-builders-bounty",
       "title": "[BOUNTY $75] TEMPLATE: CLAUDE.md for a Next.js + SQLite SaaS project",
       "url": "https://github.com/claude-builders-bounty/claude-builders-bounty/issues/2",
-      "updated_at": "2026-06-14T23:58:43Z",
+      "updated_at": "2026-06-15T00:50:33Z",
       "labels": [
         "bounty",
         "template"
@@ -87,7 +63,33 @@
         "amount",
         "label match"
       ],
-      "addresses": []
+      "addresses": [],
+      "amount_usd": 75
+    },
+    {
+      "score": 36,
+      "raw_score": 36,
+      "risk_score": 0,
+      "risk_flags": [],
+      "manual_friction": false,
+      "preset": "base-usdc",
+      "preset_name": "Base / USDC",
+      "repo": "claude-builders-bounty/claude-builders-bounty",
+      "title": "[BOUNTY $50] SKILL: Generate a structured CHANGELOG from git history",
+      "url": "https://github.com/claude-builders-bounty/claude-builders-bounty/issues/1",
+      "updated_at": "2026-06-15T00:49:57Z",
+      "labels": [
+        "bounty",
+        "skill",
+        "good first issue"
+      ],
+      "signals": [
+        "bounty",
+        "amount",
+        "label match"
+      ],
+      "addresses": [],
+      "amount_usd": 50
     },
     {
       "score": 36,
@@ -117,7 +119,8 @@
         "amount",
         "label match"
       ],
-      "addresses": []
+      "addresses": [],
+      "amount_usd": 700
     },
     {
       "score": 36,
@@ -145,7 +148,8 @@
         "amount",
         "label match"
       ],
-      "addresses": []
+      "addresses": [],
+      "amount_usd": 780
     },
     {
       "score": 36,
@@ -172,7 +176,8 @@
         "amount",
         "label match"
       ],
-      "addresses": []
+      "addresses": [],
+      "amount_usd": 250
     },
     {
       "score": 32,
@@ -201,7 +206,8 @@
         "amount",
         "label match"
       ],
-      "addresses": []
+      "addresses": [],
+      "amount_usd": null
     },
     {
       "score": 32,
@@ -230,7 +236,8 @@
         "amount",
         "label match"
       ],
-      "addresses": []
+      "addresses": [],
+      "amount_usd": null
     },
     {
       "score": 32,
@@ -260,7 +267,8 @@
         "amount",
         "label match"
       ],
-      "addresses": []
+      "addresses": [],
+      "amount_usd": null
     },
     {
       "score": 32,
@@ -289,7 +297,8 @@
         "amount",
         "label match"
       ],
-      "addresses": []
+      "addresses": [],
+      "amount_usd": null
     },
     {
       "score": 32,
@@ -323,7 +332,8 @@
         "amount",
         "label match"
       ],
-      "addresses": []
+      "addresses": [],
+      "amount_usd": null
     },
     {
       "score": 30,
@@ -331,20 +341,22 @@
       "risk_score": 0,
       "risk_flags": [],
       "manual_friction": false,
-      "preset": "high-signal",
-      "preset_name": "High-signal bounties",
-      "repo": "glacien-technologies/agent-guardian",
-      "title": "A4: judge-call tail (#03 + #19 = 39% of all invocations) — cost amplifier when verifier moves off gemini-flash",
-      "url": "https://github.com/glacien-technologies/agent-guardian/issues/226",
-      "updated_at": "2026-06-15T00:27:41Z",
+      "preset": "x402",
+      "preset_name": "x402 paid APIs",
+      "repo": "LukeSantossz/sb100_agents",
+      "title": "chore(eval): low-severity robustness and quality fixes in the eval pipeline",
+      "url": "https://github.com/LukeSantossz/sb100_agents/issues/120",
+      "updated_at": "2026-06-15T00:58:03Z",
       "labels": [
-        "enhancement"
+        "bug",
+        "low"
       ],
       "signals": [
         "bounty",
-        "USDC/Base"
+        "x402"
       ],
-      "addresses": []
+      "addresses": [],
+      "amount_usd": null
     },
     {
       "score": 28,
@@ -354,43 +366,17 @@
       "manual_friction": false,
       "preset": "high-signal",
       "preset_name": "High-signal bounties",
-      "repo": "breverdbidder/cli-anything-biddeed",
-      "title": "GOLD STANDARD AUTOPILOT-BD: brevard, duval — parallel 6h session (SHIP TO MAIN)",
-      "url": "https://github.com/breverdbidder/cli-anything-biddeed/issues/7774",
-      "updated_at": "2026-06-15T00:29:18Z",
-      "labels": [
-        "summit",
-        "priority-p1",
-        "dispatch-v7-postgres"
-      ],
+      "repo": "Scottcjn/rustchain-bounties",
+      "title": "[EASY BOUNTY: 2 RTC] Leave an Honest Review of BoTTube on ToolPilot.ai",
+      "url": "https://github.com/Scottcjn/rustchain-bounties/issues/2155",
+      "updated_at": "2026-06-15T01:05:02Z",
+      "labels": [],
       "signals": [
         "bounty",
         "amount"
       ],
-      "addresses": []
-    },
-    {
-      "score": 28,
-      "raw_score": 28,
-      "risk_score": 0,
-      "risk_flags": [],
-      "manual_friction": false,
-      "preset": "high-signal",
-      "preset_name": "High-signal bounties",
-      "repo": "breverdbidder/cli-anything-biddeed",
-      "title": "GOLD STANDARD AUTOPILOT-NEXT: charlotte, citrus, highlands — parallel 6h session (SHIP TO MAIN)",
-      "url": "https://github.com/breverdbidder/cli-anything-biddeed/issues/7773",
-      "updated_at": "2026-06-15T00:27:41Z",
-      "labels": [
-        "summit",
-        "priority-p1",
-        "dispatch-v7-postgres"
-      ],
-      "signals": [
-        "bounty",
-        "amount"
-      ],
-      "addresses": []
+      "addresses": [],
+      "amount_usd": 0.2
     },
     {
       "score": 28,
@@ -413,7 +399,8 @@
         "bounty",
         "amount"
       ],
-      "addresses": []
+      "addresses": [],
+      "amount_usd": null
     },
     {
       "score": 28,
@@ -436,7 +423,8 @@
         "bounty",
         "amount"
       ],
-      "addresses": []
+      "addresses": [],
+      "amount_usd": null
     },
     {
       "score": 24,
@@ -464,32 +452,30 @@
         "MRWK/MergeWork",
         "amount"
       ],
-      "addresses": []
+      "addresses": [],
+      "amount_usd": null
     },
     {
-      "score": 24,
-      "raw_score": 24,
+      "score": 20,
+      "raw_score": 20,
       "risk_score": 0,
       "risk_flags": [],
       "manual_friction": false,
-      "preset": "base-usdc",
-      "preset_name": "Base / USDC",
-      "repo": "Expensify/App",
-      "title": "[$250] Web - Email tooltip is not displayed when hovering over member of a group",
-      "url": "https://github.com/Expensify/App/issues/93322",
-      "updated_at": "2026-06-14T23:20:55Z",
+      "preset": "high-signal",
+      "preset_name": "High-signal bounties",
+      "repo": "Scottcjn/rustchain-bounties",
+      "title": "[BOUNTY: 5 RTC] Create a YouTube or BoTTube video tutorial about any Elyan Labs project",
+      "url": "https://github.com/Scottcjn/rustchain-bounties/issues/2180",
+      "updated_at": "2026-06-15T01:05:51Z",
       "labels": [
-        "External",
-        "Daily",
-        "Help Wanted",
-        "Overdue",
-        "Bug"
+        "bounty"
       ],
       "signals": [
-        "amount",
+        "bounty",
         "label match"
       ],
-      "addresses": []
+      "addresses": [],
+      "amount_usd": null
     },
     {
       "score": 20,
@@ -502,7 +488,7 @@
       "repo": "Scottcjn/rustchain-bounties",
       "title": "[BOUNTY] Discovery Mode — Find Elyan Labs Software, Open PRs, Earn RTC",
       "url": "https://github.com/Scottcjn/rustchain-bounties/issues/100",
-      "updated_at": "2026-06-15T00:23:13Z",
+      "updated_at": "2026-06-15T01:00:58Z",
       "labels": [
         "bounty",
         "open",
@@ -512,25 +498,8 @@
         "bounty",
         "label match"
       ],
-      "addresses": []
-    },
-    {
-      "score": 18,
-      "raw_score": 18,
-      "risk_score": 0,
-      "risk_flags": [],
-      "manual_friction": false,
-      "preset": "high-signal",
-      "preset_name": "High-signal bounties",
-      "repo": "Gitlawb/openclaude",
-      "title": "Add fastCRW web search/scrape provider (open-source, self-hostable, SearXNG-optimized search)",
-      "url": "https://github.com/Gitlawb/openclaude/issues/1636",
-      "updated_at": "2026-06-15T00:26:54Z",
-      "labels": [],
-      "signals": [
-        "USDC/Base"
-      ],
-      "addresses": []
+      "addresses": [],
+      "amount_usd": null
     },
     {
       "score": 18,
@@ -548,63 +517,8 @@
       "signals": [
         "x402"
       ],
-      "addresses": []
-    },
-    {
-      "score": 16,
-      "raw_score": 16,
-      "risk_score": 0,
-      "risk_flags": [],
-      "manual_friction": false,
-      "preset": "x402",
-      "preset_name": "x402 paid APIs",
-      "repo": "midnghtsapphire/revvel-standards",
-      "title": "[WR] n8n\"or gumloop to load my amazon orders-for sale on meta market place",
-      "url": "https://github.com/midnghtsapphire/revvel-standards/issues/14572",
-      "updated_at": "2026-06-15T00:29:00Z",
-      "labels": [
-        "auto-fix",
-        "needs-human",
-        "triage",
-        "openrouter",
-        "priority-p2",
-        "role:orchestrator",
-        "area:ui",
-        "priority:high",
-        "weekly-research",
-        "wr:in-progress",
-        "deep-research",
-        "needs-action",
-        "work-request",
-        "bito-ai",
-        "awaiting-review",
-        "swe-fix",
-        "wr:retrigger-attempts-3",
-        "wr-stuck",
-        "output-type:production-app",
-        "openrouter:needs-key",
-        "openrouter:triage-failed",
-        "research-engine",
-        "research:blocked",
-        "research:complete",
-        "research:review-needed",
-        "research:marketing",
-        "research:seo",
-        "research:competitors",
-        "research:chatter",
-        "research:facts",
-        "research:technical",
-        "research:revenue",
-        "research:reviewer",
-        "wr:research-complete",
-        "auto:default-fallback",
-        "agent-fallback",
-        "mindmappr"
-      ],
-      "signals": [
-        "amount"
-      ],
-      "addresses": []
+      "addresses": [],
+      "amount_usd": null
     },
     {
       "score": 14,
@@ -635,7 +549,8 @@
         "amount",
         "label match"
       ],
-      "addresses": []
+      "addresses": [],
+      "amount_usd": 0.1
     },
     {
       "score": 12,
@@ -645,17 +560,18 @@
       "manual_friction": false,
       "preset": "high-signal",
       "preset_name": "High-signal bounties",
-      "repo": "tekrogen/Tekrogen-Ghost-Theme-Mockup",
-      "title": "feat: build s9 membership & account surface (VD-09)",
-      "url": "https://github.com/tekrogen/Tekrogen-Ghost-Theme-Mockup/issues/30",
-      "updated_at": "2026-06-15T00:28:32Z",
+      "repo": "Metis-Platform/platform",
+      "title": "Plan: jurisdiction data program — per-strategy due-diligence inventory, county-level capture, and investor-facing display",
+      "url": "https://github.com/Metis-Platform/platform/issues/131",
+      "updated_at": "2026-06-15T01:06:14Z",
       "labels": [
-        "enhancement"
+        "backlog"
       ],
       "signals": [
         "bounty"
       ],
-      "addresses": []
+      "addresses": [],
+      "amount_usd": null
     },
     {
       "score": 12,
@@ -665,21 +581,18 @@
       "manual_friction": false,
       "preset": "high-signal",
       "preset_name": "High-signal bounties",
-      "repo": "lanyusea/screeps",
-      "title": "P0: Recover sustained E29N56 worker_assignment_gap recurrence after #1898",
-      "url": "https://github.com/lanyusea/screeps/issues/1901",
-      "updated_at": "2026-06-15T00:27:44Z",
+      "repo": "DenisZheng/agents-radar",
+      "title": "💬 Tech Community AI Digest 2026-06-15",
+      "url": "https://github.com/DenisZheng/agents-radar/issues/1208",
+      "updated_at": "2026-06-15T01:05:25Z",
       "labels": [
-        "kind:bug",
-        "priority:p0",
-        "roadmap",
-        "runtime-alert",
-        "roadmap:territory-economy"
+        "community-en"
       ],
       "signals": [
         "bounty"
       ],
-      "addresses": []
+      "addresses": [],
+      "amount_usd": null
     },
     {
       "score": 12,
@@ -689,35 +602,18 @@
       "manual_friction": false,
       "preset": "high-signal",
       "preset_name": "High-signal bounties",
-      "repo": "glacien-technologies/agent-guardian",
-      "title": "observability: stamp schemaVersion on events.jsonl while the 14-kind taxonomy is small",
-      "url": "https://github.com/glacien-technologies/agent-guardian/issues/221",
-      "updated_at": "2026-06-15T00:27:31Z",
+      "repo": "vllm-project/vime",
+      "title": "[RFC] NPU support roadmap.",
+      "url": "https://github.com/vllm-project/vime/issues/51",
+      "updated_at": "2026-06-15T01:04:45Z",
       "labels": [
-        "enhancement"
+        "RFC"
       ],
       "signals": [
         "bounty"
       ],
-      "addresses": []
-    },
-    {
-      "score": 12,
-      "raw_score": 12,
-      "risk_score": 0,
-      "risk_flags": [],
-      "manual_friction": false,
-      "preset": "x402",
-      "preset_name": "x402 paid APIs",
-      "repo": "jamalrfordii-arch/Vanguard-Map",
-      "title": "flight-proxy.js binds to 0.0.0.0 with wildcard CORS and no auth — paid AI API and Equasis session exposed to any LAN caller",
-      "url": "https://github.com/jamalrfordii-arch/Vanguard-Map/issues/1",
-      "updated_at": "2026-06-15T00:13:21Z",
-      "labels": [],
-      "signals": [
-        "bounty"
-      ],
-      "addresses": []
+      "addresses": [],
+      "amount_usd": null
     },
     {
       "score": 12,
@@ -735,7 +631,8 @@
       "signals": [
         "bounty"
       ],
-      "addresses": []
+      "addresses": [],
+      "amount_usd": null
     },
     {
       "score": 12,
@@ -753,7 +650,8 @@
       "signals": [
         "bounty"
       ],
-      "addresses": []
+      "addresses": [],
+      "amount_usd": null
     },
     {
       "score": 12,
@@ -771,7 +669,8 @@
       "signals": [
         "bounty"
       ],
-      "addresses": []
+      "addresses": [],
+      "amount_usd": null
     },
     {
       "score": 8,
@@ -785,99 +684,19 @@
         }
       ],
       "manual_friction": false,
-      "preset": "x402",
-      "preset_name": "x402 paid APIs",
-      "repo": "jamalrfordii-arch/Vanguard-Map",
-      "title": "Entire codebase has one test file; zero coverage of AIS pipeline, anomaly detection, proxy routes, Equasis scraper, and alert system",
-      "url": "https://github.com/jamalrfordii-arch/Vanguard-Map/issues/7",
-      "updated_at": "2026-06-15T00:14:00Z",
+      "preset": "high-signal",
+      "preset_name": "High-signal bounties",
+      "repo": "levy-street/world-of-claudecraft",
+      "title": "Release: v0.6",
+      "url": "https://github.com/levy-street/world-of-claudecraft/issues/249",
+      "updated_at": "2026-06-15T01:05:56Z",
       "labels": [],
       "signals": [
         "bounty",
-        "x402"
+        "USDC/Base"
       ],
-      "addresses": []
-    },
-    {
-      "score": 0,
-      "raw_score": 0,
-      "risk_score": 0,
-      "risk_flags": [],
-      "manual_friction": false,
-      "preset": "high-signal",
-      "preset_name": "High-signal bounties",
-      "repo": "AlexSun98/modular-monolith-with-ddd",
-      "title": "🐝 Hive Advisory Report",
-      "url": "https://github.com/AlexSun98/modular-monolith-with-ddd/issues/14",
-      "updated_at": "2026-06-15T00:29:18Z",
-      "labels": [
-        "hive/advisory"
-      ],
-      "signals": [],
-      "addresses": []
-    },
-    {
-      "score": 0,
-      "raw_score": 0,
-      "risk_score": 0,
-      "risk_flags": [],
-      "manual_friction": false,
-      "preset": "high-signal",
-      "preset_name": "High-signal bounties",
-      "repo": "anthropics/claude-code",
-      "title": "[BUG] Cowork Edit/Write tools silently truncate files via byte-conservation buffer cap (deterministic, fires at all file sizes)",
-      "url": "https://github.com/anthropics/claude-code/issues/53940",
-      "updated_at": "2026-06-15T00:28:09Z",
-      "labels": [
-        "bug",
-        "has repro",
-        "platform:windows",
-        "area:tools",
-        "area:cowork"
-      ],
-      "signals": [],
-      "addresses": []
-    },
-    {
-      "score": 0,
-      "raw_score": 0,
-      "risk_score": 0,
-      "risk_flags": [],
-      "manual_friction": false,
-      "preset": "x402",
-      "preset_name": "x402 paid APIs",
-      "repo": "UTDallasEPICS/Teambuilder",
-      "title": "Demographics Endpoint",
-      "url": "https://github.com/UTDallasEPICS/Teambuilder/issues/402",
-      "updated_at": "2026-06-15T00:27:41Z",
-      "labels": [
-        "Enhancement"
-      ],
-      "signals": [],
-      "addresses": []
-    },
-    {
-      "score": 0,
-      "raw_score": 0,
-      "risk_score": 0,
-      "risk_flags": [],
-      "manual_friction": false,
-      "preset": "high-signal",
-      "preset_name": "High-signal bounties",
-      "repo": "cenetex/agent",
-      "title": "epic(governance): migrate 11 persona routines from CCR to cenetex/agent Fargate dispatcher",
-      "url": "https://github.com/cenetex/agent/issues/395",
-      "updated_at": "2026-06-15T00:26:07Z",
-      "labels": [
-        "agent:running",
-        "status:blocked",
-        "scope:large",
-        "meta:cto",
-        "meta:cab",
-        "meta:arb"
-      ],
-      "signals": [],
-      "addresses": []
+      "addresses": [],
+      "amount_usd": null
     },
     {
       "score": 0,
@@ -899,18 +718,19 @@
       "preset": "high-signal",
       "preset_name": "High-signal bounties",
       "repo": "charles-openclaw/charles-microbounties",
-      "title": "[bounty] vitepress-plugin-render lacks npm bugs metadata",
-      "url": "https://github.com/charles-openclaw/charles-microbounties/issues/1494",
-      "updated_at": "2026-06-15T00:25:59Z",
+      "title": "[bounty] @standard-config/prettier lacks npm bugs metadata",
+      "url": "https://github.com/charles-openclaw/charles-microbounties/issues/1499",
+      "updated_at": "2026-06-15T01:07:08Z",
       "labels": [],
       "signals": [
         "bounty"
       ],
-      "addresses": []
+      "addresses": [],
+      "amount_usd": null
     },
     {
       "score": 0,
-      "raw_score": 18,
+      "raw_score": 12,
       "risk_score": 22,
       "risk_flags": [
         {
@@ -920,61 +740,108 @@
         }
       ],
       "manual_friction": false,
-      "preset": "x402",
-      "preset_name": "x402 paid APIs",
-      "repo": "autumngarage/alchemist",
-      "title": "Report Conductor runtime version in worker failure comments",
-      "url": "https://github.com/autumngarage/alchemist/issues/253",
-      "updated_at": "2026-06-15T00:25:16Z",
+      "preset": "high-signal",
+      "preset_name": "High-signal bounties",
+      "repo": "robertalan1958/Give-your-money-a-job-to-do",
+      "title": "Career: Looking at the Big Picture",
+      "url": "https://github.com/robertalan1958/Give-your-money-a-job-to-do/issues/34",
+      "updated_at": "2026-06-15T01:06:48Z",
+      "labels": [],
+      "signals": [
+        "bounty"
+      ],
+      "addresses": [],
+      "amount_usd": null
+    },
+    {
+      "score": 0,
+      "raw_score": 28,
+      "risk_score": 70,
+      "risk_flags": [
+        {
+          "label": "internal-agent-dispatch",
+          "severity": "blocker",
+          "penalty": 70
+        }
+      ],
+      "manual_friction": false,
+      "preset": "high-signal",
+      "preset_name": "High-signal bounties",
+      "repo": "breverdbidder/cli-anything-biddeed",
+      "title": "GOLD STANDARD AUTOPILOT-NEXT: charlotte, citrus, highlands — parallel 6h session (SHIP TO MAIN)",
+      "url": "https://github.com/breverdbidder/cli-anything-biddeed/issues/7781",
+      "updated_at": "2026-06-15T01:06:08Z",
       "labels": [
-        "bug",
-        "alchemist-error"
+        "summit",
+        "priority-p1",
+        "dispatch-v7-postgres"
       ],
       "signals": [
-        "x402"
+        "bounty",
+        "amount"
       ],
-      "addresses": []
+      "addresses": [],
+      "amount_usd": 50
     },
     {
       "score": 0,
-      "raw_score": 0,
-      "risk_score": 0,
-      "risk_flags": [],
-      "manual_friction": false,
-      "preset": "x402",
-      "preset_name": "x402 paid APIs",
-      "repo": "AAStarCommunity/YetAnotherAA-Validator",
-      "title": "DVT program: AirAccount co-signer 集成 — 架构 + 跨仓库分工 + 落地路线",
-      "url": "https://github.com/AAStarCommunity/YetAnotherAA-Validator/issues/42",
-      "updated_at": "2026-06-15T00:22:52Z",
-      "labels": [],
-      "signals": [],
-      "addresses": []
-    },
-    {
-      "score": 0,
-      "raw_score": 0,
-      "risk_score": 22,
+      "raw_score": 12,
+      "risk_score": 46,
       "risk_flags": [
+        {
+          "label": "kyc-or-account-friction",
+          "severity": "manual",
+          "penalty": 24
+        },
         {
           "label": "competition-noise",
           "severity": "high",
           "penalty": 22
         }
       ],
-      "manual_friction": false,
-      "preset": "x402",
-      "preset_name": "x402 paid APIs",
-      "repo": "autumngarage/alchemist",
-      "title": "Add self-debug escape hatch when Alchemist fails through Conductor",
-      "url": "https://github.com/autumngarage/alchemist/issues/258",
-      "updated_at": "2026-06-15T00:20:42Z",
-      "labels": [
-        "bug",
-        "alchemist-error"
+      "manual_friction": true,
+      "preset": "high-signal",
+      "preset_name": "High-signal bounties",
+      "repo": "charles-openclaw/charles-microbounties",
+      "title": "[bounty] vitepress-plugin-file-tree lacks npm support metadata",
+      "url": "https://github.com/charles-openclaw/charles-microbounties/issues/1497",
+      "updated_at": "2026-06-15T01:06:04Z",
+      "labels": [],
+      "signals": [
+        "bounty"
       ],
-      "signals": [],
-      "addresses": []
+      "addresses": [],
+      "amount_usd": null
+    },
+    {
+      "score": 0,
+      "raw_score": 12,
+      "risk_score": 46,
+      "risk_flags": [
+        {
+          "label": "kyc-or-account-friction",
+          "severity": "manual",
+          "penalty": 24
+        },
+        {
+          "label": "competition-noise",
+          "severity": "high",
+          "penalty": 22
+        }
+      ],
+      "manual_friction": true,
+      "preset": "high-signal",
+      "preset_name": "High-signal bounties",
+      "repo": "charles-openclaw/charles-microbounties",
+      "title": "[bounty] @stripe/stripe-terminal-react-native bugs metadata points to repo root",
+      "url": "https://github.com/charles-openclaw/charles-microbounties/issues/1498",
+      "updated_at": "2026-06-15T01:06:03Z",
+      "labels": [],
+      "signals": [
+        "bounty"
+      ],
+      "addresses": [],
+      "amount_usd": null
     },
     {
       "score": 0,
@@ -993,12 +860,12 @@
         }
       ],
       "manual_friction": false,
-      "preset": "x402",
-      "preset_name": "x402 paid APIs",
-      "repo": "kakapez/agents-radar",
+      "preset": "high-signal",
+      "preset_name": "High-signal bounties",
+      "repo": "DenisZheng/agents-radar",
       "title": "📊 AI CLI Tools Digest 2026-06-15",
-      "url": "https://github.com/kakapez/agents-radar/issues/345",
-      "updated_at": "2026-06-15T00:15:32Z",
+      "url": "https://github.com/DenisZheng/agents-radar/issues/1211",
+      "updated_at": "2026-06-15T01:05:51Z",
       "labels": [
         "digest-en"
       ],
@@ -1007,7 +874,157 @@
         "USDC/Base",
         "amount"
       ],
-      "addresses": []
+      "addresses": [],
+      "amount_usd": 200
+    },
+    {
+      "score": 0,
+      "raw_score": 0,
+      "risk_score": 0,
+      "risk_flags": [],
+      "manual_friction": false,
+      "preset": "x402",
+      "preset_name": "x402 paid APIs",
+      "repo": "autumngarage/touchstone",
+      "title": "pre-push swift-test hook inherits Git env and breaks nested git tests",
+      "url": "https://github.com/autumngarage/touchstone/issues/462",
+      "updated_at": "2026-06-15T01:05:34Z",
+      "labels": [
+        "alchemist-error"
+      ],
+      "signals": [],
+      "addresses": [],
+      "amount_usd": null
+    },
+    {
+      "score": 0,
+      "raw_score": 0,
+      "risk_score": 0,
+      "risk_flags": [],
+      "manual_friction": false,
+      "preset": "x402",
+      "preset_name": "x402 paid APIs",
+      "repo": "jessielw/Reclaimerr",
+      "title": "Windows EXE releases won't run/install for several of the latest versions",
+      "url": "https://github.com/jessielw/Reclaimerr/issues/239",
+      "updated_at": "2026-06-15T01:02:12Z",
+      "labels": [],
+      "signals": [],
+      "addresses": [],
+      "amount_usd": null
+    },
+    {
+      "score": 0,
+      "raw_score": 0,
+      "risk_score": 0,
+      "risk_flags": [],
+      "manual_friction": false,
+      "preset": "x402",
+      "preset_name": "x402 paid APIs",
+      "repo": "autumngarage/sentinel",
+      "title": "chore: repair Sentinel Cortex store plan errors and stale generated state",
+      "url": "https://github.com/autumngarage/sentinel/issues/124",
+      "updated_at": "2026-06-15T01:00:36Z",
+      "labels": [
+        "alchemist-error"
+      ],
+      "signals": [],
+      "addresses": [],
+      "amount_usd": null
+    },
+    {
+      "score": 0,
+      "raw_score": 0,
+      "risk_score": 0,
+      "risk_flags": [],
+      "manual_friction": false,
+      "preset": "x402",
+      "preset_name": "x402 paid APIs",
+      "repo": "KawaiiClan/bhoptimer-savestate",
+      "title": "corrupted saved replay",
+      "url": "https://github.com/KawaiiClan/bhoptimer-savestate/issues/2",
+      "updated_at": "2026-06-15T00:56:46Z",
+      "labels": [],
+      "signals": [],
+      "addresses": [],
+      "amount_usd": null
+    },
+    {
+      "score": 0,
+      "raw_score": 0,
+      "risk_score": 0,
+      "risk_flags": [],
+      "manual_friction": false,
+      "preset": "x402",
+      "preset_name": "x402 paid APIs",
+      "repo": "autumngarage/touchstone",
+      "title": "script-sync-guard can auto-commit a breaking Touchstone update onto feature PRs",
+      "url": "https://github.com/autumngarage/touchstone/issues/464",
+      "updated_at": "2026-06-15T00:55:43Z",
+      "labels": [
+        "alchemist-error"
+      ],
+      "signals": [],
+      "addresses": [],
+      "amount_usd": null
+    },
+    {
+      "score": 0,
+      "raw_score": 30,
+      "risk_score": 70,
+      "risk_flags": [
+        {
+          "label": "secret-or-wallet-risk",
+          "severity": "blocker",
+          "penalty": 70
+        }
+      ],
+      "manual_friction": false,
+      "preset": "x402",
+      "preset_name": "x402 paid APIs",
+      "repo": "Scottcjn/rustchain-bounties",
+      "title": "[CLAIM] Beacon Atlas Tier A — HermesBountyOps registration + proof of commerce (Bounty #3418, 5 RTC)",
+      "url": "https://github.com/Scottcjn/rustchain-bounties/issues/13634",
+      "updated_at": "2026-06-15T00:53:17Z",
+      "labels": [],
+      "signals": [
+        "bounty",
+        "MRWK/MergeWork"
+      ],
+      "addresses": [],
+      "amount_usd": null
+    },
+    {
+      "score": 0,
+      "raw_score": 24,
+      "risk_score": 24,
+      "risk_flags": [
+        {
+          "label": "kyc-or-account-friction",
+          "severity": "manual",
+          "penalty": 24
+        }
+      ],
+      "manual_friction": true,
+      "preset": "base-usdc",
+      "preset_name": "Base / USDC",
+      "repo": "Expensify/App",
+      "title": "[$250] Web - Email tooltip is not displayed when hovering over member of a group",
+      "url": "https://github.com/Expensify/App/issues/93322",
+      "updated_at": "2026-06-14T23:20:55Z",
+      "labels": [
+        "External",
+        "Daily",
+        "Help Wanted",
+        "Overdue",
+        "Bug"
+      ],
+      "signals": [
+        "amount",
+        "label match"
+      ],
+      "addresses": [],
+      "amount_usd": 250
     }
   ]
 }

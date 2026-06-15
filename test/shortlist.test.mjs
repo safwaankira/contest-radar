@@ -21,6 +21,7 @@ const feed = {
       updated_at: '2026-06-14T10:00:00Z',
       signals: ['bounty', 'MRWK/MergeWork', 'amount'],
       addresses: [],
+      amount_usd: 1000,
     },
     {
       score: 64,
@@ -35,6 +36,7 @@ const feed = {
       updated_at: '2026-06-14T09:00:00Z',
       signals: ['x402', 'amount'],
       addresses: [{ type: 'EVM', value: '0x0000000000000000000000000000000000000001' }],
+      amount_usd: 25,
     },
     {
       score: 36,
@@ -49,6 +51,7 @@ const feed = {
       updated_at: '2026-06-14T08:00:00Z',
       signals: ['bounty'],
       addresses: [],
+      amount_usd: null,
     },
     {
       score: 80,
@@ -63,6 +66,7 @@ const feed = {
       updated_at: '2026-06-14T11:00:00Z',
       signals: ['bounty', 'amount'],
       addresses: [],
+      amount_usd: 500,
     },
     {
       score: 68,
@@ -77,6 +81,7 @@ const feed = {
       updated_at: '2026-06-14T10:30:00Z',
       signals: ['bounty', 'amount'],
       addresses: [],
+      amount_usd: 500,
     },
   ],
 };
@@ -139,6 +144,16 @@ test('buildShortlist can exclude arbitrary risk labels', () => {
   });
 
   assert.equal(items.some((item) => item.repo === 'manual/access-bounty'), false);
+});
+
+test('buildShortlist can require a minimum parsed amount', () => {
+  const items = buildShortlist(feed, {
+    minScore: 0,
+    minAmountUsd: 50,
+  });
+
+  assert.equal(items.some((item) => item.repo === 'x402-foundation/x402'), false);
+  assert.equal(items.some((item) => item.repo === 'ramimbo/mergework'), true);
 });
 
 test('formatShortlist renders markdown and csv output', () => {
