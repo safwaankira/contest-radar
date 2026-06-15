@@ -5,6 +5,7 @@
   "repository": "https://github.com/go165/bounty-radar",
   "latest_json": "https://go165.github.io/bounty-radar/feed/latest.json",
   "latest_csv": "https://go165.github.io/bounty-radar/feed/latest.csv",
+  "latest_rss": "https://go165.github.io/bounty-radar/feed/latest.xml",
   "schema": "https://go165.github.io/bounty-radar/feed/schema.json",
   "generated_at": "2026-06-15T14:35:11.079Z",
   "count": 40,
@@ -17,6 +18,7 @@
     "developer dashboards",
     "coding agents",
     "bounty triage scripts",
+    "rss readers",
     "x402 paid API adapters"
   ],
   "limitations": [

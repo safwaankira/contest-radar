@@ -14,6 +14,7 @@
   "endpoints": {
     "feed": "https://go165.github.io/bounty-radar/feed/latest.json",
     "csv": "https://go165.github.io/bounty-radar/feed/latest.csv",
+    "rss": "https://go165.github.io/bounty-radar/feed/latest.xml",
     "manifest": "https://go165.github.io/bounty-radar/feed/manifest.json",
     "schema": "https://go165.github.io/bounty-radar/feed/schema.json",
     "llms": "https://go165.github.io/bounty-radar/llms.txt"
@@ -25,6 +26,7 @@
     "Base/USDC/x402/MergeWork rail detection",
     "payout address extraction",
     "agent-readable JSON and CSV exports",
+    "RSS feed export for subscriptions",
     "zero-dependency shortlist CLI",
     "zero-dependency MCP stdio server for bounty search tools",
     "402-style paid alert API prototype"

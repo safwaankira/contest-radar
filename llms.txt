@@ -16,6 +16,7 @@ Agent discovery: https://go165.github.io/bounty-radar/.well-known/agent.json
 
 - JSON feed: https://go165.github.io/bounty-radar/feed/latest.json
 - CSV feed: https://go165.github.io/bounty-radar/feed/latest.csv
+- RSS feed: https://go165.github.io/bounty-radar/feed/latest.xml
 - Manifest: https://go165.github.io/bounty-radar/feed/manifest.json
 - JSON Schema: https://go165.github.io/bounty-radar/feed/schema.json
 

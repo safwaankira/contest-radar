@@ -10,6 +10,7 @@ consume without scraping the browser UI.
 | `https://go165.github.io/bounty-radar/feed/manifest.json` | Feed metadata, refresh cadence, intended consumers, and limitations. |
 | `https://go165.github.io/bounty-radar/feed/latest.json` | Daily scored issue shortlist. |
 | `https://go165.github.io/bounty-radar/feed/latest.csv` | Spreadsheet-friendly export of the same shortlist. |
+| `https://go165.github.io/bounty-radar/feed/latest.xml` | RSS feed for subscribers and feed readers. |
 | `https://go165.github.io/bounty-radar/feed/schema.json` | JSON Schema for feed validation. |
 | `https://go165.github.io/bounty-radar/.well-known/agent.json` | Agent discovery document with feed, schema, CLI, MCP, and paid API integration pointers. |
 | `https://go165.github.io/bounty-radar/llms.txt` | Compact LLM-readable project context and integration guide. |

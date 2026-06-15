@@ -1,4 +1,5 @@
 import { mkdir, readFile, writeFile } from 'node:fs/promises';
+import { buildRssFeed } from './feed-rss.mjs';
 
 const presets = [
   {
@@ -169,6 +170,7 @@ const feed = {
 await mkdir('feed', { recursive: true });
 await writeFile('feed/latest.json', `${JSON.stringify(feed, null, 2)}\n`);
 await writeFile('feed/latest.csv', toCsv(feed.items));
+await writeFile('feed/latest.xml', buildRssFeed(feed));
 await writeFile('feed/manifest.json', `${JSON.stringify(buildManifest(feed), null, 2)}\n`);
 console.log(`Wrote ${feed.count} items to feed/latest.json`);
 
@@ -180,6 +182,7 @@ function buildManifest(feed) {
     repository: feed.source,
     latest_json: 'https://go165.github.io/bounty-radar/feed/latest.json',
     latest_csv: 'https://go165.github.io/bounty-radar/feed/latest.csv',
+    latest_rss: 'https://go165.github.io/bounty-radar/feed/latest.xml',
     schema: feed.schema,
     generated_at: feed.generated_at,
     count: feed.count,
@@ -192,6 +195,7 @@ function buildManifest(feed) {
       'developer dashboards',
       'coding agents',
       'bounty triage scripts',
+      'rss readers',
       'x402 paid API adapters',
     ],
     limitations: [
