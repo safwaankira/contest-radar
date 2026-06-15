@@ -22,6 +22,7 @@ const feed = {
       signals: ['bounty', 'MRWK/MergeWork', 'amount'],
       addresses: [],
       amount_usd: 1000,
+      payout_amount_usd: 1000,
     },
     {
       score: 64,
@@ -37,6 +38,7 @@ const feed = {
       signals: ['x402', 'amount'],
       addresses: [{ type: 'EVM', value: '0x0000000000000000000000000000000000000001' }],
       amount_usd: 25,
+      payout_amount_usd: 25,
     },
     {
       score: 36,
@@ -52,6 +54,7 @@ const feed = {
       signals: ['bounty'],
       addresses: [],
       amount_usd: null,
+      payout_amount_usd: null,
     },
     {
       score: 80,
@@ -67,6 +70,7 @@ const feed = {
       signals: ['bounty', 'amount'],
       addresses: [],
       amount_usd: 500,
+      payout_amount_usd: 500,
     },
     {
       score: 68,
@@ -82,6 +86,23 @@ const feed = {
       signals: ['bounty', 'amount'],
       addresses: [],
       amount_usd: 500,
+      payout_amount_usd: 500,
+    },
+    {
+      score: 20,
+      raw_score: 20,
+      risk_score: 0,
+      risk_flags: [],
+      manual_friction: false,
+      preset: 'high-signal',
+      repo: 'smartlayer/questlog',
+      title: 'Window spend by message timestamp',
+      url: 'https://github.com/smartlayer/questlog/issues/26',
+      updated_at: '2026-06-14T10:40:00Z',
+      signals: ['amount'],
+      addresses: [],
+      amount_usd: 812,
+      payout_amount_usd: null,
     },
   ],
 };
@@ -154,6 +175,7 @@ test('buildShortlist can require a minimum parsed amount', () => {
 
   assert.equal(items.some((item) => item.repo === 'x402-foundation/x402'), false);
   assert.equal(items.some((item) => item.repo === 'ramimbo/mergework'), true);
+  assert.equal(items.some((item) => item.repo === 'smartlayer/questlog'), false);
 });
 
 test('formatShortlist renders markdown and csv output', () => {

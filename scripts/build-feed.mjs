@@ -189,6 +189,7 @@ function scoreIssue(issue, preset) {
   const riskScore = riskFlags.reduce((total, flag) => total + flag.penalty, 0);
   const manualFriction = riskFlags.some((flag) => flag.severity === 'manual');
   const amountUsd = extractLargestAmountUsd(text);
+  const payoutAmountUsd = extractLargestPayoutAmountUsd(text, labelText);
 
   return {
     score: Math.max(0, rawScore - riskScore),
@@ -206,6 +207,7 @@ function scoreIssue(issue, preset) {
     signals: [...new Set(signals)],
     addresses,
     amount_usd: amountUsd,
+    payout_amount_usd: payoutAmountUsd,
   };
 }
 
@@ -245,6 +247,41 @@ function extractLargestAmountUsd(text) {
   return amounts.length > 0 ? Math.max(...amounts) : null;
 }
 
+function extractLargestPayoutAmountUsd(text, labelText = '') {
+  const payoutContext = /\b(bounty|reward|prize|payout|compensation|paid|price|fee|grant|award)\b/i;
+  const explicitPayoutLabel = payoutContext.test(labelText);
+  const amounts = [];
+  for (const line of text.split(/\r?\n/)) {
+    const lineHasPayout = payoutContext.test(line);
+    for (const match of amountMatches(line)) {
+      const start = Math.max(0, match.index - 80);
+      const end = Math.min(line.length, match.index + match.raw.length + 80);
+      const nearby = line.slice(start, end);
+      if (lineHasPayout || explicitPayoutLabel || payoutContext.test(nearby)) {
+        amounts.push(match.value);
+      }
+    }
+  }
+  return amounts.length > 0 ? Math.max(...amounts) : null;
+}
+
+function amountMatches(text) {
+  const matches = [];
+  const patterns = [
+    /\$[ \t]?([\d,]+(?:\.\d+)?)/g,
+    /\b([\d,]+(?:\.\d+)?)[ \t]?(?:USD|USDC)\b/gi,
+  ];
+  for (const pattern of patterns) {
+    for (const match of text.matchAll(pattern)) {
+      const value = Number(String(match[1]).replaceAll(',', ''));
+      if (Number.isFinite(value)) {
+        matches.push({ value, index: match.index ?? 0, raw: match[0] });
+      }
+    }
+  }
+  return matches;
+}
+
 function uniqueBy(items, keyFn) {
   const seenKeys = new Set();
   return items.filter((item) => {
@@ -256,12 +293,13 @@ function uniqueBy(items, keyFn) {
 }
 
 function toCsv(rows) {
-  const header = ['score', 'raw_score', 'risk_score', 'amount_usd', 'preset', 'repo', 'title', 'url', 'updated_at', 'signals', 'risk_flags', 'manual_friction', 'addresses'];
+  const header = ['score', 'raw_score', 'risk_score', 'amount_usd', 'payout_amount_usd', 'preset', 'repo', 'title', 'url', 'updated_at', 'signals', 'risk_flags', 'manual_friction', 'addresses'];
   const values = rows.map((item) => [
     item.score,
     item.raw_score,
     item.risk_score,
     item.amount_usd ?? '',
+    item.payout_amount_usd ?? '',
     item.preset,
     item.repo,
     item.title,

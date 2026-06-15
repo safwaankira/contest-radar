@@ -43,7 +43,7 @@ export function buildShortlist(feed, options = {}) {
     .filter((item) => !signalRegex || item.signals?.some((value) => signalRegex.test(value)))
     .filter((item) => !requireAmount || item.signals?.some((value) => /amount/i.test(value)))
     .filter((item) => !requireRail || item.signals?.some((value) => /USDC|Base|x402|MRWK|MergeWork/i.test(value)))
-    .filter((item) => Number(item.amount_usd ?? 0) >= minAmountUsd)
+    .filter((item) => amountForFilter(item) >= minAmountUsd)
     .filter((item) => Number(item.risk_score ?? 0) <= maxRiskScore)
     .filter((item) => allowManualFriction || !item.manual_friction)
     .filter((item) => !rejectContextLeak || !hasRisk(item, /hidden-context-leak|secret-or-wallet-risk/i))
@@ -169,12 +169,13 @@ function parseNonNegativeNumber(value, flag) {
 
 function toCsv(items) {
   const rows = [
-    ['score', 'raw_score', 'risk_score', 'amount_usd', 'preset', 'repo', 'title', 'url', 'updated_at', 'signals', 'risk_flags', 'manual_friction', 'addresses'],
+    ['score', 'raw_score', 'risk_score', 'amount_usd', 'payout_amount_usd', 'preset', 'repo', 'title', 'url', 'updated_at', 'signals', 'risk_flags', 'manual_friction', 'addresses'],
     ...items.map((item) => [
       item.score,
       item.raw_score ?? item.score,
       item.risk_score ?? 0,
       item.amount_usd ?? '',
+      item.payout_amount_usd ?? '',
       item.preset,
       item.repo,
       item.title,
@@ -195,6 +196,13 @@ function hasRisk(item, regex) {
 
 function formatRiskFlags(flags) {
   return flags.map((flag) => `${flag.label}:${flag.severity}:${flag.penalty}`).join(', ');
+}
+
+function amountForFilter(item) {
+  if (Object.hasOwn(item, 'payout_amount_usd')) {
+    return Number(item.payout_amount_usd ?? 0);
+  }
+  return Number(item.amount_usd ?? 0);
 }
 
 function csvCell(value) {

@@ -177,8 +177,9 @@ function hasPayoutSignal(item) {
   const labels = (item.labels ?? []).join(' ');
   const signals = (item.signals ?? []).join(' ');
   const title = item.title ?? '';
+  if (Number(item.payout_amount_usd ?? 0) > 0) return true;
   return /\b(bounty|reward|prize|payout|compensation|MRWK\/MergeWork)\b/i.test(signals) ||
-    /\b(bounty|reward|price|external|\$\d+|\d+\s?(?:USD|USDC|MRWK))\b/i.test(`${title} ${labels}`);
+    /\b(bounty|reward|price|external|paid|payout|compensation)\b/i.test(`${title} ${labels}`);
 }
 
 if (import.meta.url === pathToFileURL(process.argv[1] ?? '').href) {
