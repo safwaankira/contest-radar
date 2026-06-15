@@ -5,6 +5,7 @@
   "type": "module",
   "scripts": {
     "build:feed": "node scripts/build-feed.mjs",
+    "audit:candidate": "node scripts/audit-candidate.mjs",
     "shortlist": "node scripts/shortlist.mjs",
     "test": "node --test test/*.test.mjs"
   },

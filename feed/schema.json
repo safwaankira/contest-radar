@@ -42,11 +42,28 @@
   "$defs": {
     "item": {
       "type": "object",
-      "required": ["score", "preset", "preset_name", "repo", "title", "url", "updated_at", "labels", "signals", "addresses"],
+      "required": ["score", "raw_score", "risk_score", "risk_flags", "manual_friction", "preset", "preset_name", "repo", "title", "url", "updated_at", "labels", "signals", "addresses"],
       "properties": {
         "score": {
           "type": "number",
           "minimum": 0
+        },
+        "raw_score": {
+          "type": "number",
+          "minimum": 0
+        },
+        "risk_score": {
+          "type": "number",
+          "minimum": 0
+        },
+        "risk_flags": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/risk_flag"
+          }
+        },
+        "manual_friction": {
+          "type": "boolean"
         },
         "preset": {
           "type": "string"
@@ -86,6 +103,23 @@
           "items": {
             "$ref": "#/$defs/address"
           }
+        }
+      }
+    },
+    "risk_flag": {
+      "type": "object",
+      "required": ["label", "severity", "penalty"],
+      "properties": {
+        "label": {
+          "type": "string"
+        },
+        "severity": {
+          "type": "string",
+          "enum": ["blocker", "manual", "high"]
+        },
+        "penalty": {
+          "type": "number",
+          "minimum": 0
         }
       }
     },

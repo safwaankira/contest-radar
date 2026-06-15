@@ -31,6 +31,39 @@ const signalPatterns = [
   { label: 'amount', regex: /(\$|USD|USDC|MRWK)\s?\d|\d+\s?(USD|USDC|MRWK)/i, points: 16 },
 ];
 
+const riskPatterns = [
+  {
+    label: 'hidden-context-leak',
+    severity: 'blocker',
+    penalty: 90,
+    regex: /\b(system prompt|system instructions|developer message|startup instructions|boot context|boot_context|_provenance|provenance\.json|initial prompt|hidden instructions|before first human message|full conversation transcript)\b|paste.{0,80}\b(system|developer|prompt|instructions)\b/i,
+  },
+  {
+    label: 'secret-or-wallet-risk',
+    severity: 'blocker',
+    penalty: 70,
+    regex: /\b(private key|seed phrase|mnemonic|wallet private|export.*key|sign transaction|send funds|mainnet transaction|transfer .*USDC)\b/i,
+  },
+  {
+    label: 'requires-signup-confirmation',
+    severity: 'manual',
+    penalty: 28,
+    regex: /\b(sign up|signup|register before|developer access|access pending|maintainer confirmation|approval required|must be approved|wait for approval|claim required|must claim)\b/i,
+  },
+  {
+    label: 'kyc-or-account-friction',
+    severity: 'manual',
+    penalty: 24,
+    regex: /\b(KYC|identity verification|tax form|W-9|W8BEN|bank account|invoice required|manual payout|Devpost account|login required|account required)\b/i,
+  },
+  {
+    label: 'competition-noise',
+    severity: 'high',
+    penalty: 22,
+    regex: /\b(duplicate|already implemented|winner selected|accepted solution|merged solution|many PRs|first come first served|first to merge|assigned to|claimed by)\b/i,
+  },
+];
+
 const addressPatterns = [
   { type: 'EVM', regex: /0x[a-fA-F0-9]{40}/g },
   { type: 'Stellar', regex: /G[A-Z2-7]{55}/g },
@@ -75,7 +108,7 @@ const feed = {
   demo: 'https://go165.github.io/bounty-radar/',
   manifest: 'https://go165.github.io/bounty-radar/feed/manifest.json',
   schema: 'https://go165.github.io/bounty-radar/feed/schema.json',
-  methodology: 'Heuristic GitHub issue triage based on payout terms, payment rails, amount text, labels, and payout address shapes.',
+  methodology: 'Heuristic GitHub issue triage based on payout terms, payment rails, amount text, labels, payout address shapes, and negative risk signals such as hidden-context leakage, manual access friction, KYC/account requirements, and competition noise.',
   count: items.length,
   items: items.slice(0, 40),
 };
@@ -120,34 +153,42 @@ function scoreIssue(issue, preset) {
   const labels = (issue.labels ?? []).map((label) => label.name ?? '').filter(Boolean);
   const labelText = labels.join(' ');
   const signals = [];
-  let score = 0;
+  let rawScore = 0;
 
   for (const signal of signalPatterns) {
     if (signal.regex.test(text) || signal.regex.test(labelText)) {
       signals.push(signal.label);
-      score += signal.points;
+      rawScore += signal.points;
     }
   }
 
   if (/\b(bounty|reward|paid|help wanted)\b/i.test(labelText)) {
     signals.push('label match');
-    score += 8;
+    rawScore += 8;
   }
 
   const addresses = extractAddresses(text);
   if (addresses.length > 0) {
     signals.push('payout address');
-    score += 20;
+    rawScore += 20;
   }
 
   const daysOld = (Date.now() - new Date(issue.updated_at).getTime()) / 86400000;
   if (daysOld > 120) {
     signals.push('stale');
-    score -= 8;
+    rawScore -= 8;
   }
 
+  const riskFlags = analyzeRisk(text, labelText);
+  const riskScore = riskFlags.reduce((total, flag) => total + flag.penalty, 0);
+  const manualFriction = riskFlags.some((flag) => flag.severity === 'manual');
+
   return {
-    score: Math.max(0, score),
+    score: Math.max(0, rawScore - riskScore),
+    raw_score: Math.max(0, rawScore),
+    risk_score: riskScore,
+    risk_flags: riskFlags,
+    manual_friction: manualFriction,
     preset: preset.id,
     preset_name: preset.name,
     repo: issue.repository_url?.replace('https://api.github.com/repos/', '') ?? 'unknown/repo',
@@ -158,6 +199,17 @@ function scoreIssue(issue, preset) {
     signals: [...new Set(signals)],
     addresses,
   };
+}
+
+function analyzeRisk(text, labelText) {
+  const haystack = `${text}\n${labelText}`;
+  return riskPatterns
+    .filter((risk) => risk.regex.test(haystack))
+    .map((risk) => ({
+      label: risk.label,
+      severity: risk.severity,
+      penalty: risk.penalty,
+    }));
 }
 
 function extractAddresses(text) {
@@ -181,15 +233,19 @@ function uniqueBy(items, keyFn) {
 }
 
 function toCsv(rows) {
-  const header = ['score', 'preset', 'repo', 'title', 'url', 'updated_at', 'signals', 'addresses'];
+  const header = ['score', 'raw_score', 'risk_score', 'preset', 'repo', 'title', 'url', 'updated_at', 'signals', 'risk_flags', 'manual_friction', 'addresses'];
   const values = rows.map((item) => [
     item.score,
+    item.raw_score,
+    item.risk_score,
     item.preset,
     item.repo,
     item.title,
     item.url,
     item.updated_at,
     item.signals.join('|'),
+    item.risk_flags.map((flag) => `${flag.label}:${flag.severity}:${flag.penalty}`).join('|'),
+    item.manual_friction,
     item.addresses.map((address) => `${address.type}:${address.value}`).join('|'),
   ]);
   return `${[header, ...values].map((row) => row.map(csvCell).join(',')).join('\n')}\n`;

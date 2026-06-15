@@ -27,8 +27,13 @@ export function buildShortlist(feed, options = {}) {
     signal,
     requireAmount = false,
     requireRail = false,
+    rejectContextLeak = false,
+    allowManualFriction = true,
+    maxRiskScore = Number.POSITIVE_INFINITY,
+    excludeRisk = [],
   } = options;
   const signalRegex = signal ? new RegExp(signal, 'i') : null;
+  const excludeRiskRegexes = excludeRisk.map((value) => new RegExp(value, 'i'));
 
   return [...(feed.items ?? [])]
     .filter((item) => Number(item.score) >= minScore)
@@ -37,6 +42,10 @@ export function buildShortlist(feed, options = {}) {
     .filter((item) => !signalRegex || item.signals?.some((value) => signalRegex.test(value)))
     .filter((item) => !requireAmount || item.signals?.some((value) => /amount/i.test(value)))
     .filter((item) => !requireRail || item.signals?.some((value) => /USDC|Base|x402|MRWK|MergeWork/i.test(value)))
+    .filter((item) => Number(item.risk_score ?? 0) <= maxRiskScore)
+    .filter((item) => allowManualFriction || !item.manual_friction)
+    .filter((item) => !rejectContextLeak || !hasRisk(item, /hidden-context-leak|secret-or-wallet-risk/i))
+    .filter((item) => excludeRiskRegexes.every((regex) => !hasRisk(item, regex)))
     .sort((a, b) => Number(b.score) - Number(a.score) || Date.parse(b.updated_at) - Date.parse(a.updated_at))
     .slice(0, limit);
 }
@@ -56,12 +65,14 @@ export function formatShortlist(items, format = 'markdown') {
   }
 
   const rows = [
-    ['Score', 'Repo', 'Signals', 'Title', 'URL'],
-    ['---:', '---', '---', '---', '---'],
+    ['Score', 'Risk', 'Repo', 'Signals', 'Risk Flags', 'Title', 'URL'],
+    ['---:', '---:', '---', '---', '---', '---', '---'],
     ...items.map((item) => [
       item.score,
+      item.risk_score ?? 0,
       item.repo,
       (item.signals ?? []).join(', '),
+      formatRiskFlags(item.risk_flags ?? []),
       item.title,
       item.url,
     ]),
@@ -80,6 +91,10 @@ export function parseArgs(argv) {
     signal: undefined,
     requireAmount: false,
     requireRail: false,
+    rejectContextLeak: false,
+    allowManualFriction: true,
+    maxRiskScore: Number.POSITIVE_INFINITY,
+    excludeRisk: [],
   };
 
   for (let i = 0; i < argv.length; i += 1) {
@@ -100,6 +115,10 @@ export function parseArgs(argv) {
     else if (arg === '--signal') options.signal = next();
     else if (arg === '--require-amount') options.requireAmount = true;
     else if (arg === '--require-rail') options.requireRail = true;
+    else if (arg === '--reject-context-leak') options.rejectContextLeak = true;
+    else if (arg === '--no-manual-friction') options.allowManualFriction = false;
+    else if (arg === '--max-risk-score') options.maxRiskScore = parseNonNegativeNumber(next(), '--max-risk-score');
+    else if (arg === '--exclude-risk') options.excludeRisk.push(next());
     else if (arg === '--help' || arg === '-h') options.help = true;
     else throw new Error(`Unknown option: ${arg}`);
   }
@@ -122,6 +141,10 @@ Options:
   --signal <regex>           Require a matching signal label.
   --require-amount           Require an amount signal.
   --require-rail             Require a USDC/Base/x402/MRWK payment-rail signal.
+  --reject-context-leak      Exclude issues that ask for hidden/system/startup context or wallet-secret actions.
+  --no-manual-friction       Exclude issues that require signup, manual approval, KYC, or account-heavy work.
+  --max-risk-score <number>  Maximum risk penalty to include. Default: no cap.
+  --exclude-risk <regex>     Exclude a matching risk flag label. Can be repeated.
   --format <type>            markdown, json, or csv. Default: markdown.
   -h, --help                 Show this help.
 `;
@@ -141,19 +164,31 @@ function parseNonNegativeNumber(value, flag) {
 
 function toCsv(items) {
   const rows = [
-    ['score', 'preset', 'repo', 'title', 'url', 'updated_at', 'signals', 'addresses'],
+    ['score', 'raw_score', 'risk_score', 'preset', 'repo', 'title', 'url', 'updated_at', 'signals', 'risk_flags', 'manual_friction', 'addresses'],
     ...items.map((item) => [
       item.score,
+      item.raw_score ?? item.score,
+      item.risk_score ?? 0,
       item.preset,
       item.repo,
       item.title,
       item.url,
       item.updated_at,
       (item.signals ?? []).join('|'),
+      formatRiskFlags(item.risk_flags ?? []),
+      Boolean(item.manual_friction),
       (item.addresses ?? []).map((address) => `${address.type}:${address.value}`).join('|'),
     ]),
   ];
   return `${rows.map((row) => row.map(csvCell).join(',')).join('\n')}\n`;
+}
+
+function hasRisk(item, regex) {
+  return (item.risk_flags ?? []).some((flag) => regex.test(flag.label ?? ''));
+}
+
+function formatRiskFlags(flags) {
+  return flags.map((flag) => `${flag.label}:${flag.severity}:${flag.penalty}`).join(', ');
 }
 
 function csvCell(value) {
