@@ -7,6 +7,7 @@
     "build:feed": "node scripts/build-feed.mjs",
     "audit:candidate": "node scripts/audit-candidate.mjs",
     "audit:shortlist": "node scripts/audit-shortlist.mjs",
+    "mcp": "node scripts/mcp-server.mjs",
     "shortlist": "node scripts/shortlist.mjs",
     "test": "node --test test/*.test.mjs"
   },

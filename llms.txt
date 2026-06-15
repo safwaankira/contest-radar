@@ -27,6 +27,7 @@ npm run shortlist -- --min-score 50 --require-amount --require-rail --limit 10
 npm run shortlist -- --min-score 30 --opportunity quick-win --max-effort-score 30 --limit 10
 npm run shortlist -- --preset x402 --format json
 npm run audit:shortlist -- --limit 8 --require-rail --min-amount-usd 50 --max-competition-score 40
+node scripts/mcp-server.mjs
 ```
 
 ## Integration Notes
@@ -35,6 +36,8 @@ npm run audit:shortlist -- --limit 8 --require-rail --min-amount-usd 50 --max-co
   filters, and review rules.
 - Use `examples/github-action-digest.yml` to publish a scheduled shortlist to a
   GitHub Actions job summary.
+- Use `node scripts/mcp-server.mjs` to expose `search_bounties` and `get_bounty` as MCP stdio
+  tools for agents that prefer tool calls over shell commands.
 - Use `docs/claim-before-coding.md` and
   `examples/github-action-claim-before-coding.yml` to audit issue comments and
   related PRs before choosing bounty work.

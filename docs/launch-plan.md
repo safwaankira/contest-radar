@@ -11,7 +11,7 @@
 
 - **TAM / audience**: high enough for a developer tool because paid OSS work, onchain bounties, and coding agents all need reliable task discovery.
 - **Differentiation**: narrow payout-signal triage across GitHub issues, instead of another marketplace that requires project owners to list work manually.
-- **Propagation hook**: developers can share a search preset, CSV shortlist, hosted JSON feed, opportunity class filter, shortlist CLI command, or manifest/schema pair when discussing bounty quality.
+- **Propagation hook**: developers can share a search preset, CSV shortlist, hosted JSON feed, opportunity class filter, shortlist CLI command, MCP server config, or manifest/schema pair when discussing bounty quality.
 - **Monetization path**: hosted alerts, webhooks, public feeds, and x402-paid machine-readable bounty intelligence.
 - **7-day demo fit**: static UI is live now; daily digest and feed endpoints can ship without changing the public demo surface.
 
@@ -35,6 +35,7 @@
 - Day 7: x402-paid alert API prototype. Shipped as `examples/paid-alert-api`.
 - Day 7.5: Claim-before-coding audit workflow for competition checks. Shipped.
 - Day 7.75: Opportunity classes and effort-score filters for agent triage. Shipped.
+- Day 8: MCP stdio server with `search_bounties` and `get_bounty` tools. Shipped.
 
 ## Legal Publishing Checklist
 
@@ -56,7 +57,7 @@
 
 - Repository: https://github.com/go165/bounty-radar
 - Demo: https://go165.github.io/bounty-radar/
-- Current shipped hooks: payout scoring, opportunity classes, effort scores, address classification, CSV export, saved watchlists, shareable URLs, capped best-effort repository quality signals, daily JSON/CSV feed, zero-dependency shortlist CLI, 402-style paid alert API prototype.
+- Current shipped hooks: payout scoring, opportunity classes, effort scores, address classification, CSV export, saved watchlists, shareable URLs, capped best-effort repository quality signals, daily JSON/CSV feed, zero-dependency shortlist CLI, MCP stdio server, 402-style paid alert API prototype.
 - Claim audit: https://github.com/go165/bounty-radar/blob/main/docs/claim-before-coding.md
 - Agent handoff: https://github.com/go165/bounty-radar/blob/main/docs/agent-handoff.md
 - Feed: https://go165.github.io/bounty-radar/feed/latest.json

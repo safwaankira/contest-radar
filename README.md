@@ -52,6 +52,7 @@ Bounty Radar makes that triage fast without asking for your GitHub token by defa
 - **Machine-readable feed manifest and JSON Schema** for automation that should validate the feed before consuming it.
 - **Agent discovery metadata and `llms.txt`** for directories, coding agents, and LLM-powered workflows.
 - **Zero-dependency shortlist CLI** for coding agents and CI jobs that need Markdown, JSON, or CSV output from the hosted feed.
+- **Zero-dependency MCP stdio server** with `search_bounties` and `get_bounty` tools for MCP-capable coding agents.
 - **Claim-before-coding audit** that checks comments and related PRs before a developer or agent spends time on a bounty.
 - **Paid alert API prototype** with a free preview route and a 402-style paid endpoint.
 - **x402 paid API deployment guide** for turning the feed into an agent-readable paid alert API.
@@ -87,6 +88,32 @@ npm run shortlist -- --preset mergework --format json
 npm run shortlist -- --min-score 30 --opportunity quick-win --max-effort-score 30 --format markdown
 npm run shortlist -- --feed feed/latest.json --signal 'x402|USDC|MRWK' --format csv
 ```
+
+Run the MCP server for Claude Desktop, Codex, or another MCP client:
+
+```bash
+node scripts/mcp-server.mjs
+```
+
+Example client configuration:
+
+```json
+{
+  "mcpServers": {
+    "bounty-radar": {
+      "command": "node",
+      "args": ["/absolute/path/to/bounty-radar/scripts/mcp-server.mjs"]
+    }
+  }
+}
+```
+
+The server exposes:
+
+| Tool | Purpose |
+| --- | --- |
+| `search_bounties` | Filter the hosted or local feed by score, preset, rail, amount, opportunity class, effort score, and output format. |
+| `get_bounty` | Fetch one feed item by GitHub issue URL so an agent can inspect the exact payout signals and decision notes. |
 
 Audit competition before opening a claim or PR:
 
@@ -148,6 +175,7 @@ npm run shortlist -- --min-score 30 --opportunity quick-win --max-effort-score 3
 - **TAM / audience**: independent developers, agent builders, open-source maintainers, and onchain bounty operators who need faster paid-work discovery.
 - **Differentiation**: GitHub-native bounty triage focused on payout credibility, not another generic issue search or closed marketplace.
 - **Star-worthy hook**: a static, inspectable tool that developers can bookmark, run locally, and extend with their own bounty rails.
+- **Agent distribution hook**: MCP tools let coding agents search and inspect bounty opportunities without scraping the UI.
 - **Monetization path**: hosted alerts, JSON feeds, webhooks, and x402-paid API access for teams and autonomous coding agents.
 - **7-day demo feasibility**: the browser demo is already live; the next compounding features are daily digests, validators, and shareable feeds.
 
@@ -198,6 +226,18 @@ npm run shortlist -- --min-score 50 --require-amount --require-rail --format mar
 npm run shortlist -- --opportunity high-value --max-risk-score 25 --format markdown
 npm run shortlist -- --feed https://go165.github.io/bounty-radar/feed/latest.json --preset x402 --limit 5 --format json
 ```
+
+Use the included MCP server when an agent should call tools instead of shelling
+out to the CLI:
+
+```bash
+node scripts/mcp-server.mjs
+```
+
+Its `search_bounties` tool accepts the same practical filters as the CLI,
+including `min_score`, `preset`, `require_amount`, `require_rail`,
+`opportunity`, `max_effort_score`, `min_amount_usd`, and `format`.
+Its `get_bounty` tool returns the full JSON item for a specific issue URL.
 
 Regenerate the feed locally with a GitHub token for higher API limits:
 

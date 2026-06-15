@@ -11,7 +11,7 @@ consume without scraping the browser UI.
 | `https://go165.github.io/bounty-radar/feed/latest.json` | Daily scored issue shortlist. |
 | `https://go165.github.io/bounty-radar/feed/latest.csv` | Spreadsheet-friendly export of the same shortlist. |
 | `https://go165.github.io/bounty-radar/feed/schema.json` | JSON Schema for feed validation. |
-| `https://go165.github.io/bounty-radar/.well-known/agent.json` | Agent discovery document with feed, schema, CLI, and paid API integration pointers. |
+| `https://go165.github.io/bounty-radar/.well-known/agent.json` | Agent discovery document with feed, schema, CLI, MCP, and paid API integration pointers. |
 | `https://go165.github.io/bounty-radar/llms.txt` | Compact LLM-readable project context and integration guide. |
 
 ## Minimal Consumer
@@ -62,6 +62,33 @@ Useful filters:
 | `--opportunity quick-win` | Keep only one decision class: quick-win, high-value, rail-watch, standard, manual-review, or avoid. |
 | `--max-effort-score 30` | Prefer lower-effort candidates. |
 | `--format markdown` | Emit Markdown, JSON, or CSV for handoff. |
+
+## MCP Server
+
+Use the zero-dependency MCP stdio server when an agent should call tools instead
+of parsing shell output:
+
+```bash
+node scripts/mcp-server.mjs
+```
+
+Example MCP client configuration:
+
+```json
+{
+  "mcpServers": {
+    "bounty-radar": {
+      "command": "node",
+      "args": ["/absolute/path/to/bounty-radar/scripts/mcp-server.mjs"]
+    }
+  }
+}
+```
+
+| Tool | Purpose |
+| --- | --- |
+| `search_bounties` | Search the hosted or local feed by score, preset, signal, amount, rail, opportunity class, effort score, and output format. |
+| `get_bounty` | Return the full JSON feed item for one GitHub issue URL. |
 
 ## Claim-Before-Coding Audit
 
