@@ -7,7 +7,7 @@
 
 **Find GitHub issues with real payout signals before you spend hours on the wrong bounty.**
 
-Bounty Radar is a zero-backend dashboard for developers and agent builders who hunt paid open-source work. It opens with a hosted daily shortlist, can run fresh GitHub issue searches in the browser, scores payout credibility signals, highlights Base/USDC/x402/MergeWork keywords, extracts payout addresses, and exports a shortlist you can review before opening a PR.
+Bounty Radar is a zero-backend dashboard for developers and agent builders who hunt paid open-source work. It opens with a hosted daily shortlist, can run fresh GitHub issue searches in the browser, scores payout credibility signals, classifies each issue as `quick-win`, `high-value`, `rail-watch`, `manual-review`, or `avoid`, highlights Base/USDC/x402/MergeWork keywords, extracts payout addresses, and exports a shortlist you can review before opening a PR.
 
 The browser checker now includes payout lint warnings for common irreversible-payment mistakes such as malformed EVM addresses, zero addresses, bad EIP-55 checksums, non-checksummed EVM addresses, and USDC text without explicit chain context. Use [Payout Address Lint](https://github.com/go165/payout-address-lint) when you want the same idea as a reusable CLI or GitHub Action in a bounty repository.
 
@@ -44,6 +44,7 @@ Bounty Radar makes that triage fast without asking for your GitHub token by defa
 - **Live hosted shortlist** loaded from the daily JSON feed so the demo has useful results immediately.
 - **Custom GitHub issue search** with optional minimum payout keyword filtering.
 - **Payout signal score** based on title/body labels, payment rail terms, reward amounts, address hints, and payout lint risk.
+- **Opportunity classes and effort scores** so agents and developers can filter for quick wins, high-value work, rail-specific leads, and manual-review cases.
 - **Best-effort repository quality signals** for stars, forks, recent push activity, and archived status.
 - **Saved watchlists** in local storage for repeated bounty scans.
 - **Shareable search URLs** for posting a preset, keyword set, and result limit to relevant communities.
@@ -83,6 +84,7 @@ Run the agent-friendly shortlist CLI without installing runtime dependencies:
 
 ```bash
 npm run shortlist -- --preset mergework --format json
+npm run shortlist -- --min-score 30 --opportunity quick-win --max-effort-score 30 --format markdown
 npm run shortlist -- --feed feed/latest.json --signal 'x402|USDC|MRWK' --format csv
 ```
 
@@ -124,6 +126,23 @@ This is triage, not financial advice. Always inspect the issue, sponsor, reposit
 
 Repository quality metadata is fetched sequentially and capped to avoid burning unauthenticated GitHub API limits. Add a token for higher limits when scanning large result sets.
 
+## Opportunity Classes
+
+Every generated feed row includes a decision layer for agents and repeated manual triage:
+
+| Field | Meaning |
+| --- | --- |
+| `opportunity_class` | `quick-win`, `high-value`, `rail-watch`, `standard`, `manual-review`, or `avoid`. |
+| `effort_score` | 0-100 heuristic where lower usually means easier to attempt. |
+| `effort_signals` | Explainable hints such as `good-first-issue`, `docs-or-tests`, `security-sensitive`, or `external-access`. |
+| `decision_notes` | Short reasons an agent should inspect before claiming work. |
+
+Filter for lightweight candidates:
+
+```bash
+npm run shortlist -- --min-score 30 --opportunity quick-win --max-effort-score 30 --min-amount-usd 50
+```
+
 ## Opportunity Assessment
 
 - **TAM / audience**: independent developers, agent builders, open-source maintainers, and onchain bounty operators who need faster paid-work discovery.
@@ -143,6 +162,7 @@ Repository quality metadata is fetched sequentially and capped to avoid burning 
 - Day 6.5: Auto-load the hosted feed into the demo so visitors see real current opportunities immediately. Shipped.
 - Day 7: Ship API/webhook plan for paid alerts. Shipped as `examples/paid-alert-api`.
 - Day 7.5: Add claim-before-coding audit workflow for competition and duplicate PR checks. Shipped.
+- Day 7.75: Add opportunity classes, effort scores, and CLI filters for better agent triage. Shipped.
 
 ## Monetization Path
 
@@ -175,6 +195,7 @@ of the full feed:
 
 ```bash
 npm run shortlist -- --min-score 50 --require-amount --require-rail --format markdown
+npm run shortlist -- --opportunity high-value --max-risk-score 25 --format markdown
 npm run shortlist -- --feed https://go165.github.io/bounty-radar/feed/latest.json --preset x402 --limit 5 --format json
 ```
 

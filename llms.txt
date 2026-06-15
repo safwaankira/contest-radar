@@ -5,7 +5,8 @@
 Bounty Radar helps developers and coding agents shortlist GitHub issues with
 public payout signals before investing time in a PR. It scores bounty/reward
 keywords, Base/USDC/x402/MergeWork payment rail terms, amount-like text,
-payout address hints, labels, repository quality, and stale issue risk.
+payout address hints, labels, repository quality, stale issue risk, and an
+opportunity class with effort score for quick-win triage.
 
 Live app: https://go165.github.io/bounty-radar/
 Repository: https://github.com/go165/bounty-radar
@@ -23,6 +24,7 @@ Agent discovery: https://go165.github.io/bounty-radar/.well-known/agent.json
 ```bash
 npm test
 npm run shortlist -- --min-score 50 --require-amount --require-rail --limit 10
+npm run shortlist -- --min-score 30 --opportunity quick-win --max-effort-score 30 --limit 10
 npm run shortlist -- --preset x402 --format json
 npm run audit:shortlist -- --limit 8 --require-rail --min-amount-usd 50 --max-competition-score 40
 ```

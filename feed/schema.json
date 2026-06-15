@@ -37,12 +37,33 @@
       "items": {
         "$ref": "#/$defs/item"
       }
+    },
+    "errors": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/feed_error"
+      }
     }
   },
   "$defs": {
+    "feed_error": {
+      "type": "object",
+      "required": ["preset", "status", "message"],
+      "properties": {
+        "preset": {
+          "type": "string"
+        },
+        "status": {
+          "type": "integer"
+        },
+        "message": {
+          "type": "string"
+        }
+      }
+    },
     "item": {
       "type": "object",
-      "required": ["score", "raw_score", "risk_score", "risk_flags", "manual_friction", "preset", "preset_name", "repo", "title", "url", "updated_at", "labels", "signals", "addresses"],
+      "required": ["score", "raw_score", "risk_score", "opportunity_class", "effort_score", "effort_signals", "decision_notes", "risk_flags", "manual_friction", "preset", "preset_name", "repo", "title", "url", "updated_at", "labels", "signals", "addresses"],
       "properties": {
         "score": {
           "type": "number",
@@ -55,6 +76,27 @@
         "risk_score": {
           "type": "number",
           "minimum": 0
+        },
+        "opportunity_class": {
+          "type": "string",
+          "enum": ["quick-win", "high-value", "rail-watch", "standard", "manual-review", "avoid"]
+        },
+        "effort_score": {
+          "type": "number",
+          "minimum": 0,
+          "maximum": 100
+        },
+        "effort_signals": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "decision_notes": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
         },
         "risk_flags": {
           "type": "array",

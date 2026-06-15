@@ -1,4 +1,4 @@
-import { mkdir, writeFile } from 'node:fs/promises';
+import { mkdir, readFile, writeFile } from 'node:fs/promises';
 
 const presets = [
   {
@@ -70,6 +70,18 @@ const riskPatterns = [
   },
 ];
 
+const easyEffortPatterns = [
+  { label: 'good-first-issue', regex: /\b(good first issue|first-timers?|beginner friendly|starter issue|easy|low[- ]hanging|small change|simple fix)\b/i, points: -14 },
+  { label: 'docs-or-tests', regex: /\b(docs?|readme|changelog|example|template|unit tests?|test coverage|smoke test)\b/i, points: -10 },
+  { label: 'narrow-scope', regex: /\b(one file|single file|minimal change|small patch|stub|typo|copy edit)\b/i, points: -8 },
+];
+
+const hardEffortPatterns = [
+  { label: 'security-sensitive', regex: /\b(security|vulnerability|exploit|private key|seed phrase|wallet|smart contract|mainnet|sign transaction)\b/i, points: 24 },
+  { label: 'infra-or-migration', regex: /\b(migration|refactor|architecture|distributed|database|production|scalability|performance|e2e|flaky|race condition)\b/i, points: 18 },
+  { label: 'external-access', regex: /\b(sign up|signup|KYC|approval required|account required|manual payout|developer access)\b/i, points: 14 },
+];
+
 const addressPatterns = [
   { type: 'EVM', regex: /0x[a-fA-F0-9]{40}/g },
   { type: 'Stellar', regex: /G[A-Z2-7]{55}/g },
@@ -77,14 +89,18 @@ const addressPatterns = [
 ];
 
 const token = process.env.GITHUB_TOKEN;
+const SEARCH_TIMEOUT_MS = 15000;
 const headers = {
   Accept: 'application/vnd.github+json',
   'User-Agent': 'bounty-radar-feed',
   ...(token ? { Authorization: `Bearer ${token}` } : {}),
 };
 
+const previousFeed = await readPreviousFeed();
+const previousItems = normalizeExistingItems(previousFeed.items ?? []);
 const items = [];
 const seen = new Set();
+const errors = [];
 
 for (const preset of presets) {
   const url = new URL('https://api.github.com/search/issues');
@@ -93,9 +109,16 @@ for (const preset of presets) {
   url.searchParams.set('order', 'desc');
   url.searchParams.set('per_page', '12');
 
-  const response = await fetch(url, { headers });
+  let response;
+  try {
+    response = await fetch(url, { headers, signal: AbortSignal.timeout(SEARCH_TIMEOUT_MS) });
+  } catch (error) {
+    errors.push({ preset: preset.id, status: 0, message: error instanceof Error ? error.message : String(error) });
+    continue;
+  }
   if (!response.ok) {
-    throw new Error(`GitHub search failed for ${preset.id}: ${response.status} ${await response.text()}`);
+    errors.push({ preset: preset.id, status: response.status, message: compactError(await response.text()) });
+    continue;
   }
 
   const payload = await response.json();
@@ -106,7 +129,30 @@ for (const preset of presets) {
   }
 }
 
+for (const presetId of new Set(errors.map((error) => error.preset))) {
+  for (const item of previousItems.filter((row) => row.preset === presetId)) {
+    if (seen.has(item.url)) continue;
+    seen.add(item.url);
+    items.push({
+      ...item,
+      decision_notes: [
+        ...(item.decision_notes ?? []),
+        `retained from previous feed after ${presetId} search failed`,
+      ].slice(0, 6),
+    });
+  }
+}
+
 items.sort((a, b) => b.score - a.score || new Date(b.updated_at) - new Date(a.updated_at));
+const outputItems = items.length > 0 ? items : previousItems;
+const feedItems = outputItems.slice(0, 40);
+if (items.length === 0 && outputItems.length > 0) {
+  errors.push({
+    preset: 'fallback',
+    status: 0,
+    message: 'GitHub search failed for all presets; retained previous feed items.',
+  });
+}
 
 const feed = {
   generated_at: new Date().toISOString(),
@@ -115,8 +161,9 @@ const feed = {
   manifest: 'https://go165.github.io/bounty-radar/feed/manifest.json',
   schema: 'https://go165.github.io/bounty-radar/feed/schema.json',
   methodology: 'Heuristic GitHub issue triage based on payout terms, payment rails, amount text, labels, payout address shapes, and negative risk signals such as hidden-context leakage, manual access friction, KYC/account requirements, and competition noise.',
-  count: items.length,
-  items: items.slice(0, 40),
+  count: feedItems.length,
+  errors,
+  items: feedItems,
 };
 
 await mkdir('feed', { recursive: true });
@@ -128,7 +175,7 @@ console.log(`Wrote ${feed.count} items to feed/latest.json`);
 function buildManifest(feed) {
   return {
     name: 'Bounty Radar daily feed',
-    description: 'Machine-readable GitHub bounty issue shortlist scored for payout clarity, payment rails, amount text, labels, and payout address hints.',
+    description: 'Machine-readable GitHub bounty issue shortlist scored for payout clarity, payment rails, amount text, labels, address hints, opportunity class, and effort score.',
     homepage: feed.demo,
     repository: feed.source,
     latest_json: 'https://go165.github.io/bounty-radar/feed/latest.json',
@@ -136,6 +183,7 @@ function buildManifest(feed) {
     schema: feed.schema,
     generated_at: feed.generated_at,
     count: feed.count,
+    errors: feed.errors,
     refresh: {
       cadence: 'daily',
       github_actions_workflow: 'Daily bounty feed',
@@ -152,6 +200,53 @@ function buildManifest(feed) {
       'Unauthenticated GitHub search can miss private, rate-limited, or recently indexed issues.',
     ],
   };
+}
+
+function compactError(text) {
+  return text
+    .replace(/<[^>]*>/g, ' ')
+    .replace(/\s+/g, ' ')
+    .trim()
+    .slice(0, 240) || 'request failed';
+}
+
+async function readPreviousFeed() {
+  try {
+    return JSON.parse(await readFile('feed/latest.json', 'utf8'));
+  } catch {
+    return { items: [] };
+  }
+}
+
+function normalizeExistingItems(rows) {
+  return rows.map((item) => {
+    if (item.opportunity_class && Number.isFinite(Number(item.effort_score))) return item;
+
+    const labels = Array.isArray(item.labels) ? item.labels : [];
+    const signals = Array.isArray(item.signals) ? item.signals : [];
+    const riskFlags = Array.isArray(item.risk_flags) ? item.risk_flags : [];
+    const text = `${item.title ?? ''}\n${labels.join(' ')}\n${signals.join(' ')}`;
+    const opportunity = assessOpportunity({
+      text,
+      labelText: labels.join(' '),
+      score: Number(item.score ?? 0),
+      rawScore: Number(item.raw_score ?? item.score ?? 0),
+      riskScore: Number(item.risk_score ?? 0),
+      riskFlags,
+      manualFriction: Boolean(item.manual_friction),
+      signals,
+      amountUsd: item.amount_usd ?? null,
+      payoutAmountUsd: item.payout_amount_usd ?? null,
+    });
+
+    return {
+      ...item,
+      opportunity_class: opportunity.opportunity_class,
+      effort_score: opportunity.effort_score,
+      effort_signals: opportunity.effort_signals,
+      decision_notes: opportunity.decision_notes,
+    };
+  });
 }
 
 function scoreIssue(issue, preset) {
@@ -190,11 +285,27 @@ function scoreIssue(issue, preset) {
   const manualFriction = riskFlags.some((flag) => flag.severity === 'manual');
   const amountUsd = extractLargestAmountUsd(text);
   const payoutAmountUsd = extractLargestPayoutAmountUsd(text, labelText);
+  const opportunity = assessOpportunity({
+    text,
+    labelText,
+    score: Math.max(0, rawScore - riskScore),
+    rawScore: Math.max(0, rawScore),
+    riskScore,
+    riskFlags,
+    manualFriction,
+    signals,
+    amountUsd,
+    payoutAmountUsd,
+  });
 
   return {
     score: Math.max(0, rawScore - riskScore),
     raw_score: Math.max(0, rawScore),
     risk_score: riskScore,
+    opportunity_class: opportunity.opportunity_class,
+    effort_score: opportunity.effort_score,
+    effort_signals: opportunity.effort_signals,
+    decision_notes: opportunity.decision_notes,
     risk_flags: riskFlags,
     manual_friction: manualFriction,
     preset: preset.id,
@@ -208,6 +319,56 @@ function scoreIssue(issue, preset) {
     addresses,
     amount_usd: amountUsd,
     payout_amount_usd: payoutAmountUsd,
+  };
+}
+
+function assessOpportunity({ text, labelText, score, rawScore, riskScore, riskFlags, manualFriction, signals, amountUsd, payoutAmountUsd }) {
+  const haystack = `${text}\n${labelText}`;
+  const effortSignals = [];
+  let effortScore = 40;
+
+  for (const pattern of easyEffortPatterns) {
+    if (pattern.regex.test(haystack)) {
+      effortSignals.push(pattern.label);
+      effortScore += pattern.points;
+    }
+  }
+
+  for (const pattern of hardEffortPatterns) {
+    if (pattern.regex.test(haystack)) {
+      effortSignals.push(pattern.label);
+      effortScore += pattern.points;
+    }
+  }
+
+  if (manualFriction) effortScore += 12;
+  if (riskScore >= 50) effortScore += 16;
+  effortScore = clamp(effortScore, 0, 100);
+
+  const amount = payoutAmountUsd ?? amountUsd ?? 0;
+  const hasRail = signals.some((signal) => /USDC|Base|x402|MRWK|MergeWork/i.test(signal));
+  const blocker = riskFlags.some((flag) => flag.severity === 'blocker') || riskScore >= 70;
+  let opportunityClass = 'standard';
+
+  if (blocker) opportunityClass = 'avoid';
+  else if (manualFriction || riskScore > 25) opportunityClass = 'manual-review';
+  else if (amount >= 250 && score >= 36) opportunityClass = 'high-value';
+  else if (effortScore <= 28 && amount >= 50 && score >= 30) opportunityClass = 'quick-win';
+  else if (hasRail && rawScore >= 36) opportunityClass = 'rail-watch';
+
+  const decisionNotes = [];
+  if (amount > 0) decisionNotes.push(`parsed payout amount: $${amount}`);
+  else decisionNotes.push('no explicit USD/USDC amount parsed');
+  if (hasRail) decisionNotes.push('payment rail signal present');
+  if (effortSignals.length > 0) decisionNotes.push(`effort signals: ${effortSignals.join(', ')}`);
+  if (riskFlags.length > 0) decisionNotes.push(`risk flags: ${riskFlags.map((flag) => flag.label).join(', ')}`);
+  if (manualFriction) decisionNotes.push('manual signup or approval friction detected');
+
+  return {
+    opportunity_class: opportunityClass,
+    effort_score: effortScore,
+    effort_signals: [...new Set(effortSignals)],
+    decision_notes: decisionNotes.slice(0, 5),
   };
 }
 
@@ -292,12 +453,18 @@ function uniqueBy(items, keyFn) {
   });
 }
 
+function clamp(value, min, max) {
+  return Math.min(max, Math.max(min, value));
+}
+
 function toCsv(rows) {
-  const header = ['score', 'raw_score', 'risk_score', 'amount_usd', 'payout_amount_usd', 'preset', 'repo', 'title', 'url', 'updated_at', 'signals', 'risk_flags', 'manual_friction', 'addresses'];
+  const header = ['score', 'raw_score', 'risk_score', 'opportunity_class', 'effort_score', 'amount_usd', 'payout_amount_usd', 'preset', 'repo', 'title', 'url', 'updated_at', 'signals', 'effort_signals', 'risk_flags', 'manual_friction', 'addresses'];
   const values = rows.map((item) => [
     item.score,
     item.raw_score,
     item.risk_score,
+    item.opportunity_class,
+    item.effort_score,
     item.amount_usd ?? '',
     item.payout_amount_usd ?? '',
     item.preset,
@@ -306,6 +473,7 @@ function toCsv(rows) {
     item.url,
     item.updated_at,
     item.signals.join('|'),
+    item.effort_signals.join('|'),
     item.risk_flags.map((flag) => `${flag.label}:${flag.severity}:${flag.penalty}`).join('|'),
     item.manual_friction,
     item.addresses.map((address) => `${address.type}:${address.value}`).join('|'),

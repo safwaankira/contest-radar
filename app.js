@@ -295,6 +295,10 @@ function normalizeFeedItem(item) {
     summary: feedSummary(item, signals, labels),
     labels,
     signals,
+    opportunityClass: item.opportunity_class ?? 'standard',
+    effortScore: Number.isFinite(Number(item.effort_score)) ? Number(item.effort_score) : null,
+    effortSignals: Array.isArray(item.effort_signals) ? item.effort_signals : [],
+    decisionNotes: Array.isArray(item.decision_notes) ? item.decision_notes : [],
     addresses,
     payoutFindings,
     repoStats: null,
@@ -305,6 +309,11 @@ function normalizeFeedItem(item) {
 function feedSummary(item, signals, labels) {
   const parts = [];
   if (item.preset_name || item.preset) parts.push(`Preset: ${item.preset_name ?? item.preset}`);
+  if (item.opportunity_class) parts.push(`Opportunity: ${item.opportunity_class}`);
+  if (Number.isFinite(Number(item.effort_score))) parts.push(`Effort: ${Number(item.effort_score)}/100`);
+  if (Array.isArray(item.decision_notes) && item.decision_notes.length > 0) {
+    parts.push(item.decision_notes.slice(0, 2).join('; '));
+  }
   if (signals.length > 0) parts.push(`Signals: ${signals.join(', ')}`);
   if (labels.length > 0) parts.push(`Labels: ${labels.slice(0, 5).join(', ')}`);
   return parts.join('. ') || 'Daily feed item from the hosted GitHub bounty radar.';
@@ -349,6 +358,14 @@ function scoreIssue(issue) {
   }
 
   const repo = issue.repository_url?.replace('https://api.github.com/repos/', '') ?? 'unknown/repo';
+  const opportunity = assessOpportunity({
+    score: Math.max(0, score),
+    rawScore: Math.max(0, score),
+    riskFlags: payoutLint.findings,
+    manualFriction: false,
+    signals,
+    text,
+  });
 
   return {
     title: issue.title,
@@ -358,10 +375,66 @@ function scoreIssue(issue) {
     summary: summarize(issue.body),
     labels,
     signals: [...new Set(signals)],
+    opportunityClass: opportunity.opportunityClass,
+    effortScore: opportunity.effortScore,
+    effortSignals: opportunity.effortSignals,
+    decisionNotes: [],
     addresses,
     payoutFindings: payoutLint.findings,
     repoStats: null,
     score: Math.max(0, score),
+  };
+}
+
+function assessOpportunity({ score, rawScore, riskFlags, manualFriction, signals, text }) {
+  const effortSignals = [];
+  let effortScore = 40;
+  const haystack = `${text ?? ''}`;
+
+  if (/\b(good first issue|first-timers?|beginner friendly|starter issue|easy|low[- ]hanging|small change|simple fix)\b/i.test(haystack)) {
+    effortSignals.push('good-first-issue');
+    effortScore -= 14;
+  }
+  if (/\b(docs?|readme|changelog|example|template|unit tests?|test coverage|smoke test)\b/i.test(haystack)) {
+    effortSignals.push('docs-or-tests');
+    effortScore -= 10;
+  }
+  if (/\b(one file|single file|minimal change|small patch|stub|typo|copy edit)\b/i.test(haystack)) {
+    effortSignals.push('narrow-scope');
+    effortScore -= 8;
+  }
+  if (/\b(security|vulnerability|exploit|private key|seed phrase|wallet|smart contract|mainnet|sign transaction)\b/i.test(haystack)) {
+    effortSignals.push('security-sensitive');
+    effortScore += 24;
+  }
+  if (/\b(migration|refactor|architecture|distributed|database|production|scalability|performance|e2e|flaky|race condition)\b/i.test(haystack)) {
+    effortSignals.push('infra-or-migration');
+    effortScore += 18;
+  }
+  if (/\b(sign up|signup|KYC|approval required|account required|manual payout|developer access)\b/i.test(haystack)) {
+    effortSignals.push('external-access');
+    effortScore += 14;
+  }
+  if (manualFriction) effortScore += 12;
+  if (riskFlags.some((flag) => flag.severity === 'error')) effortScore += 16;
+  if (riskFlags.some((flag) => flag.severity === 'warning')) effortScore += 8;
+  effortScore = Math.max(0, Math.min(100, effortScore));
+
+  const amount = /\b(bounty|reward|paid|payout|compensation)\b/i.test(haystack) ? 1 : 0;
+  const hasRail = signals.some((signal) => /USDC|Base|x402|MRWK|MergeWork/i.test(signal));
+  const blocker = riskFlags.some((flag) => flag.severity === 'error') || rawScore < 10;
+  let opportunityClass = 'standard';
+
+  if (blocker) opportunityClass = 'avoid';
+  else if (manualFriction || effortScore >= 70) opportunityClass = 'manual-review';
+  else if (score >= 40 && effortScore <= 28 && amount > 0) opportunityClass = 'quick-win';
+  else if (score >= 36 && hasRail) opportunityClass = 'rail-watch';
+  else if (score >= 40) opportunityClass = 'high-value';
+
+  return {
+    opportunityClass,
+    effortScore,
+    effortSignals,
   };
 }
 
@@ -544,10 +617,26 @@ function renderResults(results) {
     title.href = result.url;
     node.querySelector('[data-summary]').textContent = result.summary;
     node.querySelector('[data-repo-stats]').append(...repoStatNodes(result.repoStats));
+    node.querySelector('[data-opportunity]').append(...opportunityPills(result));
     node.querySelector('[data-signals]').append(...pillNodes(result.signals, 'signal'));
     node.querySelector('[data-addresses]').append(...payoutPills(result));
     elements.results.append(node);
   }
+}
+
+function opportunityPills(result) {
+  const pills = [createPill(`opportunity: ${result.opportunityClass ?? 'standard'}`, opportunityClassName(result.opportunityClass))];
+  if (Number.isFinite(result.effortScore)) pills.push(createPill(`effort: ${result.effortScore}/100`, 'effort'));
+  for (const signal of result.effortSignals ?? []) {
+    pills.push(createPill(signal, 'effort'));
+  }
+  return pills;
+}
+
+function opportunityClassName(value) {
+  if (['quick-win', 'high-value', 'rail-watch'].includes(value)) return 'opportunity-good';
+  if (['manual-review', 'avoid'].includes(value)) return 'opportunity-risk';
+  return 'opportunity';
 }
 
 function payoutPills(result) {
@@ -583,14 +672,17 @@ function createPill(text, className) {
 }
 
 function exportCsv() {
-  const header = ['score', 'repo', 'title', 'url', 'updated_at', 'signals', 'addresses'];
+  const header = ['score', 'opportunity_class', 'effort_score', 'repo', 'title', 'url', 'updated_at', 'signals', 'effort_signals', 'addresses'];
   const rows = currentResults.map((item) => [
     item.score,
+    item.opportunityClass ?? '',
+    item.effortScore ?? '',
     item.repo,
     item.title,
     item.url,
     item.updatedAt,
     item.signals.join('|'),
+    (item.effortSignals ?? []).join('|'),
     item.addresses.map((address) => `${address.type}:${address.value}`).join('|'),
   ]);
   const csv = [header, ...rows]

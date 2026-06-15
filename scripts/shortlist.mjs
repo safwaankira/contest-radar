@@ -31,6 +31,8 @@ export function buildShortlist(feed, options = {}) {
     allowManualFriction = true,
     maxRiskScore = Number.POSITIVE_INFINITY,
     excludeRisk = [],
+    opportunityClass,
+    maxEffortScore = Number.POSITIVE_INFINITY,
     minAmountUsd = 0,
   } = options;
   const signalRegex = signal ? new RegExp(signal, 'i') : null;
@@ -44,6 +46,8 @@ export function buildShortlist(feed, options = {}) {
     .filter((item) => !requireAmount || item.signals?.some((value) => /amount/i.test(value)))
     .filter((item) => !requireRail || item.signals?.some((value) => /USDC|Base|x402|MRWK|MergeWork/i.test(value)))
     .filter((item) => amountForFilter(item) >= minAmountUsd)
+    .filter((item) => !opportunityClass || item.opportunity_class === opportunityClass)
+    .filter((item) => Number(item.effort_score ?? 0) <= maxEffortScore)
     .filter((item) => Number(item.risk_score ?? 0) <= maxRiskScore)
     .filter((item) => allowManualFriction || !item.manual_friction)
     .filter((item) => !rejectContextLeak || !hasRisk(item, /hidden-context-leak|secret-or-wallet-risk/i))
@@ -67,11 +71,13 @@ export function formatShortlist(items, format = 'markdown') {
   }
 
   const rows = [
-    ['Score', 'Risk', 'Repo', 'Signals', 'Risk Flags', 'Title', 'URL'],
-    ['---:', '---:', '---', '---', '---', '---', '---'],
+    ['Score', 'Risk', 'Effort', 'Opportunity', 'Repo', 'Signals', 'Risk Flags', 'Title', 'URL'],
+    ['---:', '---:', '---:', '---', '---', '---', '---', '---', '---'],
     ...items.map((item) => [
       item.score,
       item.risk_score ?? 0,
+      item.effort_score ?? '',
+      item.opportunity_class ?? '',
       item.repo,
       (item.signals ?? []).join(', '),
       formatRiskFlags(item.risk_flags ?? []),
@@ -97,6 +103,8 @@ export function parseArgs(argv) {
     allowManualFriction: true,
     maxRiskScore: Number.POSITIVE_INFINITY,
     excludeRisk: [],
+    opportunityClass: undefined,
+    maxEffortScore: Number.POSITIVE_INFINITY,
     minAmountUsd: 0,
   };
 
@@ -121,6 +129,8 @@ export function parseArgs(argv) {
     else if (arg === '--reject-context-leak') options.rejectContextLeak = true;
     else if (arg === '--no-manual-friction') options.allowManualFriction = false;
     else if (arg === '--max-risk-score') options.maxRiskScore = parseNonNegativeNumber(next(), '--max-risk-score');
+    else if (arg === '--opportunity') options.opportunityClass = next();
+    else if (arg === '--max-effort-score') options.maxEffortScore = parseNonNegativeNumber(next(), '--max-effort-score');
     else if (arg === '--min-amount-usd') options.minAmountUsd = parseNonNegativeNumber(next(), '--min-amount-usd');
     else if (arg === '--exclude-risk') options.excludeRisk.push(next());
     else if (arg === '--help' || arg === '-h') options.help = true;
@@ -148,6 +158,8 @@ Options:
   --reject-context-leak      Exclude issues that ask for hidden/system/startup context or wallet-secret actions.
   --no-manual-friction       Exclude issues that require signup, manual approval, KYC, or account-heavy work.
   --max-risk-score <number>  Maximum risk penalty to include. Default: no cap.
+  --opportunity <class>      Filter to quick-win, high-value, rail-watch, standard, manual-review, or avoid.
+  --max-effort-score <num>   Maximum effort score to include. Lower usually means easier.
   --min-amount-usd <number>  Minimum parsed USD/USDC amount to include. Default: 0.
   --exclude-risk <regex>     Exclude a matching risk flag label. Can be repeated.
   --format <type>            markdown, json, or csv. Default: markdown.
@@ -169,11 +181,13 @@ function parseNonNegativeNumber(value, flag) {
 
 function toCsv(items) {
   const rows = [
-    ['score', 'raw_score', 'risk_score', 'amount_usd', 'payout_amount_usd', 'preset', 'repo', 'title', 'url', 'updated_at', 'signals', 'risk_flags', 'manual_friction', 'addresses'],
+    ['score', 'raw_score', 'risk_score', 'opportunity_class', 'effort_score', 'amount_usd', 'payout_amount_usd', 'preset', 'repo', 'title', 'url', 'updated_at', 'signals', 'effort_signals', 'risk_flags', 'manual_friction', 'addresses'],
     ...items.map((item) => [
       item.score,
       item.raw_score ?? item.score,
       item.risk_score ?? 0,
+      item.opportunity_class ?? '',
+      item.effort_score ?? '',
       item.amount_usd ?? '',
       item.payout_amount_usd ?? '',
       item.preset,
@@ -182,6 +196,7 @@ function toCsv(items) {
       item.url,
       item.updated_at,
       (item.signals ?? []).join('|'),
+      (item.effort_signals ?? []).join('|'),
       formatRiskFlags(item.risk_flags ?? []),
       Boolean(item.manual_friction),
       (item.addresses ?? []).map((address) => `${address.type}:${address.value}`).join('|'),

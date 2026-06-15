@@ -309,6 +309,7 @@ output {
 }
 
 .result-meta,
+.opportunity,
 .signals,
 .addresses {
   display: flex;
@@ -333,7 +334,8 @@ output {
   line-height: 1.5;
 }
 
-.repo-stats {
+.repo-stats,
+.opportunity {
   display: flex;
   flex-wrap: wrap;
   gap: 8px;
@@ -360,6 +362,30 @@ output {
   color: #173c8b;
   background: #edf3ff;
   border-color: #bfd0f7;
+}
+
+.pill.opportunity-good {
+  color: #064d3b;
+  background: #e5f7ee;
+  border-color: #acdcbc;
+}
+
+.pill.opportunity {
+  color: #173c8b;
+  background: #edf3ff;
+  border-color: #bfd0f7;
+}
+
+.pill.effort {
+  color: #384254;
+  background: #eef1f5;
+  border-color: #cfd7e3;
+}
+
+.pill.opportunity-risk {
+  color: #7a4300;
+  background: #fff5dc;
+  border-color: #f4d28d;
 }
 
 .pill.payout-warning {

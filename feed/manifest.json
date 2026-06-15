@@ -1,13 +1,14 @@
 {
   "name": "Bounty Radar daily feed",
-  "description": "Machine-readable GitHub bounty issue shortlist scored for payout clarity, payment rails, amount text, labels, and payout address hints.",
+  "description": "Machine-readable GitHub bounty issue shortlist scored for payout clarity, payment rails, amount text, labels, address hints, opportunity class, and effort score.",
   "homepage": "https://go165.github.io/bounty-radar/",
   "repository": "https://github.com/go165/bounty-radar",
   "latest_json": "https://go165.github.io/bounty-radar/feed/latest.json",
   "latest_csv": "https://go165.github.io/bounty-radar/feed/latest.csv",
   "schema": "https://go165.github.io/bounty-radar/feed/schema.json",
-  "generated_at": "2026-06-15T01:49:59.477Z",
-  "count": 46,
+  "generated_at": "2026-06-15T07:14:53.723Z",
+  "count": 40,
+  "errors": [],
   "refresh": {
     "cadence": "daily",
     "github_actions_workflow": "Daily bounty feed"

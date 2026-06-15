@@ -23,11 +23,14 @@ const feed = await response.json();
 
 const shortlist = feed.items
   .filter((item) => item.score >= 50)
+  .filter((item) => item.opportunity_class !== 'avoid')
   .filter((item) => item.signals.some((signal) => /bounty|amount|USDC|MRWK|x402/i.test(signal)))
   .slice(0, 10);
 
 console.table(shortlist.map((item) => ({
   score: item.score,
+  opportunity: item.opportunity_class,
+  effort: item.effort_score,
   repo: item.repo,
   title: item.title,
   url: item.url,
@@ -42,6 +45,7 @@ small filtered list without embedding feed parsing code:
 ```bash
 npm run shortlist -- --min-score 50 --require-amount --require-rail --limit 10
 npm run shortlist -- --preset mergework --format json
+npm run shortlist -- --min-score 30 --opportunity quick-win --max-effort-score 30 --format markdown
 npm run shortlist -- --feed feed/latest.json --signal 'x402|USDC|MRWK' --format csv
 ```
 
@@ -55,6 +59,8 @@ Useful filters:
 | `--signal 'USDC|MRWK'` | Require a matching signal label. |
 | `--require-amount` | Require explicit amount text. |
 | `--require-rail` | Require a USDC/Base/x402/MRWK rail signal. |
+| `--opportunity quick-win` | Keep only one decision class: quick-win, high-value, rail-watch, standard, manual-review, or avoid. |
+| `--max-effort-score 30` | Prefer lower-effort candidates. |
 | `--format markdown` | Emit Markdown, JSON, or CSV for handoff. |
 
 ## Claim-Before-Coding Audit
@@ -81,8 +87,9 @@ curl 'http://localhost:8787/v1/preview?tag=mergework'
 curl -H 'X-Payment: demo-paid' 'http://localhost:8787/v1/paid/data?min_score=50'
 ```
 
-The adapter normalizes `score`, `preset`, `repo`, `signals`, `labels`,
-`addresses`, and `url` into rows that can be filtered by agents.
+The adapter normalizes `score`, `opportunity_class`, `effort_score`, `preset`,
+`repo`, `signals`, `labels`, `addresses`, and `url` into rows that can be
+filtered by agents.
 
 ## Review Rules
 

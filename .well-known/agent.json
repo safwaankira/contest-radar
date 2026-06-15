@@ -1,6 +1,6 @@
 {
   "name": "Bounty Radar",
-  "description": "Static GitHub bounty intelligence feed for developers and coding agents, scored for payout clarity, payment rails, amount text, labels, and address hints.",
+  "description": "Static GitHub bounty intelligence feed for developers and coding agents, scored for payout clarity, payment rails, amount text, labels, address hints, opportunity class, and effort score.",
   "homepage": "https://go165.github.io/bounty-radar/",
   "repository": "https://github.com/go165/bounty-radar",
   "license": "MIT",
@@ -21,6 +21,7 @@
   "capabilities": [
     "daily GitHub bounty shortlist",
     "payout signal scoring",
+    "opportunity class and effort-score filtering",
     "Base/USDC/x402/MergeWork rail detection",
     "payout address extraction",
     "agent-readable JSON and CSV exports",
@@ -29,6 +30,7 @@
   ],
   "integration": {
     "cli": "npm run shortlist -- --min-score 50 --require-amount --require-rail --format markdown",
+    "quick_win_cli": "npm run shortlist -- --min-score 30 --opportunity quick-win --max-effort-score 30 --format markdown",
     "paid_api_adapter": "https://github.com/go165/x402-paid-api-starter",
     "docs": "https://go165.github.io/bounty-radar/docs/agent-handoff.md"
   },

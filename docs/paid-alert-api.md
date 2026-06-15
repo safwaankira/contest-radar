@@ -17,11 +17,15 @@ The feed shape is intentionally simple:
   "items": [
     {
       "score": 72,
+      "opportunity_class": "quick-win",
+      "effort_score": 24,
       "preset": "mergework",
       "repo": "ramimbo/mergework",
       "title": "MRWK bounty: 450 MRWK - Phase 2B snapshot Merkle proofs",
       "url": "https://github.com/ramimbo/mergework/issues/1027",
-      "signals": ["bounty", "MRWK/MergeWork", "amount"]
+      "signals": ["bounty", "MRWK/MergeWork", "amount"],
+      "effort_signals": ["docs-or-tests"],
+      "decision_notes": ["parsed payout amount: $450", "payment rail signal present"]
     }
   ]
 }
@@ -71,6 +75,10 @@ curl 'http://localhost:8787/v1/preview?tag=mergework'
 curl -H 'X-Payment: demo-paid' 'http://localhost:8787/v1/paid/data?min_score=50&repo=ramimbo/mergework'
 curl -H 'X-Payment: demo-paid' 'http://localhost:8787/v1/paid/data?tag=x402'
 ```
+
+Feed consumers can also filter on `opportunity_class` and `effort_score` before
+serving alerts, for example to expose only low-effort `quick-win` rows to coding
+agents.
 
 ## Option 3: Cloudflare Worker
 
