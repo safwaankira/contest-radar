@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-06-15T14:35:11.079Z",
+  "generated_at": "2026-06-16T13:03:44.605Z",
   "source": "https://github.com/go165/bounty-radar",
   "demo": "https://go165.github.io/bounty-radar/",
   "manifest": "https://go165.github.io/bounty-radar/feed/manifest.json",
@@ -9,29 +9,67 @@
   "errors": [],
   "items": [
     {
-      "score": 64,
-      "raw_score": 64,
+      "score": 84,
+      "raw_score": 84,
       "risk_score": 0,
       "opportunity_class": "rail-watch",
-      "effort_score": 72,
+      "effort_score": 64,
       "effort_signals": [
-        "docs-or-tests",
-        "security-sensitive",
-        "infra-or-migration"
+        "security-sensitive"
       ],
       "decision_notes": [
-        "parsed payout amount: $10",
+        "parsed payout amount: $100",
         "payment rail signal present",
-        "effort signals: docs-or-tests, security-sensitive, infra-or-migration"
+        "effort signals: security-sensitive"
       ],
       "risk_flags": [],
       "manual_friction": false,
       "preset": "base-usdc",
       "preset_name": "Base / USDC",
       "repo": "pyrimid-ai/pyrimid",
-      "title": "MYA job #24 submission: paid MCP tool guide with x402 and Pyrimid",
-      "url": "https://github.com/pyrimid-ai/pyrimid/issues/55",
-      "updated_at": "2026-06-15T14:18:13Z",
+      "title": "MYA job #20 submission: Maly Codex Pyrimid SDK recommender",
+      "url": "https://github.com/pyrimid-ai/pyrimid/issues/32",
+      "updated_at": "2026-06-16T10:44:59Z",
+      "labels": [],
+      "signals": [
+        "bounty",
+        "USDC/Base",
+        "x402",
+        "amount",
+        "payout address"
+      ],
+      "addresses": [
+        {
+          "type": "EVM",
+          "value": "0x85FDDaCFB64b6486094B45bA9a235e674a590497"
+        }
+      ],
+      "amount_usd": 100,
+      "payout_amount_usd": 100
+    },
+    {
+      "score": 64,
+      "raw_score": 64,
+      "risk_score": 0,
+      "opportunity_class": "high-value",
+      "effort_score": 54,
+      "effort_signals": [
+        "docs-or-tests",
+        "security-sensitive"
+      ],
+      "decision_notes": [
+        "parsed payout amount: $280",
+        "payment rail signal present",
+        "effort signals: docs-or-tests, security-sensitive"
+      ],
+      "risk_flags": [],
+      "manual_friction": false,
+      "preset": "x402",
+      "preset_name": "x402 paid APIs",
+      "repo": "x402-foundation/x402",
+      "title": "Concept: trustless autonomous-agent payments on x402 (policy-gated payer, no protocol changes)",
+      "url": "https://github.com/x402-foundation/x402/issues/2641",
+      "updated_at": "2026-06-16T12:52:48Z",
       "labels": [],
       "signals": [
         "bounty",
@@ -40,13 +78,45 @@
         "amount"
       ],
       "addresses": [],
-      "amount_usd": 10,
-      "payout_amount_usd": 10
+      "amount_usd": 500,
+      "payout_amount_usd": 280
     },
     {
-      "score": 50,
-      "raw_score": 72,
-      "risk_score": 22,
+      "score": 46,
+      "raw_score": 46,
+      "risk_score": 0,
+      "opportunity_class": "rail-watch",
+      "effort_score": 30,
+      "effort_signals": [
+        "docs-or-tests"
+      ],
+      "decision_notes": [
+        "parsed payout amount: $20",
+        "payment rail signal present",
+        "effort signals: docs-or-tests"
+      ],
+      "risk_flags": [],
+      "manual_friction": false,
+      "preset": "high-signal",
+      "preset_name": "High-signal bounties",
+      "repo": "intuition-box/intuition.box",
+      "title": "Mission 08: Intuition Community Call Recording [ROLE]",
+      "url": "https://github.com/intuition-box/intuition.box/issues/18",
+      "updated_at": "2026-06-16T13:01:48Z",
+      "labels": [],
+      "signals": [
+        "bounty",
+        "USDC/Base",
+        "amount"
+      ],
+      "addresses": [],
+      "amount_usd": 40,
+      "payout_amount_usd": 20
+    },
+    {
+      "score": 46,
+      "raw_score": 46,
+      "risk_score": 0,
       "opportunity_class": "rail-watch",
       "effort_score": 54,
       "effort_signals": [
@@ -56,36 +126,23 @@
       "decision_notes": [
         "no explicit USD/USDC amount parsed",
         "payment rail signal present",
-        "effort signals: docs-or-tests, security-sensitive",
-        "risk flags: competition-noise"
+        "effort signals: docs-or-tests, security-sensitive"
       ],
-      "risk_flags": [
-        {
-          "label": "competition-noise",
-          "severity": "high",
-          "penalty": 22
-        }
-      ],
+      "risk_flags": [],
       "manual_friction": false,
       "preset": "mergework",
       "preset_name": "MergeWork / MRWK",
-      "repo": "ramimbo/mergework",
-      "title": "MRWK bounty: 450 MRWK - Phase 2B snapshot Merkle proofs",
-      "url": "https://github.com/ramimbo/mergework/issues/1027",
-      "updated_at": "2026-06-14T17:28:30Z",
+      "repo": "Scottcjn/Rustchain",
+      "title": "RFC: Federation bridge to mergework (RTC ↔ MRWK)",
+      "url": "https://github.com/Scottcjn/Rustchain/issues/6522",
+      "updated_at": "2026-06-16T03:43:16Z",
       "labels": [
-        "enhancement",
-        "help wanted",
-        "mrwk:bounty",
-        "tests",
-        "ledger"
+        "triaged"
       ],
       "signals": [
         "bounty",
-        "USDC/Base",
         "MRWK/MergeWork",
-        "amount",
-        "label match"
+        "amount"
       ],
       "addresses": [],
       "amount_usd": null,
@@ -96,40 +153,186 @@
       "raw_score": 46,
       "risk_score": 0,
       "opportunity_class": "rail-watch",
-      "effort_score": 68,
+      "effort_score": 82,
       "effort_signals": [
-        "good-first-issue",
         "security-sensitive",
         "infra-or-migration"
       ],
       "decision_notes": [
-        "parsed payout amount: $2.4",
+        "parsed payout amount: $0.1",
         "payment rail signal present",
-        "effort signals: good-first-issue, security-sensitive, infra-or-migration"
+        "effort signals: security-sensitive, infra-or-migration"
+      ],
+      "risk_flags": [],
+      "manual_friction": false,
+      "preset": "mergework",
+      "preset_name": "MergeWork / MRWK",
+      "repo": "Scottcjn/Rustchain",
+      "title": "[TRACKING] rustchain-claim-portal chain_client.get_balance should use public read endpoint, not admin-key path",
+      "url": "https://github.com/Scottcjn/Rustchain/issues/6624",
+      "updated_at": "2026-06-16T03:43:13Z",
+      "labels": [
+        "triaged"
+      ],
+      "signals": [
+        "bounty",
+        "MRWK/MergeWork",
+        "amount"
+      ],
+      "addresses": [],
+      "amount_usd": 0.1,
+      "payout_amount_usd": null
+    },
+    {
+      "score": 46,
+      "raw_score": 46,
+      "risk_score": 0,
+      "opportunity_class": "rail-watch",
+      "effort_score": 72,
+      "effort_signals": [
+        "docs-or-tests",
+        "security-sensitive",
+        "infra-or-migration"
+      ],
+      "decision_notes": [
+        "no explicit USD/USDC amount parsed",
+        "payment rail signal present",
+        "effort signals: docs-or-tests, security-sensitive, infra-or-migration"
+      ],
+      "risk_flags": [],
+      "manual_friction": false,
+      "preset": "mergework",
+      "preset_name": "MergeWork / MRWK",
+      "repo": "ramimbo/mergework",
+      "title": "Production GitHub OAuth callback for /me returns Cannot GET /auth/github/callback",
+      "url": "https://github.com/ramimbo/mergework/issues/1146",
+      "updated_at": "2026-06-15T16:00:13Z",
+      "labels": [],
+      "signals": [
+        "bounty",
+        "MRWK/MergeWork",
+        "amount"
+      ],
+      "addresses": [],
+      "amount_usd": null,
+      "payout_amount_usd": null
+    },
+    {
+      "score": 38,
+      "raw_score": 38,
+      "risk_score": 0,
+      "opportunity_class": "rail-watch",
+      "effort_score": 16,
+      "effort_signals": [
+        "good-first-issue",
+        "docs-or-tests"
+      ],
+      "decision_notes": [
+        "no explicit USD/USDC amount parsed",
+        "payment rail signal present",
+        "effort signals: good-first-issue, docs-or-tests"
+      ],
+      "risk_flags": [],
+      "manual_friction": false,
+      "preset": "base-usdc",
+      "preset_name": "Base / USDC",
+      "repo": "hashgraph/hedera-agent-kit-js",
+      "title": "Feedback: CapScribe MCP x402 integration — Week 3 bounty",
+      "url": "https://github.com/hashgraph/hedera-agent-kit-js/issues/903",
+      "updated_at": "2026-06-16T09:45:27Z",
+      "labels": [
+        "feedback",
+        "bounty-feeback"
+      ],
+      "signals": [
+        "bounty",
+        "x402",
+        "label match"
+      ],
+      "addresses": [],
+      "amount_usd": null,
+      "payout_amount_usd": null
+    },
+    {
+      "score": 36,
+      "raw_score": 36,
+      "risk_score": 0,
+      "opportunity_class": "high-value",
+      "effort_score": 44,
+      "effort_signals": [
+        "good-first-issue",
+        "infra-or-migration"
+      ],
+      "decision_notes": [
+        "parsed payout amount: $4200",
+        "effort signals: good-first-issue, infra-or-migration"
       ],
       "risk_flags": [],
       "manual_friction": false,
       "preset": "high-signal",
       "preset_name": "High-signal bounties",
-      "repo": "Ads-Bazaar/ads-bazaar",
-      "title": "feat: Build AdsBazaar Landing Page",
-      "url": "https://github.com/Ads-Bazaar/ads-bazaar/issues/8",
-      "updated_at": "2026-06-15T14:33:28Z",
+      "repo": "ClankerNation/OpenAgents",
+      "title": "[ Bounty $4k ] [ Solidity ] Fix TWAPOracle has no observation array rotation",
+      "url": "https://github.com/ClankerNation/OpenAgents/issues/132",
+      "updated_at": "2026-06-16T13:03:09Z",
       "labels": [
-        "enhancement",
+        "Autonomus Agents Only",
         "good first issue",
-        "frontend",
-        "design",
-        "priority: high"
+        "help wanted",
+        "💎 Bounty",
+        "high-value",
+        "crypto-eligible",
+        "$4k"
       ],
       "signals": [
         "bounty",
-        "USDC/Base",
-        "amount"
+        "amount",
+        "label match"
       ],
       "addresses": [],
-      "amount_usd": 2.4,
-      "payout_amount_usd": null
+      "amount_usd": 4200,
+      "payout_amount_usd": 4200
+    },
+    {
+      "score": 36,
+      "raw_score": 36,
+      "risk_score": 0,
+      "opportunity_class": "high-value",
+      "effort_score": 26,
+      "effort_signals": [
+        "good-first-issue"
+      ],
+      "decision_notes": [
+        "parsed payout amount: $700",
+        "effort signals: good-first-issue"
+      ],
+      "risk_flags": [],
+      "manual_friction": false,
+      "preset": "base-usdc",
+      "preset_name": "Base / USDC",
+      "repo": "SecureBananaLabs/bug-bounty",
+      "title": "Low Handing Fruit Automation",
+      "url": "https://github.com/SecureBananaLabs/bug-bounty/issues/743",
+      "updated_at": "2026-06-16T12:59:12Z",
+      "labels": [
+        "bug",
+        "documentation",
+        "good first issue",
+        "help wanted",
+        "bug bounty",
+        "AI agent friendly",
+        "bounty",
+        "💎 Bounty",
+        "$700"
+      ],
+      "signals": [
+        "bounty",
+        "amount",
+        "label match"
+      ],
+      "addresses": [],
+      "amount_usd": 700,
+      "payout_amount_usd": 700
     },
     {
       "score": 36,
@@ -147,12 +350,12 @@
       ],
       "risk_flags": [],
       "manual_friction": false,
-      "preset": "high-signal",
-      "preset_name": "High-signal bounties",
+      "preset": "base-usdc",
+      "preset_name": "Base / USDC",
       "repo": "claude-builders-bounty/claude-builders-bounty",
       "title": "[BOUNTY $100] HOOK: Pre-tool-use hook that blocks destructive bash commands",
       "url": "https://github.com/claude-builders-bounty/claude-builders-bounty/issues/3",
-      "updated_at": "2026-06-15T14:34:19Z",
+      "updated_at": "2026-06-16T12:26:25Z",
       "labels": [
         "bounty",
         "hook",
@@ -166,145 +369,6 @@
       "addresses": [],
       "amount_usd": 100,
       "payout_amount_usd": 100
-    },
-    {
-      "score": 36,
-      "raw_score": 36,
-      "risk_score": 0,
-      "opportunity_class": "high-value",
-      "effort_score": 30,
-      "effort_signals": [
-        "docs-or-tests"
-      ],
-      "decision_notes": [
-        "parsed payout amount: $5000",
-        "effort signals: docs-or-tests"
-      ],
-      "risk_flags": [],
-      "manual_friction": false,
-      "preset": "base-usdc",
-      "preset_name": "Base / USDC",
-      "repo": "tenstorrent/tt-metal",
-      "title": "[Bounty $5000] [SFPU] Optimize `atanh`, `asinh`, and `acosh` with Numerically Stable `log1p`-Based Implementations (WH B0/BH)",
-      "url": "https://github.com/tenstorrent/tt-metal/issues/46862",
-      "updated_at": "2026-06-15T14:09:48Z",
-      "labels": [
-        "community",
-        "bounty",
-        "bounty_difficulty/hard"
-      ],
-      "signals": [
-        "bounty",
-        "amount",
-        "label match"
-      ],
-      "addresses": [],
-      "amount_usd": 5000,
-      "payout_amount_usd": 5000
-    },
-    {
-      "score": 36,
-      "raw_score": 36,
-      "risk_score": 0,
-      "opportunity_class": "quick-win",
-      "effort_score": 16,
-      "effort_signals": [
-        "good-first-issue",
-        "docs-or-tests"
-      ],
-      "decision_notes": [
-        "parsed payout amount: $50",
-        "effort signals: good-first-issue, docs-or-tests"
-      ],
-      "risk_flags": [],
-      "manual_friction": false,
-      "preset": "base-usdc",
-      "preset_name": "Base / USDC",
-      "repo": "claude-builders-bounty/claude-builders-bounty",
-      "title": "[BOUNTY $50] SKILL: Generate a structured CHANGELOG from git history",
-      "url": "https://github.com/claude-builders-bounty/claude-builders-bounty/issues/1",
-      "updated_at": "2026-06-15T13:51:03Z",
-      "labels": [
-        "bounty",
-        "skill",
-        "good first issue"
-      ],
-      "signals": [
-        "bounty",
-        "amount",
-        "label match"
-      ],
-      "addresses": [],
-      "amount_usd": 50,
-      "payout_amount_usd": 50
-    },
-    {
-      "score": 36,
-      "raw_score": 36,
-      "risk_score": 0,
-      "opportunity_class": "standard",
-      "effort_score": 30,
-      "effort_signals": [
-        "docs-or-tests"
-      ],
-      "decision_notes": [
-        "parsed payout amount: $150",
-        "effort signals: docs-or-tests"
-      ],
-      "risk_flags": [],
-      "manual_friction": false,
-      "preset": "base-usdc",
-      "preset_name": "Base / USDC",
-      "repo": "claude-builders-bounty/claude-builders-bounty",
-      "title": "[BOUNTY $150] AGENT: Claude Code sub-agent that reviews a PR and posts a structured comment",
-      "url": "https://github.com/claude-builders-bounty/claude-builders-bounty/issues/4",
-      "updated_at": "2026-06-15T13:51:03Z",
-      "labels": [
-        "bounty",
-        "agent"
-      ],
-      "signals": [
-        "bounty",
-        "amount",
-        "label match"
-      ],
-      "addresses": [],
-      "amount_usd": 150,
-      "payout_amount_usd": 150
-    },
-    {
-      "score": 36,
-      "raw_score": 36,
-      "risk_score": 0,
-      "opportunity_class": "standard",
-      "effort_score": 30,
-      "effort_signals": [
-        "docs-or-tests"
-      ],
-      "decision_notes": [
-        "parsed payout amount: $200",
-        "effort signals: docs-or-tests"
-      ],
-      "risk_flags": [],
-      "manual_friction": false,
-      "preset": "base-usdc",
-      "preset_name": "Base / USDC",
-      "repo": "claude-builders-bounty/claude-builders-bounty",
-      "title": "[BOUNTY $200] WORKFLOW: n8n + Claude Code — automated weekly dev summary",
-      "url": "https://github.com/claude-builders-bounty/claude-builders-bounty/issues/5",
-      "updated_at": "2026-06-15T11:54:04Z",
-      "labels": [
-        "bounty",
-        "workflow"
-      ],
-      "signals": [
-        "bounty",
-        "amount",
-        "label match"
-      ],
-      "addresses": [],
-      "amount_usd": 200,
-      "payout_amount_usd": 200
     },
     {
       "score": 36,
@@ -327,7 +391,7 @@
       "repo": "claude-builders-bounty/claude-builders-bounty",
       "title": "[BOUNTY $75] TEMPLATE: CLAUDE.md for a Next.js + SQLite SaaS project",
       "url": "https://github.com/claude-builders-bounty/claude-builders-bounty/issues/2",
-      "updated_at": "2026-06-15T11:54:02Z",
+      "updated_at": "2026-06-16T12:26:24Z",
       "labels": [
         "bounty",
         "template"
@@ -345,33 +409,28 @@
       "score": 36,
       "raw_score": 36,
       "risk_score": 0,
-      "opportunity_class": "high-value",
-      "effort_score": 26,
+      "opportunity_class": "quick-win",
+      "effort_score": 16,
       "effort_signals": [
-        "good-first-issue"
+        "good-first-issue",
+        "docs-or-tests"
       ],
       "decision_notes": [
-        "parsed payout amount: $700",
-        "effort signals: good-first-issue"
+        "parsed payout amount: $50",
+        "effort signals: good-first-issue, docs-or-tests"
       ],
       "risk_flags": [],
       "manual_friction": false,
       "preset": "base-usdc",
       "preset_name": "Base / USDC",
-      "repo": "SecureBananaLabs/bug-bounty",
-      "title": "Low Handing Fruit Automation",
-      "url": "https://github.com/SecureBananaLabs/bug-bounty/issues/743",
-      "updated_at": "2026-06-15T11:13:46Z",
+      "repo": "claude-builders-bounty/claude-builders-bounty",
+      "title": "[BOUNTY $50] SKILL: Generate a structured CHANGELOG from git history",
+      "url": "https://github.com/claude-builders-bounty/claude-builders-bounty/issues/1",
+      "updated_at": "2026-06-16T12:26:22Z",
       "labels": [
-        "bug",
-        "documentation",
-        "good first issue",
-        "help wanted",
-        "bug bounty",
-        "AI agent friendly",
         "bounty",
-        "💎 Bounty",
-        "$700"
+        "skill",
+        "good first issue"
       ],
       "signals": [
         "bounty",
@@ -379,8 +438,45 @@
         "label match"
       ],
       "addresses": [],
-      "amount_usd": 700,
-      "payout_amount_usd": 700
+      "amount_usd": 50,
+      "payout_amount_usd": 50
+    },
+    {
+      "score": 36,
+      "raw_score": 36,
+      "risk_score": 0,
+      "opportunity_class": "high-value",
+      "effort_score": 26,
+      "effort_signals": [
+        "good-first-issue"
+      ],
+      "decision_notes": [
+        "parsed payout amount: $1000",
+        "effort signals: good-first-issue"
+      ],
+      "risk_flags": [],
+      "manual_friction": false,
+      "preset": "base-usdc",
+      "preset_name": "Base / USDC",
+      "repo": "xevrion-v2/agent-playground",
+      "title": "Calculate the exact value of PI",
+      "url": "https://github.com/xevrion-v2/agent-playground/issues/17",
+      "updated_at": "2026-06-16T10:28:04Z",
+      "labels": [
+        "good first issue",
+        "bounty",
+        "AI agent friendly",
+        "💎 Bounty",
+        "$1k"
+      ],
+      "signals": [
+        "bounty",
+        "amount",
+        "label match"
+      ],
+      "addresses": [],
+      "amount_usd": 1000,
+      "payout_amount_usd": 1000
     },
     {
       "score": 32,
@@ -405,12 +501,12 @@
         }
       ],
       "manual_friction": false,
-      "preset": "x402",
-      "preset_name": "x402 paid APIs",
+      "preset": "mergework",
+      "preset_name": "MergeWork / MRWK",
       "repo": "ramimbo/mergework",
       "title": "MRWK bounty: 40 MRWK - review open MergeWork PRs with evidence, round 21",
       "url": "https://github.com/ramimbo/mergework/issues/1009",
-      "updated_at": "2026-06-15T14:31:47Z",
+      "updated_at": "2026-06-16T04:31:57Z",
       "labels": [
         "mrwk:bounty"
       ],
@@ -454,7 +550,7 @@
       "repo": "ramimbo/mergework",
       "title": "MRWK bounty: 150 MRWK - contributor profiles and proof explorer improvements",
       "url": "https://github.com/ramimbo/mergework/issues/1010",
-      "updated_at": "2026-06-15T07:03:52Z",
+      "updated_at": "2026-06-16T03:27:29Z",
       "labels": [
         "mrwk:bounty"
       ],
@@ -473,14 +569,16 @@
       "raw_score": 54,
       "risk_score": 22,
       "opportunity_class": "rail-watch",
-      "effort_score": 64,
+      "effort_score": 46,
       "effort_signals": [
+        "docs-or-tests",
+        "narrow-scope",
         "security-sensitive"
       ],
       "decision_notes": [
         "no explicit USD/USDC amount parsed",
         "payment rail signal present",
-        "effort signals: security-sensitive",
+        "effort signals: docs-or-tests, narrow-scope, security-sensitive",
         "risk flags: competition-noise"
       ],
       "risk_flags": [
@@ -494,12 +592,11 @@
       "preset": "mergework",
       "preset_name": "MergeWork / MRWK",
       "repo": "ramimbo/mergework",
-      "title": "MRWK bounty: 40 MRWK - review open MergeWork PRs with evidence, round 20",
-      "url": "https://github.com/ramimbo/mergework/issues/933",
-      "updated_at": "2026-06-15T05:56:50Z",
+      "title": "MRWK bounty: 150 MRWK - wallet and account flow UX improvements",
+      "url": "https://github.com/ramimbo/mergework/issues/1011",
+      "updated_at": "2026-06-15T17:55:40Z",
       "labels": [
-        "mrwk:bounty",
-        "review"
+        "mrwk:bounty"
       ],
       "signals": [
         "bounty",
@@ -516,15 +613,16 @@
       "raw_score": 54,
       "risk_score": 22,
       "opportunity_class": "rail-watch",
-      "effort_score": 54,
+      "effort_score": 46,
       "effort_signals": [
         "docs-or-tests",
+        "narrow-scope",
         "security-sensitive"
       ],
       "decision_notes": [
         "no explicit USD/USDC amount parsed",
         "payment rail signal present",
-        "effort signals: docs-or-tests, security-sensitive",
+        "effort signals: docs-or-tests, narrow-scope, security-sensitive",
         "risk flags: competition-noise"
       ],
       "risk_flags": [
@@ -538,16 +636,14 @@
       "preset": "mergework",
       "preset_name": "MergeWork / MRWK",
       "repo": "ramimbo/mergework",
-      "title": "MRWK bounty: 150 MRWK - public bounty discovery and contributor-flow follow-up, round 2",
-      "url": "https://github.com/ramimbo/mergework/issues/935",
-      "updated_at": "2026-06-15T05:25:03Z",
+      "title": "MRWK bounty: 100 MRWK - code cleanup and maintainability improvements, round 2",
+      "url": "https://github.com/ramimbo/mergework/issues/936",
+      "updated_at": "2026-06-15T17:54:25Z",
       "labels": [
-        "documentation",
         "enhancement",
         "help wanted",
         "mrwk:bounty",
-        "frontend",
-        "api"
+        "tests"
       ],
       "signals": [
         "bounty",
@@ -564,15 +660,16 @@
       "raw_score": 54,
       "risk_score": 22,
       "opportunity_class": "rail-watch",
-      "effort_score": 54,
+      "effort_score": 46,
       "effort_signals": [
         "docs-or-tests",
+        "narrow-scope",
         "security-sensitive"
       ],
       "decision_notes": [
         "no explicit USD/USDC amount parsed",
         "payment rail signal present",
-        "effort signals: docs-or-tests, security-sensitive",
+        "effort signals: docs-or-tests, narrow-scope, security-sensitive",
         "risk flags: competition-noise"
       ],
       "risk_flags": [
@@ -586,55 +683,19 @@
       "preset": "mergework",
       "preset_name": "MergeWork / MRWK",
       "repo": "ramimbo/mergework",
-      "title": "MRWK bounty: 200 MRWK - public API and OpenAPI client contract completion",
-      "url": "https://github.com/ramimbo/mergework/issues/944",
-      "updated_at": "2026-06-15T05:13:55Z",
+      "title": "MRWK bounty: 50 MRWK - accepted proposed-work requests, round 3",
+      "url": "https://github.com/ramimbo/mergework/issues/932",
+      "updated_at": "2026-06-15T15:20:53Z",
       "labels": [
         "documentation",
-        "enhancement",
         "help wanted",
-        "mrwk:bounty",
-        "tests",
-        "api"
+        "mrwk:bounty"
       ],
       "signals": [
         "bounty",
         "MRWK/MergeWork",
         "amount",
         "label match"
-      ],
-      "addresses": [],
-      "amount_usd": null,
-      "payout_amount_usd": null
-    },
-    {
-      "score": 30,
-      "raw_score": 30,
-      "risk_score": 0,
-      "opportunity_class": "standard",
-      "effort_score": 40,
-      "effort_signals": [],
-      "decision_notes": [
-        "no explicit USD/USDC amount parsed",
-        "payment rail signal present"
-      ],
-      "risk_flags": [],
-      "manual_friction": false,
-      "preset": "high-signal",
-      "preset_name": "High-signal bounties",
-      "repo": "Ixotic27/The-Leetcode-City",
-      "title": "[Feature]: Design and implement the \"Relics Exhibition Vault\" 3D showcase building near the central plaza",
-      "url": "https://github.com/Ixotic27/The-Leetcode-City/issues/522",
-      "updated_at": "2026-06-15T14:34:37Z",
-      "labels": [
-        "Gssoc 26",
-        "level:intermediate",
-        "gssoc:approved",
-        "type:3d"
-      ],
-      "signals": [
-        "bounty",
-        "USDC/Base"
       ],
       "addresses": [],
       "amount_usd": null,
@@ -662,7 +723,7 @@
       "repo": "lalalune/ArkLib",
       "title": "Prove δ* — complete research dossier for the RS proximity-gap prize (successor to #407)",
       "url": "https://github.com/lalalune/ArkLib/issues/444",
-      "updated_at": "2026-06-15T14:33:50Z",
+      "updated_at": "2026-06-16T13:01:57Z",
       "labels": [],
       "signals": [
         "bounty",
@@ -673,8 +734,8 @@
       "payout_amount_usd": null
     },
     {
-      "score": 28,
-      "raw_score": 28,
+      "score": 30,
+      "raw_score": 30,
       "risk_score": 0,
       "opportunity_class": "standard",
       "effort_score": 48,
@@ -683,28 +744,93 @@
         "infra-or-migration"
       ],
       "decision_notes": [
-        "parsed payout amount: $50",
+        "no explicit USD/USDC amount parsed",
+        "payment rail signal present",
         "effort signals: docs-or-tests, infra-or-migration"
       ],
       "risk_flags": [],
       "manual_friction": false,
       "preset": "high-signal",
       "preset_name": "High-signal bounties",
-      "repo": "onehumancorp/mono",
-      "title": "[Architecture Design] Offline-First Mutative Sync & AI Conflict Resolution for Mobile Workers",
-      "url": "https://github.com/onehumancorp/mono/issues/28651",
-      "updated_at": "2026-06-15T14:33:33Z",
+      "repo": "sploithunter/RBX-Template",
+      "title": "Feature: Add Rebirth class loop with all-11 self-hatched dragon gate",
+      "url": "https://github.com/sploithunter/RBX-Template/issues/13",
+      "updated_at": "2026-06-16T13:01:38Z",
       "labels": [
-        "architecture",
-        "agent-report",
-        "mobile-first"
+        "enhancement"
       ],
       "signals": [
         "bounty",
-        "amount"
+        "USDC/Base"
       ],
       "addresses": [],
-      "amount_usd": 50,
+      "amount_usd": null,
+      "payout_amount_usd": null
+    },
+    {
+      "score": 30,
+      "raw_score": 30,
+      "risk_score": 0,
+      "opportunity_class": "standard",
+      "effort_score": 58,
+      "effort_signals": [
+        "infra-or-migration"
+      ],
+      "decision_notes": [
+        "no explicit USD/USDC amount parsed",
+        "payment rail signal present",
+        "effort signals: infra-or-migration"
+      ],
+      "risk_flags": [],
+      "manual_friction": false,
+      "preset": "high-signal",
+      "preset_name": "High-signal bounties",
+      "repo": "Starkka15/PocketTavern",
+      "title": "On-device LLM inference (no server required)",
+      "url": "https://github.com/Starkka15/PocketTavern/issues/5",
+      "updated_at": "2026-06-16T12:59:58Z",
+      "labels": [
+        "enhancement"
+      ],
+      "signals": [
+        "bounty",
+        "x402"
+      ],
+      "addresses": [],
+      "amount_usd": null,
+      "payout_amount_usd": null
+    },
+    {
+      "score": 30,
+      "raw_score": 30,
+      "risk_score": 0,
+      "opportunity_class": "standard",
+      "effort_score": 72,
+      "effort_signals": [
+        "docs-or-tests",
+        "security-sensitive",
+        "infra-or-migration"
+      ],
+      "decision_notes": [
+        "no explicit USD/USDC amount parsed",
+        "payment rail signal present",
+        "effort signals: docs-or-tests, security-sensitive, infra-or-migration"
+      ],
+      "risk_flags": [],
+      "manual_friction": false,
+      "preset": "base-usdc",
+      "preset_name": "Base / USDC",
+      "repo": "Scottcjn/rustchain-bounties",
+      "title": "[Bounty #1102 claim: 5 RTC] Bottube #1428 - register gemini_bp (PR #1429)",
+      "url": "https://github.com/Scottcjn/rustchain-bounties/issues/14057",
+      "updated_at": "2026-06-16T11:07:05Z",
+      "labels": [],
+      "signals": [
+        "bounty",
+        "USDC/Base"
+      ],
+      "addresses": [],
+      "amount_usd": null,
       "payout_amount_usd": null
     },
     {
@@ -724,7 +850,7 @@
       "repo": "devpool-directory/devpool-directory",
       "title": "Launch Another DoraHacks Bounty Post",
       "url": "https://github.com/devpool-directory/devpool-directory/issues/5924",
-      "updated_at": "2026-06-15T12:33:33Z",
+      "updated_at": "2026-06-16T11:26:05Z",
       "labels": [
         "Priority: 1 (Normal)",
         "Time: <15 Minutes",
@@ -755,7 +881,7 @@
       "repo": "devpool-directory/devpool-directory",
       "title": "Implement Differential Reward Distribution for Reopened Issues",
       "url": "https://github.com/devpool-directory/devpool-directory/issues/5012",
-      "updated_at": "2026-06-15T12:33:23Z",
+      "updated_at": "2026-06-16T11:25:59Z",
       "labels": [
         "Time: <1 Day",
         "Priority: 2 (Medium)",
@@ -763,90 +889,6 @@
       ],
       "signals": [
         "bounty",
-        "amount"
-      ],
-      "addresses": [],
-      "amount_usd": null,
-      "payout_amount_usd": null
-    },
-    {
-      "score": 24,
-      "raw_score": 46,
-      "risk_score": 22,
-      "opportunity_class": "rail-watch",
-      "effort_score": 54,
-      "effort_signals": [
-        "docs-or-tests",
-        "security-sensitive"
-      ],
-      "decision_notes": [
-        "no explicit USD/USDC amount parsed",
-        "payment rail signal present",
-        "effort signals: docs-or-tests, security-sensitive",
-        "risk flags: competition-noise"
-      ],
-      "risk_flags": [
-        {
-          "label": "competition-noise",
-          "severity": "high",
-          "penalty": 22
-        }
-      ],
-      "manual_friction": false,
-      "preset": "mergework",
-      "preset_name": "MergeWork / MRWK",
-      "repo": "ramimbo/mergework",
-      "title": "Proposed work: reject URL-encoded special characters in public account and ledger path IDs",
-      "url": "https://github.com/ramimbo/mergework/issues/1083",
-      "updated_at": "2026-06-15T12:31:13Z",
-      "labels": [
-        "proposed-work"
-      ],
-      "signals": [
-        "bounty",
-        "MRWK/MergeWork",
-        "amount"
-      ],
-      "addresses": [],
-      "amount_usd": null,
-      "payout_amount_usd": null
-    },
-    {
-      "score": 24,
-      "raw_score": 46,
-      "risk_score": 22,
-      "opportunity_class": "rail-watch",
-      "effort_score": 54,
-      "effort_signals": [
-        "docs-or-tests",
-        "security-sensitive"
-      ],
-      "decision_notes": [
-        "no explicit USD/USDC amount parsed",
-        "payment rail signal present",
-        "effort signals: docs-or-tests, security-sensitive",
-        "risk flags: competition-noise"
-      ],
-      "risk_flags": [
-        {
-          "label": "competition-noise",
-          "severity": "high",
-          "penalty": 22
-        }
-      ],
-      "manual_friction": false,
-      "preset": "mergework",
-      "preset_name": "MergeWork / MRWK",
-      "repo": "ramimbo/mergework",
-      "title": "Proposed work: reject transaction filters on account accepted-work API",
-      "url": "https://github.com/ramimbo/mergework/issues/1114",
-      "updated_at": "2026-06-15T00:22:30Z",
-      "labels": [
-        "proposed-work"
-      ],
-      "signals": [
-        "bounty",
-        "MRWK/MergeWork",
         "amount"
       ],
       "addresses": [],
@@ -876,7 +918,7 @@
       "repo": "Scottcjn/rustchain-bounties",
       "title": "[BOUNTY] Star & Follow — Earn RTC (Ongoing, Agents Welcome)",
       "url": "https://github.com/Scottcjn/rustchain-bounties/issues/2103",
-      "updated_at": "2026-06-15T06:35:23Z",
+      "updated_at": "2026-06-16T04:55:23Z",
       "labels": [
         "bounty",
         "easy",
@@ -892,114 +934,261 @@
       "payout_amount_usd": null
     },
     {
-      "score": 18,
-      "raw_score": 18,
-      "risk_score": 0,
-      "opportunity_class": "standard",
-      "effort_score": 30,
-      "effort_signals": [
-        "docs-or-tests"
-      ],
-      "decision_notes": [
-        "no explicit USD/USDC amount parsed",
-        "payment rail signal present",
-        "effort signals: docs-or-tests"
-      ],
-      "risk_flags": [],
-      "manual_friction": false,
-      "preset": "x402",
-      "preset_name": "x402 paid APIs",
-      "repo": "brave-experiments/bx402",
-      "title": "Dependency Dashboard",
-      "url": "https://github.com/brave-experiments/bx402/issues/14",
-      "updated_at": "2026-06-15T14:28:15Z",
-      "labels": [],
-      "signals": [
-        "x402"
-      ],
-      "addresses": [],
-      "amount_usd": null,
-      "payout_amount_usd": null
-    },
-    {
-      "score": 18,
-      "raw_score": 18,
-      "risk_score": 0,
-      "opportunity_class": "standard",
-      "effort_score": 64,
-      "effort_signals": [
-        "docs-or-tests",
-        "narrow-scope",
-        "security-sensitive",
-        "infra-or-migration"
-      ],
-      "decision_notes": [
-        "no explicit USD/USDC amount parsed",
-        "payment rail signal present",
-        "effort signals: docs-or-tests, narrow-scope, security-sensitive, infra-or-migration"
-      ],
-      "risk_flags": [],
-      "manual_friction": false,
-      "preset": "x402",
-      "preset_name": "x402 paid APIs",
-      "repo": "dc-deal/FiniexTestingIDE",
-      "title": "Vision & Roadmap — FiniexTestingIDE",
-      "url": "https://github.com/dc-deal/FiniexTestingIDE/issues/138",
-      "updated_at": "2026-06-15T14:25:40Z",
-      "labels": [
-        "critical",
-        "documentation",
-        "feature path",
-        "mostly demanded"
-      ],
-      "signals": [
-        "USDC/Base"
-      ],
-      "addresses": [],
-      "amount_usd": null,
-      "payout_amount_usd": null
-    },
-    {
-      "score": 18,
-      "raw_score": 18,
+      "score": 12,
+      "raw_score": 12,
       "risk_score": 0,
       "opportunity_class": "standard",
       "effort_score": 40,
       "effort_signals": [],
       "decision_notes": [
-        "no explicit USD/USDC amount parsed",
-        "payment rail signal present"
+        "no explicit USD/USDC amount parsed"
       ],
       "risk_flags": [],
       "manual_friction": false,
-      "preset": "base-usdc",
-      "preset_name": "Base / USDC",
-      "repo": "x402-foundation/x402",
-      "title": "Post-settlement accountability layer: tamper-evident proof of agent action after payment",
-      "url": "https://github.com/x402-foundation/x402/issues/2332",
-      "updated_at": "2026-06-15T11:20:33Z",
+      "preset": "high-signal",
+      "preset_name": "High-signal bounties",
+      "repo": "mbcarbody-cmd/ai-business-factory",
+      "title": "P0: Founder Freedom → €3k/day → Forbes-scale company",
+      "url": "https://github.com/mbcarbody-cmd/ai-business-factory/issues/49",
+      "updated_at": "2026-06-16T13:03:35Z",
       "labels": [],
       "signals": [
-        "x402"
+        "bounty"
       ],
       "addresses": [],
       "amount_usd": null,
       "payout_amount_usd": null
     },
     {
-      "score": 14,
-      "raw_score": 36,
-      "risk_score": 22,
+      "score": 12,
+      "raw_score": 12,
+      "risk_score": 0,
       "opportunity_class": "standard",
       "effort_score": 40,
+      "effort_signals": [],
+      "decision_notes": [
+        "no explicit USD/USDC amount parsed"
+      ],
+      "risk_flags": [],
+      "manual_friction": false,
+      "preset": "high-signal",
+      "preset_name": "High-signal bounties",
+      "repo": "Stellar-Mail/stealth",
+      "title": "app-ui: add read receipt privacy toggles",
+      "url": "https://github.com/Stellar-Mail/stealth/issues/131",
+      "updated_at": "2026-06-16T13:03:27Z",
+      "labels": [
+        "enhancement",
+        "Maybe Rewarded",
+        "GrantFox OSS",
+        "Official Campaign"
+      ],
+      "signals": [
+        "bounty"
+      ],
+      "addresses": [],
+      "amount_usd": null,
+      "payout_amount_usd": null
+    },
+    {
+      "score": 12,
+      "raw_score": 12,
+      "risk_score": 0,
+      "opportunity_class": "standard",
+      "effort_score": 58,
       "effort_signals": [
-        "good-first-issue",
+        "infra-or-migration"
+      ],
+      "decision_notes": [
+        "no explicit USD/USDC amount parsed",
+        "effort signals: infra-or-migration"
+      ],
+      "risk_flags": [],
+      "manual_friction": false,
+      "preset": "high-signal",
+      "preset_name": "High-signal bounties",
+      "repo": "bsv-blockchain/teranode",
+      "title": "perf(blockvalidation): investigate removing the lock/unlock pattern from quick-validation catchup",
+      "url": "https://github.com/bsv-blockchain/teranode/issues/1103",
+      "updated_at": "2026-06-16T13:02:52Z",
+      "labels": [],
+      "signals": [
+        "bounty"
+      ],
+      "addresses": [],
+      "amount_usd": null,
+      "payout_amount_usd": null
+    },
+    {
+      "score": 12,
+      "raw_score": 12,
+      "risk_score": 0,
+      "opportunity_class": "standard",
+      "effort_score": 72,
+      "effort_signals": [
         "docs-or-tests",
+        "security-sensitive",
+        "infra-or-migration"
+      ],
+      "decision_notes": [
+        "no explicit USD/USDC amount parsed",
+        "effort signals: docs-or-tests, security-sensitive, infra-or-migration"
+      ],
+      "risk_flags": [],
+      "manual_friction": false,
+      "preset": "high-signal",
+      "preset_name": "High-signal bounties",
+      "repo": "Conxian/conxius-platform",
+      "title": "First-wave docs rollout — conxius-enclave-sdk repo and Pages route",
+      "url": "https://github.com/Conxian/conxius-platform/issues/921",
+      "updated_at": "2026-06-16T13:00:54Z",
+      "labels": [
+        "documentation"
+      ],
+      "signals": [
+        "bounty"
+      ],
+      "addresses": [],
+      "amount_usd": null,
+      "payout_amount_usd": null
+    },
+    {
+      "score": 12,
+      "raw_score": 12,
+      "risk_score": 0,
+      "opportunity_class": "standard",
+      "effort_score": 26,
+      "effort_signals": [
+        "good-first-issue"
+      ],
+      "decision_notes": [
+        "no explicit USD/USDC amount parsed",
+        "effort signals: good-first-issue"
+      ],
+      "risk_flags": [],
+      "manual_friction": false,
+      "preset": "x402",
+      "preset_name": "x402 paid APIs",
+      "repo": "ZyntariHQ/Invoisio",
+      "title": "Add cancel and void invoice endpoints",
+      "url": "https://github.com/ZyntariHQ/Invoisio/issues/158",
+      "updated_at": "2026-06-16T12:59:38Z",
+      "labels": [
+        "good first issue",
+        "Backend",
+        "api",
+        "payments",
+        "Trivial",
+        "ux",
+        "GrantFox OSS",
+        "Official Campaign"
+      ],
+      "signals": [
+        "bounty"
+      ],
+      "addresses": [],
+      "amount_usd": null,
+      "payout_amount_usd": null
+    },
+    {
+      "score": 8,
+      "raw_score": 8,
+      "risk_score": 0,
+      "opportunity_class": "standard",
+      "effort_score": 58,
+      "effort_signals": [
+        "infra-or-migration"
+      ],
+      "decision_notes": [
+        "no explicit USD/USDC amount parsed",
+        "effort signals: infra-or-migration"
+      ],
+      "risk_flags": [],
+      "manual_friction": false,
+      "preset": "high-signal",
+      "preset_name": "High-signal bounties",
+      "repo": "dotnet/runtime",
+      "title": "Address race in PerformanceCounterLib",
+      "url": "https://github.com/dotnet/runtime/issues/90803",
+      "updated_at": "2026-06-16T13:00:39Z",
+      "labels": [
+        "arch-arm64",
+        "os-windows",
+        "help wanted",
+        "blocking-clean-ci-optional",
+        "needs-further-triage",
+        "area-System.Diagnostics.PerformanceCounter",
+        "Known Build Error"
+      ],
+      "signals": [
+        "label match"
+      ],
+      "addresses": [],
+      "amount_usd": null,
+      "payout_amount_usd": null
+    },
+    {
+      "score": 8,
+      "raw_score": 36,
+      "risk_score": 28,
+      "opportunity_class": "manual-review",
+      "effort_score": 84,
+      "effort_signals": [
+        "infra-or-migration",
+        "external-access"
+      ],
+      "decision_notes": [
+        "parsed payout amount: $660",
+        "effort signals: infra-or-migration, external-access",
+        "risk flags: requires-signup-confirmation",
+        "manual signup or approval friction detected"
+      ],
+      "risk_flags": [
+        {
+          "label": "requires-signup-confirmation",
+          "severity": "manual",
+          "penalty": 28
+        }
+      ],
+      "manual_friction": true,
+      "preset": "base-usdc",
+      "preset_name": "Base / USDC",
+      "repo": "warpspeedopen-source/warpspeed-bounties",
+      "title": "[PAID BOUNTY - $660] Enhanced Image Preview",
+      "url": "https://github.com/warpspeedopen-source/warpspeed-bounties/issues/6",
+      "updated_at": "2026-06-16T11:30:53Z",
+      "labels": [
+        "help wanted",
+        "bounty",
+        "paid",
+        "open",
+        "typescript",
+        "ui",
+        "react-native",
+        "frontend"
+      ],
+      "signals": [
+        "bounty",
+        "amount",
+        "label match"
+      ],
+      "addresses": [],
+      "amount_usd": 660,
+      "payout_amount_usd": 660
+    },
+    {
+      "score": 8,
+      "raw_score": 30,
+      "risk_score": 22,
+      "opportunity_class": "standard",
+      "effort_score": 64,
+      "effort_signals": [
         "security-sensitive"
       ],
       "decision_notes": [
-        "parsed payout amount: $0.1",
-        "effort signals: good-first-issue, docs-or-tests, security-sensitive",
+        "no explicit USD/USDC amount parsed",
+        "payment rail signal present",
+        "effort signals: security-sensitive",
         "risk flags: competition-noise"
       ],
       "risk_flags": [
@@ -1012,223 +1201,32 @@
       "manual_friction": false,
       "preset": "mergework",
       "preset_name": "MergeWork / MRWK",
-      "repo": "Scottcjn/rustchain-bounties",
-      "title": "[BOUNTY] Register on Beacon Atlas + Prove Commerce (Pool: 100 RTC)",
-      "url": "https://github.com/Scottcjn/rustchain-bounties/issues/3418",
-      "updated_at": "2026-06-15T04:33:10Z",
-      "labels": [
-        "bounty",
-        "propagation",
-        "easy",
-        "community"
-      ],
+      "repo": "ramimbo/mergework",
+      "title": "Proposed work: harden source validation in live bounty checker scripts",
+      "url": "https://github.com/ramimbo/mergework/issues/1145",
+      "updated_at": "2026-06-15T15:20:31Z",
+      "labels": [],
       "signals": [
         "bounty",
-        "amount",
-        "label match"
-      ],
-      "addresses": [],
-      "amount_usd": 0.1,
-      "payout_amount_usd": 0.1
-    },
-    {
-      "score": 12,
-      "raw_score": 12,
-      "risk_score": 0,
-      "opportunity_class": "standard",
-      "effort_score": 40,
-      "effort_signals": [],
-      "decision_notes": [
-        "no explicit USD/USDC amount parsed"
-      ],
-      "risk_flags": [],
-      "manual_friction": false,
-      "preset": "high-signal",
-      "preset_name": "High-signal bounties",
-      "repo": "PatelHarsh2006/ChaatBazaar",
-      "title": "[UX] Add Empty Cart State with Illustration and 'Browse Menu' CTA",
-      "url": "https://github.com/PatelHarsh2006/ChaatBazaar/issues/523",
-      "updated_at": "2026-06-15T14:35:03Z",
-      "labels": [],
-      "signals": [
-        "bounty"
+        "MRWK/MergeWork"
       ],
       "addresses": [],
       "amount_usd": null,
       "payout_amount_usd": null
     },
     {
-      "score": 12,
-      "raw_score": 12,
-      "risk_score": 0,
-      "opportunity_class": "standard",
-      "effort_score": 40,
-      "effort_signals": [],
-      "decision_notes": [
-        "no explicit USD/USDC amount parsed"
-      ],
-      "risk_flags": [],
-      "manual_friction": false,
-      "preset": "high-signal",
-      "preset_name": "High-signal bounties",
-      "repo": "epiphyt/embed-privacy",
-      "title": "Enfold Compatibility",
-      "url": "https://github.com/epiphyt/embed-privacy/issues/277",
-      "updated_at": "2026-06-15T14:35:03Z",
-      "labels": [
-        "bug",
-        "awaiting feedback"
-      ],
-      "signals": [
-        "bounty"
-      ],
-      "addresses": [],
-      "amount_usd": null,
-      "payout_amount_usd": null
-    },
-    {
-      "score": 12,
-      "raw_score": 12,
-      "risk_score": 0,
-      "opportunity_class": "standard",
-      "effort_score": 40,
-      "effort_signals": [],
-      "decision_notes": [
-        "no explicit USD/USDC amount parsed"
-      ],
-      "risk_flags": [],
-      "manual_friction": false,
-      "preset": "high-signal",
-      "preset_name": "High-signal bounties",
-      "repo": "rfizzle/meridian",
-      "title": "fix: Enchantment effect edge cases (FinalGambit, Aurify, Bounty, Tether)",
-      "url": "https://github.com/rfizzle/meridian/issues/14",
-      "updated_at": "2026-06-15T14:33:54Z",
-      "labels": [
-        "bug",
-        "jules"
-      ],
-      "signals": [
-        "bounty"
-      ],
-      "addresses": [],
-      "amount_usd": null,
-      "payout_amount_usd": null
-    },
-    {
-      "score": 12,
-      "raw_score": 12,
-      "risk_score": 0,
-      "opportunity_class": "standard",
-      "effort_score": 82,
-      "effort_signals": [
-        "security-sensitive",
-        "infra-or-migration"
-      ],
-      "decision_notes": [
-        "no explicit USD/USDC amount parsed",
-        "effort signals: security-sensitive, infra-or-migration"
-      ],
-      "risk_flags": [],
-      "manual_friction": false,
-      "preset": "high-signal",
-      "preset_name": "High-signal bounties",
-      "repo": "lincolnnunnally/AppEngine",
-      "title": "Private Repository Readiness Assessment",
-      "url": "https://github.com/lincolnnunnally/AppEngine/issues/75",
-      "updated_at": "2026-06-15T14:33:40Z",
-      "labels": [],
-      "signals": [
-        "bounty"
-      ],
-      "addresses": [],
-      "amount_usd": null,
-      "payout_amount_usd": null
-    },
-    {
-      "score": 12,
-      "raw_score": 12,
-      "risk_score": 0,
-      "opportunity_class": "standard",
-      "effort_score": 54,
-      "effort_signals": [
-        "docs-or-tests",
-        "security-sensitive"
-      ],
-      "decision_notes": [
-        "no explicit USD/USDC amount parsed",
-        "effort signals: docs-or-tests, security-sensitive"
-      ],
-      "risk_flags": [],
-      "manual_friction": false,
-      "preset": "mergework",
-      "preset_name": "MergeWork / MRWK",
-      "repo": "Scottcjn/rustchain-bounties",
-      "title": "[BOUNTY: 7 RTC] Add an llms.txt + GEO entity profile to a RustChain ecosystem repo",
-      "url": "https://github.com/Scottcjn/rustchain-bounties/issues/13226",
-      "updated_at": "2026-06-15T13:21:16Z",
-      "labels": [],
-      "signals": [
-        "bounty"
-      ],
-      "addresses": [],
-      "amount_usd": null,
-      "payout_amount_usd": null
-    },
-    {
-      "score": 0,
-      "raw_score": 12,
-      "risk_score": 28,
+      "score": 4,
+      "raw_score": 28,
+      "risk_score": 24,
       "opportunity_class": "manual-review",
       "effort_score": 60,
       "effort_signals": [
-        "good-first-issue",
         "docs-or-tests",
-        "infra-or-migration",
-        "external-access"
-      ],
-      "decision_notes": [
-        "no explicit USD/USDC amount parsed",
-        "effort signals: good-first-issue, docs-or-tests, infra-or-migration, external-access",
-        "risk flags: requires-signup-confirmation",
-        "manual signup or approval friction detected"
-      ],
-      "risk_flags": [
-        {
-          "label": "requires-signup-confirmation",
-          "severity": "manual",
-          "penalty": 28
-        }
-      ],
-      "manual_friction": true,
-      "preset": "high-signal",
-      "preset_name": "High-signal bounties",
-      "repo": "Teclia-Academy/Teclia-Academy",
-      "title": "Documentation",
-      "url": "https://github.com/Teclia-Academy/Teclia-Academy/issues/6",
-      "updated_at": "2026-06-15T14:34:32Z",
-      "labels": [
-        "documentation"
-      ],
-      "signals": [
-        "bounty"
-      ],
-      "addresses": [],
-      "amount_usd": null,
-      "payout_amount_usd": null
-    },
-    {
-      "score": 0,
-      "raw_score": 24,
-      "risk_score": 24,
-      "opportunity_class": "manual-review",
-      "effort_score": 70,
-      "effort_signals": [
         "infra-or-migration"
       ],
       "decision_notes": [
-        "parsed payout amount: $250",
-        "effort signals: infra-or-migration",
+        "parsed payout amount: $25",
+        "effort signals: docs-or-tests, infra-or-migration",
         "risk flags: kyc-or-account-friction",
         "manual signup or approval friction detected"
       ],
@@ -1240,47 +1238,53 @@
         }
       ],
       "manual_friction": true,
+      "preset": "x402",
+      "preset_name": "x402 paid APIs",
+      "repo": "sv-tmueller/rainmaker-bot",
+      "title": "Batch: floor-precip-backup-intl-spike",
+      "url": "https://github.com/sv-tmueller/rainmaker-bot/issues/183",
+      "updated_at": "2026-06-16T12:50:40Z",
+      "labels": [],
+      "signals": [
+        "bounty",
+        "amount"
+      ],
+      "addresses": [],
+      "amount_usd": 25,
+      "payout_amount_usd": 25
+    },
+    {
+      "score": 0,
+      "raw_score": 12,
+      "risk_score": 22,
+      "opportunity_class": "standard",
+      "effort_score": 40,
+      "effort_signals": [],
+      "decision_notes": [
+        "no explicit USD/USDC amount parsed",
+        "risk flags: competition-noise"
+      ],
+      "risk_flags": [
+        {
+          "label": "competition-noise",
+          "severity": "high",
+          "penalty": 22
+        }
+      ],
+      "manual_friction": false,
       "preset": "high-signal",
       "preset_name": "High-signal bounties",
-      "repo": "Expensify/App",
-      "title": "[CFI] [$250] Add navigation suggestions in Search Router",
-      "url": "https://github.com/Expensify/App/issues/92752",
-      "updated_at": "2026-06-15T14:33:48Z",
+      "repo": "kirodotdev/Kiro",
+      "title": "I have a pro sub in aws and only the free models appear no claude models",
+      "url": "https://github.com/kirodotdev/Kiro/issues/9458",
+      "updated_at": "2026-06-16T13:02:24Z",
       "labels": [
-        "External",
-        "Engineering",
-        "Daily",
-        "Improvement",
-        "Help Wanted"
+        "pending-triage",
+        "pending-maintainer-response"
       ],
       "signals": [
-        "amount",
-        "label match"
+        "bounty"
       ],
-      "addresses": [],
-      "amount_usd": 250,
-      "payout_amount_usd": null
-    },
-    {
-      "score": 0,
-      "raw_score": 0,
-      "risk_score": 0,
-      "opportunity_class": "standard",
-      "effort_score": 40,
-      "effort_signals": [],
-      "decision_notes": [
-        "no explicit USD/USDC amount parsed"
-      ],
-      "risk_flags": [],
-      "manual_friction": false,
-      "preset": "x402",
-      "preset_name": "x402 paid APIs",
-      "repo": "kiwix/web",
-      "title": "Kiwix logo not visible in the header",
-      "url": "https://github.com/kiwix/web/issues/402",
-      "updated_at": "2026-06-15T14:33:38Z",
-      "labels": [],
-      "signals": [],
       "addresses": [],
       "amount_usd": null,
       "payout_amount_usd": null
@@ -1290,45 +1294,22 @@
       "raw_score": 0,
       "risk_score": 0,
       "opportunity_class": "standard",
-      "effort_score": 40,
-      "effort_signals": [],
-      "decision_notes": [
-        "no explicit USD/USDC amount parsed"
+      "effort_score": 64,
+      "effort_signals": [
+        "security-sensitive"
       ],
-      "risk_flags": [],
-      "manual_friction": false,
-      "preset": "high-signal",
-      "preset_name": "High-signal bounties",
-      "repo": "asyncapi/training",
-      "title": "Record and release training video based on VIDEO_6_SCRIPT.md",
-      "url": "https://github.com/asyncapi/training/issues/65",
-      "updated_at": "2026-06-15T14:33:36Z",
-      "labels": [
-        "microgrant"
-      ],
-      "signals": [],
-      "addresses": [],
-      "amount_usd": null,
-      "payout_amount_usd": null
-    },
-    {
-      "score": 0,
-      "raw_score": 0,
-      "risk_score": 0,
-      "opportunity_class": "standard",
-      "effort_score": 40,
-      "effort_signals": [],
       "decision_notes": [
-        "no explicit USD/USDC amount parsed"
+        "no explicit USD/USDC amount parsed",
+        "effort signals: security-sensitive"
       ],
       "risk_flags": [],
       "manual_friction": false,
       "preset": "x402",
       "preset_name": "x402 paid APIs",
-      "repo": "autumngarage/touchstone",
-      "title": "pre-push swift-test hook inherits Git env and breaks nested git tests",
-      "url": "https://github.com/autumngarage/touchstone/issues/462",
-      "updated_at": "2026-06-15T14:30:32Z",
+      "repo": "autumngarage/sentinel",
+      "title": "Security review: upgrade vulnerable idna lock entry",
+      "url": "https://github.com/autumngarage/sentinel/issues/134",
+      "updated_at": "2026-06-16T13:00:58Z",
       "labels": [
         "alchemist-error"
       ],
@@ -1340,49 +1321,32 @@
     {
       "score": 0,
       "raw_score": 0,
-      "risk_score": 0,
-      "opportunity_class": "standard",
-      "effort_score": 40,
-      "effort_signals": [],
-      "decision_notes": [
-        "no explicit USD/USDC amount parsed"
-      ],
-      "risk_flags": [],
-      "manual_friction": false,
-      "preset": "x402",
-      "preset_name": "x402 paid APIs",
-      "repo": "secvisogram/csaf-validator-lib",
-      "title": "CSAF 2.1 Implementation status",
-      "url": "https://github.com/secvisogram/csaf-validator-lib/issues/575",
-      "updated_at": "2026-06-15T14:30:13Z",
-      "labels": [],
-      "signals": [],
-      "addresses": [],
-      "amount_usd": null,
-      "payout_amount_usd": null
-    },
-    {
-      "score": 0,
-      "raw_score": 0,
-      "risk_score": 0,
-      "opportunity_class": "standard",
-      "effort_score": 44,
+      "risk_score": 70,
+      "opportunity_class": "avoid",
+      "effort_score": 70,
       "effort_signals": [
-        "good-first-issue",
-        "infra-or-migration"
+        "docs-or-tests",
+        "security-sensitive"
       ],
       "decision_notes": [
         "no explicit USD/USDC amount parsed",
-        "effort signals: good-first-issue, infra-or-migration"
+        "effort signals: docs-or-tests, security-sensitive",
+        "risk flags: secret-or-wallet-risk"
       ],
-      "risk_flags": [],
+      "risk_flags": [
+        {
+          "label": "secret-or-wallet-risk",
+          "severity": "blocker",
+          "penalty": 70
+        }
+      ],
       "manual_friction": false,
-      "preset": "x402",
-      "preset_name": "x402 paid APIs",
-      "repo": "SimonNancekievill/ember",
-      "title": "08: Entry Counter",
-      "url": "https://github.com/SimonNancekievill/ember/issues/16",
-      "updated_at": "2026-06-15T14:29:16Z",
+      "preset": "high-signal",
+      "preset_name": "High-signal bounties",
+      "repo": "nightBaker/fleans",
+      "title": "[feat:streaming-kafka] mTLS / client-cert config (SSL paths)",
+      "url": "https://github.com/nightBaker/fleans/issues/681",
+      "updated_at": "2026-06-16T13:00:20Z",
       "labels": [],
       "signals": [],
       "addresses": [],
@@ -1406,12 +1370,67 @@
       "manual_friction": false,
       "preset": "x402",
       "preset_name": "x402 paid APIs",
-      "repo": "home-assistant/core",
-      "title": "Buienradar integration not working",
-      "url": "https://github.com/home-assistant/core/issues/173402",
-      "updated_at": "2026-06-15T14:28:37Z",
+      "repo": "WebDevStudios/wp-search-with-algolia",
+      "title": "Algolia PHP Client upgrade to version 4.",
+      "url": "https://github.com/WebDevStudios/wp-search-with-algolia/issues/402",
+      "updated_at": "2026-06-16T12:59:59Z",
       "labels": [
-        "integration: buienradar"
+        "enhancement"
+      ],
+      "signals": [],
+      "addresses": [],
+      "amount_usd": null,
+      "payout_amount_usd": null
+    },
+    {
+      "score": 0,
+      "raw_score": 0,
+      "risk_score": 0,
+      "opportunity_class": "standard",
+      "effort_score": 40,
+      "effort_signals": [],
+      "decision_notes": [
+        "no explicit USD/USDC amount parsed"
+      ],
+      "risk_flags": [],
+      "manual_friction": false,
+      "preset": "x402",
+      "preset_name": "x402 paid APIs",
+      "repo": "NeySlim/ultimate-ca-manager",
+      "title": "BUG: SSO LDAP throwing error at login with accounts linked",
+      "url": "https://github.com/NeySlim/ultimate-ca-manager/issues/138",
+      "updated_at": "2026-06-16T12:57:04Z",
+      "labels": [],
+      "signals": [],
+      "addresses": [],
+      "amount_usd": null,
+      "payout_amount_usd": null
+    },
+    {
+      "score": 0,
+      "raw_score": 0,
+      "risk_score": 0,
+      "opportunity_class": "standard",
+      "effort_score": 48,
+      "effort_signals": [
+        "docs-or-tests",
+        "infra-or-migration"
+      ],
+      "decision_notes": [
+        "no explicit USD/USDC amount parsed",
+        "effort signals: docs-or-tests, infra-or-migration"
+      ],
+      "risk_flags": [],
+      "manual_friction": false,
+      "preset": "x402",
+      "preset_name": "x402 paid APIs",
+      "repo": "autumngarage/sentinel",
+      "title": "Add update and doctor commands (autumn-garage doctrine 0008)",
+      "url": "https://github.com/autumngarage/sentinel/issues/118",
+      "updated_at": "2026-06-16T12:55:27Z",
+      "labels": [
+        "enhancement",
+        "alchemist-error"
       ],
       "signals": [],
       "addresses": [],

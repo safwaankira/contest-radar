@@ -5,243 +5,237 @@
     <link>https://go165.github.io/bounty-radar/</link>
     <description>Daily GitHub bounty shortlist scored for payout clarity, payment rails, amount text, risk, and effort.</description>
     <language>en</language>
-    <lastBuildDate>Mon, 15 Jun 2026 07:14:53 GMT</lastBuildDate>
+    <lastBuildDate>Tue, 16 Jun 2026 13:03:44 GMT</lastBuildDate>
     <atom:link href="https://go165.github.io/bounty-radar/feed/latest.xml" rel="self" type="application/rss+xml" />
     <atom:link href="https://go165.github.io/bounty-radar/feed/latest.json" rel="alternate" type="application/json" />
     <item>
-      <title>[hygiene] weekly status — 2026-06-15</title>
-      <link>https://github.com/learnednomad/road-side-atl/issues/122</link>
-      <guid isPermaLink="true">https://github.com/learnednomad/road-side-atl/issues/122</guid>
-      <pubDate>Mon, 15 Jun 2026 07:13:23 GMT</pubDate>
-      <description>learnednomad/road-side-atl | score 12
+      <title>P0: Founder Freedom → €3k/day → Forbes-scale company</title>
+      <link>https://github.com/mbcarbody-cmd/ai-business-factory/issues/49</link>
+      <guid isPermaLink="true">https://github.com/mbcarbody-cmd/ai-business-factory/issues/49</guid>
+      <pubDate>Tue, 16 Jun 2026 13:03:35 GMT</pubDate>
+      <description>mbcarbody-cmd/ai-business-factory | score 12
+opportunity: standard
+effort: 40
+signals: bounty
+notes: no explicit USD/USDC amount parsed</description>
+    </item>
+    <item>
+      <title>app-ui: add read receipt privacy toggles</title>
+      <link>https://github.com/Stellar-Mail/stealth/issues/131</link>
+      <guid isPermaLink="true">https://github.com/Stellar-Mail/stealth/issues/131</guid>
+      <pubDate>Tue, 16 Jun 2026 13:03:27 GMT</pubDate>
+      <description>Stellar-Mail/stealth | score 12
+opportunity: standard
+effort: 40
+signals: bounty
+notes: no explicit USD/USDC amount parsed</description>
+    </item>
+    <item>
+      <title>[ Bounty $4k ] [ Solidity ] Fix TWAPOracle has no observation array rotation</title>
+      <link>https://github.com/ClankerNation/OpenAgents/issues/132</link>
+      <guid isPermaLink="true">https://github.com/ClankerNation/OpenAgents/issues/132</guid>
+      <pubDate>Tue, 16 Jun 2026 13:03:09 GMT</pubDate>
+      <description>ClankerNation/OpenAgents | score 36
+opportunity: high-value
+effort: 44
+amount: $4200
+signals: bounty, amount, label match
+notes: parsed payout amount: $4200; effort signals: good-first-issue, infra-or-migration</description>
+    </item>
+    <item>
+      <title>perf(blockvalidation): investigate removing the lock/unlock pattern from quick-validation catchup</title>
+      <link>https://github.com/bsv-blockchain/teranode/issues/1103</link>
+      <guid isPermaLink="true">https://github.com/bsv-blockchain/teranode/issues/1103</guid>
+      <pubDate>Tue, 16 Jun 2026 13:02:52 GMT</pubDate>
+      <description>bsv-blockchain/teranode | score 12
+opportunity: standard
+effort: 58
+signals: bounty
+notes: no explicit USD/USDC amount parsed; effort signals: infra-or-migration</description>
+    </item>
+    <item>
+      <title>I have a pro sub in aws and only the free models appear no claude models</title>
+      <link>https://github.com/kirodotdev/Kiro/issues/9458</link>
+      <guid isPermaLink="true">https://github.com/kirodotdev/Kiro/issues/9458</guid>
+      <pubDate>Tue, 16 Jun 2026 13:02:24 GMT</pubDate>
+      <description>kirodotdev/Kiro | score 0
+opportunity: standard
+effort: 40
+signals: bounty
+risk: competition-noise
+notes: no explicit USD/USDC amount parsed; risk flags: competition-noise</description>
+    </item>
+    <item>
+      <title>Prove δ* — complete research dossier for the RS proximity-gap prize (successor to #407)</title>
+      <link>https://github.com/lalalune/ArkLib/issues/444</link>
+      <guid isPermaLink="true">https://github.com/lalalune/ArkLib/issues/444</guid>
+      <pubDate>Tue, 16 Jun 2026 13:01:57 GMT</pubDate>
+      <description>lalalune/ArkLib | score 30
+opportunity: standard
+effort: 16
+signals: bounty, USDC/Base
+notes: no explicit USD/USDC amount parsed; payment rail signal present; effort signals: good-first-issue, docs-or-tests</description>
+    </item>
+    <item>
+      <title>Mission 08: Intuition Community Call Recording [ROLE]</title>
+      <link>https://github.com/intuition-box/intuition.box/issues/18</link>
+      <guid isPermaLink="true">https://github.com/intuition-box/intuition.box/issues/18</guid>
+      <pubDate>Tue, 16 Jun 2026 13:01:48 GMT</pubDate>
+      <description>intuition-box/intuition.box | score 46
+opportunity: rail-watch
+effort: 30
+amount: $20
+signals: bounty, USDC/Base, amount
+notes: parsed payout amount: $20; payment rail signal present; effort signals: docs-or-tests</description>
+    </item>
+    <item>
+      <title>Feature: Add Rebirth class loop with all-11 self-hatched dragon gate</title>
+      <link>https://github.com/sploithunter/RBX-Template/issues/13</link>
+      <guid isPermaLink="true">https://github.com/sploithunter/RBX-Template/issues/13</guid>
+      <pubDate>Tue, 16 Jun 2026 13:01:38 GMT</pubDate>
+      <description>sploithunter/RBX-Template | score 30
+opportunity: standard
+effort: 48
+signals: bounty, USDC/Base
+notes: no explicit USD/USDC amount parsed; payment rail signal present; effort signals: docs-or-tests, infra-or-migration</description>
+    </item>
+    <item>
+      <title>Security review: upgrade vulnerable idna lock entry</title>
+      <link>https://github.com/autumngarage/sentinel/issues/134</link>
+      <guid isPermaLink="true">https://github.com/autumngarage/sentinel/issues/134</guid>
+      <pubDate>Tue, 16 Jun 2026 13:00:58 GMT</pubDate>
+      <description>autumngarage/sentinel | score 0
+opportunity: standard
+effort: 64
+notes: no explicit USD/USDC amount parsed; effort signals: security-sensitive</description>
+    </item>
+    <item>
+      <title>First-wave docs rollout — conxius-enclave-sdk repo and Pages route</title>
+      <link>https://github.com/Conxian/conxius-platform/issues/921</link>
+      <guid isPermaLink="true">https://github.com/Conxian/conxius-platform/issues/921</guid>
+      <pubDate>Tue, 16 Jun 2026 13:00:54 GMT</pubDate>
+      <description>Conxian/conxius-platform | score 12
 opportunity: standard
 effort: 72
 signals: bounty
 notes: no explicit USD/USDC amount parsed; effort signals: docs-or-tests, security-sensitive, infra-or-migration</description>
     </item>
     <item>
-      <title>Apple Health Integration Setup / Sync Clarification</title>
-      <link>https://github.com/NoopApp/noop/issues/348</link>
-      <guid isPermaLink="true">https://github.com/NoopApp/noop/issues/348</guid>
-      <pubDate>Mon, 15 Jun 2026 07:12:55 GMT</pubDate>
-      <description>NoopApp/noop | score 0
-opportunity: standard
-effort: 40
-notes: no explicit USD/USDC amount parsed</description>
-    </item>
-    <item>
-      <title>[BOUNTY: 7 RTC] Add an llms.txt + GEO entity profile to a RustChain ecosystem repo</title>
-      <link>https://github.com/Scottcjn/rustchain-bounties/issues/13226</link>
-      <guid isPermaLink="true">https://github.com/Scottcjn/rustchain-bounties/issues/13226</guid>
-      <pubDate>Mon, 15 Jun 2026 07:12:40 GMT</pubDate>
-      <description>Scottcjn/rustchain-bounties | score 12
-opportunity: standard
-effort: 54
-signals: bounty
-notes: no explicit USD/USDC amount parsed; effort signals: docs-or-tests, security-sensitive</description>
-    </item>
-    <item>
-      <title>refactor: stop embedding pricing.yaml — move to runtime config or Firestore catalog</title>
-      <link>https://github.com/candelahq/candela/issues/402</link>
-      <guid isPermaLink="true">https://github.com/candelahq/candela/issues/402</guid>
-      <pubDate>Mon, 15 Jun 2026 07:12:31 GMT</pubDate>
-      <description>candelahq/candela | score 0
+      <title>Address race in PerformanceCounterLib</title>
+      <link>https://github.com/dotnet/runtime/issues/90803</link>
+      <guid isPermaLink="true">https://github.com/dotnet/runtime/issues/90803</guid>
+      <pubDate>Tue, 16 Jun 2026 13:00:39 GMT</pubDate>
+      <description>dotnet/runtime | score 8
 opportunity: standard
 effort: 58
+signals: label match
 notes: no explicit USD/USDC amount parsed; effort signals: infra-or-migration</description>
     </item>
     <item>
-      <title>[Tassadar Launch · Step F2] Package Autopilot Desktop — bundle/launch the node in the signed .app (+Linux), smokes, announced==admitted build</title>
-      <link>https://github.com/OpenAgentsInc/openagents/issues/5027</link>
-      <guid isPermaLink="true">https://github.com/OpenAgentsInc/openagents/issues/5027</guid>
-      <pubDate>Mon, 15 Jun 2026 07:12:22 GMT</pubDate>
-      <description>OpenAgentsInc/openagents | score 12
-opportunity: standard
-effort: 64
-signals: bounty
-notes: no explicit USD/USDC amount parsed; effort signals: security-sensitive</description>
+      <title>[feat:streaming-kafka] mTLS / client-cert config (SSL paths)</title>
+      <link>https://github.com/nightBaker/fleans/issues/681</link>
+      <guid isPermaLink="true">https://github.com/nightBaker/fleans/issues/681</guid>
+      <pubDate>Tue, 16 Jun 2026 13:00:20 GMT</pubDate>
+      <description>nightBaker/fleans | score 0
+opportunity: avoid
+effort: 70
+risk: secret-or-wallet-risk
+notes: no explicit USD/USDC amount parsed; effort signals: docs-or-tests, security-sensitive; risk flags: secret-or-wallet-risk</description>
     </item>
     <item>
-      <title>RocketCDN Free - Next billing date is displayed in WP Rocket dashboard</title>
-      <link>https://github.com/wp-media/wp-rocket/issues/8447</link>
-      <guid isPermaLink="true">https://github.com/wp-media/wp-rocket/issues/8447</guid>
-      <pubDate>Mon, 15 Jun 2026 07:12:05 GMT</pubDate>
-      <description>wp-media/wp-rocket | score 0
-opportunity: standard
-effort: 40
-notes: no explicit USD/USDC amount parsed</description>
-    </item>
-    <item>
-      <title>klause-cli ignores -t on liner-sf-repositioning — uncancellable construction-time bake (Problem.computeBaked)</title>
-      <link>https://github.com/Eignex/klause/issues/599</link>
-      <guid isPermaLink="true">https://github.com/Eignex/klause/issues/599</guid>
-      <pubDate>Mon, 15 Jun 2026 07:12:02 GMT</pubDate>
-      <description>Eignex/klause | score 12
-opportunity: standard
-effort: 40
-signals: bounty
-notes: no explicit USD/USDC amount parsed</description>
-    </item>
-    <item>
-      <title>DVT program: AirAccount co-signer 集成 — 架构 + 跨仓库分工 + 落地路线</title>
-      <link>https://github.com/AAStarCommunity/YetAnotherAA-Validator/issues/42</link>
-      <guid isPermaLink="true">https://github.com/AAStarCommunity/YetAnotherAA-Validator/issues/42</guid>
-      <pubDate>Mon, 15 Jun 2026 07:11:45 GMT</pubDate>
-      <description>AAStarCommunity/YetAnotherAA-Validator | score 0
+      <title>Algolia PHP Client upgrade to version 4.</title>
+      <link>https://github.com/WebDevStudios/wp-search-with-algolia/issues/402</link>
+      <guid isPermaLink="true">https://github.com/WebDevStudios/wp-search-with-algolia/issues/402</guid>
+      <pubDate>Tue, 16 Jun 2026 12:59:59 GMT</pubDate>
+      <description>WebDevStudios/wp-search-with-algolia | score 0
 opportunity: standard
 effort: 30
 notes: no explicit USD/USDC amount parsed; effort signals: docs-or-tests</description>
     </item>
     <item>
-      <title>Product List: Stock is not updated immediately after fulfillment</title>
-      <link>https://github.com/woocommerce/woocommerce-android/issues/7165</link>
-      <guid isPermaLink="true">https://github.com/woocommerce/woocommerce-android/issues/7165</guid>
-      <pubDate>Mon, 15 Jun 2026 07:11:28 GMT</pubDate>
-      <description>woocommerce/woocommerce-android | score 12
+      <title>On-device LLM inference (no server required)</title>
+      <link>https://github.com/Starkka15/PocketTavern/issues/5</link>
+      <guid isPermaLink="true">https://github.com/Starkka15/PocketTavern/issues/5</guid>
+      <pubDate>Tue, 16 Jun 2026 12:59:58 GMT</pubDate>
+      <description>Starkka15/PocketTavern | score 30
+opportunity: standard
+effort: 58
+signals: bounty, x402
+notes: no explicit USD/USDC amount parsed; payment rail signal present; effort signals: infra-or-migration</description>
+    </item>
+    <item>
+      <title>Add cancel and void invoice endpoints</title>
+      <link>https://github.com/ZyntariHQ/Invoisio/issues/158</link>
+      <guid isPermaLink="true">https://github.com/ZyntariHQ/Invoisio/issues/158</guid>
+      <pubDate>Tue, 16 Jun 2026 12:59:38 GMT</pubDate>
+      <description>ZyntariHQ/Invoisio | score 12
+opportunity: standard
+effort: 26
+signals: bounty
+notes: no explicit USD/USDC amount parsed; effort signals: good-first-issue</description>
+    </item>
+    <item>
+      <title>Low Handing Fruit Automation</title>
+      <link>https://github.com/SecureBananaLabs/bug-bounty/issues/743</link>
+      <guid isPermaLink="true">https://github.com/SecureBananaLabs/bug-bounty/issues/743</guid>
+      <pubDate>Tue, 16 Jun 2026 12:59:12 GMT</pubDate>
+      <description>SecureBananaLabs/bug-bounty | score 36
+opportunity: high-value
+effort: 26
+amount: $700
+signals: bounty, amount, label match
+notes: parsed payout amount: $700; effort signals: good-first-issue</description>
+    </item>
+    <item>
+      <title>BUG: SSO LDAP throwing error at login with accounts linked</title>
+      <link>https://github.com/NeySlim/ultimate-ca-manager/issues/138</link>
+      <guid isPermaLink="true">https://github.com/NeySlim/ultimate-ca-manager/issues/138</guid>
+      <pubDate>Tue, 16 Jun 2026 12:57:04 GMT</pubDate>
+      <description>NeySlim/ultimate-ca-manager | score 0
 opportunity: standard
 effort: 40
-signals: bounty
 notes: no explicit USD/USDC amount parsed</description>
     </item>
     <item>
-      <title>[enhancement] OCR 모델 A/B — 이미지 토큰 더 저렴한 모델 검증 (gemini-2.0-flash 등) (#111 후속)</title>
-      <link>https://github.com/Lyainc/PhototicketMaker/issues/125</link>
-      <guid isPermaLink="true">https://github.com/Lyainc/PhototicketMaker/issues/125</guid>
-      <pubDate>Mon, 15 Jun 2026 07:11:19 GMT</pubDate>
-      <description>Lyainc/PhototicketMaker | score 46
-opportunity: rail-watch
-effort: 40
-amount: $5.6
-signals: bounty, USDC/Base, amount
-notes: parsed payout amount: $5.6; payment rail signal present</description>
+      <title>Add update and doctor commands (autumn-garage doctrine 0008)</title>
+      <link>https://github.com/autumngarage/sentinel/issues/118</link>
+      <guid isPermaLink="true">https://github.com/autumngarage/sentinel/issues/118</guid>
+      <pubDate>Tue, 16 Jun 2026 12:55:27 GMT</pubDate>
+      <description>autumngarage/sentinel | score 0
+opportunity: standard
+effort: 48
+notes: no explicit USD/USDC amount parsed; effort signals: docs-or-tests, infra-or-migration</description>
     </item>
     <item>
-      <title>[Bug]: [Medium] [wstaking] sendKycRewards Silently Skips DelegateInterest Deduction — Treasury Accounting Diverges from Real Balance</title>
-      <link>https://github.com/openmetaearth/me-hub/issues/1242</link>
-      <guid isPermaLink="true">https://github.com/openmetaearth/me-hub/issues/1242</guid>
-      <pubDate>Mon, 15 Jun 2026 07:11:06 GMT</pubDate>
-      <description>openmetaearth/me-hub | score 4
+      <title>Concept: trustless autonomous-agent payments on x402 (policy-gated payer, no protocol changes)</title>
+      <link>https://github.com/x402-foundation/x402/issues/2641</link>
+      <guid isPermaLink="true">https://github.com/x402-foundation/x402/issues/2641</guid>
+      <pubDate>Tue, 16 Jun 2026 12:52:48 GMT</pubDate>
+      <description>x402-foundation/x402 | score 64
+opportunity: high-value
+effort: 54
+amount: $280
+signals: bounty, USDC/Base, x402, amount
+notes: parsed payout amount: $280; payment rail signal present; effort signals: docs-or-tests, security-sensitive</description>
+    </item>
+    <item>
+      <title>Batch: floor-precip-backup-intl-spike</title>
+      <link>https://github.com/sv-tmueller/rainmaker-bot/issues/183</link>
+      <guid isPermaLink="true">https://github.com/sv-tmueller/rainmaker-bot/issues/183</guid>
+      <pubDate>Tue, 16 Jun 2026 12:50:40 GMT</pubDate>
+      <description>sv-tmueller/rainmaker-bot | score 4
 opportunity: manual-review
-effort: 66
-amount: $1000
+effort: 60
+amount: $25
 signals: bounty, amount
 risk: kyc-or-account-friction
-notes: parsed payout amount: $1000; effort signals: external-access; risk flags: kyc-or-account-friction; manual signup or approval friction detected</description>
-    </item>
-    <item>
-      <title>feat(report): 3-month trend chart (Score/uptime/MTTR MoM) — directional signal, not snapshot</title>
-      <link>https://github.com/bentleypark/aiwatch-reports/issues/41</link>
-      <guid isPermaLink="true">https://github.com/bentleypark/aiwatch-reports/issues/41</guid>
-      <pubDate>Mon, 15 Jun 2026 07:10:39 GMT</pubDate>
-      <description>bentleypark/aiwatch-reports | score 12
-opportunity: standard
-effort: 30
-signals: bounty
-notes: no explicit USD/USDC amount parsed; effort signals: docs-or-tests</description>
-    </item>
-    <item>
-      <title>open-pr: await + surface + babysit Compass Review (hosted Cortex) advisory comments — the customer-dogfood loop</title>
-      <link>https://github.com/autumngarage/touchstone/issues/455</link>
-      <guid isPermaLink="true">https://github.com/autumngarage/touchstone/issues/455</guid>
-      <pubDate>Mon, 15 Jun 2026 07:10:34 GMT</pubDate>
-      <description>autumngarage/touchstone | score 0
-opportunity: standard
-effort: 40
-notes: no explicit USD/USDC amount parsed</description>
-    </item>
-    <item>
-      <title>Exercise: Introduction to CodeQL</title>
-      <link>https://github.com/irra7/skills-introduction-to-codeql/issues/1</link>
-      <guid isPermaLink="true">https://github.com/irra7/skills-introduction-to-codeql/issues/1</guid>
-      <pubDate>Mon, 15 Jun 2026 07:10:14 GMT</pubDate>
-      <description>irra7/skills-introduction-to-codeql | score 0
-opportunity: standard
-effort: 64
-notes: no explicit USD/USDC amount parsed; effort signals: security-sensitive</description>
-    </item>
-    <item>
-      <title>Batch: settlement-spike-and-foundations</title>
-      <link>https://github.com/sv-tmueller/rainmaker-bot/issues/156</link>
-      <guid isPermaLink="true">https://github.com/sv-tmueller/rainmaker-bot/issues/156</guid>
-      <pubDate>Mon, 15 Jun 2026 07:10:09 GMT</pubDate>
-      <description>sv-tmueller/rainmaker-bot | score 12
-opportunity: standard
-effort: 58
-signals: bounty
-notes: no explicit USD/USDC amount parsed; effort signals: infra-or-migration</description>
-    </item>
-    <item>
-      <title>[BOUNTY] Discovery Mode — Find Elyan Labs Software, Open PRs, Earn RTC</title>
-      <link>https://github.com/Scottcjn/rustchain-bounties/issues/100</link>
-      <guid isPermaLink="true">https://github.com/Scottcjn/rustchain-bounties/issues/100</guid>
-      <pubDate>Mon, 15 Jun 2026 07:10:03 GMT</pubDate>
-      <description>Scottcjn/rustchain-bounties | score 20
-opportunity: standard
-effort: 40
-signals: bounty, label match
-notes: no explicit USD/USDC amount parsed; effort signals: good-first-issue, docs-or-tests, security-sensitive</description>
-    </item>
-    <item>
-      <title>Some paid timeline content fails to download</title>
-      <link>https://github.com/datawhores/OF-Scraper/issues/636</link>
-      <guid isPermaLink="true">https://github.com/datawhores/OF-Scraper/issues/636</guid>
-      <pubDate>Mon, 15 Jun 2026 07:09:57 GMT</pubDate>
-      <description>datawhores/OF-Scraper | score 12
-opportunity: standard
-effort: 40
-signals: bounty
-notes: no explicit USD/USDC amount parsed</description>
-    </item>
-    <item>
-      <title>[ONBOARD: 2 RTC] Star + Compare RustChain to Another Blockchain Project</title>
-      <link>https://github.com/Scottcjn/rustchain-bounties/issues/2786</link>
-      <guid isPermaLink="true">https://github.com/Scottcjn/rustchain-bounties/issues/2786</guid>
-      <pubDate>Mon, 15 Jun 2026 07:09:27 GMT</pubDate>
-      <description>Scottcjn/rustchain-bounties | score 20
-opportunity: standard
-effort: 8
-signals: bounty, label match
-notes: no explicit USD/USDC amount parsed; effort signals: good-first-issue, docs-or-tests, narrow-scope</description>
-    </item>
-    <item>
-      <title>Show popular packages on the front page</title>
-      <link>https://github.com/packagecontrol/thecrawl/issues/402</link>
-      <guid isPermaLink="true">https://github.com/packagecontrol/thecrawl/issues/402</guid>
-      <pubDate>Mon, 15 Jun 2026 07:07:30 GMT</pubDate>
-      <description>packagecontrol/thecrawl | score 0
-opportunity: standard
-effort: 40
-notes: no explicit USD/USDC amount parsed</description>
-    </item>
-    <item>
-      <title>[BOUNTY $200] WORKFLOW: n8n + Claude Code — automated weekly dev summary</title>
-      <link>https://github.com/claude-builders-bounty/claude-builders-bounty/issues/5</link>
-      <guid isPermaLink="true">https://github.com/claude-builders-bounty/claude-builders-bounty/issues/5</guid>
-      <pubDate>Mon, 15 Jun 2026 07:07:16 GMT</pubDate>
-      <description>claude-builders-bounty/claude-builders-bounty | score 36
-opportunity: standard
-effort: 30
-amount: $200
-signals: bounty, amount, label match
-notes: parsed payout amount: $200; effort signals: docs-or-tests</description>
-    </item>
-    <item>
-      <title>[BOUNTY $150] AGENT: Claude Code sub-agent that reviews a PR and posts a structured comment</title>
-      <link>https://github.com/claude-builders-bounty/claude-builders-bounty/issues/4</link>
-      <guid isPermaLink="true">https://github.com/claude-builders-bounty/claude-builders-bounty/issues/4</guid>
-      <pubDate>Mon, 15 Jun 2026 07:07:14 GMT</pubDate>
-      <description>claude-builders-bounty/claude-builders-bounty | score 36
-opportunity: standard
-effort: 30
-amount: $150
-signals: bounty, amount, label match
-notes: parsed payout amount: $150; effort signals: docs-or-tests</description>
+notes: parsed payout amount: $25; effort signals: docs-or-tests, infra-or-migration; risk flags: kyc-or-account-friction; manual signup or approval friction detected</description>
     </item>
     <item>
       <title>[BOUNTY $100] HOOK: Pre-tool-use hook that blocks destructive bash commands</title>
       <link>https://github.com/claude-builders-bounty/claude-builders-bounty/issues/3</link>
       <guid isPermaLink="true">https://github.com/claude-builders-bounty/claude-builders-bounty/issues/3</guid>
-      <pubDate>Mon, 15 Jun 2026 07:07:13 GMT</pubDate>
+      <pubDate>Tue, 16 Jun 2026 12:26:25 GMT</pubDate>
       <description>claude-builders-bounty/claude-builders-bounty | score 36
 opportunity: standard
 effort: 54
@@ -253,7 +247,7 @@ notes: parsed payout amount: $100; effort signals: docs-or-tests, security-sensi
       <title>[BOUNTY $75] TEMPLATE: CLAUDE.md for a Next.js + SQLite SaaS project</title>
       <link>https://github.com/claude-builders-bounty/claude-builders-bounty/issues/2</link>
       <guid isPermaLink="true">https://github.com/claude-builders-bounty/claude-builders-bounty/issues/2</guid>
-      <pubDate>Mon, 15 Jun 2026 07:07:11 GMT</pubDate>
+      <pubDate>Tue, 16 Jun 2026 12:26:24 GMT</pubDate>
       <description>claude-builders-bounty/claude-builders-bounty | score 36
 opportunity: standard
 effort: 48
@@ -265,7 +259,7 @@ notes: parsed payout amount: $75; effort signals: docs-or-tests, infra-or-migrat
       <title>[BOUNTY $50] SKILL: Generate a structured CHANGELOG from git history</title>
       <link>https://github.com/claude-builders-bounty/claude-builders-bounty/issues/1</link>
       <guid isPermaLink="true">https://github.com/claude-builders-bounty/claude-builders-bounty/issues/1</guid>
-      <pubDate>Mon, 15 Jun 2026 07:07:09 GMT</pubDate>
+      <pubDate>Tue, 16 Jun 2026 12:26:22 GMT</pubDate>
       <description>claude-builders-bounty/claude-builders-bounty | score 36
 opportunity: quick-win
 effort: 16
@@ -274,45 +268,137 @@ signals: bounty, amount, label match
 notes: parsed payout amount: $50; effort signals: good-first-issue, docs-or-tests</description>
     </item>
     <item>
-      <title>Vision &amp; Roadmap — FiniexTestingIDE</title>
-      <link>https://github.com/dc-deal/FiniexTestingIDE/issues/138</link>
-      <guid isPermaLink="true">https://github.com/dc-deal/FiniexTestingIDE/issues/138</guid>
-      <pubDate>Mon, 15 Jun 2026 07:06:53 GMT</pubDate>
-      <description>dc-deal/FiniexTestingIDE | score 18
-opportunity: standard
-effort: 64
-signals: USDC/Base
-notes: no explicit USD/USDC amount parsed; payment rail signal present; effort signals: docs-or-tests, narrow-scope, security-sensitive, infra-or-migration</description>
-    </item>
-    <item>
-      <title>Contribute to Market Manipulation Wiki</title>
-      <link>https://github.com/1712n/dn-institute/issues/277</link>
-      <guid isPermaLink="true">https://github.com/1712n/dn-institute/issues/277</guid>
-      <pubDate>Mon, 15 Jun 2026 07:06:07 GMT</pubDate>
-      <description>1712n/dn-institute | score 36
-opportunity: standard
-effort: 30
-amount: $100
+      <title>[PAID BOUNTY - $660] Enhanced Image Preview</title>
+      <link>https://github.com/warpspeedopen-source/warpspeed-bounties/issues/6</link>
+      <guid isPermaLink="true">https://github.com/warpspeedopen-source/warpspeed-bounties/issues/6</guid>
+      <pubDate>Tue, 16 Jun 2026 11:30:53 GMT</pubDate>
+      <description>warpspeedopen-source/warpspeed-bounties | score 8
+opportunity: manual-review
+effort: 84
+amount: $660
 signals: bounty, amount, label match
-notes: parsed payout amount: $100; effort signals: docs-or-tests</description>
+risk: requires-signup-confirmation
+notes: parsed payout amount: $660; effort signals: infra-or-migration, external-access; risk flags: requires-signup-confirmation; manual signup or approval friction detected</description>
     </item>
     <item>
-      <title>[EASY BOUNTY: 2-3 RTC] Find and Report a BoTTube Bug</title>
-      <link>https://github.com/Scottcjn/rustchain-bounties/issues/1102</link>
-      <guid isPermaLink="true">https://github.com/Scottcjn/rustchain-bounties/issues/1102</guid>
-      <pubDate>Mon, 15 Jun 2026 07:03:56 GMT</pubDate>
-      <description>Scottcjn/rustchain-bounties | score 0
+      <title>Launch Another DoraHacks Bounty Post</title>
+      <link>https://github.com/devpool-directory/devpool-directory/issues/5924</link>
+      <guid isPermaLink="true">https://github.com/devpool-directory/devpool-directory/issues/5924</guid>
+      <pubDate>Tue, 16 Jun 2026 11:26:05 GMT</pubDate>
+      <description>devpool-directory/devpool-directory | score 28
 opportunity: standard
+effort: 40
+signals: bounty, amount
+notes: no explicit USD/USDC amount parsed</description>
+    </item>
+    <item>
+      <title>Implement Differential Reward Distribution for Reopened Issues</title>
+      <link>https://github.com/devpool-directory/devpool-directory/issues/5012</link>
+      <guid isPermaLink="true">https://github.com/devpool-directory/devpool-directory/issues/5012</guid>
+      <pubDate>Tue, 16 Jun 2026 11:25:59 GMT</pubDate>
+      <description>devpool-directory/devpool-directory | score 28
+opportunity: standard
+effort: 40
+signals: bounty, amount
+notes: no explicit USD/USDC amount parsed</description>
+    </item>
+    <item>
+      <title>[Bounty #1102 claim: 5 RTC] Bottube #1428 - register gemini_bp (PR #1429)</title>
+      <link>https://github.com/Scottcjn/rustchain-bounties/issues/14057</link>
+      <guid isPermaLink="true">https://github.com/Scottcjn/rustchain-bounties/issues/14057</guid>
+      <pubDate>Tue, 16 Jun 2026 11:07:05 GMT</pubDate>
+      <description>Scottcjn/rustchain-bounties | score 30
+opportunity: standard
+effort: 72
+signals: bounty, USDC/Base
+notes: no explicit USD/USDC amount parsed; payment rail signal present; effort signals: docs-or-tests, security-sensitive, infra-or-migration</description>
+    </item>
+    <item>
+      <title>MYA job #20 submission: Maly Codex Pyrimid SDK recommender</title>
+      <link>https://github.com/pyrimid-ai/pyrimid/issues/32</link>
+      <guid isPermaLink="true">https://github.com/pyrimid-ai/pyrimid/issues/32</guid>
+      <pubDate>Tue, 16 Jun 2026 10:44:59 GMT</pubDate>
+      <description>pyrimid-ai/pyrimid | score 84
+opportunity: rail-watch
+effort: 64
+amount: $100
+signals: bounty, USDC/Base, x402, amount, payout address
+notes: parsed payout amount: $100; payment rail signal present; effort signals: security-sensitive</description>
+    </item>
+    <item>
+      <title>Calculate the exact value of PI</title>
+      <link>https://github.com/xevrion-v2/agent-playground/issues/17</link>
+      <guid isPermaLink="true">https://github.com/xevrion-v2/agent-playground/issues/17</guid>
+      <pubDate>Tue, 16 Jun 2026 10:28:04 GMT</pubDate>
+      <description>xevrion-v2/agent-playground | score 36
+opportunity: high-value
+effort: 26
+amount: $1000
+signals: bounty, amount, label match
+notes: parsed payout amount: $1000; effort signals: good-first-issue</description>
+    </item>
+    <item>
+      <title>Feedback: CapScribe MCP x402 integration — Week 3 bounty</title>
+      <link>https://github.com/hashgraph/hedera-agent-kit-js/issues/903</link>
+      <guid isPermaLink="true">https://github.com/hashgraph/hedera-agent-kit-js/issues/903</guid>
+      <pubDate>Tue, 16 Jun 2026 09:45:27 GMT</pubDate>
+      <description>hashgraph/hedera-agent-kit-js | score 38
+opportunity: rail-watch
 effort: 16
+signals: bounty, x402, label match
+notes: no explicit USD/USDC amount parsed; payment rail signal present; effort signals: good-first-issue, docs-or-tests</description>
+    </item>
+    <item>
+      <title>[BOUNTY] Star &amp; Follow — Earn RTC (Ongoing, Agents Welcome)</title>
+      <link>https://github.com/Scottcjn/rustchain-bounties/issues/2103</link>
+      <guid isPermaLink="true">https://github.com/Scottcjn/rustchain-bounties/issues/2103</guid>
+      <pubDate>Tue, 16 Jun 2026 04:55:23 GMT</pubDate>
+      <description>Scottcjn/rustchain-bounties | score 20
+opportunity: standard
+effort: 32
 signals: bounty, label match
+notes: no explicit USD/USDC amount parsed; effort signals: good-first-issue, docs-or-tests, narrow-scope, security-sensitive</description>
+    </item>
+    <item>
+      <title>MRWK bounty: 40 MRWK - review open MergeWork PRs with evidence, round 21</title>
+      <link>https://github.com/ramimbo/mergework/issues/1009</link>
+      <guid isPermaLink="true">https://github.com/ramimbo/mergework/issues/1009</guid>
+      <pubDate>Tue, 16 Jun 2026 04:31:57 GMT</pubDate>
+      <description>ramimbo/mergework | score 32
+opportunity: rail-watch
+effort: 64
+signals: bounty, MRWK/MergeWork, amount, label match
 risk: competition-noise
-notes: no explicit USD/USDC amount parsed; effort signals: good-first-issue, docs-or-tests; risk flags: competition-noise</description>
+notes: no explicit USD/USDC amount parsed; payment rail signal present; effort signals: security-sensitive; risk flags: competition-noise</description>
+    </item>
+    <item>
+      <title>RFC: Federation bridge to mergework (RTC ↔ MRWK)</title>
+      <link>https://github.com/Scottcjn/Rustchain/issues/6522</link>
+      <guid isPermaLink="true">https://github.com/Scottcjn/Rustchain/issues/6522</guid>
+      <pubDate>Tue, 16 Jun 2026 03:43:16 GMT</pubDate>
+      <description>Scottcjn/Rustchain | score 46
+opportunity: rail-watch
+effort: 54
+signals: bounty, MRWK/MergeWork, amount
+notes: no explicit USD/USDC amount parsed; payment rail signal present; effort signals: docs-or-tests, security-sensitive</description>
+    </item>
+    <item>
+      <title>[TRACKING] rustchain-claim-portal chain_client.get_balance should use public read endpoint, not admin-key path</title>
+      <link>https://github.com/Scottcjn/Rustchain/issues/6624</link>
+      <guid isPermaLink="true">https://github.com/Scottcjn/Rustchain/issues/6624</guid>
+      <pubDate>Tue, 16 Jun 2026 03:43:13 GMT</pubDate>
+      <description>Scottcjn/Rustchain | score 46
+opportunity: rail-watch
+effort: 82
+amount: $0.1
+signals: bounty, MRWK/MergeWork, amount
+notes: parsed payout amount: $0.1; payment rail signal present; effort signals: security-sensitive, infra-or-migration</description>
     </item>
     <item>
       <title>MRWK bounty: 150 MRWK - contributor profiles and proof explorer improvements</title>
       <link>https://github.com/ramimbo/mergework/issues/1010</link>
       <guid isPermaLink="true">https://github.com/ramimbo/mergework/issues/1010</guid>
-      <pubDate>Mon, 15 Jun 2026 07:03:52 GMT</pubDate>
+      <pubDate>Tue, 16 Jun 2026 03:27:29 GMT</pubDate>
       <description>ramimbo/mergework | score 32
 opportunity: rail-watch
 effort: 46
@@ -321,145 +407,63 @@ risk: competition-noise
 notes: no explicit USD/USDC amount parsed; payment rail signal present; effort signals: docs-or-tests, narrow-scope, security-sensitive; risk flags: competition-noise</description>
     </item>
     <item>
-      <title>[BOUNTY] Star &amp; Follow — Earn RTC (Ongoing, Agents Welcome)</title>
-      <link>https://github.com/Scottcjn/rustchain-bounties/issues/2103</link>
-      <guid isPermaLink="true">https://github.com/Scottcjn/rustchain-bounties/issues/2103</guid>
-      <pubDate>Mon, 15 Jun 2026 06:35:23 GMT</pubDate>
-      <description>Scottcjn/rustchain-bounties | score 20
-opportunity: standard
-effort: 32
-signals: bounty, label match
-notes: no explicit USD/USDC amount parsed; effort signals: good-first-issue, docs-or-tests, narrow-scope, security-sensitive</description>
-    </item>
-    <item>
-      <title>[ONBOARD: 1 RTC] Star + Review an Open PR</title>
-      <link>https://github.com/Scottcjn/rustchain-bounties/issues/2782</link>
-      <guid isPermaLink="true">https://github.com/Scottcjn/rustchain-bounties/issues/2782</guid>
-      <pubDate>Mon, 15 Jun 2026 06:25:09 GMT</pubDate>
-      <description>Scottcjn/rustchain-bounties | score 20
-opportunity: standard
-effort: 8
-signals: bounty, label match
-notes: no explicit USD/USDC amount parsed; effort signals: good-first-issue, docs-or-tests, narrow-scope</description>
-    </item>
-    <item>
-      <title>MRWK bounty: 40 MRWK - review open MergeWork PRs with evidence, round 21</title>
-      <link>https://github.com/ramimbo/mergework/issues/1009</link>
-      <guid isPermaLink="true">https://github.com/ramimbo/mergework/issues/1009</guid>
-      <pubDate>Mon, 15 Jun 2026 06:17:35 GMT</pubDate>
+      <title>MRWK bounty: 150 MRWK - wallet and account flow UX improvements</title>
+      <link>https://github.com/ramimbo/mergework/issues/1011</link>
+      <guid isPermaLink="true">https://github.com/ramimbo/mergework/issues/1011</guid>
+      <pubDate>Mon, 15 Jun 2026 17:55:40 GMT</pubDate>
       <description>ramimbo/mergework | score 32
 opportunity: rail-watch
-effort: 64
+effort: 46
 signals: bounty, MRWK/MergeWork, amount, label match
 risk: competition-noise
-notes: no explicit USD/USDC amount parsed; payment rail signal present; effort signals: security-sensitive; risk flags: competition-noise</description>
+notes: no explicit USD/USDC amount parsed; payment rail signal present; effort signals: docs-or-tests, narrow-scope, security-sensitive; risk flags: competition-noise</description>
     </item>
     <item>
-      <title>[BOUNTY: 3 RTC] wRTC Bridge vs Cross-Chain DEX Architecture Comparison</title>
-      <link>https://github.com/Scottcjn/rustchain-bounties/issues/12443</link>
-      <guid isPermaLink="true">https://github.com/Scottcjn/rustchain-bounties/issues/12443</guid>
-      <pubDate>Mon, 15 Jun 2026 06:15:47 GMT</pubDate>
-      <description>Scottcjn/rustchain-bounties | score 12
-opportunity: standard
-effort: 82
-signals: bounty
-notes: no explicit USD/USDC amount parsed; effort signals: security-sensitive, infra-or-migration</description>
-    </item>
-    <item>
-      <title>MRWK bounty: 40 MRWK - review open MergeWork PRs with evidence, round 20</title>
-      <link>https://github.com/ramimbo/mergework/issues/933</link>
-      <guid isPermaLink="true">https://github.com/ramimbo/mergework/issues/933</guid>
-      <pubDate>Mon, 15 Jun 2026 05:56:50 GMT</pubDate>
+      <title>MRWK bounty: 100 MRWK - code cleanup and maintainability improvements, round 2</title>
+      <link>https://github.com/ramimbo/mergework/issues/936</link>
+      <guid isPermaLink="true">https://github.com/ramimbo/mergework/issues/936</guid>
+      <pubDate>Mon, 15 Jun 2026 17:54:25 GMT</pubDate>
       <description>ramimbo/mergework | score 32
 opportunity: rail-watch
-effort: 64
+effort: 46
 signals: bounty, MRWK/MergeWork, amount, label match
 risk: competition-noise
-notes: no explicit USD/USDC amount parsed; payment rail signal present; effort signals: security-sensitive; risk flags: competition-noise</description>
+notes: no explicit USD/USDC amount parsed; payment rail signal present; effort signals: docs-or-tests, narrow-scope, security-sensitive; risk flags: competition-noise</description>
     </item>
     <item>
-      <title>[ONBOARD: 1 RTC] Star + File Your First Bug Report</title>
-      <link>https://github.com/Scottcjn/rustchain-bounties/issues/2781</link>
-      <guid isPermaLink="true">https://github.com/Scottcjn/rustchain-bounties/issues/2781</guid>
-      <pubDate>Mon, 15 Jun 2026 05:47:11 GMT</pubDate>
-      <description>Scottcjn/rustchain-bounties | score 0
-opportunity: standard
-effort: 8
-signals: bounty, label match
-risk: competition-noise
-notes: no explicit USD/USDC amount parsed; effort signals: good-first-issue, docs-or-tests, narrow-scope; risk flags: competition-noise</description>
-    </item>
-    <item>
-      <title>MRWK bounty: 150 MRWK - public bounty discovery and contributor-flow follow-up, round 2</title>
-      <link>https://github.com/ramimbo/mergework/issues/935</link>
-      <guid isPermaLink="true">https://github.com/ramimbo/mergework/issues/935</guid>
-      <pubDate>Mon, 15 Jun 2026 05:25:03 GMT</pubDate>
-      <description>ramimbo/mergework | score 32
+      <title>Production GitHub OAuth callback for /me returns Cannot GET /auth/github/callback</title>
+      <link>https://github.com/ramimbo/mergework/issues/1146</link>
+      <guid isPermaLink="true">https://github.com/ramimbo/mergework/issues/1146</guid>
+      <pubDate>Mon, 15 Jun 2026 16:00:13 GMT</pubDate>
+      <description>ramimbo/mergework | score 46
 opportunity: rail-watch
-effort: 54
-signals: bounty, MRWK/MergeWork, amount, label match
-risk: competition-noise
-notes: no explicit USD/USDC amount parsed; payment rail signal present; effort signals: docs-or-tests, security-sensitive; risk flags: competition-noise</description>
-    </item>
-    <item>
-      <title>MRWK bounty: 200 MRWK - public API and OpenAPI client contract completion</title>
-      <link>https://github.com/ramimbo/mergework/issues/944</link>
-      <guid isPermaLink="true">https://github.com/ramimbo/mergework/issues/944</guid>
-      <pubDate>Mon, 15 Jun 2026 05:13:55 GMT</pubDate>
-      <description>ramimbo/mergework | score 32
-opportunity: rail-watch
-effort: 54
-signals: bounty, MRWK/MergeWork, amount, label match
-risk: competition-noise
-notes: no explicit USD/USDC amount parsed; payment rail signal present; effort signals: docs-or-tests, security-sensitive; risk flags: competition-noise</description>
-    </item>
-    <item>
-      <title>[BOUNTY] Register on Beacon Atlas + Prove Commerce (Pool: 100 RTC)</title>
-      <link>https://github.com/Scottcjn/rustchain-bounties/issues/3418</link>
-      <guid isPermaLink="true">https://github.com/Scottcjn/rustchain-bounties/issues/3418</guid>
-      <pubDate>Mon, 15 Jun 2026 04:33:10 GMT</pubDate>
-      <description>Scottcjn/rustchain-bounties | score 14
-opportunity: standard
-effort: 40
-amount: $0.1
-signals: bounty, amount, label match
-risk: competition-noise
-notes: parsed payout amount: $0.1; effort signals: good-first-issue, docs-or-tests, security-sensitive; risk flags: competition-noise</description>
-    </item>
-    <item>
-      <title>Proposed work: reject transaction filters on account accepted-work API</title>
-      <link>https://github.com/ramimbo/mergework/issues/1114</link>
-      <guid isPermaLink="true">https://github.com/ramimbo/mergework/issues/1114</guid>
-      <pubDate>Mon, 15 Jun 2026 00:22:30 GMT</pubDate>
-      <description>ramimbo/mergework | score 24
-opportunity: rail-watch
-effort: 54
+effort: 72
 signals: bounty, MRWK/MergeWork, amount
-risk: competition-noise
-notes: no explicit USD/USDC amount parsed; payment rail signal present; effort signals: docs-or-tests, security-sensitive; risk flags: competition-noise</description>
+notes: no explicit USD/USDC amount parsed; payment rail signal present; effort signals: docs-or-tests, security-sensitive, infra-or-migration</description>
     </item>
     <item>
-      <title>MRWK bounty: 450 MRWK - Phase 2B snapshot Merkle proofs</title>
-      <link>https://github.com/ramimbo/mergework/issues/1027</link>
-      <guid isPermaLink="true">https://github.com/ramimbo/mergework/issues/1027</guid>
-      <pubDate>Sun, 14 Jun 2026 17:28:30 GMT</pubDate>
-      <description>ramimbo/mergework | score 50
+      <title>MRWK bounty: 50 MRWK - accepted proposed-work requests, round 3</title>
+      <link>https://github.com/ramimbo/mergework/issues/932</link>
+      <guid isPermaLink="true">https://github.com/ramimbo/mergework/issues/932</guid>
+      <pubDate>Mon, 15 Jun 2026 15:20:53 GMT</pubDate>
+      <description>ramimbo/mergework | score 32
 opportunity: rail-watch
-effort: 54
-signals: bounty, USDC/Base, MRWK/MergeWork, amount, label match
+effort: 46
+signals: bounty, MRWK/MergeWork, amount, label match
 risk: competition-noise
-notes: no explicit USD/USDC amount parsed; payment rail signal present; effort signals: docs-or-tests, security-sensitive; risk flags: competition-noise</description>
+notes: no explicit USD/USDC amount parsed; payment rail signal present; effort signals: docs-or-tests, narrow-scope, security-sensitive; risk flags: competition-noise</description>
     </item>
     <item>
-      <title>[Bounty #1102 claim: 5 RTC] Bottube #1414 - /api/videos accepts `limit` as alias for `per_page` (PR #1415)</title>
-      <link>https://github.com/Scottcjn/rustchain-bounties/issues/14039</link>
-      <guid isPermaLink="true">https://github.com/Scottcjn/rustchain-bounties/issues/14039</guid>
-      <pubDate>Sun, 14 Jun 2026 10:18:30 GMT</pubDate>
-      <description>Scottcjn/rustchain-bounties | score 12
+      <title>Proposed work: harden source validation in live bounty checker scripts</title>
+      <link>https://github.com/ramimbo/mergework/issues/1145</link>
+      <guid isPermaLink="true">https://github.com/ramimbo/mergework/issues/1145</guid>
+      <pubDate>Mon, 15 Jun 2026 15:20:31 GMT</pubDate>
+      <description>ramimbo/mergework | score 8
 opportunity: standard
-effort: 82
-signals: bounty
-notes: no explicit USD/USDC amount parsed; effort signals: security-sensitive, infra-or-migration</description>
+effort: 64
+signals: bounty, MRWK/MergeWork
+risk: competition-noise
+notes: no explicit USD/USDC amount parsed; payment rail signal present; effort signals: security-sensitive; risk flags: competition-noise</description>
     </item>
 
   </channel>
