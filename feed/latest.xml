@@ -5,56 +5,164 @@
     <link>https://go165.github.io/bounty-radar/</link>
     <description>Daily GitHub bounty shortlist scored for payout clarity, payment rails, amount text, risk, and effort.</description>
     <language>en</language>
-    <lastBuildDate>Sat, 20 Jun 2026 10:41:12 GMT</lastBuildDate>
+    <lastBuildDate>Sun, 21 Jun 2026 11:24:40 GMT</lastBuildDate>
     <atom:link href="https://go165.github.io/bounty-radar/feed/latest.xml" rel="self" type="application/rss+xml" />
     <atom:link href="https://go165.github.io/bounty-radar/feed/latest.json" rel="alternate" type="application/json" />
     <item>
-      <title>[V2][individual] Email Translator - Architecture and folder contract</title>
-      <link>https://github.com/Stellar-Mail/stealth/issues/494</link>
-      <guid isPermaLink="true">https://github.com/Stellar-Mail/stealth/issues/494</guid>
-      <pubDate>Sat, 20 Jun 2026 10:40:38 GMT</pubDate>
-      <description>Stellar-Mail/stealth | score 0
-opportunity: standard
-effort: 72
-notes: no explicit USD/USDC amount parsed; effort signals: docs-or-tests, security-sensitive, infra-or-migration</description>
-    </item>
-    <item>
-      <title>chore: repair Sentinel Cortex store plan errors and stale generated state</title>
-      <link>https://github.com/autumngarage/sentinel/issues/124</link>
-      <guid isPermaLink="true">https://github.com/autumngarage/sentinel/issues/124</guid>
-      <pubDate>Sat, 20 Jun 2026 10:40:21 GMT</pubDate>
-      <description>autumngarage/sentinel | score 0
+      <title>[JH2 美人计][A-P0-GATE-01] Provider Production Staging Decision</title>
+      <link>https://github.com/huanlongAI/hl-dispatch/issues/298</link>
+      <guid isPermaLink="true">https://github.com/huanlongAI/hl-dispatch/issues/298</guid>
+      <pubDate>Sun, 21 Jun 2026 11:24:23 GMT</pubDate>
+      <description>huanlongAI/hl-dispatch | score 0
 opportunity: standard
 effort: 58
 notes: no explicit USD/USDC amount parsed; effort signals: infra-or-migration</description>
     </item>
     <item>
-      <title>[Expert] Implement Stellar sequence number management with local sequence cache and retry</title>
-      <link>https://github.com/ChainLearnOfficial/chainlearn-api/issues/8</link>
-      <guid isPermaLink="true">https://github.com/ChainLearnOfficial/chainlearn-api/issues/8</guid>
-      <pubDate>Sat, 20 Jun 2026 10:40:20 GMT</pubDate>
-      <description>ChainLearnOfficial/chainlearn-api | score 12
-opportunity: standard
-effort: 48
-signals: bounty
-notes: no explicit USD/USDC amount parsed; effort signals: docs-or-tests, infra-or-migration</description>
-    </item>
-    <item>
-      <title>feat(YouTube Music): Third party music lyrics provider</title>
-      <link>https://github.com/MorpheApp/morphe-patches/issues/189</link>
-      <guid isPermaLink="true">https://github.com/MorpheApp/morphe-patches/issues/189</guid>
-      <pubDate>Sat, 20 Jun 2026 10:40:20 GMT</pubDate>
-      <description>MorpheApp/morphe-patches | score 0
+      <title>[JH2 美人计][A-SPEC] 接入 JH-002 判断回路并落库 Founder 产品设计规格</title>
+      <link>https://github.com/huanlongAI/hl-dispatch/issues/284</link>
+      <guid isPermaLink="true">https://github.com/huanlongAI/hl-dispatch/issues/284</guid>
+      <pubDate>Sun, 21 Jun 2026 11:24:22 GMT</pubDate>
+      <description>huanlongAI/hl-dispatch | score 0
 opportunity: standard
 effort: 40
-risk: competition-noise
-notes: no explicit USD/USDC amount parsed; risk flags: competition-noise</description>
+notes: no explicit USD/USDC amount parsed; effort signals: docs-or-tests, narrow-scope, infra-or-migration</description>
+    </item>
+    <item>
+      <title>What we need for a first PyGMT paper?</title>
+      <link>https://github.com/GenericMappingTools/pygmt/issues/677</link>
+      <guid isPermaLink="true">https://github.com/GenericMappingTools/pygmt/issues/677</guid>
+      <pubDate>Sun, 21 Jun 2026 11:24:04 GMT</pubDate>
+      <description>GenericMappingTools/pygmt | score 0
+opportunity: standard
+effort: 16
+notes: no explicit USD/USDC amount parsed; effort signals: good-first-issue, docs-or-tests</description>
+    </item>
+    <item>
+      <title>MVP: Provider-Agnostic AI Agent Observability, Security &amp; Transparency Platform</title>
+      <link>https://github.com/joeyf116/agent-lens/issues/1</link>
+      <guid isPermaLink="true">https://github.com/joeyf116/agent-lens/issues/1</guid>
+      <pubDate>Sun, 21 Jun 2026 11:23:53 GMT</pubDate>
+      <description>joeyf116/agent-lens | score 0
+opportunity: manual-review
+effort: 98
+amount: $0.0023
+signals: bounty, amount
+risk: requires-signup-confirmation
+notes: parsed payout amount: $0.0023; effort signals: docs-or-tests, security-sensitive, infra-or-migration, external-access; risk flags: requires-signup-confirmation; manual signup or approval friction detected</description>
+    </item>
+    <item>
+      <title>Document the contract-events ingest payload schema in OpenAPI (topic enum, ledger, required fields)</title>
+      <link>https://github.com/Fluxora-Org/Fluxora-Backend/issues/363</link>
+      <guid isPermaLink="true">https://github.com/Fluxora-Org/Fluxora-Backend/issues/363</guid>
+      <pubDate>Sun, 21 Jun 2026 11:23:24 GMT</pubDate>
+      <description>Fluxora-Org/Fluxora-Backend | score 0
+opportunity: standard
+effort: 40
+notes: no explicit USD/USDC amount parsed; effort signals: good-first-issue, docs-or-tests, security-sensitive</description>
+    </item>
+    <item>
+      <title>Codex (gpt-5.5, Plus plan) — rate-limit cost per token jumped ~10-20x since June 16, draining the 5h budget in 2-3 prompts</title>
+      <link>https://github.com/openai/codex/issues/28879</link>
+      <guid isPermaLink="true">https://github.com/openai/codex/issues/28879</guid>
+      <pubDate>Sun, 21 Jun 2026 11:22:56 GMT</pubDate>
+      <description>openai/codex | score 0
+opportunity: standard
+effort: 40
+notes: no explicit USD/USDC amount parsed</description>
+    </item>
+    <item>
+      <title>Contract drift detected (2026-05-28)</title>
+      <link>https://github.com/XRPL-Utilities/xrpl-utilities-mcp/issues/2</link>
+      <guid isPermaLink="true">https://github.com/XRPL-Utilities/xrpl-utilities-mcp/issues/2</guid>
+      <pubDate>Sun, 21 Jun 2026 11:21:51 GMT</pubDate>
+      <description>XRPL-Utilities/xrpl-utilities-mcp | score 12
+opportunity: standard
+effort: 40
+signals: bounty
+notes: no explicit USD/USDC amount parsed</description>
+    </item>
+    <item>
+      <title>Security vulnerability in Hestia CP</title>
+      <link>https://github.com/hestiacp/hestiacp/issues/5229</link>
+      <guid isPermaLink="true">https://github.com/hestiacp/hestiacp/issues/5229</guid>
+      <pubDate>Sun, 21 Jun 2026 11:21:33 GMT</pubDate>
+      <description>hestiacp/hestiacp | score 0
+opportunity: standard
+effort: 64
+notes: no explicit USD/USDC amount parsed; effort signals: security-sensitive</description>
+    </item>
+    <item>
+      <title>Advanced: Full Crowdfunding Campaign Page</title>
+      <link>https://github.com/SAPTARSHI-coder/EaseMotion-css/issues/14844</link>
+      <guid isPermaLink="true">https://github.com/SAPTARSHI-coder/EaseMotion-css/issues/14844</guid>
+      <pubDate>Sun, 21 Jun 2026 11:21:26 GMT</pubDate>
+      <description>SAPTARSHI-coder/EaseMotion-css | score 20
+opportunity: standard
+effort: 16
+signals: bounty, label match
+notes: no explicit USD/USDC amount parsed; effort signals: good-first-issue, docs-or-tests</description>
+    </item>
+    <item>
+      <title>[moltbook] engagement-ledger</title>
+      <link>https://github.com/tobyrowland/update_ai_analysis/issues/354</link>
+      <guid isPermaLink="true">https://github.com/tobyrowland/update_ai_analysis/issues/354</guid>
+      <pubDate>Sun, 21 Jun 2026 11:21:00 GMT</pubDate>
+      <description>tobyrowland/update_ai_analysis | score 0
+opportunity: avoid
+effort: 100
+amount: $11
+signals: bounty, amount
+risk: requires-signup-confirmation, kyc-or-account-friction, competition-noise
+notes: parsed payout amount: $11; effort signals: good-first-issue, docs-or-tests, security-sensitive, infra-or-migration, external-access; risk flags: requires-signup-confirmation, kyc-or-account-friction, competition-noise; manual signup or approval friction detected</description>
+    </item>
+    <item>
+      <title>[EPIC] Demo: SocialFi + DeFi journey on a hub behind the anyone proxy</title>
+      <link>https://github.com/toon-protocol/toon-meta/issues/22</link>
+      <guid isPermaLink="true">https://github.com/toon-protocol/toon-meta/issues/22</guid>
+      <pubDate>Sun, 21 Jun 2026 11:20:50 GMT</pubDate>
+      <description>toon-protocol/toon-meta | score 36
+opportunity: rail-watch
+effort: 72
+signals: USDC/Base, x402
+notes: no explicit USD/USDC amount parsed; payment rail signal present; effort signals: docs-or-tests, security-sensitive, infra-or-migration</description>
+    </item>
+    <item>
+      <title>/opire try</title>
+      <link>https://github.com/claude-builders-bounty/claude-builders-bounty/issues/2746</link>
+      <guid isPermaLink="true">https://github.com/claude-builders-bounty/claude-builders-bounty/issues/2746</guid>
+      <pubDate>Sun, 21 Jun 2026 11:20:50 GMT</pubDate>
+      <description>claude-builders-bounty/claude-builders-bounty | score 0
+opportunity: standard
+effort: 40
+notes: no explicit USD/USDC amount parsed</description>
+    </item>
+    <item>
+      <title>Self-serve signup e billing de assinatura para novas clínicas</title>
+      <link>https://github.com/tropeks/Vitali/issues/132</link>
+      <guid isPermaLink="true">https://github.com/tropeks/Vitali/issues/132</guid>
+      <pubDate>Sun, 21 Jun 2026 11:20:38 GMT</pubDate>
+      <description>tropeks/Vitali | score 0
+opportunity: manual-review
+effort: 66
+risk: requires-signup-confirmation
+notes: no explicit USD/USDC amount parsed; effort signals: external-access; risk flags: requires-signup-confirmation; manual signup or approval friction detected</description>
+    </item>
+    <item>
+      <title>Classify tool failures before filing target-repo bugs</title>
+      <link>https://github.com/autumngarage/alchemist/issues/256</link>
+      <guid isPermaLink="true">https://github.com/autumngarage/alchemist/issues/256</guid>
+      <pubDate>Sun, 21 Jun 2026 11:20:24 GMT</pubDate>
+      <description>autumngarage/alchemist | score 0
+opportunity: standard
+effort: 30
+notes: no explicit USD/USDC amount parsed; effort signals: docs-or-tests</description>
     </item>
     <item>
       <title>Add one-click &apos;Post to LinkedIn&apos; for requirements (recruiter profile, AI image, one-and-done)</title>
       <link>https://github.com/raj-makhija/quadzero-scout/issues/442</link>
       <guid isPermaLink="true">https://github.com/raj-makhija/quadzero-scout/issues/442</guid>
-      <pubDate>Sat, 20 Jun 2026 10:40:05 GMT</pubDate>
+      <pubDate>Sun, 21 Jun 2026 11:19:17 GMT</pubDate>
       <description>raj-makhija/quadzero-scout | score 34
 opportunity: standard
 effort: 48
@@ -63,120 +171,72 @@ signals: USDC/Base, amount
 notes: parsed payout amount: $5; payment rail signal present; effort signals: docs-or-tests, infra-or-migration</description>
     </item>
     <item>
-      <title>EPIC: DE-5 Training / Tassadar pipeline (13 promises)</title>
-      <link>https://github.com/OpenAgentsInc/openagents/issues/5528</link>
-      <guid isPermaLink="true">https://github.com/OpenAgentsInc/openagents/issues/5528</guid>
-      <pubDate>Sat, 20 Jun 2026 10:39:12 GMT</pubDate>
-      <description>OpenAgentsInc/openagents | score 12
+      <title>[FEATURE]:Governance middleware hook for tool call authorization</title>
+      <link>https://github.com/crewAIInc/crewAI/issues/5888</link>
+      <guid isPermaLink="true">https://github.com/crewAIInc/crewAI/issues/5888</guid>
+      <pubDate>Sun, 21 Jun 2026 11:18:54 GMT</pubDate>
+      <description>crewAIInc/crewAI | score 0
 opportunity: standard
 effort: 48
-signals: bounty
 notes: no explicit USD/USDC amount parsed; effort signals: docs-or-tests, infra-or-migration</description>
     </item>
     <item>
-      <title>[demand] high-priority 2026-06-20T10:38</title>
-      <link>https://github.com/relayhop/ClaudeEarnSelf-runtime/issues/188</link>
-      <guid isPermaLink="true">https://github.com/relayhop/ClaudeEarnSelf-runtime/issues/188</guid>
-      <pubDate>Sat, 20 Jun 2026 10:39:00 GMT</pubDate>
-      <description>relayhop/ClaudeEarnSelf-runtime | score 28
+      <title>[Process] Revisit roadmap and issue dependencies after every PR merge</title>
+      <link>https://github.com/nissan/reddi-agent-protocol/issues/340</link>
+      <guid isPermaLink="true">https://github.com/nissan/reddi-agent-protocol/issues/340</guid>
+      <pubDate>Sun, 21 Jun 2026 11:18:34 GMT</pubDate>
+      <description>nissan/reddi-agent-protocol | score 0
 opportunity: standard
 effort: 40
-amount: $25
-signals: bounty, amount
-notes: parsed payout amount: $25</description>
+notes: no explicit USD/USDC amount parsed</description>
     </item>
     <item>
-      <title>Roadmap: Demon boss, dungeon runs, lazy actor assets, and supporting UX</title>
-      <link>https://github.com/Dzejrou/dotai/issues/145</link>
-      <guid isPermaLink="true">https://github.com/Dzejrou/dotai/issues/145</guid>
-      <pubDate>Sat, 20 Jun 2026 10:38:47 GMT</pubDate>
-      <description>Dzejrou/dotai | score 0
+      <title>[Epic] Pay.sh catalog and paid-API integration path</title>
+      <link>https://github.com/nissan/reddi-agent-protocol/issues/471</link>
+      <guid isPermaLink="true">https://github.com/nissan/reddi-agent-protocol/issues/471</guid>
+      <pubDate>Sun, 21 Jun 2026 11:18:33 GMT</pubDate>
+      <description>nissan/reddi-agent-protocol | score 30
 opportunity: standard
-effort: 58
-signals: bounty
-risk: competition-noise
-notes: no explicit USD/USDC amount parsed; effort signals: infra-or-migration; risk flags: competition-noise</description>
+effort: 72
+signals: bounty, x402
+notes: no explicit USD/USDC amount parsed; payment rail signal present; effort signals: docs-or-tests, security-sensitive, infra-or-migration</description>
     </item>
     <item>
-      <title>Migrate hosting from GCP to Clever Cloud for data sovereignty</title>
-      <link>https://github.com/zatsit-oss/zats-greenscore/issues/55</link>
-      <guid isPermaLink="true">https://github.com/zatsit-oss/zats-greenscore/issues/55</guid>
-      <pubDate>Sat, 20 Jun 2026 10:38:06 GMT</pubDate>
-      <description>zatsit-oss/zats-greenscore | score 0
+      <title>Volkswagen API access restrictions, EU Data Act concerns, and impact on existing integrations</title>
+      <link>https://github.com/robinostlund/homeassistant-volkswagencarnet/issues/977</link>
+      <guid isPermaLink="true">https://github.com/robinostlund/homeassistant-volkswagencarnet/issues/977</guid>
+      <pubDate>Sun, 21 Jun 2026 11:17:19 GMT</pubDate>
+      <description>robinostlund/homeassistant-volkswagencarnet | score 0
+opportunity: standard
+effort: 40
+notes: no explicit USD/USDC amount parsed</description>
+    </item>
+    <item>
+      <title>Suppress re-filing duplicate tool failures after stale or duplicate closure</title>
+      <link>https://github.com/autumngarage/alchemist/issues/255</link>
+      <guid isPermaLink="true">https://github.com/autumngarage/alchemist/issues/255</guid>
+      <pubDate>Sun, 21 Jun 2026 11:15:34 GMT</pubDate>
+      <description>autumngarage/alchemist | score 0
+opportunity: standard
+effort: 40
+risk: competition-noise
+notes: no explicit USD/USDC amount parsed; risk flags: competition-noise</description>
+    </item>
+    <item>
+      <title>Agentic authorization SemConv: agent.trust_score, agent.drift_score, fga.* (sub-issue under #35)</title>
+      <link>https://github.com/open-telemetry/semantic-conventions-genai/issues/180</link>
+      <guid isPermaLink="true">https://github.com/open-telemetry/semantic-conventions-genai/issues/180</guid>
+      <pubDate>Sun, 21 Jun 2026 11:15:13 GMT</pubDate>
+      <description>open-telemetry/semantic-conventions-genai | score 0
 opportunity: standard
 effort: 54
 notes: no explicit USD/USDC amount parsed; effort signals: docs-or-tests, security-sensitive</description>
     </item>
     <item>
-      <title>[Epic] Habit science framework: resilient streaks, tiny habits, neurodivergent support</title>
-      <link>https://github.com/vladonemo/gasp/issues/138</link>
-      <guid isPermaLink="true">https://github.com/vladonemo/gasp/issues/138</guid>
-      <pubDate>Sat, 20 Jun 2026 10:37:44 GMT</pubDate>
-      <description>vladonemo/gasp | score 12
-opportunity: standard
-effort: 40
-signals: bounty
-notes: no explicit USD/USDC amount parsed</description>
-    </item>
-    <item>
-      <title>[$25 BOUNTY] [C] Add frailbox self-test command</title>
-      <link>https://github.com/lobster-trap/hammer-and-nail/issues/434</link>
-      <guid isPermaLink="true">https://github.com/lobster-trap/hammer-and-nail/issues/434</guid>
-      <pubDate>Sat, 20 Jun 2026 10:37:39 GMT</pubDate>
-      <description>lobster-trap/hammer-and-nail | score 36
-opportunity: standard
-effort: 16
-amount: $25
-signals: bounty, amount, label match
-notes: parsed payout amount: $25; effort signals: good-first-issue, docs-or-tests</description>
-    </item>
-    <item>
-      <title>Contract drift detected (2026-05-28)</title>
-      <link>https://github.com/XRPL-Utilities/xrpl-utilities-mcp/issues/2</link>
-      <guid isPermaLink="true">https://github.com/XRPL-Utilities/xrpl-utilities-mcp/issues/2</guid>
-      <pubDate>Sat, 20 Jun 2026 10:37:34 GMT</pubDate>
-      <description>XRPL-Utilities/xrpl-utilities-mcp | score 12
-opportunity: standard
-effort: 40
-signals: bounty
-notes: no explicit USD/USDC amount parsed</description>
-    </item>
-    <item>
-      <title>P0: HTTP 429 rate limit blocking RL steward, continuation worker, AND runtime alert monitor</title>
-      <link>https://github.com/lanyusea/screeps/issues/1780</link>
-      <guid isPermaLink="true">https://github.com/lanyusea/screeps/issues/1780</guid>
-      <pubDate>Sat, 20 Jun 2026 10:36:59 GMT</pubDate>
-      <description>lanyusea/screeps | score 0
-opportunity: standard
-effort: 40
-notes: no explicit USD/USDC amount parsed</description>
-    </item>
-    <item>
-      <title>issue-claim-check sync regressed Actions-token REST reads</title>
-      <link>https://github.com/autumngarage/touchstone/issues/465</link>
-      <guid isPermaLink="true">https://github.com/autumngarage/touchstone/issues/465</guid>
-      <pubDate>Sat, 20 Jun 2026 10:35:15 GMT</pubDate>
-      <description>autumngarage/touchstone | score 0
-opportunity: standard
-effort: 30
-notes: no explicit USD/USDC amount parsed; effort signals: docs-or-tests</description>
-    </item>
-    <item>
-      <title>[EPIC] Demo: SocialFi + DeFi journey on a hub behind the anyone proxy</title>
-      <link>https://github.com/toon-protocol/toon-meta/issues/22</link>
-      <guid isPermaLink="true">https://github.com/toon-protocol/toon-meta/issues/22</guid>
-      <pubDate>Sat, 20 Jun 2026 10:33:15 GMT</pubDate>
-      <description>toon-protocol/toon-meta | score 36
-opportunity: rail-watch
-effort: 72
-signals: USDC/Base, x402
-notes: no explicit USD/USDC amount parsed; payment rail signal present; effort signals: docs-or-tests, security-sensitive, infra-or-migration</description>
-    </item>
-    <item>
       <title>[bluesky] engagement-ledger</title>
       <link>https://github.com/tobyrowland/update_ai_analysis/issues/349</link>
       <guid isPermaLink="true">https://github.com/tobyrowland/update_ai_analysis/issues/349</guid>
-      <pubDate>Sat, 20 Jun 2026 10:31:50 GMT</pubDate>
+      <pubDate>Sun, 21 Jun 2026 11:15:05 GMT</pubDate>
       <description>tobyrowland/update_ai_analysis | score 36
 opportunity: manual-review
 effort: 94
@@ -186,171 +246,91 @@ risk: requires-signup-confirmation
 notes: parsed payout amount: $70000; payment rail signal present; effort signals: good-first-issue, security-sensitive, infra-or-migration, external-access; risk flags: requires-signup-confirmation; manual signup or approval friction detected</description>
     </item>
     <item>
-      <title>Planner should consume `cortex retrieve --json` for project-memory retrieval</title>
-      <link>https://github.com/autumngarage/sentinel/issues/111</link>
-      <guid isPermaLink="true">https://github.com/autumngarage/sentinel/issues/111</guid>
-      <pubDate>Sat, 20 Jun 2026 10:30:43 GMT</pubDate>
-      <description>autumngarage/sentinel | score 0
-opportunity: standard
-effort: 58
-notes: no explicit USD/USDC amount parsed; effort signals: infra-or-migration</description>
-    </item>
-    <item>
-      <title>Sub-agent, Questions tool, and jumping to another agent role</title>
-      <link>https://github.com/devinoldenburg/opencode-goal-mode/issues/2</link>
-      <guid isPermaLink="true">https://github.com/devinoldenburg/opencode-goal-mode/issues/2</guid>
-      <pubDate>Sat, 20 Jun 2026 10:30:13 GMT</pubDate>
-      <description>devinoldenburg/opencode-goal-mode | score 0
-opportunity: standard
-effort: 40
-notes: no explicit USD/USDC amount parsed</description>
-    </item>
-    <item>
-      <title>sdk: onboard() orchestration + EVM adapter — faucet drip, EIP-3009 settle, channel open/fund, first claim</title>
-      <link>https://github.com/toon-protocol/toon/issues/17</link>
-      <guid isPermaLink="true">https://github.com/toon-protocol/toon/issues/17</guid>
-      <pubDate>Sat, 20 Jun 2026 10:28:36 GMT</pubDate>
-      <description>toon-protocol/toon | score 36
-opportunity: rail-watch
-effort: 54
-signals: USDC/Base, x402
-notes: no explicit USD/USDC amount parsed; payment rail signal present; effort signals: docs-or-tests, security-sensitive</description>
-    </item>
-    <item>
-      <title>toon (sdk): x402 onboarding — open+fund a payment channel from settled USDC (EVM/Solana/Mina)</title>
-      <link>https://github.com/toon-protocol/toon/issues/11</link>
-      <guid isPermaLink="true">https://github.com/toon-protocol/toon/issues/11</guid>
-      <pubDate>Sat, 20 Jun 2026 10:28:25 GMT</pubDate>
-      <description>toon-protocol/toon | score 48
-opportunity: rail-watch
-effort: 40
-signals: bounty, USDC/Base, x402
-notes: no explicit USD/USDC amount parsed; payment rail signal present</description>
-    </item>
-    <item>
-      <title>toon: extract x402 (pricing/settle/preflight/ingress) into @toon-protocol/sdk</title>
-      <link>https://github.com/toon-protocol/toon/issues/10</link>
-      <guid isPermaLink="true">https://github.com/toon-protocol/toon/issues/10</guid>
-      <pubDate>Sat, 20 Jun 2026 10:28:24 GMT</pubDate>
-      <description>toon-protocol/toon | score 52
-opportunity: rail-watch
-effort: 22
-signals: USDC/Base, x402, amount
-notes: no explicit USD/USDC amount parsed; payment rail signal present; effort signals: docs-or-tests, narrow-scope</description>
-    </item>
-    <item>
-      <title>[BOUNTY] Ongoing Bug Bounty Program — Find Bugs, Earn RTC (133 RTC Pool)</title>
-      <link>https://github.com/Scottcjn/rustchain-bounties/issues/71</link>
-      <guid isPermaLink="true">https://github.com/Scottcjn/rustchain-bounties/issues/71</guid>
-      <pubDate>Sat, 20 Jun 2026 10:14:53 GMT</pubDate>
-      <description>Scottcjn/rustchain-bounties | score 36
-opportunity: standard
-effort: 72
-amount: $0.1
+      <title>[ Bounty $2k ] [ Solidity ] Fix prevrandao manipulation in RandomLottery</title>
+      <link>https://github.com/ClankerNation/OpenAgents/issues/16</link>
+      <guid isPermaLink="true">https://github.com/ClankerNation/OpenAgents/issues/16</guid>
+      <pubDate>Sun, 21 Jun 2026 10:54:23 GMT</pubDate>
+      <description>ClankerNation/OpenAgents | score 0
+opportunity: avoid
+effort: 42
+amount: $2600
 signals: bounty, amount, label match
-notes: parsed payout amount: $0.1; effort signals: docs-or-tests, security-sensitive, infra-or-migration</description>
+risk: hidden-context-leak
+notes: parsed payout amount: $2600; effort signals: good-first-issue; risk flags: hidden-context-leak</description>
     </item>
     <item>
-      <title>Calculate the exact value of PI</title>
-      <link>https://github.com/xevrion-v2/agent-playground/issues/17</link>
-      <guid isPermaLink="true">https://github.com/xevrion-v2/agent-playground/issues/17</guid>
-      <pubDate>Sat, 20 Jun 2026 10:14:18 GMT</pubDate>
-      <description>xevrion-v2/agent-playground | score 36
-opportunity: high-value
-effort: 26
-amount: $1000
-signals: bounty, amount, label match
-notes: parsed payout amount: $1000; effort signals: good-first-issue</description>
-    </item>
-    <item>
-      <title>[ Bounty $2k ] [ Solidity ] Fix MultiTokenStaking emergencyWithdraw doesn&apos;t exist — v2 upgrade</title>
-      <link>https://github.com/ClankerNation/OpenAgents/issues/195</link>
-      <guid isPermaLink="true">https://github.com/ClankerNation/OpenAgents/issues/195</guid>
-      <pubDate>Sat, 20 Jun 2026 10:00:49 GMT</pubDate>
+      <title>[ Bounty $4k ] [ Solidity ] Fix TWAPOracle has no observation array rotation</title>
+      <link>https://github.com/ClankerNation/OpenAgents/issues/132</link>
+      <guid isPermaLink="true">https://github.com/ClankerNation/OpenAgents/issues/132</guid>
+      <pubDate>Sun, 21 Jun 2026 10:54:22 GMT</pubDate>
       <description>ClankerNation/OpenAgents | score 36
 opportunity: high-value
 effort: 44
-amount: $2300
+amount: $4200
 signals: bounty, amount, label match
-notes: parsed payout amount: $2300; effort signals: good-first-issue, infra-or-migration</description>
+notes: parsed payout amount: $4200; effort signals: good-first-issue, infra-or-migration</description>
     </item>
     <item>
-      <title>[ Bounty $4k ] [ Solidity ] Fix phantom reward accrual after period expiry in YieldVault — high priority</title>
-      <link>https://github.com/ClankerNation/OpenAgents/issues/66</link>
-      <guid isPermaLink="true">https://github.com/ClankerNation/OpenAgents/issues/66</guid>
-      <pubDate>Sat, 20 Jun 2026 10:00:37 GMT</pubDate>
+      <title>[ Bounty $7k ] [ Solidity ] Fix GovernorAlpha execute has no quorum validation</title>
+      <link>https://github.com/ClankerNation/OpenAgents/issues/107</link>
+      <guid isPermaLink="true">https://github.com/ClankerNation/OpenAgents/issues/107</guid>
+      <pubDate>Sun, 21 Jun 2026 10:54:19 GMT</pubDate>
       <description>ClankerNation/OpenAgents | score 36
 opportunity: high-value
-effort: 26
-amount: $4700
+effort: 44
+amount: $7600
 signals: bounty, amount, label match
-notes: parsed payout amount: $4700; effort signals: good-first-issue</description>
+notes: parsed payout amount: $7600; effort signals: good-first-issue, infra-or-migration</description>
     </item>
     <item>
-      <title>[ Bounty $4k ] [ Solidity ] Fix missing zero-amount check in PaymentEscrow createEscrow — testnet finding</title>
-      <link>https://github.com/ClankerNation/OpenAgents/issues/179</link>
-      <guid isPermaLink="true">https://github.com/ClankerNation/OpenAgents/issues/179</guid>
-      <pubDate>Sat, 20 Jun 2026 10:00:31 GMT</pubDate>
-      <description>ClankerNation/OpenAgents | score 36
-opportunity: high-value
-effort: 26
-amount: $4900
-signals: bounty, amount, label match
-notes: parsed payout amount: $4900; effort signals: good-first-issue</description>
-    </item>
-    <item>
-      <title>[ Crypto ] Fix first-depositor price manipulation in LiquidityPool</title>
-      <link>https://github.com/UnsafeLabs/Bounty-Hunters/issues/918</link>
-      <guid isPermaLink="true">https://github.com/UnsafeLabs/Bounty-Hunters/issues/918</guid>
-      <pubDate>Sat, 20 Jun 2026 10:00:25 GMT</pubDate>
-      <description>UnsafeLabs/Bounty-Hunters | score 36
-opportunity: high-value
-effort: 26
-amount: $600
-signals: bounty, amount, label match
-notes: parsed payout amount: $600; effort signals: good-first-issue</description>
-    </item>
-    <item>
-      <title>[$50 BOUNTY] [Python] Fix data_generator.py broken --format both and input validation</title>
-      <link>https://github.com/renaudgenard/TentOfTrials/issues/2</link>
-      <guid isPermaLink="true">https://github.com/renaudgenard/TentOfTrials/issues/2</guid>
-      <pubDate>Sat, 20 Jun 2026 09:30:38 GMT</pubDate>
-      <description>renaudgenard/TentOfTrials | score 36
-opportunity: quick-win
-effort: 26
-amount: $50
-signals: bounty, amount, label match
-notes: parsed payout amount: $50; effort signals: good-first-issue</description>
-    </item>
-    <item>
-      <title>[$50 BOUNTY] [Go] Add TTL eviction to compliance transaction cache</title>
-      <link>https://github.com/jaxassistant55/TentOfTrials/issues/7</link>
-      <guid isPermaLink="true">https://github.com/jaxassistant55/TentOfTrials/issues/7</guid>
-      <pubDate>Sat, 20 Jun 2026 09:30:33 GMT</pubDate>
-      <description>jaxassistant55/TentOfTrials | score 36
-opportunity: quick-win
-effort: 26
-amount: $50
-signals: bounty, amount, label match
-notes: parsed payout amount: $50; effort signals: good-first-issue</description>
-    </item>
-    <item>
-      <title>[$50 BOUNTY] [Typescript] Fix data_audit.ts broken --format both and input validation</title>
-      <link>https://github.com/lily-protocol/lily-backend/issues/38</link>
-      <guid isPermaLink="true">https://github.com/lily-protocol/lily-backend/issues/38</guid>
-      <pubDate>Sat, 20 Jun 2026 09:23:31 GMT</pubDate>
-      <description>lily-protocol/lily-backend | score 36
+      <title>Launch Another DoraHacks Bounty Post</title>
+      <link>https://github.com/devpool-directory/devpool-directory/issues/5924</link>
+      <guid isPermaLink="true">https://github.com/devpool-directory/devpool-directory/issues/5924</guid>
+      <pubDate>Sun, 21 Jun 2026 10:37:07 GMT</pubDate>
+      <description>devpool-directory/devpool-directory | score 28
 opportunity: standard
 effort: 40
-amount: $50
-signals: bounty, amount, label match
-notes: parsed payout amount: $50</description>
+signals: bounty, amount
+notes: no explicit USD/USDC amount parsed</description>
+    </item>
+    <item>
+      <title>Implement Differential Reward Distribution for Reopened Issues</title>
+      <link>https://github.com/devpool-directory/devpool-directory/issues/5012</link>
+      <guid isPermaLink="true">https://github.com/devpool-directory/devpool-directory/issues/5012</guid>
+      <pubDate>Sun, 21 Jun 2026 10:37:02 GMT</pubDate>
+      <description>devpool-directory/devpool-directory | score 28
+opportunity: standard
+effort: 40
+signals: bounty, amount
+notes: no explicit USD/USDC amount parsed</description>
+    </item>
+    <item>
+      <title>So, what&apos;s next?</title>
+      <link>https://github.com/zloirock/core-js/issues/1179</link>
+      <guid isPermaLink="true">https://github.com/zloirock/core-js/issues/1179</guid>
+      <pubDate>Sun, 21 Jun 2026 10:20:24 GMT</pubDate>
+      <description>zloirock/core-js | score 0
+opportunity: standard
+effort: 30
+notes: no explicit USD/USDC amount parsed; effort signals: docs-or-tests</description>
+    </item>
+    <item>
+      <title>$5 BOUNTY: [C] Improve frailbox logger error handling</title>
+      <link>https://github.com/GautamKumarOffical/TentOfTrials/issues/20</link>
+      <guid isPermaLink="true">https://github.com/GautamKumarOffical/TentOfTrials/issues/20</guid>
+      <pubDate>Sun, 21 Jun 2026 10:15:48 GMT</pubDate>
+      <description>GautamKumarOffical/TentOfTrials | score 28
+opportunity: standard
+effort: 30
+amount: $25
+signals: bounty, amount
+notes: parsed payout amount: $25; effort signals: docs-or-tests</description>
     </item>
     <item>
       <title>[BOUNTY $100] HOOK: Pre-tool-use hook that blocks destructive bash commands</title>
       <link>https://github.com/claude-builders-bounty/claude-builders-bounty/issues/3</link>
       <guid isPermaLink="true">https://github.com/claude-builders-bounty/claude-builders-bounty/issues/3</guid>
-      <pubDate>Sat, 20 Jun 2026 09:15:43 GMT</pubDate>
+      <pubDate>Sun, 21 Jun 2026 10:15:08 GMT</pubDate>
       <description>claude-builders-bounty/claude-builders-bounty | score 36
 opportunity: standard
 effort: 54
@@ -359,27 +339,37 @@ signals: bounty, amount, label match
 notes: parsed payout amount: $100; effort signals: docs-or-tests, security-sensitive</description>
     </item>
     <item>
-      <title>[ Crypto ] Fix phantom reward accrual after period expiry in YieldVault</title>
-      <link>https://github.com/UnsafeLabs/Bounty-Hunters/issues/914</link>
-      <guid isPermaLink="true">https://github.com/UnsafeLabs/Bounty-Hunters/issues/914</guid>
-      <pubDate>Sat, 20 Jun 2026 09:15:37 GMT</pubDate>
-      <description>UnsafeLabs/Bounty-Hunters | score 36
-opportunity: high-value
-effort: 26
-amount: $550
+      <title>test: improve test coverage</title>
+      <link>https://github.com/spaceandtimefdn/sxt-proof-of-sql/issues/560</link>
+      <guid isPermaLink="true">https://github.com/spaceandtimefdn/sxt-proof-of-sql/issues/560</guid>
+      <pubDate>Sun, 21 Jun 2026 09:17:33 GMT</pubDate>
+      <description>spaceandtimefdn/sxt-proof-of-sql | score 36
+opportunity: standard
+effort: 30
 signals: bounty, amount, label match
-notes: parsed payout amount: $550; effort signals: good-first-issue</description>
+notes: no explicit USD/USDC amount parsed; effort signals: docs-or-tests</description>
     </item>
     <item>
       <title>[Bounty #1102 claim: 5 RTC] Bottube #1428 - register gemini_bp (PR #1429)</title>
       <link>https://github.com/Scottcjn/rustchain-bounties/issues/14057</link>
       <guid isPermaLink="true">https://github.com/Scottcjn/rustchain-bounties/issues/14057</guid>
-      <pubDate>Fri, 19 Jun 2026 19:42:58 GMT</pubDate>
+      <pubDate>Sun, 21 Jun 2026 00:54:50 GMT</pubDate>
       <description>Scottcjn/rustchain-bounties | score 30
 opportunity: standard
 effort: 72
 signals: bounty, USDC/Base
 notes: no explicit USD/USDC amount parsed; payment rail signal present; effort signals: docs-or-tests, security-sensitive, infra-or-migration</description>
+    </item>
+    <item>
+      <title>MRWK payout-access handoff: 290 accepted MRWK requires explicit wallet-link approval</title>
+      <link>https://github.com/peterxing/farmbot-platform/issues/7</link>
+      <guid isPermaLink="true">https://github.com/peterxing/farmbot-platform/issues/7</guid>
+      <pubDate>Sat, 20 Jun 2026 22:14:45 GMT</pubDate>
+      <description>peterxing/farmbot-platform | score 64
+opportunity: rail-watch
+effort: 54
+signals: bounty, USDC/Base, MRWK/MergeWork, amount
+notes: no explicit USD/USDC amount parsed; payment rail signal present; effort signals: docs-or-tests, security-sensitive</description>
     </item>
     <item>
       <title>[BOUNTY] Register on Beacon Atlas + Prove Commerce (Pool: 100 RTC)</title>
