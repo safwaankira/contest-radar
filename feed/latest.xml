@@ -5,257 +5,231 @@
     <link>https://go165.github.io/bounty-radar/</link>
     <description>Daily GitHub bounty shortlist scored for payout clarity, payment rails, amount text, risk, and effort.</description>
     <language>en</language>
-    <lastBuildDate>Tue, 23 Jun 2026 11:30:37 GMT</lastBuildDate>
+    <lastBuildDate>Wed, 24 Jun 2026 11:17:00 GMT</lastBuildDate>
     <atom:link href="https://go165.github.io/bounty-radar/feed/latest.xml" rel="self" type="application/rss+xml" />
     <atom:link href="https://go165.github.io/bounty-radar/feed/latest.json" rel="alternate" type="application/json" />
     <item>
-      <title>issue-claim-check sync regressed Actions-token REST reads</title>
-      <link>https://github.com/autumngarage/touchstone/issues/465</link>
-      <guid isPermaLink="true">https://github.com/autumngarage/touchstone/issues/465</guid>
-      <pubDate>Tue, 23 Jun 2026 11:30:32 GMT</pubDate>
-      <description>autumngarage/touchstone | score 0
+      <title>[Tracking] CI Test Failures and Fixes</title>
+      <link>https://github.com/sgl-project/sglang/issues/17050</link>
+      <guid isPermaLink="true">https://github.com/sgl-project/sglang/issues/17050</guid>
+      <pubDate>Wed, 24 Jun 2026 11:16:53 GMT</pubDate>
+      <description>sgl-project/sglang | score 18
+opportunity: standard
+effort: 58
+signals: USDC/Base
+notes: no explicit USD/USDC amount parsed; payment rail signal present; effort signals: infra-or-migration</description>
+    </item>
+    <item>
+      <title>Add `GET /api/bounties` filtering by maintainer address</title>
+      <link>https://github.com/ritik4ever/stellar-bounty-board/issues/245</link>
+      <guid isPermaLink="true">https://github.com/ritik4ever/stellar-bounty-board/issues/245</guid>
+      <pubDate>Wed, 24 Jun 2026 11:16:45 GMT</pubDate>
+      <description>ritik4ever/stellar-bounty-board | score 12
+opportunity: standard
+effort: 26
+signals: bounty
+notes: no explicit USD/USDC amount parsed; effort signals: good-first-issue</description>
+    </item>
+    <item>
+      <title>Add Graceful Worker Shutdown Handling</title>
+      <link>https://github.com/ANYTECHS/clips-backend/issues/414</link>
+      <guid isPermaLink="true">https://github.com/ANYTECHS/clips-backend/issues/414</guid>
+      <pubDate>Wed, 24 Jun 2026 11:16:44 GMT</pubDate>
+      <description>ANYTECHS/clips-backend | score 0
+opportunity: standard
+effort: 40
+notes: no explicit USD/USDC amount parsed</description>
+    </item>
+    <item>
+      <title>Implement subscription free trial conversion optimization with A/B testing</title>
+      <link>https://github.com/Smartdevs17/SubTrackr/issues/558</link>
+      <guid isPermaLink="true">https://github.com/Smartdevs17/SubTrackr/issues/558</guid>
+      <pubDate>Wed, 24 Jun 2026 11:16:43 GMT</pubDate>
+      <description>Smartdevs17/SubTrackr | score 0
+opportunity: manual-review
+effort: 66
+signals: bounty
+risk: requires-signup-confirmation
+notes: no explicit USD/USDC amount parsed; effort signals: external-access; risk flags: requires-signup-confirmation; manual signup or approval friction detected</description>
+    </item>
+    <item>
+      <title>Implement API contract testing with OpenAPI specs</title>
+      <link>https://github.com/rinafcode/teachLink_backend/issues/516</link>
+      <guid isPermaLink="true">https://github.com/rinafcode/teachLink_backend/issues/516</guid>
+      <pubDate>Wed, 24 Jun 2026 11:16:42 GMT</pubDate>
+      <description>rinafcode/teachLink_backend | score 0
+opportunity: standard
+effort: 40
+notes: no explicit USD/USDC amount parsed</description>
+    </item>
+    <item>
+      <title>Seed default admin role and admin user</title>
+      <link>https://github.com/MentoNest/SkillSync_Server/issues/694</link>
+      <guid isPermaLink="true">https://github.com/MentoNest/SkillSync_Server/issues/694</guid>
+      <pubDate>Wed, 24 Jun 2026 11:16:37 GMT</pubDate>
+      <description>MentoNest/SkillSync_Server | score 0
+opportunity: standard
+effort: 82
+risk: competition-noise
+notes: no explicit USD/USDC amount parsed; effort signals: security-sensitive, infra-or-migration; risk flags: competition-noise</description>
+    </item>
+    <item>
+      <title>API Version Mismatch: Client Routes All Requests to /api/v1/* But No Routes Are Registered at That Prefix</title>
+      <link>https://github.com/stellar-creator-portfolio/stellar-creator-portfolio-/issues/44</link>
+      <guid isPermaLink="true">https://github.com/stellar-creator-portfolio/stellar-creator-portfolio-/issues/44</guid>
+      <pubDate>Wed, 24 Jun 2026 11:16:33 GMT</pubDate>
+      <description>stellar-creator-portfolio/stellar-creator-portfolio- | score 30
 opportunity: standard
 effort: 30
-notes: no explicit USD/USDC amount parsed; effort signals: docs-or-tests</description>
+signals: bounty, USDC/Base
+notes: no explicit USD/USDC amount parsed; payment rail signal present; effort signals: docs-or-tests</description>
     </item>
     <item>
-      <title>[#23] Prepayment Bonus</title>
-      <link>https://github.com/QuorumCredit/QuorumCredit/issues/884</link>
-      <guid isPermaLink="true">https://github.com/QuorumCredit/QuorumCredit/issues/884</guid>
-      <pubDate>Tue, 23 Jun 2026 11:30:28 GMT</pubDate>
-      <description>QuorumCredit/QuorumCredit | score 12
+      <title>Implement distributed tracing with OpenTelemetry</title>
+      <link>https://github.com/rinafcode/teachLink_backend/issues/517</link>
+      <guid isPermaLink="true">https://github.com/rinafcode/teachLink_backend/issues/517</guid>
+      <pubDate>Wed, 24 Jun 2026 11:16:30 GMT</pubDate>
+      <description>rinafcode/teachLink_backend | score 0
+opportunity: standard
+effort: 58
+notes: no explicit USD/USDC amount parsed; effort signals: infra-or-migration</description>
+    </item>
+    <item>
+      <title>397B EP=4 MTP: healthy acceptance, limited uplift — verify-path data</title>
+      <link>https://github.com/Avarok-Cybersecurity/atlas/issues/197</link>
+      <guid isPermaLink="true">https://github.com/Avarok-Cybersecurity/atlas/issues/197</guid>
+      <pubDate>Wed, 24 Jun 2026 11:16:29 GMT</pubDate>
+      <description>Avarok-Cybersecurity/atlas | score 30
 opportunity: standard
 effort: 40
-signals: bounty
-notes: no explicit USD/USDC amount parsed</description>
+signals: bounty, USDC/Base
+notes: no explicit USD/USDC amount parsed; payment rail signal present</description>
     </item>
     <item>
-      <title>[Tooling] Add tsconfig.json strict mode flags — enable noUncheckedIndexedAccess and exactOptionalPropertyTypes</title>
-      <link>https://github.com/Nodal-stellar/Nodal-AI/issues/36</link>
-      <guid isPermaLink="true">https://github.com/Nodal-stellar/Nodal-AI/issues/36</guid>
-      <pubDate>Tue, 23 Jun 2026 11:30:28 GMT</pubDate>
-      <description>Nodal-stellar/Nodal-AI | score 0
-opportunity: standard
-effort: 40
-notes: no explicit USD/USDC amount parsed</description>
-    </item>
-    <item>
-      <title>Add storage migration strategy for Contributor struct changes</title>
-      <link>https://github.com/mergemint-mint/mergemint-contracts/issues/112</link>
-      <guid isPermaLink="true">https://github.com/mergemint-mint/mergemint-contracts/issues/112</guid>
-      <pubDate>Tue, 23 Jun 2026 11:30:21 GMT</pubDate>
-      <description>mergemint-mint/mergemint-contracts | score 12
-opportunity: standard
-effort: 58
-signals: bounty
-notes: no explicit USD/USDC amount parsed; effort signals: infra-or-migration</description>
-    </item>
-    <item>
-      <title>Add storage migration strategy for Bounty struct changes</title>
-      <link>https://github.com/mergemint-mint/mergemint-contracts/issues/111</link>
-      <guid isPermaLink="true">https://github.com/mergemint-mint/mergemint-contracts/issues/111</guid>
-      <pubDate>Tue, 23 Jun 2026 11:30:19 GMT</pubDate>
-      <description>mergemint-mint/mergemint-contracts | score 12
-opportunity: standard
-effort: 58
-signals: bounty
-notes: no explicit USD/USDC amount parsed; effort signals: infra-or-migration</description>
-    </item>
-    <item>
-      <title>Support Freighter wallet deep-link for claim_bounty</title>
-      <link>https://github.com/mergemint-mint/mergemint-contracts/issues/107</link>
-      <guid isPermaLink="true">https://github.com/mergemint-mint/mergemint-contracts/issues/107</guid>
-      <pubDate>Tue, 23 Jun 2026 11:30:13 GMT</pubDate>
-      <description>mergemint-mint/mergemint-contracts | score 0
-opportunity: standard
-effort: 64
-notes: no explicit USD/USDC amount parsed; effort signals: security-sensitive</description>
-    </item>
-    <item>
-      <title>bug: update docs for Freighter-only wallet integration</title>
-      <link>https://github.com/mind-vault-1/mindvault/issues/225</link>
-      <guid isPermaLink="true">https://github.com/mind-vault-1/mindvault/issues/225</guid>
-      <pubDate>Tue, 23 Jun 2026 11:30:11 GMT</pubDate>
-      <description>mind-vault-1/mindvault | score 18
-opportunity: standard
-effort: 54
-signals: x402
-notes: no explicit USD/USDC amount parsed; payment rail signal present; effort signals: docs-or-tests, security-sensitive</description>
-    </item>
-    <item>
-      <title>Design webhook delivery from indexer to GitHub App</title>
-      <link>https://github.com/mergemint-mint/mergemint-contracts/issues/105</link>
-      <guid isPermaLink="true">https://github.com/mergemint-mint/mergemint-contracts/issues/105</guid>
-      <pubDate>Tue, 23 Jun 2026 11:30:10 GMT</pubDate>
-      <description>mergemint-mint/mergemint-contracts | score 12
-opportunity: standard
-effort: 40
-signals: bounty
-notes: no explicit USD/USDC amount parsed</description>
-    </item>
-    <item>
-      <title>Add Horizon event polling example for bounty_created</title>
-      <link>https://github.com/mergemint-mint/mergemint-contracts/issues/104</link>
-      <guid isPermaLink="true">https://github.com/mergemint-mint/mergemint-contracts/issues/104</guid>
-      <pubDate>Tue, 23 Jun 2026 11:30:09 GMT</pubDate>
-      <description>mergemint-mint/mergemint-contracts | score 0
-opportunity: standard
-effort: 30
-notes: no explicit USD/USDC amount parsed; effort signals: docs-or-tests</description>
-    </item>
-    <item>
-      <title>Script to deploy and invoke contract on testnet end-to-end</title>
-      <link>https://github.com/mergemint-mint/mergemint-contracts/issues/100</link>
-      <guid isPermaLink="true">https://github.com/mergemint-mint/mergemint-contracts/issues/100</guid>
-      <pubDate>Tue, 23 Jun 2026 11:30:03 GMT</pubDate>
-      <description>mergemint-mint/mergemint-contracts | score 12
-opportunity: standard
-effort: 40
-signals: bounty
-notes: no explicit USD/USDC amount parsed</description>
-    </item>
-    <item>
-      <title>Evaluate using temporary storage for transient bounty metadata</title>
-      <link>https://github.com/mergemint-mint/mergemint-contracts/issues/92</link>
-      <guid isPermaLink="true">https://github.com/mergemint-mint/mergemint-contracts/issues/92</guid>
-      <pubDate>Tue, 23 Jun 2026 11:29:52 GMT</pubDate>
-      <description>mergemint-mint/mergemint-contracts | score 12
-opportunity: standard
-effort: 58
-signals: bounty
-notes: no explicit USD/USDC amount parsed; effort signals: infra-or-migration</description>
-    </item>
-    <item>
-      <title>Reduce storage reads in create_bounty (count read twice)</title>
-      <link>https://github.com/mergemint-mint/mergemint-contracts/issues/90</link>
-      <guid isPermaLink="true">https://github.com/mergemint-mint/mergemint-contracts/issues/90</guid>
-      <pubDate>Tue, 23 Jun 2026 11:29:50 GMT</pubDate>
-      <description>mergemint-mint/mergemint-contracts | score 12
-opportunity: standard
-effort: 58
-signals: bounty
-notes: no explicit USD/USDC amount parsed; effort signals: infra-or-migration</description>
-    </item>
-    <item>
-      <title>Ensure bounty ID space is not exhaustible in a single transaction</title>
-      <link>https://github.com/mergemint-mint/mergemint-contracts/issues/88</link>
-      <guid isPermaLink="true">https://github.com/mergemint-mint/mergemint-contracts/issues/88</guid>
-      <pubDate>Tue, 23 Jun 2026 11:29:47 GMT</pubDate>
-      <description>mergemint-mint/mergemint-contracts | score 12
-opportunity: standard
-effort: 64
-signals: bounty
-notes: no explicit USD/USDC amount parsed; effort signals: security-sensitive</description>
-    </item>
-    <item>
-      <title>Document reentrancy surface of TokenClient::transfer call</title>
-      <link>https://github.com/mergemint-mint/mergemint-contracts/issues/87</link>
-      <guid isPermaLink="true">https://github.com/mergemint-mint/mergemint-contracts/issues/87</guid>
-      <pubDate>Tue, 23 Jun 2026 11:29:46 GMT</pubDate>
-      <description>mergemint-mint/mergemint-contracts | score 0
-opportunity: standard
-effort: 64
-notes: no explicit USD/USDC amount parsed; effort signals: security-sensitive</description>
-    </item>
-    <item>
-      <title>[Migration] local/home/pranav_b/test_lineage_data — 128 job(s)</title>
-      <link>https://github.com/gurunathan-prodapt/pi-agents/issues/389</link>
-      <guid isPermaLink="true">https://github.com/gurunathan-prodapt/pi-agents/issues/389</guid>
-      <pubDate>Tue, 23 Jun 2026 11:29:38 GMT</pubDate>
-      <description>gurunathan-prodapt/pi-agents | score 0
-opportunity: standard
-effort: 58
-notes: no explicit USD/USDC amount parsed; effort signals: infra-or-migration</description>
-    </item>
-    <item>
-      <title>[BOUNTY $150] AGENT: Claude Code sub-agent that reviews a PR and posts a structured comment</title>
-      <link>https://github.com/claude-builders-bounty/claude-builders-bounty/issues/4</link>
-      <guid isPermaLink="true">https://github.com/claude-builders-bounty/claude-builders-bounty/issues/4</guid>
-      <pubDate>Tue, 23 Jun 2026 11:27:59 GMT</pubDate>
-      <description>claude-builders-bounty/claude-builders-bounty | score 36
-opportunity: standard
-effort: 30
-amount: $150
-signals: bounty, amount, label match
-notes: parsed payout amount: $150; effort signals: docs-or-tests</description>
-    </item>
-    <item>
-      <title>security: rate limit /api/auth/sep10 challenge GET endpoint to prevent auth spam</title>
-      <link>https://github.com/scout-off/scout-off-frontend/issues/402</link>
-      <guid isPermaLink="true">https://github.com/scout-off/scout-off-frontend/issues/402</guid>
-      <pubDate>Tue, 23 Jun 2026 11:26:19 GMT</pubDate>
-      <description>scout-off/scout-off-frontend | score 0
+      <title>Add contract event indexing SDK for integrators</title>
+      <link>https://github.com/collinsadi/opauque-stellar/issues/499</link>
+      <guid isPermaLink="true">https://github.com/collinsadi/opauque-stellar/issues/499</guid>
+      <pubDate>Wed, 24 Jun 2026 11:16:28 GMT</pubDate>
+      <description>collinsadi/opauque-stellar | score 0
 opportunity: standard
 effort: 54
 notes: no explicit USD/USDC amount parsed; effort signals: docs-or-tests, security-sensitive</description>
     </item>
     <item>
-      <title>Threads - (Dev Bounty: $750)</title>
-      <link>https://github.com/fluxerapp/fluxer-meta/issues/5</link>
-      <guid isPermaLink="true">https://github.com/fluxerapp/fluxer-meta/issues/5</guid>
-      <pubDate>Tue, 23 Jun 2026 11:25:44 GMT</pubDate>
-      <description>fluxerapp/fluxer-meta | score 46
-opportunity: high-value
-effort: 58
-amount: $750
-signals: bounty, USDC/Base, amount
-notes: parsed payout amount: $750; payment rail signal present; effort signals: infra-or-migration</description>
-    </item>
-    <item>
-      <title>[PAID BOUNTY - $750] Email Threads API</title>
-      <link>https://github.com/warpspeedopen-source/warpspeed-bounties/issues/4</link>
-      <guid isPermaLink="true">https://github.com/warpspeedopen-source/warpspeed-bounties/issues/4</guid>
-      <pubDate>Tue, 23 Jun 2026 11:25:42 GMT</pubDate>
-      <description>warpspeedopen-source/warpspeed-bounties | score 8
-opportunity: manual-review
-effort: 66
-amount: $750
-signals: bounty, amount, label match
-risk: requires-signup-confirmation
-notes: parsed payout amount: $750; effort signals: external-access; risk flags: requires-signup-confirmation; manual signup or approval friction detected</description>
-    </item>
-    <item>
-      <title>[PAID BOUNTY - $750] Audio Note Recording</title>
-      <link>https://github.com/warpspeedopen-source/warpspeed-bounties/issues/9</link>
-      <guid isPermaLink="true">https://github.com/warpspeedopen-source/warpspeed-bounties/issues/9</guid>
-      <pubDate>Tue, 23 Jun 2026 11:25:41 GMT</pubDate>
-      <description>warpspeedopen-source/warpspeed-bounties | score 8
-opportunity: manual-review
-effort: 84
-amount: $750
-signals: bounty, amount, label match
-risk: requires-signup-confirmation
-notes: parsed payout amount: $750; effort signals: infra-or-migration, external-access; risk flags: requires-signup-confirmation; manual signup or approval friction detected</description>
-    </item>
-    <item>
-      <title>[PAID BOUNTY - $960] Attachment Summarizer Service</title>
-      <link>https://github.com/warpspeedopen-source/warpspeed-bounties/issues/1</link>
-      <guid isPermaLink="true">https://github.com/warpspeedopen-source/warpspeed-bounties/issues/1</guid>
-      <pubDate>Tue, 23 Jun 2026 11:25:39 GMT</pubDate>
-      <description>warpspeedopen-source/warpspeed-bounties | score 8
-opportunity: manual-review
-effort: 66
-amount: $960
-signals: bounty, amount, label match
-risk: requires-signup-confirmation
-notes: parsed payout amount: $960; effort signals: external-access; risk flags: requires-signup-confirmation; manual signup or approval friction detected</description>
-    </item>
-    <item>
-      <title>Vector Caption Cost Gate</title>
-      <link>https://github.com/erniesg/paillette/issues/20</link>
-      <guid isPermaLink="true">https://github.com/erniesg/paillette/issues/20</guid>
-      <pubDate>Tue, 23 Jun 2026 11:25:35 GMT</pubDate>
-      <description>erniesg/paillette | score 12
+      <title>[V2 200pts] Build the deposit flow with wallet address QR code and MoonPay integration with proper error handling</title>
+      <link>https://github.com/Nexacore-Org/NexaFx-web/issues/213</link>
+      <guid isPermaLink="true">https://github.com/Nexacore-Org/NexaFx-web/issues/213</guid>
+      <pubDate>Wed, 24 Jun 2026 11:16:27 GMT</pubDate>
+      <description>Nexacore-Org/NexaFx-web | score 18
 opportunity: standard
-effort: 30
+effort: 64
+signals: USDC/Base
+notes: no explicit USD/USDC amount parsed; payment rail signal present; effort signals: security-sensitive</description>
+    </item>
+    <item>
+      <title>    Prioritize “Getting Started” and hide empty “For You”</title>
+      <link>https://github.com/Expensify/App/issues/93092</link>
+      <guid isPermaLink="true">https://github.com/Expensify/App/issues/93092</guid>
+      <pubDate>Wed, 24 Jun 2026 11:16:22 GMT</pubDate>
+      <description>Expensify/App | score 12
+opportunity: standard
+effort: 40
 signals: bounty
-notes: no explicit USD/USDC amount parsed; effort signals: docs-or-tests</description>
+notes: no explicit USD/USDC amount parsed</description>
+    </item>
+    <item>
+      <title>[ONBOARD: 1 RTC] Star + Review an Open PR</title>
+      <link>https://github.com/Scottcjn/rustchain-bounties/issues/2782</link>
+      <guid isPermaLink="true">https://github.com/Scottcjn/rustchain-bounties/issues/2782</guid>
+      <pubDate>Wed, 24 Jun 2026 11:16:14 GMT</pubDate>
+      <description>Scottcjn/rustchain-bounties | score 20
+opportunity: standard
+effort: 8
+signals: bounty, label match
+notes: no explicit USD/USDC amount parsed; effort signals: good-first-issue, docs-or-tests, narrow-scope</description>
+    </item>
+    <item>
+      <title>Feature request: support x402-paid inference providers (no-account pay-per-call)</title>
+      <link>https://github.com/BerriAI/litellm/issues/31184</link>
+      <guid isPermaLink="true">https://github.com/BerriAI/litellm/issues/31184</guid>
+      <pubDate>Wed, 24 Jun 2026 11:16:01 GMT</pubDate>
+      <description>BerriAI/litellm | score 64
+opportunity: rail-watch
+effort: 40
+amount: $0.2
+signals: bounty, USDC/Base, x402, amount
+notes: parsed payout amount: $0.2; payment rail signal present</description>
+    </item>
+    <item>
+      <title>merge-pr PR-triggered review gate GraphQL query has extra closing brace</title>
+      <link>https://github.com/autumngarage/touchstone/issues/469</link>
+      <guid isPermaLink="true">https://github.com/autumngarage/touchstone/issues/469</guid>
+      <pubDate>Wed, 24 Jun 2026 11:15:37 GMT</pubDate>
+      <description>autumngarage/touchstone | score 0
+opportunity: standard
+effort: 40
+notes: no explicit USD/USDC amount parsed</description>
+    </item>
+    <item>
+      <title>fix: TypeScript build errors in main due to unresolved merge conflicts</title>
+      <link>https://github.com/ritik4ever/stellar-stream/issues/520</link>
+      <guid isPermaLink="true">https://github.com/ritik4ever/stellar-stream/issues/520</guid>
+      <pubDate>Wed, 24 Jun 2026 11:15:23 GMT</pubDate>
+      <description>ritik4ever/stellar-stream | score 0
+opportunity: standard
+effort: 32
+risk: competition-noise
+notes: no explicit USD/USDC amount parsed; effort signals: narrow-scope; risk flags: competition-noise</description>
+    </item>
+    <item>
+      <title>self-improve: model-flagged: Liquid balance is $0.0000, below the $1 compu</title>
+      <link>https://github.com/Daisuke134/anicca/issues/118</link>
+      <guid isPermaLink="true">https://github.com/Daisuke134/anicca/issues/118</guid>
+      <pubDate>Wed, 24 Jun 2026 11:15:03 GMT</pubDate>
+      <description>Daisuke134/anicca | score 16
+opportunity: standard
+effort: 40
+amount: $1
+signals: amount
+notes: parsed payout amount: $1</description>
+    </item>
+    <item>
+      <title>Twitter/X</title>
+      <link>https://github.com/hdknr/blogs/issues/1</link>
+      <guid isPermaLink="true">https://github.com/hdknr/blogs/issues/1</guid>
+      <pubDate>Wed, 24 Jun 2026 11:15:02 GMT</pubDate>
+      <description>hdknr/blogs | score 0
+opportunity: standard
+effort: 40
+notes: no explicit USD/USDC amount parsed</description>
+    </item>
+    <item>
+      <title>Token overhead analysis: 73% of each API call is fixed overhead (~13.9K tokens) — data + suggestions</title>
+      <link>https://github.com/NousResearch/hermes-agent/issues/4379</link>
+      <guid isPermaLink="true">https://github.com/NousResearch/hermes-agent/issues/4379</guid>
+      <pubDate>Wed, 24 Jun 2026 11:14:51 GMT</pubDate>
+      <description>NousResearch/hermes-agent | score 0
+opportunity: avoid
+effort: 74
+signals: bounty
+risk: hidden-context-leak
+notes: no explicit USD/USDC amount parsed; effort signals: infra-or-migration; risk flags: hidden-context-leak</description>
+    </item>
+    <item>
+      <title>B0 latest-main runtime refresh for d8a77ee</title>
+      <link>https://github.com/demonsxxxxxx/ai-platform/issues/164</link>
+      <guid isPermaLink="true">https://github.com/demonsxxxxxx/ai-platform/issues/164</guid>
+      <pubDate>Wed, 24 Jun 2026 11:13:08 GMT</pubDate>
+      <description>demonsxxxxxx/ai-platform | score 0
+opportunity: standard
+effort: 48
+notes: no explicit USD/USDC amount parsed; effort signals: docs-or-tests, infra-or-migration</description>
     </item>
     <item>
       <title>Contract drift detected (2026-05-28)</title>
       <link>https://github.com/XRPL-Utilities/xrpl-utilities-mcp/issues/2</link>
       <guid isPermaLink="true">https://github.com/XRPL-Utilities/xrpl-utilities-mcp/issues/2</guid>
-      <pubDate>Tue, 23 Jun 2026 11:25:04 GMT</pubDate>
+      <pubDate>Wed, 24 Jun 2026 11:11:24 GMT</pubDate>
       <description>XRPL-Utilities/xrpl-utilities-mcp | score 12
 opportunity: standard
 effort: 40
@@ -263,98 +237,110 @@ signals: bounty
 notes: no explicit USD/USDC amount parsed</description>
     </item>
     <item>
-      <title>Payments: Detailed Fee Breakdown in API Response</title>
-      <link>https://github.com/zeekman/Cross-Border-Payment-App-for-Africa/issues/694</link>
-      <guid isPermaLink="true">https://github.com/zeekman/Cross-Border-Payment-App-for-Africa/issues/694</guid>
-      <pubDate>Tue, 23 Jun 2026 11:23:42 GMT</pubDate>
-      <description>zeekman/Cross-Border-Payment-App-for-Africa | score 30
+      <title>self-improve: model-flagged: Liquid balance is $0.0000, below the $1 compu</title>
+      <link>https://github.com/Daisuke134/anicca/issues/117</link>
+      <guid isPermaLink="true">https://github.com/Daisuke134/anicca/issues/117</guid>
+      <pubDate>Wed, 24 Jun 2026 11:10:56 GMT</pubDate>
+      <description>Daisuke134/anicca | score 16
 opportunity: standard
-effort: 58
-signals: bounty, USDC/Base
-notes: no explicit USD/USDC amount parsed; payment rail signal present; effort signals: infra-or-migration</description>
-    </item>
-    <item>
-      <title>[Expression of Interest] - AgentCourt - Dispute Resolution Layer for Agent Commerce</title>
-      <link>https://github.com/w3c/ecommerce-for-humans-and-AI-Agents-workshop/issues/12</link>
-      <guid isPermaLink="true">https://github.com/w3c/ecommerce-for-humans-and-AI-Agents-workshop/issues/12</guid>
-      <pubDate>Tue, 23 Jun 2026 11:18:04 GMT</pubDate>
-      <description>w3c/ecommerce-for-humans-and-AI-Agents-workshop | score 52
-opportunity: rail-watch
 effort: 40
-amount: $0.05
-signals: USDC/Base, x402, amount
-notes: parsed payout amount: $0.05; payment rail signal present</description>
+amount: $1
+signals: amount
+notes: parsed payout amount: $1</description>
     </item>
     <item>
-      <title>[GF-16] [FRONTEND] Protocol Management Pages (/allocations, /harvest, /governance)</title>
-      <link>https://github.com/LadderMine/yieldladder/issues/48</link>
-      <guid isPermaLink="true">https://github.com/LadderMine/yieldladder/issues/48</guid>
-      <pubDate>Tue, 23 Jun 2026 11:13:22 GMT</pubDate>
-      <description>LadderMine/yieldladder | score 30
+      <title>🛍️ Sprint 15: Shopify Full Stack — Storefront Connector, Admin API, Voice Marketplace, OAuth</title>
+      <link>https://github.com/TommyNationPol1984/liberty-echo/issues/21</link>
+      <guid isPermaLink="true">https://github.com/TommyNationPol1984/liberty-echo/issues/21</guid>
+      <pubDate>Wed, 24 Jun 2026 11:10:53 GMT</pubDate>
+      <description>TommyNationPol1984/liberty-echo | score 28
 opportunity: standard
-effort: 30
+effort: 40
+amount: $990
+signals: bounty, amount
+notes: parsed payout amount: $990</description>
+    </item>
+    <item>
+      <title>Post-settlement accountability layer: tamper-evident proof of agent action after payment</title>
+      <link>https://github.com/x402-foundation/x402/issues/2332</link>
+      <guid isPermaLink="true">https://github.com/x402-foundation/x402/issues/2332</guid>
+      <pubDate>Wed, 24 Jun 2026 10:47:01 GMT</pubDate>
+      <description>x402-foundation/x402 | score 18
+opportunity: standard
+effort: 40
+signals: x402
+notes: no explicit USD/USDC amount parsed; payment rail signal present</description>
+    </item>
+    <item>
+      <title>Add `UsdAmount` conversion using live XLM/USD price feed</title>
+      <link>https://github.com/ritik4ever/stellar-bounty-board/issues/288</link>
+      <guid isPermaLink="true">https://github.com/ritik4ever/stellar-bounty-board/issues/288</guid>
+      <pubDate>Wed, 24 Jun 2026 09:59:35 GMT</pubDate>
+      <description>ritik4ever/stellar-bounty-board | score 30
+opportunity: standard
+effort: 40
 signals: bounty, USDC/Base
-notes: no explicit USD/USDC amount parsed; payment rail signal present; effort signals: docs-or-tests</description>
+notes: no explicit USD/USDC amount parsed; payment rail signal present</description>
     </item>
     <item>
-      <title>[BOUNTY] Ongoing Bug Bounty Program — Find Bugs, Earn RTC (133 RTC Pool)</title>
-      <link>https://github.com/Scottcjn/rustchain-bounties/issues/71</link>
-      <guid isPermaLink="true">https://github.com/Scottcjn/rustchain-bounties/issues/71</guid>
-      <pubDate>Tue, 23 Jun 2026 11:12:21 GMT</pubDate>
-      <description>Scottcjn/rustchain-bounties | score 36
-opportunity: standard
-effort: 72
-amount: $0.1
-signals: bounty, amount, label match
-notes: parsed payout amount: $0.1; effort signals: docs-or-tests, security-sensitive, infra-or-migration</description>
-    </item>
-    <item>
-      <title>[BOUNTY $75] TEMPLATE: CLAUDE.md for a Next.js + SQLite SaaS project</title>
-      <link>https://github.com/claude-builders-bounty/claude-builders-bounty/issues/2</link>
-      <guid isPermaLink="true">https://github.com/claude-builders-bounty/claude-builders-bounty/issues/2</guid>
-      <pubDate>Tue, 23 Jun 2026 11:12:05 GMT</pubDate>
-      <description>claude-builders-bounty/claude-builders-bounty | score 36
-opportunity: standard
-effort: 48
-amount: $75
-signals: bounty, amount, label match
-notes: parsed payout amount: $75; effort signals: docs-or-tests, infra-or-migration</description>
-    </item>
-    <item>
-      <title>[BOUNTY $50] SKILL: Generate a structured CHANGELOG from git history</title>
-      <link>https://github.com/claude-builders-bounty/claude-builders-bounty/issues/1</link>
-      <guid isPermaLink="true">https://github.com/claude-builders-bounty/claude-builders-bounty/issues/1</guid>
-      <pubDate>Tue, 23 Jun 2026 11:05:52 GMT</pubDate>
-      <description>claude-builders-bounty/claude-builders-bounty | score 36
-opportunity: quick-win
-effort: 16
-amount: $50
-signals: bounty, amount, label match
-notes: parsed payout amount: $50; effort signals: good-first-issue, docs-or-tests</description>
-    </item>
-    <item>
-      <title>[BOUNTY $100] HOOK: Pre-tool-use hook that blocks destructive bash commands</title>
-      <link>https://github.com/claude-builders-bounty/claude-builders-bounty/issues/3</link>
-      <guid isPermaLink="true">https://github.com/claude-builders-bounty/claude-builders-bounty/issues/3</guid>
-      <pubDate>Tue, 23 Jun 2026 10:59:46 GMT</pubDate>
-      <description>claude-builders-bounty/claude-builders-bounty | score 36
-opportunity: standard
-effort: 54
-amount: $100
-signals: bounty, amount, label match
-notes: parsed payout amount: $100; effort signals: docs-or-tests, security-sensitive</description>
-    </item>
-    <item>
-      <title>[BOUNTY $200] WORKFLOW: n8n + Claude Code — automated weekly dev summary</title>
-      <link>https://github.com/claude-builders-bounty/claude-builders-bounty/issues/5</link>
-      <guid isPermaLink="true">https://github.com/claude-builders-bounty/claude-builders-bounty/issues/5</guid>
-      <pubDate>Tue, 23 Jun 2026 10:23:12 GMT</pubDate>
-      <description>claude-builders-bounty/claude-builders-bounty | score 36
+      <title>[$10 BOUNTY] [Python] Add configurable timeout and rate limiting to health_check probes</title>
+      <link>https://github.com/foxyManTou/kickama-foxy-trials/issues/1</link>
+      <guid isPermaLink="true">https://github.com/foxyManTou/kickama-foxy-trials/issues/1</guid>
+      <pubDate>Wed, 24 Jun 2026 09:47:27 GMT</pubDate>
+      <description>foxyManTou/kickama-foxy-trials | score 36
 opportunity: standard
 effort: 30
-amount: $200
+amount: $25
 signals: bounty, amount, label match
-notes: parsed payout amount: $200; effort signals: docs-or-tests</description>
+notes: parsed payout amount: $25; effort signals: docs-or-tests</description>
+    </item>
+    <item>
+      <title>[ Crypto ] Fix zero-fee flash loans and add pool drainage protection</title>
+      <link>https://github.com/UnsafeLabs/Bounty-Hunters/issues/919</link>
+      <guid isPermaLink="true">https://github.com/UnsafeLabs/Bounty-Hunters/issues/919</guid>
+      <pubDate>Wed, 24 Jun 2026 09:42:25 GMT</pubDate>
+      <description>UnsafeLabs/Bounty-Hunters | score 36
+opportunity: high-value
+effort: 26
+amount: $250
+signals: bounty, amount, label match
+notes: parsed payout amount: $250; effort signals: good-first-issue</description>
+    </item>
+    <item>
+      <title>[ Crypto ] Fix integer overflow in TokenVesting calculation for large allocations</title>
+      <link>https://github.com/UnsafeLabs/Bounty-Hunters/issues/917</link>
+      <guid isPermaLink="true">https://github.com/UnsafeLabs/Bounty-Hunters/issues/917</guid>
+      <pubDate>Wed, 24 Jun 2026 09:42:03 GMT</pubDate>
+      <description>UnsafeLabs/Bounty-Hunters | score 36
+opportunity: high-value
+effort: 44
+amount: $350
+signals: bounty, amount, label match
+notes: parsed payout amount: $350; effort signals: good-first-issue, infra-or-migration</description>
+    </item>
+    <item>
+      <title>[ Crypto ] Fix cross-chain replay attack in CrossChainBridge signature verification</title>
+      <link>https://github.com/UnsafeLabs/Bounty-Hunters/issues/920</link>
+      <guid isPermaLink="true">https://github.com/UnsafeLabs/Bounty-Hunters/issues/920</guid>
+      <pubDate>Wed, 24 Jun 2026 09:39:50 GMT</pubDate>
+      <description>UnsafeLabs/Bounty-Hunters | score 36
+opportunity: high-value
+effort: 50
+amount: $900
+signals: bounty, amount, label match
+notes: parsed payout amount: $900; effort signals: good-first-issue, security-sensitive</description>
+    </item>
+    <item>
+      <title>[ Crypto ] Fix first-depositor price manipulation in LiquidityPool</title>
+      <link>https://github.com/UnsafeLabs/Bounty-Hunters/issues/918</link>
+      <guid isPermaLink="true">https://github.com/UnsafeLabs/Bounty-Hunters/issues/918</guid>
+      <pubDate>Wed, 24 Jun 2026 09:39:13 GMT</pubDate>
+      <description>UnsafeLabs/Bounty-Hunters | score 36
+opportunity: high-value
+effort: 26
+amount: $600
+signals: bounty, amount, label match
+notes: parsed payout amount: $600; effort signals: good-first-issue</description>
     </item>
     <item>
       <title>[BOUNTY: 7 RTC] Add an llms.txt + GEO entity profile to a RustChain ecosystem repo</title>
@@ -425,15 +411,40 @@ signals: bounty
 notes: no explicit USD/USDC amount parsed; effort signals: security-sensitive, infra-or-migration</description>
     </item>
     <item>
-      <title>[Bounty #13224 claim: 25 RTC, BEST] RIP-0301 critique — 3 §6 holes + fourth failure mode (operator-via-multiple-Beacons)</title>
-      <link>https://github.com/Scottcjn/rustchain-bounties/issues/14146</link>
-      <guid isPermaLink="true">https://github.com/Scottcjn/rustchain-bounties/issues/14146</guid>
-      <pubDate>Fri, 19 Jun 2026 07:45:22 GMT</pubDate>
-      <description>Scottcjn/rustchain-bounties | score 12
-opportunity: standard
+      <title>MRWK bounty: 40 MRWK - review open MergeWork PRs with evidence, round 21</title>
+      <link>https://github.com/ramimbo/mergework/issues/1009</link>
+      <guid isPermaLink="true">https://github.com/ramimbo/mergework/issues/1009</guid>
+      <pubDate>Wed, 17 Jun 2026 03:20:28 GMT</pubDate>
+      <description>ramimbo/mergework | score 32
+opportunity: rail-watch
 effort: 64
-signals: bounty
-notes: no explicit USD/USDC amount parsed; effort signals: security-sensitive</description>
+signals: bounty, MRWK/MergeWork, amount, label match
+risk: competition-noise
+notes: no explicit USD/USDC amount parsed; payment rail signal present; effort signals: security-sensitive; risk flags: competition-noise</description>
+    </item>
+    <item>
+      <title>MRWK bounty: 100 MRWK - code cleanup and maintainability improvements, round 2</title>
+      <link>https://github.com/ramimbo/mergework/issues/936</link>
+      <guid isPermaLink="true">https://github.com/ramimbo/mergework/issues/936</guid>
+      <pubDate>Wed, 17 Jun 2026 01:41:04 GMT</pubDate>
+      <description>ramimbo/mergework | score 32
+opportunity: rail-watch
+effort: 46
+signals: bounty, MRWK/MergeWork, amount, label match
+risk: competition-noise
+notes: no explicit USD/USDC amount parsed; payment rail signal present; effort signals: docs-or-tests, narrow-scope, security-sensitive; risk flags: competition-noise</description>
+    </item>
+    <item>
+      <title>Proposed work: unify live GitHub collection safety-cap policy across report scripts</title>
+      <link>https://github.com/ramimbo/mergework/issues/1141</link>
+      <guid isPermaLink="true">https://github.com/ramimbo/mergework/issues/1141</guid>
+      <pubDate>Wed, 17 Jun 2026 00:53:53 GMT</pubDate>
+      <description>ramimbo/mergework | score 24
+opportunity: rail-watch
+effort: 54
+signals: bounty, MRWK/MergeWork, amount
+risk: competition-noise
+notes: no explicit USD/USDC amount parsed; payment rail signal present; effort signals: docs-or-tests, security-sensitive; risk flags: competition-noise</description>
     </item>
     <item>
       <title>RFC: Federation bridge to mergework (RTC ↔ MRWK)</title>
@@ -445,18 +456,6 @@ opportunity: rail-watch
 effort: 54
 signals: bounty, MRWK/MergeWork, amount
 notes: no explicit USD/USDC amount parsed; payment rail signal present; effort signals: docs-or-tests, security-sensitive</description>
-    </item>
-    <item>
-      <title>[TRACKING] rustchain-claim-portal chain_client.get_balance should use public read endpoint, not admin-key path</title>
-      <link>https://github.com/Scottcjn/Rustchain/issues/6624</link>
-      <guid isPermaLink="true">https://github.com/Scottcjn/Rustchain/issues/6624</guid>
-      <pubDate>Tue, 16 Jun 2026 03:43:13 GMT</pubDate>
-      <description>Scottcjn/Rustchain | score 46
-opportunity: rail-watch
-effort: 82
-amount: $0.1
-signals: bounty, MRWK/MergeWork, amount
-notes: parsed payout amount: $0.1; payment rail signal present; effort signals: security-sensitive, infra-or-migration</description>
     </item>
 
   </channel>
