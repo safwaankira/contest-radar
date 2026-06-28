@@ -5,148 +5,142 @@
     <link>https://go165.github.io/bounty-radar/</link>
     <description>Daily GitHub bounty shortlist scored for payout clarity, payment rails, amount text, risk, and effort.</description>
     <language>en</language>
-    <lastBuildDate>Sat, 27 Jun 2026 10:22:22 GMT</lastBuildDate>
+    <lastBuildDate>Sun, 28 Jun 2026 10:33:49 GMT</lastBuildDate>
     <atom:link href="https://go165.github.io/bounty-radar/feed/latest.xml" rel="self" type="application/rss+xml" />
     <atom:link href="https://go165.github.io/bounty-radar/feed/latest.json" rel="alternate" type="application/json" />
     <item>
-      <title>Application detail modal cannot be closed with the Escape key — keyboard users are trapped inside the modal</title>
-      <link>https://github.com/stellarmarket-labs/stellar-market/issues/819</link>
-      <guid isPermaLink="true">https://github.com/stellarmarket-labs/stellar-market/issues/819</guid>
-      <pubDate>Sat, 27 Jun 2026 10:22:14 GMT</pubDate>
-      <description>stellarmarket-labs/stellar-market | score 0
+      <title>배치/큐 작업 전수 점검과 공유호스팅 처리 보완</title>
+      <link>https://github.com/whitedot/saanraan/issues/376</link>
+      <guid isPermaLink="true">https://github.com/whitedot/saanraan/issues/376</guid>
+      <pubDate>Sun, 28 Jun 2026 10:33:44 GMT</pubDate>
+      <description>whitedot/saanraan | score 12
 opportunity: standard
-effort: 40
-notes: no explicit USD/USDC amount parsed</description>
-    </item>
-    <item>
-      <title>Add GET /api/v1/loans/:id/outstanding endpoint</title>
-      <link>https://github.com/teslims2/StellarKraal-/issues/589</link>
-      <guid isPermaLink="true">https://github.com/teslims2/StellarKraal-/issues/589</guid>
-      <pubDate>Sat, 27 Jun 2026 10:22:12 GMT</pubDate>
-      <description>teslims2/StellarKraal- | score 0
-opportunity: standard
-effort: 40
-notes: no explicit USD/USDC amount parsed</description>
-    </item>
-    <item>
-      <title>Add test for emergency access override expiry and auto-revoke</title>
-      <link>https://github.com/Stellar-Uzima/Uzima-Contracts/issues/955</link>
-      <guid isPermaLink="true">https://github.com/Stellar-Uzima/Uzima-Contracts/issues/955</guid>
-      <pubDate>Sat, 27 Jun 2026 10:22:12 GMT</pubDate>
-      <description>Stellar-Uzima/Uzima-Contracts | score 0
-opportunity: standard
-effort: 40
-notes: no explicit USD/USDC amount parsed</description>
-    </item>
-    <item>
-      <title>[client] Add error boundary to lazy-loaded route components</title>
-      <link>https://github.com/crackedstudio/tikka/issues/768</link>
-      <guid isPermaLink="true">https://github.com/crackedstudio/tikka/issues/768</guid>
-      <pubDate>Sat, 27 Jun 2026 10:22:05 GMT</pubDate>
-      <description>crackedstudio/tikka | score 0
-opportunity: standard
-effort: 58
-notes: no explicit USD/USDC amount parsed; effort signals: infra-or-migration</description>
-    </item>
-    <item>
-      <title>Add Makefile help target listing all available targets with descriptions</title>
-      <link>https://github.com/Stellar-Uzima/Uzima-Contracts/issues/1007</link>
-      <guid isPermaLink="true">https://github.com/Stellar-Uzima/Uzima-Contracts/issues/1007</guid>
-      <pubDate>Sat, 27 Jun 2026 10:22:03 GMT</pubDate>
-      <description>Stellar-Uzima/Uzima-Contracts | score 0
-opportunity: standard
-effort: 40
-notes: no explicit USD/USDC amount parsed</description>
-    </item>
-    <item>
-      <title>[FE-77] Add advanced job filtering by amount range, date, and freelancer</title>
-      <link>https://github.com/anumukul/Stellar-work-/issues/414</link>
-      <guid isPermaLink="true">https://github.com/anumukul/Stellar-work-/issues/414</guid>
-      <pubDate>Sat, 27 Jun 2026 10:22:02 GMT</pubDate>
-      <description>anumukul/Stellar-work- | score 0
-opportunity: standard
-effort: 58
-notes: no explicit USD/USDC amount parsed; effort signals: infra-or-migration</description>
-    </item>
-    <item>
-      <title>feat(frontend): use getVestedAmountBulk to display vested (not just claimable) amounts per schedule</title>
-      <link>https://github.com/vestflow-labs/vestflow/issues/275</link>
-      <guid isPermaLink="true">https://github.com/vestflow-labs/vestflow/issues/275</guid>
-      <pubDate>Sat, 27 Jun 2026 10:21:59 GMT</pubDate>
-      <description>vestflow-labs/vestflow | score 0
-opportunity: standard
-effort: 40
-notes: no explicit USD/USDC amount parsed</description>
-    </item>
-    <item>
-      <title>Score RHRoute by discharged analytic content, not interface volume</title>
-      <link>https://github.com/the-omega-institute/newmath/issues/2030</link>
-      <guid isPermaLink="true">https://github.com/the-omega-institute/newmath/issues/2030</guid>
-      <pubDate>Sat, 27 Jun 2026 10:21:53 GMT</pubDate>
-      <description>the-omega-institute/newmath | score 30
-opportunity: standard
-effort: 40
-signals: bounty, USDC/Base
-notes: no explicit USD/USDC amount parsed; payment rail signal present</description>
-    </item>
-    <item>
-      <title>Add Test Coverage for Token Allowance Decreases</title>
-      <link>https://github.com/ceejaylaboratory/AnchorPoint/issues/579</link>
-      <guid isPermaLink="true">https://github.com/ceejaylaboratory/AnchorPoint/issues/579</guid>
-      <pubDate>Sat, 27 Jun 2026 10:21:53 GMT</pubDate>
-      <description>ceejaylaboratory/AnchorPoint | score 0
-opportunity: standard
-effort: 30
-notes: no explicit USD/USDC amount parsed; effort signals: docs-or-tests</description>
-    </item>
-    <item>
-      <title>[ Performance ] Multiplex SSH via ControlMaster to roughly halve `terraform apply` wall-clock&apos;</title>
-      <link>https://github.com/seqeralabs/cx-field-tools-installer/issues/407</link>
-      <guid isPermaLink="true">https://github.com/seqeralabs/cx-field-tools-installer/issues/407</guid>
-      <pubDate>Sat, 27 Jun 2026 10:21:52 GMT</pubDate>
-      <description>seqeralabs/cx-field-tools-installer | score 12
-opportunity: standard
-effort: 72
+effort: 48
 signals: bounty
-notes: no explicit USD/USDC amount parsed; effort signals: docs-or-tests, security-sensitive, infra-or-migration</description>
+notes: no explicit USD/USDC amount parsed; effort signals: docs-or-tests, infra-or-migration</description>
     </item>
     <item>
-      <title>🕒 Queue-Backpressure | Multi-Tier Drop-Tail Mitigation Strategies for Ingestion Streams</title>
-      <link>https://github.com/StellarFlow-Network/stellarflow-backend/issues/457</link>
-      <guid isPermaLink="true">https://github.com/StellarFlow-Network/stellarflow-backend/issues/457</guid>
-      <pubDate>Sat, 27 Jun 2026 10:21:45 GMT</pubDate>
-      <description>StellarFlow-Network/stellarflow-backend | score 0
+      <title>Different start dates for the month</title>
+      <link>https://github.com/actualbudget/actual/issues/8354</link>
+      <guid isPermaLink="true">https://github.com/actualbudget/actual/issues/8354</guid>
+      <pubDate>Sun, 28 Jun 2026 10:33:44 GMT</pubDate>
+      <description>actualbudget/actual | score 0
+opportunity: standard
+effort: 40
+signals: bounty
+risk: competition-noise
+notes: no explicit USD/USDC amount parsed; risk flags: competition-noise</description>
+    </item>
+    <item>
+      <title>[Backend] loan_disputes foreign key references loan_events(loan_id), which has no total UNIQUE constraint</title>
+      <link>https://github.com/LabsCrypt/remitlend/issues/1191</link>
+      <guid isPermaLink="true">https://github.com/LabsCrypt/remitlend/issues/1191</guid>
+      <pubDate>Sun, 28 Jun 2026 10:33:38 GMT</pubDate>
+      <description>LabsCrypt/remitlend | score 0
 opportunity: standard
 effort: 58
 notes: no explicit USD/USDC amount parsed; effort signals: infra-or-migration</description>
     </item>
     <item>
-      <title>Add differential fuzz harness across PythOracle and ReflectorOracle adapters</title>
-      <link>https://github.com/Predictify-org/predictify-contracts/issues/650</link>
-      <guid isPermaLink="true">https://github.com/Predictify-org/predictify-contracts/issues/650</guid>
-      <pubDate>Sat, 27 Jun 2026 10:21:44 GMT</pubDate>
-      <description>Predictify-org/predictify-contracts | score 0
+      <title>feat(routing): swap-as-routing-FX-hop (token-agnostic) [future]</title>
+      <link>https://github.com/toon-protocol/connector/issues/223</link>
+      <guid isPermaLink="true">https://github.com/toon-protocol/connector/issues/223</guid>
+      <pubDate>Sun, 28 Jun 2026 10:33:37 GMT</pubDate>
+      <description>toon-protocol/connector | score 0
+opportunity: standard
+effort: 40
+notes: no explicit USD/USDC amount parsed</description>
+    </item>
+    <item>
+      <title>[Feature] [Frontend] Add &apos;Request Account Deletion&apos; UI in Settings Danger Zone</title>
+      <link>https://github.com/MetroLogic/fluxapay/issues/713</link>
+      <guid isPermaLink="true">https://github.com/MetroLogic/fluxapay/issues/713</guid>
+      <pubDate>Sun, 28 Jun 2026 10:33:29 GMT</pubDate>
+      <description>MetroLogic/fluxapay | score 0
+opportunity: standard
+effort: 40
+notes: no explicit USD/USDC amount parsed</description>
+    </item>
+    <item>
+      <title>Verify signed XDR source wallet before submission</title>
+      <link>https://github.com/karagozemin/Fortexa/issues/26</link>
+      <guid isPermaLink="true">https://github.com/karagozemin/Fortexa/issues/26</guid>
+      <pubDate>Sun, 28 Jun 2026 10:33:28 GMT</pubDate>
+      <description>karagozemin/Fortexa | score 8
+opportunity: standard
+effort: 54
+signals: label match
+notes: no explicit USD/USDC amount parsed; effort signals: docs-or-tests, security-sensitive</description>
+    </item>
+    <item>
+      <title>[Performance] Implement caching layers</title>
+      <link>https://github.com/Xoulomon/Scavenger/issues/821</link>
+      <guid isPermaLink="true">https://github.com/Xoulomon/Scavenger/issues/821</guid>
+      <pubDate>Sun, 28 Jun 2026 10:33:27 GMT</pubDate>
+      <description>Xoulomon/Scavenger | score 0
+opportunity: standard
+effort: 58
+notes: no explicit USD/USDC amount parsed; effort signals: infra-or-migration</description>
+    </item>
+    <item>
+      <title>devnet proxy: final hop to relay should localDeliver over HTTP, not a down BTP &apos;connector&apos; peer (T01 blocks /ilp writes)</title>
+      <link>https://github.com/toon-protocol/connector/issues/250</link>
+      <guid isPermaLink="true">https://github.com/toon-protocol/connector/issues/250</guid>
+      <pubDate>Sun, 28 Jun 2026 10:33:23 GMT</pubDate>
+      <description>toon-protocol/connector | score 50
+opportunity: rail-watch
+effort: 82
+signals: bounty, USDC/Base, payout address
+notes: no explicit USD/USDC amount parsed; payment rail signal present; effort signals: security-sensitive, infra-or-migration</description>
+    </item>
+    <item>
+      <title>devnet: reconcile store/relay box deploys to the baked deploy/ images (on-box compose swaps are untracked)</title>
+      <link>https://github.com/toon-protocol/connector/issues/261</link>
+      <guid isPermaLink="true">https://github.com/toon-protocol/connector/issues/261</guid>
+      <pubDate>Sun, 28 Jun 2026 10:33:14 GMT</pubDate>
+      <description>toon-protocol/connector | score 12
+opportunity: standard
+effort: 40
+signals: bounty
+notes: no explicit USD/USDC amount parsed</description>
+    </item>
+    <item>
+      <title>Add health-factor query view per borrower</title>
+      <link>https://github.com/Creditra/Creditra-Contracts/issues/613</link>
+      <guid isPermaLink="true">https://github.com/Creditra/Creditra-Contracts/issues/613</guid>
+      <pubDate>Sun, 28 Jun 2026 10:33:12 GMT</pubDate>
+      <description>Creditra/Creditra-Contracts | score 0
 opportunity: standard
 effort: 34
 notes: no explicit USD/USDC amount parsed; effort signals: good-first-issue, docs-or-tests, infra-or-migration</description>
     </item>
     <item>
-      <title>[BOUNTY $50] Add a hello-world test endpoint to verify bot detection</title>
-      <link>https://github.com/David-patrick-chuks/Riona-AI-Agent/issues/120</link>
-      <guid isPermaLink="true">https://github.com/David-patrick-chuks/Riona-AI-Agent/issues/120</guid>
-      <pubDate>Sat, 27 Jun 2026 10:21:08 GMT</pubDate>
-      <description>David-patrick-chuks/Riona-AI-Agent | score 36
+      <title>New product: Relationship Clarity Spread (7 cards)</title>
+      <link>https://github.com/magicalnbright/tarot-app/issues/28</link>
+      <guid isPermaLink="true">https://github.com/magicalnbright/tarot-app/issues/28</guid>
+      <pubDate>Sun, 28 Jun 2026 10:32:47 GMT</pubDate>
+      <description>magicalnbright/tarot-app | score 12
 opportunity: standard
 effort: 40
-amount: $50
-signals: bounty, amount, label match
-notes: parsed payout amount: $50</description>
+signals: bounty
+notes: no explicit USD/USDC amount parsed</description>
+    </item>
+    <item>
+      <title>Feature: Cryptographic action receipts for enterprise agent governance (AAR)</title>
+      <link>https://github.com/microsoft/autogen/issues/7353</link>
+      <guid isPermaLink="true">https://github.com/microsoft/autogen/issues/7353</guid>
+      <pubDate>Sun, 28 Jun 2026 10:31:13 GMT</pubDate>
+      <description>microsoft/autogen | score 36
+opportunity: rail-watch
+effort: 40
+signals: USDC/Base, x402
+notes: no explicit USD/USDC amount parsed; payment rail signal present</description>
     </item>
     <item>
       <title>self-improve: model-flagged: Wallet liquid balance is $0.0000, below compu</title>
-      <link>https://github.com/Daisuke134/anicca/issues/471</link>
-      <guid isPermaLink="true">https://github.com/Daisuke134/anicca/issues/471</guid>
-      <pubDate>Sat, 27 Jun 2026 10:21:03 GMT</pubDate>
+      <link>https://github.com/Daisuke134/anicca/issues/644</link>
+      <guid isPermaLink="true">https://github.com/Daisuke134/anicca/issues/644</guid>
+      <pubDate>Sun, 28 Jun 2026 10:29:55 GMT</pubDate>
       <description>Daisuke134/anicca | score 36
 opportunity: standard
 effort: 64
@@ -155,35 +149,148 @@ signals: amount, payout address
 notes: parsed payout amount: $1; effort signals: security-sensitive</description>
     </item>
     <item>
-      <title>Report Conductor runtime version in worker failure comments</title>
-      <link>https://github.com/autumngarage/alchemist/issues/253</link>
-      <guid isPermaLink="true">https://github.com/autumngarage/alchemist/issues/253</guid>
-      <pubDate>Sat, 27 Jun 2026 10:20:34 GMT</pubDate>
-      <description>autumngarage/alchemist | score 0
+      <title>self-improve: model-flagged: Wallet liquid balance is $0.0000, below compu</title>
+      <link>https://github.com/Daisuke134/anicca/issues/643</link>
+      <guid isPermaLink="true">https://github.com/Daisuke134/anicca/issues/643</guid>
+      <pubDate>Sun, 28 Jun 2026 10:27:48 GMT</pubDate>
+      <description>Daisuke134/anicca | score 36
+opportunity: standard
+effort: 64
+amount: $1
+signals: amount, payout address
+notes: parsed payout amount: $1; effort signals: security-sensitive</description>
+    </item>
+    <item>
+      <title>[bluesky] engagement-ledger</title>
+      <link>https://github.com/tobyrowland/update_ai_analysis/issues/349</link>
+      <guid isPermaLink="true">https://github.com/tobyrowland/update_ai_analysis/issues/349</guid>
+      <pubDate>Sun, 28 Jun 2026 10:26:54 GMT</pubDate>
+      <description>tobyrowland/update_ai_analysis | score 36
+opportunity: manual-review
+effort: 94
+amount: $70000
+signals: bounty, USDC/Base, x402, amount
+risk: requires-signup-confirmation
+notes: parsed payout amount: $70000; payment rail signal present; effort signals: good-first-issue, security-sensitive, infra-or-migration, external-access; risk flags: requires-signup-confirmation; manual signup or approval friction detected</description>
+    </item>
+    <item>
+      <title>Add `usePolling` hook for live bounty status updates</title>
+      <link>https://github.com/ritik4ever/stellar-bounty-board/issues/374</link>
+      <guid isPermaLink="true">https://github.com/ritik4ever/stellar-bounty-board/issues/374</guid>
+      <pubDate>Sun, 28 Jun 2026 10:26:26 GMT</pubDate>
+      <description>ritik4ever/stellar-bounty-board | score 12
+opportunity: standard
+effort: 26
+signals: bounty
+notes: no explicit USD/USDC amount parsed; effort signals: good-first-issue</description>
+    </item>
+    <item>
+      <title>[Bounty: 23 USDC] Create contributors webpage</title>
+      <link>https://github.com/dwebagents/AgentPipe/issues/1580</link>
+      <guid isPermaLink="true">https://github.com/dwebagents/AgentPipe/issues/1580</guid>
+      <pubDate>Sun, 28 Jun 2026 10:24:34 GMT</pubDate>
+      <description>dwebagents/AgentPipe | score 54
+opportunity: rail-watch
+effort: 26
+amount: $23
+signals: bounty, USDC/Base, amount, label match
+notes: parsed payout amount: $23; payment rail signal present; effort signals: good-first-issue</description>
+    </item>
+    <item>
+      <title>Add `multi_token_release` support — allow different tokens per bounty</title>
+      <link>https://github.com/ritik4ever/stellar-bounty-board/issues/223</link>
+      <guid isPermaLink="true">https://github.com/ritik4ever/stellar-bounty-board/issues/223</guid>
+      <pubDate>Sun, 28 Jun 2026 10:23:49 GMT</pubDate>
+      <description>ritik4ever/stellar-bounty-board | score 30
+opportunity: standard
+effort: 40
+signals: bounty, USDC/Base
+notes: no explicit USD/USDC amount parsed; payment rail signal present</description>
+    </item>
+    <item>
+      <title>self-improve: model-flagged: Wallet liquid balance is $0.0000, below compu</title>
+      <link>https://github.com/Daisuke134/anicca/issues/642</link>
+      <guid isPermaLink="true">https://github.com/Daisuke134/anicca/issues/642</guid>
+      <pubDate>Sun, 28 Jun 2026 10:23:39 GMT</pubDate>
+      <description>Daisuke134/anicca | score 36
+opportunity: standard
+effort: 64
+amount: $1
+signals: amount, payout address
+notes: parsed payout amount: $1; effort signals: security-sensitive</description>
+    </item>
+    <item>
+      <title>Add `tokenSymbol` allowlist validation on bounty creation</title>
+      <link>https://github.com/ritik4ever/stellar-bounty-board/issues/267</link>
+      <guid isPermaLink="true">https://github.com/ritik4ever/stellar-bounty-board/issues/267</guid>
+      <pubDate>Sun, 28 Jun 2026 10:23:23 GMT</pubDate>
+      <description>ritik4ever/stellar-bounty-board | score 30
+opportunity: standard
+effort: 40
+signals: bounty, USDC/Base
+notes: no explicit USD/USDC amount parsed; payment rail signal present; effort signals: good-first-issue, docs-or-tests, security-sensitive</description>
+    </item>
+    <item>
+      <title>sdk/x402: add ingress.ts and wire up public exports</title>
+      <link>https://github.com/toon-protocol/toon/issues/16</link>
+      <guid isPermaLink="true">https://github.com/toon-protocol/toon/issues/16</guid>
+      <pubDate>Sun, 28 Jun 2026 10:23:08 GMT</pubDate>
+      <description>toon-protocol/toon | score 36
+opportunity: rail-watch
+effort: 30
+signals: USDC/Base, x402
+notes: no explicit USD/USDC amount parsed; payment rail signal present; effort signals: docs-or-tests</description>
+    </item>
+    <item>
+      <title>Consolidate chain-key parsing into a shared parseChainKey/formatChainKey util</title>
+      <link>https://github.com/toon-protocol/toon-client/issues/126</link>
+      <guid isPermaLink="true">https://github.com/toon-protocol/toon-client/issues/126</guid>
+      <pubDate>Sun, 28 Jun 2026 10:23:05 GMT</pubDate>
+      <description>toon-protocol/toon-client | score 18
 opportunity: standard
 effort: 40
 signals: x402
-risk: competition-noise
-notes: no explicit USD/USDC amount parsed; payment rail signal present; risk flags: competition-noise</description>
+notes: no explicit USD/USDC amount parsed; payment rail signal present</description>
     </item>
     <item>
-      <title>[PAID BOUNTY - $960] Attachment Summarizer Service</title>
-      <link>https://github.com/warpspeedopen-source/warpspeed-bounties/issues/1</link>
-      <guid isPermaLink="true">https://github.com/warpspeedopen-source/warpspeed-bounties/issues/1</guid>
-      <pubDate>Sat, 27 Jun 2026 10:18:11 GMT</pubDate>
-      <description>warpspeedopen-source/warpspeed-bounties | score 8
-opportunity: manual-review
-effort: 66
-amount: $960
-signals: bounty, amount, label match
-risk: requires-signup-confirmation
-notes: parsed payout amount: $960; effort signals: external-access; risk flags: requires-signup-confirmation; manual signup or approval friction detected</description>
+      <title>[BOUNTY] RCS Support [14999$]</title>
+      <link>https://github.com/microg/GmsCore/issues/2994</link>
+      <guid isPermaLink="true">https://github.com/microg/GmsCore/issues/2994</guid>
+      <pubDate>Sun, 28 Jun 2026 10:10:30 GMT</pubDate>
+      <description>microg/GmsCore | score 20
+opportunity: standard
+effort: 40
+signals: bounty, label match
+notes: no explicit USD/USDC amount parsed</description>
+    </item>
+    <item>
+      <title>Add `UsdAmount` conversion using live XLM/USD price feed</title>
+      <link>https://github.com/ritik4ever/stellar-bounty-board/issues/288</link>
+      <guid isPermaLink="true">https://github.com/ritik4ever/stellar-bounty-board/issues/288</guid>
+      <pubDate>Sun, 28 Jun 2026 10:05:28 GMT</pubDate>
+      <description>ritik4ever/stellar-bounty-board | score 30
+opportunity: standard
+effort: 40
+signals: bounty, USDC/Base
+notes: no explicit USD/USDC amount parsed; payment rail signal present</description>
+    </item>
+    <item>
+      <title>[owockibot] Security audit — bounty escrow smart contract</title>
+      <link>https://github.com/cyrilawoyemi99-max/owockibot-bounty-sync-/issues/5</link>
+      <guid isPermaLink="true">https://github.com/cyrilawoyemi99-max/owockibot-bounty-sync-/issues/5</guid>
+      <pubDate>Sun, 28 Jun 2026 09:33:02 GMT</pubDate>
+      <description>cyrilawoyemi99-max/owockibot-bounty-sync- | score 54
+opportunity: high-value
+effort: 64
+amount: $1200
+signals: bounty, USDC/Base, amount, label match
+notes: parsed payout amount: $1200; payment rail signal present; effort signals: security-sensitive</description>
     </item>
     <item>
       <title>Launch Another DoraHacks Bounty Post</title>
       <link>https://github.com/devpool-directory/devpool-directory/issues/5924</link>
       <guid isPermaLink="true">https://github.com/devpool-directory/devpool-directory/issues/5924</guid>
-      <pubDate>Sat, 27 Jun 2026 10:17:11 GMT</pubDate>
+      <pubDate>Sun, 28 Jun 2026 09:22:03 GMT</pubDate>
       <description>devpool-directory/devpool-directory | score 28
 opportunity: standard
 effort: 40
@@ -194,7 +301,7 @@ notes: no explicit USD/USDC amount parsed</description>
       <title>Implement Differential Reward Distribution for Reopened Issues</title>
       <link>https://github.com/devpool-directory/devpool-directory/issues/5012</link>
       <guid isPermaLink="true">https://github.com/devpool-directory/devpool-directory/issues/5012</guid>
-      <pubDate>Sat, 27 Jun 2026 10:17:07 GMT</pubDate>
+      <pubDate>Sun, 28 Jun 2026 09:22:00 GMT</pubDate>
       <description>devpool-directory/devpool-directory | score 28
 opportunity: standard
 effort: 40
@@ -205,7 +312,7 @@ notes: no explicit USD/USDC amount parsed</description>
       <title>Validate reward generation behavior</title>
       <link>https://github.com/devpool-directory/devpool-directory/issues/5887</link>
       <guid isPermaLink="true">https://github.com/devpool-directory/devpool-directory/issues/5887</guid>
-      <pubDate>Sat, 27 Jun 2026 10:17:06 GMT</pubDate>
+      <pubDate>Sun, 28 Jun 2026 09:21:59 GMT</pubDate>
       <description>devpool-directory/devpool-directory | score 28
 opportunity: standard
 effort: 40
@@ -216,7 +323,7 @@ notes: no explicit USD/USDC amount parsed</description>
       <title>Cow Swap Cash Out</title>
       <link>https://github.com/devpool-directory/devpool-directory/issues/5066</link>
       <guid isPermaLink="true">https://github.com/devpool-directory/devpool-directory/issues/5066</guid>
-      <pubDate>Sat, 27 Jun 2026 10:16:50 GMT</pubDate>
+      <pubDate>Sun, 28 Jun 2026 09:21:43 GMT</pubDate>
       <description>devpool-directory/devpool-directory | score 16
 opportunity: standard
 effort: 40
@@ -224,115 +331,10 @@ signals: amount
 notes: no explicit USD/USDC amount parsed</description>
     </item>
     <item>
-      <title>Low Handing Fruit Automation</title>
-      <link>https://github.com/SecureBananaLabs/bug-bounty/issues/743</link>
-      <guid isPermaLink="true">https://github.com/SecureBananaLabs/bug-bounty/issues/743</guid>
-      <pubDate>Sat, 27 Jun 2026 10:10:20 GMT</pubDate>
-      <description>SecureBananaLabs/bug-bounty | score 36
-opportunity: high-value
-effort: 26
-amount: $700
-signals: bounty, amount, label match
-notes: parsed payout amount: $700; effort signals: good-first-issue</description>
-    </item>
-    <item>
-      <title>📋 Your MarketAlong Update — 27 Jun 2026</title>
-      <link>https://github.com/hm0163983-sudo/marketalong-growth-intelligence/issues/8</link>
-      <guid isPermaLink="true">https://github.com/hm0163983-sudo/marketalong-growth-intelligence/issues/8</guid>
-      <pubDate>Sat, 27 Jun 2026 10:09:27 GMT</pubDate>
-      <description>hm0163983-sudo/marketalong-growth-intelligence | score 12
-opportunity: standard
-effort: 48
-signals: bounty
-notes: no explicit USD/USDC amount parsed; effort signals: docs-or-tests, infra-or-migration</description>
-    </item>
-    <item>
-      <title>[bluesky] engagement-ledger</title>
-      <link>https://github.com/tobyrowland/update_ai_analysis/issues/349</link>
-      <guid isPermaLink="true">https://github.com/tobyrowland/update_ai_analysis/issues/349</guid>
-      <pubDate>Sat, 27 Jun 2026 10:07:15 GMT</pubDate>
-      <description>tobyrowland/update_ai_analysis | score 36
-opportunity: manual-review
-effort: 94
-amount: $70000
-signals: bounty, USDC/Base, x402, amount
-risk: requires-signup-confirmation
-notes: parsed payout amount: $70000; payment rail signal present; effort signals: good-first-issue, security-sensitive, infra-or-migration, external-access; risk flags: requires-signup-confirmation; manual signup or approval friction detected</description>
-    </item>
-    <item>
-      <title>[BOUNTY] RCS Support [14999$]</title>
-      <link>https://github.com/microg/GmsCore/issues/2994</link>
-      <guid isPermaLink="true">https://github.com/microg/GmsCore/issues/2994</guid>
-      <pubDate>Sat, 27 Jun 2026 10:06:17 GMT</pubDate>
-      <description>microg/GmsCore | score 20
-opportunity: standard
-effort: 40
-signals: bounty, label match
-notes: no explicit USD/USDC amount parsed</description>
-    </item>
-    <item>
-      <title>Client publish path settles on-chain instead of ILP-over-HTTP, blocking all pay-to-write</title>
-      <link>https://github.com/toon-protocol/toon-meta/issues/65</link>
-      <guid isPermaLink="true">https://github.com/toon-protocol/toon-meta/issues/65</guid>
-      <pubDate>Sat, 27 Jun 2026 10:04:56 GMT</pubDate>
-      <description>toon-protocol/toon-meta | score 38
-opportunity: rail-watch
-effort: 64
-signals: x402, payout address
-notes: no explicit USD/USDC amount parsed; payment rail signal present; effort signals: security-sensitive</description>
-    </item>
-    <item>
-      <title>test: improve test coverage</title>
-      <link>https://github.com/spaceandtimefdn/sxt-proof-of-sql/issues/560</link>
-      <guid isPermaLink="true">https://github.com/spaceandtimefdn/sxt-proof-of-sql/issues/560</guid>
-      <pubDate>Sat, 27 Jun 2026 09:17:45 GMT</pubDate>
-      <description>spaceandtimefdn/sxt-proof-of-sql | score 36
-opportunity: standard
-effort: 30
-signals: bounty, amount, label match
-notes: no explicit USD/USDC amount parsed; effort signals: docs-or-tests</description>
-    </item>
-    <item>
-      <title>[$25 BOUNTY] [Rust] Add backend shutdown metrics snapshot</title>
-      <link>https://github.com/jaxassistant55/TentOfTrials/issues/66</link>
-      <guid isPermaLink="true">https://github.com/jaxassistant55/TentOfTrials/issues/66</guid>
-      <pubDate>Sat, 27 Jun 2026 08:36:15 GMT</pubDate>
-      <description>jaxassistant55/TentOfTrials | score 36
-opportunity: standard
-effort: 16
-amount: $25
-signals: bounty, amount, label match
-notes: parsed payout amount: $25; effort signals: good-first-issue, docs-or-tests</description>
-    </item>
-    <item>
-      <title>[$25 BOUNTY] [Rust] Add signal shutdown integration harness</title>
-      <link>https://github.com/jaxassistant55/TentOfTrials/issues/67</link>
-      <guid isPermaLink="true">https://github.com/jaxassistant55/TentOfTrials/issues/67</guid>
-      <pubDate>Sat, 27 Jun 2026 08:36:14 GMT</pubDate>
-      <description>jaxassistant55/TentOfTrials | score 36
-opportunity: standard
-effort: 16
-amount: $25
-signals: bounty, amount, label match
-notes: parsed payout amount: $25; effort signals: good-first-issue, docs-or-tests</description>
-    </item>
-    <item>
-      <title>[$25 BOUNTY] [Rust] Add graceful shutdown config docs and parser tests</title>
-      <link>https://github.com/jaxassistant55/TentOfTrials/issues/72</link>
-      <guid isPermaLink="true">https://github.com/jaxassistant55/TentOfTrials/issues/72</guid>
-      <pubDate>Sat, 27 Jun 2026 08:36:10 GMT</pubDate>
-      <description>jaxassistant55/TentOfTrials | score 36
-opportunity: standard
-effort: 16
-amount: $25
-signals: bounty, amount, label match
-notes: parsed payout amount: $25; effort signals: good-first-issue, docs-or-tests</description>
-    </item>
-    <item>
       <title>MRWK bounty: 40 MRWK - review open MergeWork PRs with evidence, round 21</title>
       <link>https://github.com/ramimbo/mergework/issues/1009</link>
       <guid isPermaLink="true">https://github.com/ramimbo/mergework/issues/1009</guid>
-      <pubDate>Sat, 27 Jun 2026 05:27:40 GMT</pubDate>
+      <pubDate>Sat, 27 Jun 2026 13:28:32 GMT</pubDate>
       <description>ramimbo/mergework | score 32
 opportunity: rail-watch
 effort: 64
