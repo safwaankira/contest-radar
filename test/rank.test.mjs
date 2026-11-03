@@ -100,3 +100,12 @@ test("eligibility limits are caught from the text when the model misses them", a
   assert.ok(item.decision_notes.some((n) => n.startsWith("prize used for ranking: $1,500")));
   assert.ok(!item.decision_notes.some((n) => n.startsWith("parsed payout amount")));
 });
+
+test("items carried over from older runs get the eligibility check and the current scale", async () => {
+  const { rescore } = await import("../lib/rank.js");
+  const old = { source: "x", url: "https://x.com/s/status/1", title: "Join women-only hackathon for AI solutions", payout_amount_usd: 1500, deadline: "2026-11-08", effort_score: 40, decision_notes: ["parsed payout amount: $100"], score: 77 };
+  const fresh = rescore(old, now);
+  assert.equal(fresh.restricted, "women only");
+  assert.ok(fresh.score < 77);
+  assert.ok(!fresh.decision_notes.some((n) => n.startsWith("parsed payout amount")));
+});
