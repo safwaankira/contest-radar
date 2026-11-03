@@ -1,6 +1,6 @@
 // Sandbox smoke test of the rules reader: one 1-minute buy browser session on Celo Sepolia (test USDC),
 // read each URL, print what came back. No mainnet payment, no model call.
-//   BUY_SANDBOX=1 node scripts/rules-smoke.mjs https://lu.ma/... https://example.com/rules
+//   BUY_SANDBOX=1 node --env-file=.env scripts/rules-smoke.mjs https://lu.ma/... https://example.com/rules
 import { createBuySession } from "../lib/buy.js";
 import { rulesLinks } from "../lib/rules.js";
 
