@@ -1,26 +1,64 @@
+@import "@fontsource-variable/inter";
+@import "@fontsource/jetbrains-mono/400.css";
+@import "@fontsource/jetbrains-mono/500.css";
 @import "tailwindcss";
 
-/* Design tokens. Values are replaced from DESIGN.md in the design pass. */
+/*
+ * Tokens from DESIGN.md (Linear, via VoltAgent/awesome-design-md, MIT).
+ * Dark only: the system documents no light theme.
+ * Inter and JetBrains Mono are the documented open substitutes for Linear's fonts.
+ */
 :root {
-  --background: #fbfbf8;
-  --foreground: #111111;
-  --card: #ffffff;
-  --card-foreground: #111111;
-  --muted: #f0f0ea;
-  --muted-foreground: #5e5e57;
-  --border: #dcdcd3;
-  --primary: #2741ff;
-  --primary-foreground: #ffffff;
-  --accent: #e8ff3a;
-  --accent-foreground: #111111;
-  --destructive: #c4321b;
-  --ring: #2741ff;
-  --radius: 4px;
-  --font-sans: ui-sans-serif, system-ui, sans-serif;
-  --font-mono: ui-monospace, "SFMono-Regular", Menlo, monospace;
+  color-scheme: dark;
+  --canvas: #010102;
+  --surface-1: #0f1011;
+  --surface-2: #141516;
+  --surface-3: #18191a;
+  --surface-4: #191a1b;
+  --hairline: #23252a;
+  --hairline-strong: #34343a;
+  --hairline-tertiary: #3e3e44;
+  --ink: #f7f8f8;
+  --ink-muted: #d0d6e0;
+  --ink-subtle: #8a8f98;
+  --ink-tertiary: #62666d;
+  --primary: #5e6ad2;
+  --primary-hover: #828fff;
+  --primary-focus: #5e69d1;
+  --on-primary: #ffffff;
+  --success: #27a644;
+  /* In-product priority colour (DESIGN.md "Known Gaps": product UI carries a richer tag palette). Used only for "closes soon". */
+  --urgent: #eb5757;
+
+  /* shadcn semantic names mapped onto the ladder */
+  --background: var(--canvas);
+  --foreground: var(--ink);
+  --card: var(--surface-1);
+  --card-foreground: var(--ink);
+  --muted: var(--surface-2);
+  --muted-foreground: var(--ink-subtle);
+  --border: var(--hairline);
+  --input: var(--hairline-strong);
+  --ring: var(--primary-focus);
+  --radius: 8px;
 }
 
 @theme inline {
+  --color-canvas: var(--canvas);
+  --color-surface-1: var(--surface-1);
+  --color-surface-2: var(--surface-2);
+  --color-surface-3: var(--surface-3);
+  --color-hairline: var(--hairline);
+  --color-hairline-strong: var(--hairline-strong);
+  --color-ink: var(--ink);
+  --color-ink-muted: var(--ink-muted);
+  --color-ink-subtle: var(--ink-subtle);
+  --color-ink-tertiary: var(--ink-tertiary);
+  --color-primary: var(--primary);
+  --color-primary-hover: var(--primary-hover);
+  --color-primary-foreground: var(--on-primary);
+  --color-success: var(--success);
+  --color-urgent: var(--urgent);
   --color-background: var(--background);
   --color-foreground: var(--foreground);
   --color-card: var(--card);
@@ -28,17 +66,34 @@
   --color-muted: var(--muted);
   --color-muted-foreground: var(--muted-foreground);
   --color-border: var(--border);
-  --color-primary: var(--primary);
-  --color-primary-foreground: var(--primary-foreground);
-  --color-accent: var(--accent);
-  --color-accent-foreground: var(--accent-foreground);
-  --color-destructive: var(--destructive);
+  --color-input: var(--input);
   --color-ring: var(--ring);
-  --font-sans: var(--font-sans);
-  --font-mono: var(--font-mono);
+  --font-sans: "Inter Variable", "SF Pro Display", -apple-system, system-ui, "Segoe UI", Roboto, sans-serif;
+  --font-mono: "JetBrains Mono", ui-monospace, "SF Mono", Menlo, monospace;
 }
 
 @layer base {
-  * { border-color: var(--border); }
-  body { background: var(--background); color: var(--foreground); font-family: var(--font-sans); -webkit-font-smoothing: antialiased; }
+  * { border-color: var(--hairline); }
+  html, body { background: var(--canvas); }
+  body {
+    color: var(--ink);
+    font-family: var(--font-sans);
+    font-size: 16px;
+    line-height: 1.5;
+    letter-spacing: -0.05px;
+    -webkit-font-smoothing: antialiased;
+    font-feature-settings: "cv11", "ss01";
+  }
+  ::selection { background: color-mix(in srgb, var(--primary) 45%, transparent); }
+  :focus-visible { outline: 2px solid color-mix(in srgb, var(--primary-focus) 50%, transparent); outline-offset: 2px; }
+  a { text-underline-offset: 3px; }
+}
+
+@layer components {
+  /* DESIGN.md: display tracking pulls negative; eyebrow tracks positive. */
+  .display-md { font-size: clamp(30px, 6vw, 40px); font-weight: 600; line-height: 1.15; letter-spacing: -1px; }
+  .headline { font-size: 22px; font-weight: 600; line-height: 1.2; letter-spacing: -0.4px; }
+  .eyebrow { font-size: 13px; font-weight: 500; line-height: 1.3; letter-spacing: 0.4px; color: var(--ink-subtle); }
+  /* "Subtle white edge highlight on the top edge of lifted panels." */
+  .lift { background: var(--surface-1); border: 1px solid var(--hairline); box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.04); }
 }

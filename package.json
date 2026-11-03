@@ -53,6 +53,8 @@
   },
   "dependencies": {
     "@celo/attribution-tags": "0.5.0",
+    "@fontsource-variable/inter": "^5.2.5",
+    "@fontsource/jetbrains-mono": "^5.2.5",
     "@radix-ui/react-slot": "^1.5.0",
     "@x402/core": "2.29.0",
     "@x402/evm": "2.29.0",
