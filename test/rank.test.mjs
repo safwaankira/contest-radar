@@ -109,3 +109,23 @@ test("items carried over from older runs get the eligibility check and the curre
   assert.ok(fresh.score < 77);
   assert.ok(!fresh.decision_notes.some((n) => n.startsWith("parsed payout amount")));
 });
+
+import { priceFromLabels, isPayingIssue } from "../lib/rank.js";
+
+test("devpool price labels become the reward", () => {
+  assert.equal(priceFromLabels(["Priority: 2 (Medium)", "Price: 150 USD", "Time: <2 Hours"]), 150);
+  assert.equal(priceFromLabels(["Price: 1,200 USDC"]), 1200);
+  assert.equal(priceFromLabels(["enhancement"]), null);
+});
+
+test("only issues that actually pay stay in the feed", () => {
+  // labelled bounties and priced tickets stay
+  assert.ok(isPayingIssue({ title: "Frantic bounty #145", labels: ["bounty", "funded"], signals: ["bounty"] }));
+  assert.ok(isPayingIssue({ title: "Cow Swap Cash Out", labels: ["Price: 600 USD"], signals: ["amount"] }));
+  assert.ok(isPayingIssue({ title: "Hermes: attack and test the live pool", labels: [], signals: ["bounty", "amount"], amountUsd: 100 }));
+  // work tickets that merely mention the word go
+  assert.equal(isPayingIssue({ title: "Epic: Week 10 – Deploy Forseti to GCP", labels: [], signals: ["amount"], amountUsd: 9 }), false);
+  assert.equal(isPayingIssue({ title: "Codex task queue", labels: [], signals: ["bounty"] }), false);
+  assert.equal(isPayingIssue({ title: "v1 follow-ups from A4", labels: ["enhancement", "status:ready"], signals: ["MRWK/MergeWork"] }), false);
+  assert.equal(isPayingIssue({ title: "RFC: Federation bridge to mergework", labels: ["triaged"], signals: ["bounty", "amount"], amountUsd: null }), false);
+});

@@ -1,7 +1,7 @@
 import { mkdir, readFile, writeFile } from 'node:fs/promises';
 import { buildRssFeed } from './feed-rss.mjs';
 import { scoreText, assessOpportunity } from './scoring.mjs';
-import { worthScore, rescore, groupSlots, dedupeAnnouncements } from '../lib/rank.js';
+import { worthScore, rescore, groupSlots, dedupeAnnouncements, priceFromLabels, isPayingIssue } from '../lib/rank.js';
 
 // Bot-generated roundups ("Bounty Alert: 11 New Opportunities found") list other people's
 // bounties; they are not bounties themselves.
@@ -76,7 +76,8 @@ for (const preset of presets) {
     if (!/^https:\/\/github\.com\//.test(issue.html_url ?? '')) continue;
     if (seen.has(issue.html_url)) continue;
     seen.add(issue.html_url);
-    items.push(scoreIssue(issue, preset));
+    const scored = scoreIssue(issue, preset);
+    if (scored) items.push(scored);
   }
 }
 
@@ -152,7 +153,6 @@ if (items.length === 0 && outputItems.length > 0) {
 const feed = {
   generated_at: new Date().toISOString(),
   source: 'https://github.com/safwaankira/contest-radar',
-  based_on: 'https://github.com/go165/bounty-radar',
   demo: SITE,
   manifest: `${SITE}/feed/manifest.json`,
   schema: `${SITE}/feed/schema.json`,
@@ -254,6 +254,14 @@ function normalizeExistingItems(rows) {
 function scoreIssue(issue, preset) {
   const labels = (issue.labels ?? []).map((label) => label.name ?? '').filter(Boolean);
   const scored = scoreText({ title: issue.title, body: issue.body, labels, updatedAt: issue.updated_at });
+  // Bounty platforms like devpool put the reward in a label ("Price: 150 USD").
+  const labelPrice = priceFromLabels(labels);
+  if (labelPrice != null && scored.amount_usd == null && scored.payout_amount_usd == null) {
+    scored.amount_usd = labelPrice;
+    scored.payout_amount_usd = labelPrice;
+    scored.decision_notes = [`reward from label: $${labelPrice}`, ...scored.decision_notes].slice(0, 6);
+  }
+  if (!isPayingIssue({ title: issue.title, labels, signals: scored.signals, amountUsd: scored.payout_amount_usd ?? scored.amount_usd })) return null;
   if (ROUNDUP.test(issue.title ?? '') || CLAIM.test(issue.title ?? '')) {
     scored.score = 0;
     scored.opportunity_class = 'avoid';

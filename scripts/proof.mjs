@@ -127,7 +127,7 @@ for (const x of paid) {
   L.push(`| ${day(x.timestamp)} | ${SERVICE[to(x)].split(" (")[0]} | ${r ? `\`${r.route}\` (${r.label})` : "personal scan or pre-ledger run"} | $${usd(x).toFixed(4)} | ${txl(x.transaction_hash)} |`);
 }
 L.push("", "## Daily onchain anchors", "", "keccak256 of that day's `feed/latest.json`, written as calldata of a tagged zero-value self-transaction.", "");
-for (const a of anchors.slice(0, 30)) L.push(`- ${day(a.at)}: ${txl(a.tx)} (\`${a.feed_hash.slice(0, 18)}…\`)`);
+for (const a of anchors.slice(0, 30)) L.push(`- ${day(a.at)}: ${txl(a.tx)} (\`${(a.feed_hash || a.boardHash || "").slice(0, 18)}…\`)`);
 L.push("");
 
 const md = L.join("\n");

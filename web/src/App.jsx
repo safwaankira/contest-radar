@@ -422,7 +422,7 @@ function AgentView({ feed }) {
       <p className="eyebrow">The agent</p>
       <h1 className="display-md mt-3 max-w-[20ch]">An agent that pays its own way.</h1>
       <p className="mt-4 max-w-[60ch] text-[17px] text-ink-subtle">
-        It holds a small USDC float on Celo and owns no data. Every morning it buys X and Reddit searches through buy and one model read through Agent402, publishes the ranked feed, and writes the feed's hash onchain. People and other agents pay it $0.05 per personal scan. Every number here comes from the chain.
+        It holds a small USDC float on Celo and owns no data. Every morning it buys X and Reddit searches through buy and one model read through Agent402, publishes the ranked feed, and writes the feed's hash onchain. People and other agents pay it ${SCAN_USD.toFixed(2)} per personal scan (launch price). Every number here comes from the chain.
       </p>
 
       <dl className="mt-10 grid grid-cols-2 gap-px overflow-hidden rounded-[12px] border border-hairline bg-hairline sm:grid-cols-4">
