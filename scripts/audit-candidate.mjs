@@ -1,22 +1,16 @@
-import { execFileSync } from 'node:child_process';
-
-const token = resolveGithubToken();
+// Contest Radar: the token comes only from GITHUB_TOKEN (never from the gh CLI login),
+// and it is only ever sent to api.github.com.
+const token = process.env.GITHUB_TOKEN || '';
 const headers = {
   Accept: 'application/vnd.github+json',
   'User-Agent': 'bounty-radar-audit-candidate',
   ...(token ? { Authorization: `Bearer ${token}` } : {}),
 };
 
-function resolveGithubToken() {
-  if (process.env.GITHUB_TOKEN) return process.env.GITHUB_TOKEN;
-  try {
-    return execFileSync('gh', ['auth', 'token'], {
-      encoding: 'utf8',
-      stdio: ['ignore', 'pipe', 'ignore'],
-    }).trim();
-  } catch {
-    return '';
-  }
+function githubFetch(url) {
+  const { origin } = new URL(url);
+  if (origin !== 'https://api.github.com') throw new Error(`refusing to send GitHub credentials to ${origin}`);
+  return fetch(url, { headers });
 }
 
 export function parseIssueRef(options) {
@@ -137,7 +131,7 @@ Options:
 
 async function github(pathOrUrl) {
   const url = pathOrUrl.startsWith('https://') ? pathOrUrl : `https://api.github.com${pathOrUrl}`;
-  const response = await fetch(url, { headers });
+  const response = await githubFetch(url);
   if (!response.ok) throw new Error(`GitHub API failed: ${response.status} ${await response.text()}`);
   return response.json();
 }
@@ -146,7 +140,7 @@ async function fetchAll(path, options = {}) {
   const rows = [];
   let url = `https://api.github.com${path}${path.includes('?') ? '&' : '?'}per_page=100`;
   while (url) {
-    const response = await fetch(url, { headers });
+    const response = await githubFetch(url);
     if (!response.ok) throw new Error(`GitHub API failed: ${response.status} ${await response.text()}`);
     rows.push(...(await response.json()));
     if (rows.length >= (options.maxRows ?? Number.POSITIVE_INFINITY)) {
