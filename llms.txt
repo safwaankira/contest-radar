@@ -7,7 +7,7 @@ things you can enter for money: bounties, thread/meme/design/video contests and
 hackathons. A model reads each post for prize, deadline, effort and what to
 submit; plain-code scoring ranks them on payout clarity, payment rails, amount,
 risk flags (scams, key requests, KYC friction), effort, deadline window and
-competition. Built on go165/bounty-radar (MIT).
+competition.
 
 The agent pays for its inputs itself, per request, from a USDC float on Celo:
 X and Reddit searches through the buy gateway, the model call through Agent402.

@@ -52,11 +52,9 @@ export default function App() {
 
 function Mark({ className }) {
   return (
+    // Small-size cut of brand/contest-radar-symbol.svg: a radar quadrant sliced into a ranked list.
     <svg viewBox="0 0 32 32" aria-hidden="true" className={className}>
-      <circle cx="16" cy="16" r="13" fill="none" stroke="currentColor" strokeOpacity=".35" strokeWidth="1.5" />
-      <circle cx="16" cy="16" r="7.5" fill="none" stroke="currentColor" strokeOpacity=".6" strokeWidth="1.5" />
-      <path d="M16 16 L26 8" stroke="currentColor" strokeWidth="2" strokeLinecap="round" />
-      <circle cx="22.5" cy="10.8" r="2.2" fill="currentColor" />
+      <path fill="currentColor" d="M6 6 H26 A20 20 0 0 1 25.6 10 H6 Z M6 14 H24.33 A20 20 0 0 1 22 18 H6 Z M6 22 H18 A20 20 0 0 1 6 26 Z" />
     </svg>
   );
 }
@@ -66,7 +64,7 @@ function TopNav({ tab, setTab }) {
     <header className="sticky top-0 z-20 border-b border-hairline bg-canvas/85 backdrop-blur">
       <div className="mx-auto flex h-14 max-w-[1080px] items-center justify-between gap-3 px-4 sm:px-6">
         <a href="#radar" onClick={(e) => { e.preventDefault(); setTab("radar"); }} className="flex items-center gap-2 text-[15px] font-semibold tracking-[-0.3px]">
-          <Mark className="size-6 text-primary" />
+          <Mark className="size-7 text-primary" />
           <span className="hidden whitespace-nowrap min-[420px]:inline">Contest Radar</span>
         </a>
         <nav className="flex gap-1 rounded-full border border-hairline bg-canvas p-1" aria-label="Sections">
@@ -95,7 +93,6 @@ function Footer() {
       <div className="mx-auto flex max-w-[1080px] flex-wrap gap-x-6 gap-y-2 px-4 py-10 text-[12px] text-ink-subtle sm:px-6">
         <span className="flex items-center gap-1.5 text-ink-muted"><Mark className="size-4 text-primary" /> Contest Radar</span>
         <a className="hover:text-ink" href="https://github.com/safwaankira/contest-radar">Source</a>
-        <a className="hover:text-ink" href="https://github.com/go165/bounty-radar">Built on bounty-radar</a>
         <a className="hover:text-ink" href="https://usebuy.ai">Data bought through buy</a>
         <a className="hover:text-ink" href={`${EXPLORER}/address/${AGENT}`}>Agent {short(AGENT)}</a>
         <a className="hover:text-ink" href="/llms.txt">llms.txt</a>

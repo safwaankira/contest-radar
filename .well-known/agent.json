@@ -36,7 +36,7 @@
     "RSS feed export for subscriptions",
     "zero-dependency shortlist CLI",
     "zero-dependency MCP stdio server for bounty search tools",
-    "x402 paid personal scan on Celo (USDC, USD₮, USA₮)",
+    "x402 paid personal scan on Celo (USDC, USD\u20ae, USA\u20ae)",
     "agent pays its own data through buy on Celo; receipts published",
     "feed hash anchored onchain daily"
   ],
@@ -48,15 +48,14 @@
       "search_bounties",
       "get_bounty"
     ],
-    "paid_api_adapter": "https://github.com/go165/x402-paid-api-starter",
-    "docs": "https://go165.github.io/bounty-radar/docs/agent-handoff.md"
+    "docs": "https://github.com/safwaankira/contest-radar#readme",
+    "paid_api": "https://contest-radar-celo.vercel.app/api/scan"
   },
   "limitations": [
     "Scores are heuristic triage signals, not payout guarantees.",
     "Consumers must verify issue terms, sponsor reputation, and payment rules before doing work.",
     "Do not use the feed for automated spam comments, bulk outreach, or misleading bounty claims."
   ],
-  "based_on": "https://github.com/go165/bounty-radar",
   "payments": {
     "protocol": "x402 v2",
     "scheme": "exact",
