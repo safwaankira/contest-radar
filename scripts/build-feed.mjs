@@ -9,7 +9,7 @@ const ROUNDUP = /\b(bounty alert|new opportunit(?:y|ies)|opportunities found|bou
 const CLAIM = /^\s*\[?\s*bounty\s*(?:#\d+\s*)?claim\b|\bclaim:\s*\d/i;
 const MAX_PLAUSIBLE_ISSUE_USD = 100000;
 
-const SITE = process.env.SITE_URL || 'https://contest-radar.vercel.app';
+const SITE = process.env.SITE_URL || 'https://contest-radar-celo.vercel.app';
 // Contest sources (poidh free; X, Reddit and the model paid through buy on Celo)
 // run when the agent key is present. CONTESTS=0 builds the GitHub-only feed.
 const withContests = process.env.CONTESTS !== '0' && Boolean(process.env.AGENT_PRIVATE_KEY || process.env.BUY_SANDBOX === '1');

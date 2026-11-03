@@ -1,7 +1,7 @@
 {
   "name": "Contest Radar",
   "description": "Open crypto contests and bounties (GitHub, poidh, X, Reddit), read and ranked daily by an agent that pays for its own data on Celo. Scored for prize, deadline, effort, risk flags and competition.",
-  "homepage": "https://contest-radar.vercel.app",
+  "homepage": "https://contest-radar-celo.vercel.app",
   "repository": "https://github.com/safwaankira/contest-radar",
   "license": "MIT",
   "category": "opportunities",
@@ -12,16 +12,16 @@
     "agents that buy data over x402"
   ],
   "endpoints": {
-    "feed": "https://contest-radar.vercel.app/feed/latest.json",
-    "csv": "https://contest-radar.vercel.app/feed/latest.csv",
-    "rss": "https://contest-radar.vercel.app/feed/latest.xml",
-    "manifest": "https://contest-radar.vercel.app/feed/manifest.json",
-    "schema": "https://contest-radar.vercel.app/feed/schema.json",
-    "llms": "https://contest-radar.vercel.app/llms.txt",
-    "ledger": "https://contest-radar.vercel.app/feed/ledger.json",
-    "anchors": "https://contest-radar.vercel.app/feed/anchors.json",
-    "paid_scan": "https://contest-radar.vercel.app/api/scan",
-    "erc8004_registration": "https://contest-radar.vercel.app/agent.json"
+    "feed": "https://contest-radar-celo.vercel.app/feed/latest.json",
+    "csv": "https://contest-radar-celo.vercel.app/feed/latest.csv",
+    "rss": "https://contest-radar-celo.vercel.app/feed/latest.xml",
+    "manifest": "https://contest-radar-celo.vercel.app/feed/manifest.json",
+    "schema": "https://contest-radar-celo.vercel.app/feed/schema.json",
+    "llms": "https://contest-radar-celo.vercel.app/llms.txt",
+    "ledger": "https://contest-radar-celo.vercel.app/feed/ledger.json",
+    "anchors": "https://contest-radar-celo.vercel.app/feed/anchors.json",
+    "paid_scan": "https://contest-radar-celo.vercel.app/api/scan",
+    "erc8004_registration": "https://contest-radar-celo.vercel.app/agent.json"
   },
   "capabilities": [
     "daily contest and bounty shortlist from GitHub, poidh, X and Reddit",
@@ -67,6 +67,6 @@
       "USAT"
     ],
     "price_usd": "0.05",
-    "endpoint": "https://contest-radar.vercel.app/api/scan"
+    "endpoint": "https://contest-radar-celo.vercel.app/api/scan"
   }
 }

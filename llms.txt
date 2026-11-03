@@ -13,24 +13,24 @@ The agent pays for its inputs itself, per request, from a USDC float on Celo:
 X and Reddit searches through the buy gateway, the model call through Agent402.
 Every run's receipts are published and the feed's hash is written onchain.
 
-Live app: https://contest-radar.vercel.app
+Live app: https://contest-radar-celo.vercel.app
 Repository: https://github.com/safwaankira/contest-radar
-Agent discovery: https://contest-radar.vercel.app/.well-known/agent.json
-ERC-8004 registration: https://contest-radar.vercel.app/agent.json
+Agent discovery: https://contest-radar-celo.vercel.app/.well-known/agent.json
+ERC-8004 registration: https://contest-radar-celo.vercel.app/agent.json
 
 ## Machine-Readable Endpoints
 
-- JSON feed: https://contest-radar.vercel.app/feed/latest.json
-- CSV feed: https://contest-radar.vercel.app/feed/latest.csv
-- RSS feed: https://contest-radar.vercel.app/feed/latest.xml
-- Manifest: https://contest-radar.vercel.app/feed/manifest.json
-- JSON Schema: https://contest-radar.vercel.app/feed/schema.json
-- Paid-call ledger: https://contest-radar.vercel.app/feed/ledger.json
-- Onchain anchors: https://contest-radar.vercel.app/feed/anchors.json
+- JSON feed: https://contest-radar-celo.vercel.app/feed/latest.json
+- CSV feed: https://contest-radar-celo.vercel.app/feed/latest.csv
+- RSS feed: https://contest-radar-celo.vercel.app/feed/latest.xml
+- Manifest: https://contest-radar-celo.vercel.app/feed/manifest.json
+- JSON Schema: https://contest-radar-celo.vercel.app/feed/schema.json
+- Paid-call ledger: https://contest-radar-celo.vercel.app/feed/ledger.json
+- Onchain anchors: https://contest-radar-celo.vercel.app/feed/anchors.json
 
 ## Paid endpoint (x402 on Celo)
 
-POST https://contest-radar.vercel.app/api/scan with {"keywords":"meme OR design"}.
+POST https://contest-radar-celo.vercel.app/api/scan with {"keywords":"meme OR design"}.
 Unpaid requests get HTTP 402 with a PAYMENT-REQUIRED header: 0.05 in USDC,
 USD₮ or USA₮ on Celo mainnet (eip155:42220), exact scheme (EIP-3009). Retry
 with a PAYMENT-SIGNATURE header. You are charged only if ranked results come

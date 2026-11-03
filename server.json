@@ -4,7 +4,7 @@
   "title": "Contest Radar",
   "description": "Search a daily feed of open crypto contests and bounties (GitHub, poidh, X, Reddit) ranked by prize, deadline, effort, risk and competition.",
   "repository": { "url": "https://github.com/safwaankira/contest-radar", "source": "github" },
-  "websiteUrl": "https://contest-radar.vercel.app",
+  "websiteUrl": "https://contest-radar-celo.vercel.app",
   "version": "0.2.0",
   "packages": [{ "registryType": "npm", "identifier": "contest-radar", "version": "0.2.0", "runtimeHint": "npx", "transport": { "type": "stdio" } }]
 }

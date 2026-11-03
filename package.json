@@ -40,7 +40,7 @@
     "type": "git",
     "url": "https://github.com/safwaankira/contest-radar.git"
   },
-  "homepage": "https://contest-radar.vercel.app",
+  "homepage": "https://contest-radar-celo.vercel.app",
   "files": [
     "scripts/mcp-server.mjs",
     "scripts/shortlist.mjs",
