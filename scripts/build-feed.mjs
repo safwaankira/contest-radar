@@ -1,6 +1,7 @@
 import { mkdir, readFile, writeFile } from 'node:fs/promises';
 import { buildRssFeed } from './feed-rss.mjs';
 import { scoreText, assessOpportunity } from './scoring.mjs';
+import { worthScore } from '../lib/rank.js';
 
 // Bot-generated roundups ("Bounty Alert: 11 New Opportunities found") list other people's
 // bounties; they are not bounties themselves.
@@ -259,10 +260,15 @@ function scoreIssue(issue, preset) {
     scored.opportunity_class = 'manual-review';
     scored.score = Math.max(0, scored.score - 20);
   }
-  const prize = scored.payout_amount_usd ?? scored.amount_usd;
-  if (scored.opportunity_class !== 'avoid') {
-    scored.score = Math.max(0, scored.score + (prize ? Math.max(-12, Math.min(24, Math.round(12 * Math.log10(Math.max(prize, 1)) - 12))) : -4));
-  }
+  // Same worth scale as contests; bounty-radar's payout-clarity score becomes one input.
+  scored.text_score = scored.score;
+  scored.score = worthScore({
+    prizeUsd: scored.payout_amount_usd ?? scored.amount_usd ?? null,
+    effortScore: scored.effort_score,
+    trust: 5,
+    clarity: scored.text_score,
+    avoid: scored.opportunity_class === 'avoid' || scored.score === 0,
+  });
   return {
     ...scored,
     source: 'github',

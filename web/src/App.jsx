@@ -223,6 +223,7 @@ function Item({ i }) {
           <Badge variant="outline">{SOURCE_LABEL[i.source || "github"]}</Badge>
           {i.kind && i.kind !== "other" && <Badge variant="outline">{i.kind}</Badge>}
           <Badge variant="outline" className="max-w-[220px] truncate">{i.repo}</Badge>
+          {i.slots > 1 && <Badge variant="outline">{i.slots} open slots</Badge>}
           {i.crowded && <Badge variant="urgent"><Users className="size-3" /> Crowded</Badge>}
           {i.manual_friction && <Badge variant="outline"><ShieldAlert className="size-3" /> Manual steps</Badge>}
         </div>

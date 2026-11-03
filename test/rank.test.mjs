@@ -64,3 +64,12 @@ test("links that are not https are dropped, and absurd model prizes are ignored"
   const item = toItem({ ...cands[0], text: "Thread contest, submit by Nov 10" }, { prizeUsd: 1e12, deadline: "2026-11-10" }, now);
   assert.equal(item.payout_amount_usd, null);
 });
+
+test("prize and time left drive the score, not how clearly a payout is worded", async () => {
+  const { worthScore, groupSlots } = await import("../lib/rank.js");
+  assert.ok(worthScore({ prizeUsd: 3000, timing: 14, effortScore: 40 }) > worthScore({ prizeUsd: 5, timing: 8, effortScore: 30, clarity: 90 }));
+  assert.equal(worthScore({ prizeUsd: 1e6, avoid: true }), 0);
+  const g = groupSlots([1, 2, 3].map((n) => ({ source: "poidh", title: `Fund a task — slot ${n}/4`, payout_amount_usd: 28 })));
+  assert.equal(g.length, 1);
+  assert.equal(g[0].slots, 3);
+});
