@@ -73,3 +73,20 @@ test("prize and time left drive the score, not how clearly a payout is worded", 
   assert.equal(g.length, 1);
   assert.equal(g[0].slots, 3);
 });
+
+test("prize text beats a low model number; eligibility limits lower the score; repeat announcements collapse", async () => {
+  const { parsePrize, dedupeAnnouncements } = await import("../lib/rank.js");
+  assert.equal(parsePrize("$8,000 in cash prizes"), 8000);
+  assert.equal(parsePrize("5,200 USDT"), 5200);
+  assert.equal(parsePrize("$1.5k pool"), 1500);
+  assert.equal(parsePrize("0.05 ETH"), 125);
+  const item = toItem({ ...cands[0], text: "Hackathon, submit by Nov 8" }, { prizeUsd: 4000, prize: "$8,000 in cash prizes", deadline: "2026-11-08" }, now);
+  assert.equal(item.payout_amount_usd, 8000);
+  const open = toItem(cands[0], { prizeUsd: 1500, deadline: "2026-11-08" }, now);
+  const women = toItem(cands[0], { prizeUsd: 1500, deadline: "2026-11-08", restricted: "women only" }, now);
+  assert.equal(women.restricted, "women only");
+  assert.ok(women.score < open.score);
+  const dup = dedupeAnnouncements([{ ...open, url: "https://x.com/a/status/1" }, { ...open, url: "https://x.com/a/status/2", score: open.score - 5 }]);
+  assert.equal(dup.length, 1);
+  assert.equal(dup[0].also_posted, 1);
+});

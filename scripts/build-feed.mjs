@@ -1,7 +1,7 @@
 import { mkdir, readFile, writeFile } from 'node:fs/promises';
 import { buildRssFeed } from './feed-rss.mjs';
 import { scoreText, assessOpportunity } from './scoring.mjs';
-import { worthScore } from '../lib/rank.js';
+import { worthScore, rescore, groupSlots, dedupeAnnouncements } from '../lib/rank.js';
 
 // Bot-generated roundups ("Bounty Alert: 11 New Opportunities found") list other people's
 // bounties; they are not bounties themselves.
@@ -106,13 +106,23 @@ if (withContests) {
       items.push({ ...item, first_seen: previousItems.find((p) => p.url === item.url)?.first_seen ?? contestRun.finishedAt });
     }
     // Contests stay listed until their deadline (or 10 days) even on days the search misses them.
+    // Carried items are re-scored on today's scale, then everything is grouped and de-duplicated once.
     const today = new Date().toISOString().slice(0, 10);
+    const carried = [];
     for (const item of previousItems.filter((p) => p.source && p.source !== 'github' && !found.has(p.url))) {
-      if (seen.has(item.url)) continue;
       if (item.deadline && item.deadline < today) continue;
       if (Date.now() - Date.parse(item.first_seen ?? item.updated_at ?? 0) > 10 * 864e5) continue;
+      const fresh = rescore(item);
+      if (fresh && fresh.score > 0) carried.push({ ...fresh, carried: true });
+    }
+    const contestItems = dedupeAnnouncements(groupSlots([...items.filter((i) => i.source && i.source !== 'github'), ...carried]));
+    for (let k = items.length - 1; k >= 0; k--) if (items[k].source && items[k].source !== 'github') items.splice(k, 1);
+    seen.clear();
+    for (const item of items) seen.add(item.url);
+    for (const item of contestItems) {
+      if (seen.has(item.url)) continue;
       seen.add(item.url);
-      items.push({ ...item, carried: true });
+      items.push(item);
     }
     for (const message of contestRun.errors) errors.push({ preset: 'contests', status: 0, message: compactError(message) });
   } catch (error) {
