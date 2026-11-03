@@ -90,3 +90,13 @@ test("prize text beats a low model number; eligibility limits lower the score; r
   assert.equal(dup.length, 1);
   assert.equal(dup[0].also_posted, 1);
 });
+
+test("eligibility limits are caught from the text when the model misses them", async () => {
+  const { eligibilityFromText } = await import("../lib/rank.js");
+  assert.equal(eligibilityFromText("Join our women-only hackathon for AI solutions"), "women only");
+  assert.equal(eligibilityFromText("Open to everyone worldwide"), null);
+  const item = toItem({ ...cands[0], text: "Women-only hackathon! $1,500 prize pool, submit by Nov 8" }, { prizeUsd: 1500, deadline: "2026-11-08", restricted: null }, now);
+  assert.equal(item.restricted, "women only");
+  assert.ok(item.decision_notes.some((n) => n.startsWith("prize used for ranking: $1,500")));
+  assert.ok(!item.decision_notes.some((n) => n.startsWith("parsed payout amount")));
+});
