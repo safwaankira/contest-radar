@@ -382,19 +382,26 @@ function AgentView({ feed }) {
     fetch(`${EXPLORER}/api/v2/addresses/${AGENT}/token-transfers?type=ERC-20`).then((r) => r.json()).then((d) => setOnchain(d.items || [])).catch(() => setOnchain([]));
   }, []);
 
+  // Celo fee abstraction adds bookkeeping transfers when gas is paid in USDC: a debit/credit against the
+  // zero address and payments to the fee recipients. Those are gas, not income or purchases.
+  const ZERO = "0x0000000000000000000000000000000000000000";
+  const FEE_SINKS = ["0x4200000000000000000000000000000000000011", "0xcd437749e43a154c07f3553504c68fbfd56b8778"];
   const flows = useMemo(() => {
     const t = onchain || [];
     const val = (x) => Number(x.total?.value || 0) / 10 ** Number(x.total?.decimals || 6);
     const me = AGENT.toLowerCase();
+    const from = (x) => x.from?.hash?.toLowerCase();
     const to = (x) => x.to?.hash?.toLowerCase();
-    const out = t.filter((x) => x.from?.hash?.toLowerCase() === me);
-    const inn = t.filter((x) => to(x) === me);
-    const paidData = out.filter((x) => [BUY_PAYTO.toLowerCase(), AGENT402_PAYTO.toLowerCase()].includes(to(x)));
+    const isGas = (x) => from(x) === ZERO || to(x) === ZERO || FEE_SINKS.includes(to(x));
+    const real = t.filter((x) => !isGas(x));
+    const paidData = real.filter((x) => from(x) === me && [BUY_PAYTO.toLowerCase(), AGENT402_PAYTO.toLowerCase()].includes(to(x)));
+    const gasUsd = t.filter((x) => from(x) === me && FEE_SINKS.includes(to(x))).reduce((s, x) => s + val(x), 0);
     return {
       dataCalls: paidData.length,
       dataUsd: paidData.reduce((s, x) => s + val(x), 0),
-      earnedUsd: inn.filter((x) => val(x) <= 0.05 + 1e-9).reduce((s, x) => s + val(x), 0),
-      rows: t.slice(0, 25),
+      gasUsd,
+      earnedUsd: real.filter((x) => to(x) === me && val(x) > 0 && val(x) <= 0.05 + 1e-9).reduce((s, x) => s + val(x), 0),
+      rows: real.slice(0, 25),
       val,
     };
   }, [onchain]);
@@ -406,8 +413,9 @@ function AgentView({ feed }) {
     if (out && cp === BUY_PAYTO.toLowerCase()) return "Bought data · buy";
     if (out && cp === AGENT402_PAYTO.toLowerCase()) return "Bought model read · Agent402";
     if (out) return "Sent";
-    return "Scan payment received";
+    return val0(x) <= 0.05 + 1e-9 ? "Scan payment received" : "Float top-up";
   };
+  const val0 = (x) => Number(x.total?.value || 0) / 10 ** Number(x.total?.decimals || 6);
 
   return (
     <section className="pt-14 pb-10 sm:pt-20">
@@ -426,7 +434,10 @@ function AgentView({ feed }) {
 
       <div className="lift mt-8 overflow-hidden rounded-[16px]">
         <div className="flex items-center justify-between border-b border-hairline px-5 py-4">
-          <h2 className="text-[15px] font-medium tracking-[-0.2px]">Onchain payments</h2>
+          <div>
+            <h2 className="text-[15px] font-medium tracking-[-0.2px]">Onchain payments</h2>
+            {onchain && <p className="mt-0.5 text-[12px] text-ink-tertiary">Gas is paid in USDC too: ${flows.gasUsd.toFixed(4)} so far, not listed below.</p>}
+          </div>
           <a className="inline-flex items-center gap-1 text-[13px] text-ink-subtle hover:text-ink" href={`${EXPLORER}/address/${AGENT}`} target="_blank" rel="noreferrer">
             {short(AGENT)} <ArrowUpRight className="size-3.5" />
           </a>
