@@ -169,7 +169,10 @@ function ScanView() {
       const f = payingFetch(address, bal);
       const r = await f("/api/scan", { method: "POST", headers: { "content-type": "application/json" }, body: JSON.stringify({ keywords }) });
       const body = await r.json();
-      if (!r.ok) throw new Error(body.error || `scan failed (${r.status})`);
+      if (!r.ok) {
+        const note = body.refunded ? " Your $0.05 was sent back." : body.paymentTx ? " If you were charged and not refunded, contact us with your payment tx." : "";
+        throw new Error((body.error || `scan failed (${r.status})`) + note);
+      }
       setState({ step: "done", result: body });
       setBal(await balances(address));
     } catch (e) {

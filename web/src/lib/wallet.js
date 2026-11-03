@@ -11,7 +11,7 @@ export const TOKENS = {
   USAT: "0xD2ab3C9A02DBBAB236BfEC45D1d755DF4267F771",
 };
 const PRICE = 50000n; // $0.05, what the API quotes
-const AGENT = "0x6859Abd01F1686E9DDfE809CC69Fab1054447457"; // the only address this page will ever pay
+import { AGENT } from "./utils"; // the only address this page will ever pay
 export const publicClient = createPublicClient({ chain: celo, transport: http("https://forno.celo.org") });
 
 export const hasWallet = () => typeof window !== "undefined" && Boolean(window.ethereum);
