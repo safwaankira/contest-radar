@@ -46,7 +46,7 @@ The agent also **earns**. Anyone, whether a person in the web app or another age
 - **Every agent transaction carries the ERC-8021 tag** `celo_683ee8609385` and pays gas in USDC through Celo fee abstraction. The agent holds no CELO.
 - **Personal scans settle themselves.** The agent verifies the buyer's EIP-3009 authorization with `@x402/evm`'s facilitator code and submits it from its own wallet, so settlements carry the attribution tag (the hosted facilitator can't tag them yet). The buyer is charged only if ranked results come back.
 - **The feed is anchored daily.** A zero-value self-transaction whose calldata is `keccak256(feed/latest.json)` ([`feed/anchors.json`](https://contest-radar-celo.vercel.app/feed/anchors.json)).
-- **ERC-8004 identity:** see [`/agent.json`](https://contest-radar-celo.vercel.app/agent.json) and [8004scan](https://8004scan.io).
+- **ERC-8004 identity:** agentId **10034** on Celo ([registration tx](https://celoscan.io/tx/0x62b225b16d2e7bce4a2b4dfb8d7c59e2f9c8a5e00d23dfe30bc848f1f16d19b7), [`/agent.json`](https://contest-radar-celo.vercel.app/agent.json)).
 
 ## What is new here vs. the base
 
