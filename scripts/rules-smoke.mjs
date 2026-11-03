@@ -20,6 +20,6 @@ try {
     }
   }
 } finally {
-  await browser.close();
+  console.log("closed:", await browser.close());
 }
 console.log("receipts:", session.receipts.map((r) => `${r.route} ${r.status} paid=${r.paid} $${r.amountUsd} ${r.network}`));

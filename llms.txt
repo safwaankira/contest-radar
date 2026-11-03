@@ -10,7 +10,7 @@ risk flags (scams, key requests, KYC friction), effort, deadline window and
 competition.
 
 The agent pays for its inputs itself, per request, from a USDC float on Celo:
-X and Reddit searches through the buy gateway, the model call through Agent402.
+X and Reddit searches and a browser session (to read the top contests' rules pages) through the buy gateway, the model calls through Agent402.
 Every run's receipts are published and the feed's hash is written onchain.
 
 Live app: https://contest-radar-celo.vercel.app

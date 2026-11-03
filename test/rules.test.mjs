@@ -59,7 +59,7 @@ test("prompt carries each page's text, capped", () => {
 
 test("checkRules reads pages in one browser session, closes it, and applies the model's reading", async () => {
   const calls = [];
-  const browser = { read: async (u) => (calls.push(`read ${u}`), "Rules. Submissions close 2026-11-30. Prize pool $3,000. ".repeat(10)), close: async () => calls.push("close") };
+  const browser = { read: async (u) => (calls.push(`read ${u}`), "Rules. Submissions close 2026-11-30. Prize pool $3,000. ".repeat(10)), close: async () => (calls.push("close"), true) };
   const session = {
     browser: async (m) => (calls.push(`open ${m}min`), browser),
     chat: async () => ({ json: { choices: [{ message: { content: '{"i":0,"is_rules":true,"closed":false,"deadline":"2026-11-30","prizeUsd":3000,"restricted":null}' } }] } }),
