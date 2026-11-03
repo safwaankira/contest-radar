@@ -1,0 +1,44 @@
+@import "tailwindcss";
+
+/* Design tokens. Values are replaced from DESIGN.md in the design pass. */
+:root {
+  --background: #fbfbf8;
+  --foreground: #111111;
+  --card: #ffffff;
+  --card-foreground: #111111;
+  --muted: #f0f0ea;
+  --muted-foreground: #5e5e57;
+  --border: #dcdcd3;
+  --primary: #2741ff;
+  --primary-foreground: #ffffff;
+  --accent: #e8ff3a;
+  --accent-foreground: #111111;
+  --destructive: #c4321b;
+  --ring: #2741ff;
+  --radius: 4px;
+  --font-sans: ui-sans-serif, system-ui, sans-serif;
+  --font-mono: ui-monospace, "SFMono-Regular", Menlo, monospace;
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-border: var(--border);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-destructive: var(--destructive);
+  --color-ring: var(--ring);
+  --font-sans: var(--font-sans);
+  --font-mono: var(--font-mono);
+}
+
+@layer base {
+  * { border-color: var(--border); }
+  body { background: var(--background); color: var(--foreground); font-family: var(--font-sans); -webkit-font-smoothing: antialiased; }
+}
