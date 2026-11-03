@@ -19,7 +19,9 @@
     "register": "node --env-file-if-exists=.env scripts/register.js",
     "check": "node --env-file-if-exists=.env scripts/check.js",
     "build": "vite build --config web/vite.config.js && node scripts/stage-static.mjs",
-    "dev": "vite --config web/vite.config.js"
+    "dev": "vite --config web/vite.config.js",
+    "proof": "node scripts/proof.mjs",
+    "scan": "node scripts/scan.mjs"
   },
   "keywords": [
     "bounty",

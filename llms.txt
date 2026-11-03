@@ -31,10 +31,10 @@ ERC-8004 registration: https://contest-radar-celo.vercel.app/agent.json
 ## Paid endpoint (x402 on Celo)
 
 POST https://contest-radar-celo.vercel.app/api/scan with {"keywords":"meme OR design"}.
-Unpaid requests get HTTP 402 with a PAYMENT-REQUIRED header: 0.05 in USDC,
+Unpaid requests get HTTP 402 with a PAYMENT-REQUIRED header: 0.01 (launch price) in USDC,
 USD₮ or USA₮ on Celo mainnet (eip155:42220), exact scheme (EIP-3009). Retry
 with a PAYMENT-SIGNATURE header. You are charged only if ranked results come
-back. Works with any x402 v2 client, e.g. `buy curl --max-amount 0.05 ...`.
+back. Works with any x402 v2 client, e.g. `buy curl --max-amount 0.01 ...`.
 
 ## Local Commands
 
@@ -42,7 +42,7 @@ back. Works with any x402 v2 client, e.g. `buy curl --max-amount 0.05 ...`.
 npm test
 npm run shortlist -- --min-score 50 --limit 10
 npm run shortlist -- --opportunity quick-win --max-effort-score 30 --limit 10
-node scripts/mcp-server.mjs   # MCP stdio: search_bounties, get_bounty
+node scripts/mcp-server.mjs   # MCP stdio: search_bounties, get_bounty, scan_contests (paid, set CONTEST_RADAR_PAYER_KEY)
 ```
 
 ## Review Rules

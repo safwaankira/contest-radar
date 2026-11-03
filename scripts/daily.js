@@ -46,4 +46,10 @@ try {
 } catch (e) {
   console.error("anchor failed:", e.message);
 }
+// Refresh the proof-of-payment page from the chain (never fails the run).
+try {
+  await import("./proof.mjs");
+} catch (e) {
+  console.error("proof page failed:", e.message);
+}
 console.log(`feed: ${feed.count} items, contests spent $${feed.run?.spent_usd ?? 0}`, feed.errors?.map((e) => e.message));

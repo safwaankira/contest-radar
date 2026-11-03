@@ -21,13 +21,13 @@
     "ledger": "https://contest-radar-celo.vercel.app/feed/ledger.json",
     "anchors": "https://contest-radar-celo.vercel.app/feed/anchors.json",
     "paid_scan": "https://contest-radar-celo.vercel.app/api/scan",
-    "erc8004_registration": "https://contest-radar-celo.vercel.app/agent.json"
+    "erc8004_registration": "https://contest-radar-celo.vercel.app/agent.json",
+    "proof": "https://contest-radar-celo.vercel.app/feed/proof.md"
   },
   "capabilities": [
     "daily contest and bounty shortlist from GitHub, poidh, X and Reddit",
     "deadline, effort and competition (crowded) scoring",
     "scam and key-request risk flags",
-    "daily GitHub bounty shortlist",
     "payout signal scoring",
     "opportunity class and effort-score filtering",
     "Base/USDC/x402/MergeWork rail detection",
@@ -35,10 +35,10 @@
     "agent-readable JSON and CSV exports",
     "RSS feed export for subscriptions",
     "zero-dependency shortlist CLI",
-    "zero-dependency MCP stdio server for bounty search tools",
     "x402 paid personal scan on Celo (USDC, USD\u20ae, USA\u20ae)",
     "agent pays its own data through buy on Celo; receipts published",
-    "feed hash anchored onchain daily"
+    "feed hash anchored onchain daily",
+    "MCP stdio server: search_bounties, get_bounty, and scan_contests (paid personal scan over x402)"
   ],
   "integration": {
     "cli": "npm run shortlist -- --min-score 50 --require-amount --require-rail --format markdown",
@@ -46,10 +46,12 @@
     "mcp_stdio": "node scripts/mcp-server.mjs",
     "mcp_tools": [
       "search_bounties",
-      "get_bounty"
+      "get_bounty",
+      "scan_contests"
     ],
     "docs": "https://github.com/safwaankira/contest-radar#readme",
-    "paid_api": "https://contest-radar-celo.vercel.app/api/scan"
+    "paid_api": "https://contest-radar-celo.vercel.app/api/scan",
+    "paid_scan_cli": "CONTEST_RADAR_PAYER_KEY=0x... npm run scan -- \"meme OR design\""
   },
   "limitations": [
     "Scores are heuristic triage signals, not payout guarantees.",
@@ -65,7 +67,7 @@
       "USDT",
       "USAT"
     ],
-    "price_usd": "0.05",
+    "price_usd": "0.01",
     "endpoint": "https://contest-radar-celo.vercel.app/api/scan"
   }
 }

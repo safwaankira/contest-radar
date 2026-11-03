@@ -10,7 +10,7 @@ export const TOKENS = {
   USDT: "0x48065fbBE25f71C9282ddf5e1cD6D6A887483D5e",
   USAT: "0xD2ab3C9A02DBBAB236BfEC45D1d755DF4267F771",
 };
-const PRICE = 50000n; // $0.05, what the API quotes
+const PRICE = 10000n; // $0.01 launch price, what the API quotes
 import { AGENT } from "./utils"; // the only address this page will ever pay
 export const publicClient = createPublicClient({ chain: celo, transport: http("https://forno.celo.org") });
 
@@ -60,7 +60,7 @@ export function payingFetch(address, bal) {
         const r = reqs.find((q) => q.asset.toLowerCase() === TOKENS[sym].toLowerCase() && q.payTo.toLowerCase() === AGENT.toLowerCase());
         if (r && BigInt(r.amount) <= PRICE && (bal?.[sym]?.atomic ?? 0n) >= BigInt(r.amount)) return r;
       }
-      throw new Error("You need $0.05 in USD₮, USDC or USA₮ on Celo for a personal scan.");
+      throw new Error("You need $0.01 in USD₮, USDC or USA₮ on Celo for a personal scan.");
     },
   });
   return wrapFetchWithPayment(fetch, client);

@@ -4,7 +4,7 @@ import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import { Input } from "@/components/ui/input";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-import { cn, AGENT, BUY_PAYTO, EXPLORER, short, usd, daysLeft, ago } from "@/lib/utils";
+import { cn, AGENT, BUY_PAYTO, EXPLORER, SCAN_USD, short, usd, daysLeft, ago } from "@/lib/utils";
 
 // Wallet and x402 code (viem, @x402/*) loads only when someone opens the paid scan.
 const wallet = () => import("@/lib/wallet");
@@ -95,6 +95,7 @@ function Footer() {
         <a className="hover:text-ink" href="https://github.com/safwaankira/contest-radar">Source</a>
         <a className="hover:text-ink" href="https://usebuy.ai">Data bought through buy</a>
         <a className="hover:text-ink" href={`${EXPLORER}/address/${AGENT}`}>Agent {short(AGENT)}</a>
+        <a className="hover:text-ink" href="/feed/proof.md">Proof of payment</a>
         <a className="hover:text-ink" href="/llms.txt">llms.txt</a>
       </div>
     </footer>
@@ -123,7 +124,7 @@ function RadarView({ feed, onScan }) {
           An agent reads every new bounty and contest post each morning, drops the scams and the closed ones, and ranks the rest by prize, time left, effort and how crowded they are. It pays for its own data on Celo.
         </p>
         <div className="mt-7 flex flex-wrap gap-3">
-          <Button size="lg" onClick={() => onScan()}><Search /> Scan for my niche · $0.05</Button>
+          <Button size="lg" onClick={() => onScan()}><Search /> Scan for my niche · ${SCAN_USD.toFixed(2)}</Button>
           <Button size="lg" variant="secondary" onClick={() => document.getElementById("radar")?.scrollIntoView({ behavior: "smooth" })}>See today's list</Button>
         </div>
         {feed && (
@@ -267,7 +268,7 @@ function ScanView({ prefill }) {
       const r = await f("/api/scan", { method: "POST", headers: { "content-type": "application/json" }, body: JSON.stringify({ keywords }) });
       const body = await r.json();
       if (!r.ok) {
-        const note = body.refunded ? " Your $0.05 was sent back." : body.paymentTx ? " If you were charged and not refunded, contact us with your payment tx." : "";
+        const note = body.refunded ? ` Your $${SCAN_USD.toFixed(2)} was sent back.` : body.paymentTx ? " If you were charged and not refunded, contact us with your payment tx." : "";
         throw new Error((body.error || `Scan failed (${r.status})`) + note);
       }
       setState({ step: "done", result: body });
@@ -281,7 +282,7 @@ function ScanView({ prefill }) {
   const best = bal ? Math.max(bal.USDT.display, bal.USDC.display, bal.USAT.display) : 0;
   const steps = [
     { done: Boolean(address), label: "Connect a wallet on Celo" },
-    { done: state.step === "done", label: "Name your niche and sign $0.05" },
+    { done: state.step === "done", label: `Name your niche and sign $${SCAN_USD.toFixed(2)}` },
     { done: state.step === "done", label: "Get your ranked list in about 40 seconds" },
   ];
 
@@ -291,7 +292,7 @@ function ScanView({ prefill }) {
         <p className="eyebrow">Personal scan</p>
         <h1 className="display-md mt-3 max-w-[20ch]">Search right now, for what you make.</h1>
         <p className="mt-4 max-w-[56ch] text-[17px] text-ink-subtle">
-          The agent searches X, Reddit and poidh for your keywords, reads every hit and ranks what you can enter. One scan is $0.05 in USD₮, USDC or USA₮, signed in your wallet. You're only charged if results come back; if the paid sources fail, it refunds you.
+          The agent searches X, Reddit and poidh for your keywords, reads every hit and ranks what you can enter. One scan is ${SCAN_USD.toFixed(2)} (launch price) in USD₮, USDC or USA₮, signed in your wallet. You're only charged if results come back; if the paid sources fail, it refunds you.
         </p>
 
         <ol className="mt-8 grid gap-2">
@@ -317,8 +318,8 @@ function ScanView({ prefill }) {
             <form onSubmit={onScan} className="grid gap-3">
               <div className="flex flex-col gap-2 sm:flex-row">
                 <Input placeholder="e.g. meme OR design OR video" value={keywords} onChange={(e) => setKeywords(e.target.value)} minLength={3} maxLength={80} required aria-label="Keywords" />
-                <Button type="submit" size="lg" disabled={state.step === "paying" || keywords.trim().length < 3 || best < 0.05}>
-                  {state.step === "paying" ? "Scanning… about 40s" : "Scan · $0.05"}
+                <Button type="submit" size="lg" disabled={state.step === "paying" || keywords.trim().length < 3 || best < SCAN_USD}>
+                  {state.step === "paying" ? "Scanning… about 40s" : `Scan · $${SCAN_USD.toFixed(2)}`}
                 </Button>
               </div>
               <div className="flex flex-wrap gap-1.5">
@@ -348,7 +349,7 @@ function ScanView({ prefill }) {
                   </Fragment>
                 ))}
               </dl>
-              {best < 0.05 && <p className="mt-3 text-[13px] text-[#ff9b9b]">You need $0.05 in one of USD₮, USDC or USA₮ on Celo.</p>}
+              {best < SCAN_USD && <p className="mt-3 text-[13px] text-[#ff9b9b]">You need ${SCAN_USD.toFixed(2)} in one of USD₮, USDC or USA₮ on Celo.</p>}
             </>
           ) : <p className="text-ink-subtle">Not connected</p>}
         </CardContent>
@@ -490,8 +491,8 @@ function AgentView({ feed }) {
           <CardContent className="space-y-3 text-[13px] text-ink-subtle">
             <p>Feed: <a className="text-ink-muted hover:text-ink" href="/feed/latest.json">JSON</a> · <a className="text-ink-muted hover:text-ink" href="/feed/latest.csv">CSV</a> · <a className="text-ink-muted hover:text-ink" href="/feed/latest.xml">RSS</a> · <a className="text-ink-muted hover:text-ink" href="/feed/schema.json">schema</a></p>
             <p>Identity: ERC-8004 agent <span className="text-ink-muted">#10034</span> · <a className="text-ink-muted hover:text-ink" href="/agent.json">registration</a> · <a className="text-ink-muted hover:text-ink" href="/.well-known/agent.json">agent card</a> · <a className="text-ink-muted hover:text-ink" href="/llms.txt">llms.txt</a></p>
-            <p>Personal scan over x402, $0.05 in USDC, USD₮ or USA₮ on Celo:</p>
-            <pre className="overflow-x-auto rounded-[8px] border border-hairline bg-canvas p-3 font-mono text-[12px] leading-[1.6] text-ink-muted">{`buy curl --max-amount 0.05 -X POST \\
+            <p>Personal scan over x402, ${SCAN_USD.toFixed(2)} launch price in USDC, USD₮ or USA₮ on Celo:</p>
+            <pre className="overflow-x-auto rounded-[8px] border border-hairline bg-canvas p-3 font-mono text-[12px] leading-[1.6] text-ink-muted">{`buy curl --max-amount 0.01 -X POST \\
   -H 'content-type: application/json' \\
   -d '{"keywords":"meme OR design"}' \\
   ${typeof location !== "undefined" ? location.origin : ""}/api/scan`}</pre>

@@ -3,6 +3,7 @@ import { twMerge } from "tailwind-merge";
 export const cn = (...a) => twMerge(clsx(a));
 
 export const AGENT = "0x6859Abd01F1686E9DDfE809CC69Fab1054447457";
+export const SCAN_USD = 0.01; // launch price, must match lib/config.js SCAN_PRICE
 export const BUY_PAYTO = "0x20faAca5F980E29639A0FCC6dcA6988E18ed333B";
 export const EXPLORER = "https://celo.blockscout.com";
 export const short = (a = "") => (a.length > 12 ? `${a.slice(0, 6)}…${a.slice(-4)}` : a);

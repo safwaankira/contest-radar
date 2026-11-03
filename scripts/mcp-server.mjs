@@ -1,15 +1,16 @@
 #!/usr/bin/env node
 import { pathToFileURL } from 'node:url';
 import { loadFeed, buildShortlist, formatShortlist } from './shortlist.mjs';
+import { SCAN_PRICE, SITE_URL } from '../lib/config.js';
 
 const DEFAULT_FEED_URL = 'https://contest-radar-celo.vercel.app/feed/latest.json';
-const SERVER_INFO = { name: 'bounty-radar', version: '0.1.0' };
+const SERVER_INFO = { name: 'contest-radar', version: '0.3.0' };
 const PROTOCOL_VERSION = '2024-11-05';
 
 export const tools = [
   {
     name: 'search_bounties',
-    description: 'Search the Bounty Radar feed for high-signal GitHub bounty issues.',
+    description: 'Search today\'s free Contest Radar feed: open crypto contests and bounties from GitHub, poidh, X and Reddit, ranked by prize, time left, effort, risk and competition.',
     inputSchema: {
       type: 'object',
       properties: {
@@ -20,13 +21,13 @@ export const tools = [
         min_score: {
           type: 'number',
           minimum: 0,
-          description: 'Minimum payout signal score. Default: 50.',
+          description: 'Minimum worth-entering score (0-100). Default: 50.',
         },
         limit: {
           type: 'integer',
           minimum: 1,
           maximum: 50,
-          description: 'Maximum number of issues to return. Default: 10.',
+          description: 'Maximum number of items to return. Default: 10.',
         },
         preset: {
           type: 'string',
@@ -70,19 +71,31 @@ export const tools = [
   },
   {
     name: 'get_bounty',
-    description: 'Get one bounty feed item by GitHub issue URL.',
+    description: 'Get one feed item (contest or bounty) by its URL.',
     inputSchema: {
       type: 'object',
       required: ['url'],
       properties: {
         url: {
           type: 'string',
-          description: 'GitHub issue URL from the Bounty Radar feed.',
+          description: 'Item URL from the Contest Radar feed.',
         },
         feed: {
           type: 'string',
           description: 'Feed URL or local JSON file. Defaults to the hosted daily feed.',
         },
+      },
+    },
+  },
+  {
+    name: 'scan_contests',
+    description: `Paid personal scan: Contest Radar searches X, Reddit and poidh right now for your keywords, reads every hit and returns ranked contests you can enter. Costs $${Number(SCAN_PRICE) / 1e6} over x402 on Celo, paid from the wallet in CONTEST_RADAR_PAYER_KEY (USDT, USDC or USAT); refunded automatically if the paid sources fail. Takes about 40 seconds.`,
+    inputSchema: {
+      type: 'object',
+      required: ['keywords'],
+      properties: {
+        keywords: { type: 'string', minLength: 3, maxLength: 80, description: 'Your niche, e.g. "meme OR design" or "solana dev".' },
+        limit: { type: 'integer', minimum: 1, maximum: 30, description: 'Maximum items to return. Default: 10.' },
       },
     },
   },
@@ -123,6 +136,23 @@ export async function callTool(name, args = {}) {
     };
   }
 
+  if (name === 'scan_contests') {
+    const keywords = requiredString(args.keywords, 'keywords');
+    const key = process.env.CONTEST_RADAR_PAYER_KEY;
+    if (!key) {
+      return {
+        isError: true,
+        content: [{ type: 'text', text: `scan_contests pays $${Number(SCAN_PRICE) / 1e6} per scan from your own Celo wallet. Set CONTEST_RADAR_PAYER_KEY in this MCP server's env, or call ${SITE_URL}/api/scan from any x402 client, e.g.\n  buy curl --max-amount ${Number(SCAN_PRICE) / 1e6} -X POST -H 'content-type: application/json' -d '{"keywords":"${keywords.replace(/["'\\]/g, '')}"}' ${SITE_URL}/api/scan` }],
+      };
+    }
+    const { paidScan } = await import('../lib/scan-client.js');
+    const body = await paidScan({ keywords, privateKey: key });
+    const items = (body.items ?? []).slice(0, integerArg(args.limit, 10, { max: 30 }));
+    return {
+      content: [{ type: 'text', text: `${JSON.stringify({ keywords, payment: body.payment, count: items.length, items }, null, 2)}\n` }],
+    };
+  }
+
   throw new Error(`Unknown tool: ${name}`);
 }
 
@@ -146,7 +176,7 @@ export async function handleJsonRpcMessage(message) {
       };
     }
 
-    if (method === 'notifications/initialized') {
+    if (typeof method === 'string' && method.startsWith('notifications/')) {
       return undefined;
     }
 
@@ -197,12 +227,31 @@ function jsonRpcError(id, code, message) {
 }
 
 async function runStdioServer() {
-  const reader = new FramedJsonReader(async (message) => {
-    const response = await handleJsonRpcMessage(message);
-    if (response) writeFrame(response);
-  });
+  // MCP's stdio transport is newline-delimited JSON. The base used LSP-style Content-Length frames;
+  // detect which one the client speaks from its first bytes and answer in kind.
+  let mode = null;
+  let lineBuf = '';
+  const reply = (response) => {
+    if (!response) return;
+    if (mode === 'framed') writeFrame(response);
+    else process.stdout.write(`${JSON.stringify(response)}\n`);
+  };
+  const reader = new FramedJsonReader(async (message) => reply(await handleJsonRpcMessage(message)));
 
-  process.stdin.on('data', (chunk) => reader.push(chunk));
+  process.stdin.on('data', (chunk) => {
+    if (!mode) mode = /^\s*Content-Length:/i.test(chunk.toString('utf8', 0, 32)) ? 'framed' : 'lines';
+    if (mode === 'framed') return reader.push(chunk);
+    lineBuf += chunk.toString('utf8');
+    let nl;
+    while ((nl = lineBuf.indexOf('\n')) !== -1) {
+      const line = lineBuf.slice(0, nl).trim();
+      lineBuf = lineBuf.slice(nl + 1);
+      if (!line) continue;
+      let message;
+      try { message = JSON.parse(line); } catch { reply(jsonRpcError(null, -32700, 'Parse error')); continue; }
+      void handleJsonRpcMessage(message).then(reply);
+    }
+  });
   process.stdin.on('error', (error) => {
     writeFrame(jsonRpcError(null, -32000, error.message));
   });

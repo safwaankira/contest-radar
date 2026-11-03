@@ -52,7 +52,7 @@ const feed = {
 test('tools list exposes bounty search and lookup tools', () => {
   assert.deepEqual(
     tools.map((tool) => tool.name),
-    ['search_bounties', 'get_bounty'],
+    ['search_bounties', 'get_bounty', 'scan_contests'],
   );
 });
 
@@ -88,10 +88,10 @@ test('get_bounty returns one feed item as JSON', async () => {
 test('handleJsonRpcMessage supports initialize, tools/list, and tools/call', async () => {
   await withFeedFile(async (file) => {
     const initialize = await handleJsonRpcMessage({ jsonrpc: '2.0', id: 1, method: 'initialize' });
-    assert.equal(initialize.result.serverInfo.name, 'bounty-radar');
+    assert.equal(initialize.result.serverInfo.name, 'contest-radar');
 
     const list = await handleJsonRpcMessage({ jsonrpc: '2.0', id: 2, method: 'tools/list' });
-    assert.equal(list.result.tools.length, 2);
+    assert.equal(list.result.tools.length, 3);
 
     const called = await handleJsonRpcMessage({
       jsonrpc: '2.0',
@@ -130,3 +130,30 @@ async function withFeedFile(callback) {
     await rm(directory, { recursive: true, force: true });
   }
 }
+
+test('scan_contests without a payer key explains how to pay instead of paying', async () => {
+  const saved = process.env.CONTEST_RADAR_PAYER_KEY;
+  delete process.env.CONTEST_RADAR_PAYER_KEY;
+  try {
+    const result = await callTool('scan_contests', { keywords: 'meme OR design' });
+    assert.equal(result.isError, true);
+    assert.match(result.content[0].text, /api\/scan/);
+    assert.match(result.content[0].text, /--max-amount 0\.01/);
+  } finally {
+    if (saved !== undefined) process.env.CONTEST_RADAR_PAYER_KEY = saved;
+  }
+});
+
+test('stdio server speaks newline-delimited JSON (the MCP stdio transport)', async () => {
+  const { spawn } = await import('node:child_process');
+  const child = spawn(process.execPath, [new URL('../scripts/mcp-server.mjs', import.meta.url).pathname]);
+  let out = '';
+  child.stdout.on('data', (c) => { out += c; });
+  child.stdin.write('{"jsonrpc":"2.0","id":1,"method":"initialize","params":{}}\n{"jsonrpc":"2.0","method":"notifications/initialized"}\n{"jsonrpc":"2.0","id":2,"method":"tools/list"}\n');
+  for (let i = 0; i < 50 && out.split('\n').filter(Boolean).length < 2; i++) await new Promise((r) => setTimeout(r, 50));
+  child.kill();
+  const lines = out.split('\n').filter(Boolean).map((l) => JSON.parse(l));
+  assert.equal(lines.length, 2);
+  assert.equal(lines[0].result.serverInfo.name, 'contest-radar');
+  assert.ok(lines[1].result.tools.some((t) => t.name === 'scan_contests'));
+});

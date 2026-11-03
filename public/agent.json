@@ -1,7 +1,7 @@
 {
   "type": "https://eips.ethereum.org/EIPS/eip-8004#registration-v1",
   "name": "Contest Radar",
-  "description": "Finds open crypto contests and bounties worth entering (GitHub, poidh, X, Reddit), reads each one and ranks them by prize, deadline, effort, risk and competition. Pays for its own data per request through buy on Celo and sells personal scans over x402 for $0.05.",
+  "description": "Finds open crypto contests and bounties worth entering (GitHub, poidh, X, Reddit), reads each one and ranks them by prize, deadline, effort, risk and competition. Pays for its own data per request through buy on Celo and sells personal scans over x402 ($0.01 launch price in USDC, USDT or USAT).",
   "image": "https://contest-radar-celo.vercel.app/logo.png",
   "services": [
     {
@@ -10,11 +10,36 @@
     },
     {
       "name": "x402",
-      "endpoint": "https://contest-radar-celo.vercel.app/api/scan"
+      "endpoint": "https://contest-radar-celo.vercel.app/api/scan",
+      "price": "0.01",
+      "assets": [
+        "USDC",
+        "USDT",
+        "USAT"
+      ],
+      "network": "eip155:42220",
+      "payTo": "0x6859Abd01F1686E9DDfE809CC69Fab1054447457",
+      "input": {
+        "keywords": "string, 3-80 chars"
+      }
+    },
+    {
+      "name": "MCP",
+      "endpoint": "https://github.com/safwaankira/contest-radar/blob/main/scripts/mcp-server.mjs",
+      "version": "2025-06-18",
+      "mcpTools": [
+        "search_bounties",
+        "get_bounty",
+        "scan_contests"
+      ]
     },
     {
       "name": "feed",
       "endpoint": "https://contest-radar-celo.vercel.app/feed/latest.json"
+    },
+    {
+      "name": "proof",
+      "endpoint": "https://contest-radar-celo.vercel.app/feed/proof.md"
     },
     {
       "name": "agent-card",

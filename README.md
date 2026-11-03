@@ -23,7 +23,7 @@ The agent owns no data and no model. Every input is bought per request from a US
 
 A daily run costs about **$0.02**. Each run's receipts, with settlement transaction hashes, are in [`feed/ledger.json`](https://contest-radar-celo.vercel.app/feed/ledger.json) and on the agent's [Blockscout page](https://celo.blockscout.com/address/0x6859Abd01F1686E9DDfE809CC69Fab1054447457). Payments to buy go to `0x20faAca5F980E29639A0FCC6dcA6988E18ed333B` and payments to Agent402 go to `0xaBF4FAbd7c416fB67202E5f9002389Fc75e2a9D0`.
 
-The agent also **earns**. Anyone, whether a person in the web app or another agent, can buy a personal scan for their own keywords: `POST /api/scan` over x402, $0.05 in USDC, USD₮ or USA₮. A scan costs the agent about $0.025 in buy and Agent402 calls, so each one pays for itself and funds about one more daily run.
+The agent also **earns**. Anyone, whether a person in the web app or another agent, can buy a personal scan for their own keywords: `POST /api/scan` over x402, $0.01 in USDC, USD₮ or USA₮ (launch price). A scan costs the agent about $0.014 in buy and Agent402 calls, so for now the agent subsidises each scan by about half a cent to get first users.
 
 ## How it works
 
@@ -65,7 +65,7 @@ The agent also **earns**. Anyone, whether a person in the web app or another age
 ```bash
 npm ci
 cp .env.example .env            # AGENT_PRIVATE_KEY: a fresh wallet holding a few dollars of USDC on Celo
-npm test                        # 37 tests
+npm test
 BUY_SANDBOX=1 npm run daily     # free test run on Celo Sepolia (buy's sandbox)
 npm run daily                   # real run: ~$0.02, writes feed/, anchors onchain
 npm run build                   # web app + feeds into web/dist (Vercel)
@@ -74,11 +74,25 @@ npm run build                   # web app + feeds into web/dist (Vercel)
 Ask for a personal scan from any x402 client:
 
 ```bash
-buy curl --max-amount 0.05 -X POST -H 'content-type: application/json' \
+buy curl --max-amount 0.01 -X POST -H 'content-type: application/json' \
   -d '{"keywords":"meme OR design"}' https://contest-radar-celo.vercel.app/api/scan
 ```
 
-The base's CLI and MCP server work unchanged on the new feed: `npm run shortlist -- --opportunity quick-win`, `node scripts/mcp-server.mjs`.
+Or from the command line, paying from your own wallet: `CONTEST_RADAR_PAYER_KEY=0x... npm run scan -- "meme OR design"`.
+
+### For other agents (MCP)
+
+`node scripts/mcp-server.mjs` is a stdio MCP server with three tools: `search_bounties` and `get_bounty` read the free daily feed, and `scan_contests` buys a personal scan over x402 from the wallet in `CONTEST_RADAR_PAYER_KEY` (payee pinned to the agent, amount capped at the scan price). Add it to Claude Desktop, Cursor or any MCP client:
+
+```json
+{ "mcpServers": { "contest-radar": { "command": "node", "args": ["/path/to/contest-radar/scripts/mcp-server.mjs"], "env": { "CONTEST_RADAR_PAYER_KEY": "0x..." } } } }
+```
+
+The shortlist CLI from the base still works on the new feed: `npm run shortlist -- --opportunity quick-win`.
+
+## Proof of payment
+
+[`PROOF.md`](PROOF.md) lists every paid call to buy and Agent402 and every scan sale with its transaction, and marks which buyers are independent users. It is rebuilt from the chain (Blockscout) on every daily run; the live copy is at [`/feed/proof.md`](https://contest-radar-celo.vercel.app/feed/proof.md).
 
 ## Feedback for buy
 

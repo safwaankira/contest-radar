@@ -14,7 +14,7 @@ test('agent discovery document exposes public feed endpoints', async () => {
   assert(agent.capabilities.includes('RSS feed export for subscriptions'));
   assert.match(agent.integration.cli, /npm run shortlist/);
   assert.equal(agent.integration.mcp_stdio, 'node scripts/mcp-server.mjs');
-  assert.deepEqual(agent.integration.mcp_tools, ['search_bounties', 'get_bounty']);
+  assert.deepEqual(agent.integration.mcp_tools, ['search_bounties', 'get_bounty', 'scan_contests']);
   assert(agent.limitations.some((item) => /not payout guarantees/i.test(item)));
 });
 
