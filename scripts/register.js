@@ -2,7 +2,7 @@
 // The registration file is served at SITE_URL/agent.json. Run once:
 //   node --env-file=.env scripts/register.js
 // After it prints the agentId, put it in public/agent.json "registrations" and redeploy.
-import { parseEventLogs } from "viem";
+import { parseEventLogs, erc721Abi } from "viem";
 import { IDENTITY_REGISTRY, SITE_URL } from "../lib/config.js";
 import { writeTagged, agent } from "../lib/chain.js";
 
@@ -12,6 +12,13 @@ const abi = [
 ];
 
 const uri = `${SITE_URL}/agent.json`;
+// One identity per agent: refuse to mint a second one unless asked explicitly.
+const { publicClient, account } = agent();
+const owned = await publicClient.readContract({ address: IDENTITY_REGISTRY, abi: erc721Abi, functionName: "balanceOf", args: [account.address] });
+if (owned > 0n && !process.argv.includes("--force")) {
+  console.log(`agent already owns ${owned} ERC-8004 identity; not registering again (use --force to override)`);
+  process.exit(0);
+}
 console.log("registering", agent().account.address, "->", uri);
 const { hash, receipt } = await writeTagged({ address: IDENTITY_REGISTRY, abi, functionName: "register", args: [uri] });
 const [ev] = parseEventLogs({ abi, eventName: "Registered", logs: receipt.logs });

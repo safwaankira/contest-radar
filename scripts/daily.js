@@ -33,7 +33,9 @@ if (run) {
 
 // Anchor: a zero-value self-transaction whose calldata is the feed's hash, plus our ERC-8021 tag.
 const { agent, sendTagged } = await import("../lib/chain.js");
+const fresh = Date.now() - Date.parse(feed.generated_at) < 15 * 60_000;
 try {
+  if (!fresh) throw new Error(`feed is stale (${feed.generated_at}); not anchoring an old feed`);
   const digest = keccak256(toHex(readFileSync(feedPath("latest.json"), "utf8")));
   const { hash } = await sendTagged({ to: agent().account.address, data: digest });
   const anchors = readJson("anchors.json", { anchors: [] });

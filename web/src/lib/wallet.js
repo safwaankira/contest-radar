@@ -11,6 +11,7 @@ export const TOKENS = {
   USAT: "0xD2ab3C9A02DBBAB236BfEC45D1d755DF4267F771",
 };
 const PRICE = 50000n; // $0.05, what the API quotes
+const AGENT = "0x6859Abd01F1686E9DDfE809CC69Fab1054447457"; // the only address this page will ever pay
 export const publicClient = createPublicClient({ chain: celo, transport: http("https://forno.celo.org") });
 
 export const hasWallet = () => typeof window !== "undefined" && Boolean(window.ethereum);
@@ -22,13 +23,14 @@ export async function connect() {
   try {
     await window.ethereum.request({ method: "wallet_switchEthereumChain", params: [{ chainId: "0xa4ec" }] });
   } catch (e) {
-    if (e?.code === 4902) {
-      await window.ethereum.request({
-        method: "wallet_addEthereumChain",
-        params: [{ chainId: "0xa4ec", chainName: "Celo", nativeCurrency: { name: "CELO", symbol: "CELO", decimals: 18 }, rpcUrls: ["https://forno.celo.org"], blockExplorerUrls: ["https://celoscan.io"] }],
-      });
-    }
+    if (e?.code !== 4902) throw new Error("Please switch your wallet to Celo and try again.");
+    await window.ethereum.request({
+      method: "wallet_addEthereumChain",
+      params: [{ chainId: "0xa4ec", chainName: "Celo", nativeCurrency: { name: "CELO", symbol: "CELO", decimals: 18 }, rpcUrls: ["https://forno.celo.org"], blockExplorerUrls: ["https://celoscan.io"] }],
+    });
   }
+  const chainId = await window.ethereum.request({ method: "eth_chainId" });
+  if (String(chainId).toLowerCase() !== "0xa4ec") throw new Error("Please switch your wallet to Celo and try again.");
   return address;
 }
 
@@ -55,7 +57,7 @@ export function payingFetch(address, bal) {
     paymentRequirementsSelector: (_v, reqs) => {
       const order = ["USDT", "USDC", "USAT"];
       for (const sym of order) {
-        const r = reqs.find((q) => q.asset.toLowerCase() === TOKENS[sym].toLowerCase());
+        const r = reqs.find((q) => q.asset.toLowerCase() === TOKENS[sym].toLowerCase() && q.payTo.toLowerCase() === AGENT.toLowerCase());
         if (r && BigInt(r.amount) <= PRICE && (bal?.[sym]?.atomic ?? 0n) >= BigInt(r.amount)) return r;
       }
       throw new Error("You need $0.05 in USD₮, USDC or USA₮ on Celo for a personal scan.");
@@ -63,3 +65,6 @@ export function payingFetch(address, bal) {
   });
   return wrapFetchWithPayment(fetch, client);
 }
+
+/** Largest single-token balance: one payment is made in one token. */
+export const bestBalance = (bal) => Math.max(0, ...Object.values(bal || {}).map((b) => b.display));

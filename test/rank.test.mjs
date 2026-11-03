@@ -4,10 +4,10 @@ import { prefilter, buildPrompt, parseModel, assemble, toItem, deadlinePoints, f
 
 const now = Date.parse("2026-11-03T12:00:00Z");
 const cands = [
-  { id: "x:1", source: "x", url: "u1", author: "@a", postedAt: "2026-11-02T10:00:00Z", text: "Thread contest! $500 USDC prize pool. Submit by Nov 10, quote this post", signals: { followers: 9000, verified: true, replies: 4 } },
-  { id: "x:2", source: "x", url: "u2", author: "@b", text: "gm frens what are we buying today", signals: { followers: 50 } },
-  { id: "poidh:8453:9", source: "poidh", url: "u3", author: "0x1", title: "Best meme", text: "Make a meme. Deadline: November 30, 2026", prizeHint: "$16.00 (base)", prizeUsd: 16, signals: { chain: "base", hasClaims: true, voting: true } },
-  { id: "x:3", source: "x", url: "u4", author: "@scam", postedAt: "2026-11-02T10:00:00Z", text: "Win $1000! Reply with your seed phrase to claim the prize", signals: { followers: 20 } },
+  { id: "x:1", source: "x", url: "https://x.com/a/status/1", author: "@a", postedAt: "2026-11-02T10:00:00Z", text: "Thread contest! $500 USDC prize pool. Submit by Nov 10, quote this post", signals: { followers: 9000, verified: true, replies: 4 } },
+  { id: "x:2", source: "x", url: "https://x.com/b/status/2", author: "@b", text: "gm frens what are we buying today", signals: { followers: 50 } },
+  { id: "poidh:8453:9", source: "poidh", url: "https://poidh.xyz/base/bounty/9", author: "0x1", title: "Best meme", text: "Make a meme. Deadline: November 30, 2026", prizeHint: "$16.00 (base)", prizeUsd: 16, signals: { chain: "base", hasClaims: true, voting: true } },
+  { id: "x:3", source: "x", url: "https://x.com/scam/status/4", author: "@scam", postedAt: "2026-11-02T10:00:00Z", text: "Win $1000! Reply with your seed phrase to claim the prize", signals: { followers: 20 } },
 ];
 
 test("prefilter keeps announcements with prizes and all poidh items", () => {
@@ -36,7 +36,7 @@ test("items use bounty-radar's schema so the CLI, MCP server, CSV and RSS work u
 
 test("poidh's escrowed prize beats the model, and crowded entries rank lower", () => {
   const items = assemble(cands, new Map([[0, { i: 0, prizeUsd: 500, deadline: "2026-11-10", effort: "low" }], [2, { i: 2, prizeUsd: 9999, deadline: "2026-11-30" }]]), now);
-  assert.equal(items[0].id ?? items[0].url, "u1");
+  assert.equal(items[0].url, "https://x.com/a/status/1");
   const p = items.find((i) => i.source === "poidh");
   assert.equal(p.payout_amount_usd, 16);
   assert.ok(p.crowded && p.signals.includes("crowded"));
@@ -55,6 +55,12 @@ test("closed opportunities are dropped", () => {
 
 test("fallback ranks poidh bounties and social posts with an explicit dollar prize", () => {
   const items = fallback(cands, now);
-  assert.deepEqual(items.map((o) => o.url).sort(), ["u1", "u3"]);
+  assert.deepEqual(items.map((o) => o.url).sort(), ["https://poidh.xyz/base/bounty/9", "https://x.com/a/status/1"]);
   assert.equal(items.find((o) => o.source === "poidh").deadline, "2026-11-30");
+});
+
+test("links that are not https are dropped, and absurd model prizes are ignored", () => {
+  assert.equal(toItem({ ...cands[0], url: "javascript:alert(1)" }, { deadline: "2026-11-10" }, now), null);
+  const item = toItem({ ...cands[0], text: "Thread contest, submit by Nov 10" }, { prizeUsd: 1e12, deadline: "2026-11-10" }, now);
+  assert.equal(item.payout_amount_usd, null);
 });

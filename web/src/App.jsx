@@ -162,6 +162,7 @@ function ScanView() {
 
   async function onScan(e) {
     e.preventDefault();
+    if (state.step === "paying") return;
     try {
       setState({ step: "paying" });
       const { payingFetch, balances } = await wallet();
@@ -176,7 +177,8 @@ function ScanView() {
     }
   }
 
-  const total = bal ? bal.USDT.display + bal.USDC.display + bal.USAT.display : 0;
+  // One payment is made in one token, so what matters is the largest single balance.
+  const total = bal ? Math.max(bal.USDT.display, bal.USDC.display, bal.USAT.display) : 0;
   return (
     <section className="grid gap-6 py-6 lg:grid-cols-[1fr_18rem]">
       <div>
@@ -201,7 +203,7 @@ function ScanView() {
         {state.step === "done" && (
           <div className="mt-6">
             <p className="mb-2 font-mono text-xs text-muted-foreground">
-              {state.result.items.length} found · you paid {state.result.payment.amount} {state.result.payment.token} ·{" "}
+              {state.result.items.length} found · you paid {state.result.payment.amount} {state.result.payment.token}{state.result.payment.status === "pending" ? " (confirming)" : ""} ·{" "}
               <a className="underline" href={`${EXPLORER}/tx/${state.result.payment.tx}`} target="_blank" rel="noreferrer">receipt</a> · the agent spent ${state.result.spentUsd} on data
             </p>
             {state.result.items.length ? <ItemList items={state.result.items} /> : <p className="font-mono text-sm">nothing open for those words right now. try broader ones.</p>}
@@ -217,7 +219,7 @@ function ScanView() {
               <dl className="mt-2 grid grid-cols-2 gap-y-1">
                 {bal && Object.entries(bal).map(([k, v]) => (<Fragment key={k}><dt className="text-muted-foreground">{k === "USAT" ? "USA₮" : k === "USDT" ? "USD₮" : k}</dt><dd className="text-right tabular-nums">{v.display.toFixed(2)}</dd></Fragment>))}
               </dl>
-              {total < 0.05 && <p className="mt-3 text-xs text-destructive">you need $0.05 in USD₮, USDC or USA₮ on Celo.</p>}
+              {total < 0.05 && <p className="mt-3 text-xs text-destructive">you need $0.05 in one of USD₮, USDC or USA₮ on Celo.</p>}
             </>
           ) : <p className="text-muted-foreground">not connected</p>}
         </CardContent>

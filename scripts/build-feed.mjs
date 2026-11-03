@@ -72,6 +72,7 @@ for (const preset of presets) {
 
   const payload = await response.json();
   for (const issue of payload.items ?? []) {
+    if (!/^https:\/\/github\.com\//.test(issue.html_url ?? '')) continue;
     if (seen.has(issue.html_url)) continue;
     seen.add(issue.html_url);
     items.push(scoreIssue(issue, preset));
@@ -114,7 +115,7 @@ if (withContests) {
     }
     for (const message of contestRun.errors) errors.push({ preset: 'contests', status: 0, message: compactError(message) });
   } catch (error) {
-    errors.push({ preset: 'contests', status: 0, message: error instanceof Error ? error.message : String(error) });
+    errors.push({ preset: 'contests', status: 0, message: compactError(String(error instanceof Error ? error.message : error).replace(/https?:\/\/\S+/g, '<url>')) });
   }
 }
 
