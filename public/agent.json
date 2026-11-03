@@ -2,7 +2,7 @@
   "type": "https://eips.ethereum.org/EIPS/eip-8004#registration-v1",
   "name": "Contest Radar",
   "description": "Finds open crypto contests and bounties worth entering (GitHub, poidh, X, Reddit), reads each one and ranks them by prize, deadline, effort, risk and competition. Pays for its own data per request through buy on Celo and sells personal scans over x402 for $0.05.",
-  "image": "https://contest-radar-celo.vercel.app/favicon.svg",
+  "image": "https://contest-radar-celo.vercel.app/logo.png",
   "services": [
     {
       "name": "web",
