@@ -1,21 +1,25 @@
 {
-  "name": "bounty-radar",
-  "version": "0.1.0",
-  "description": "Static GitHub bounty radar with agent-readable feeds and payout signal scoring.",
+  "name": "contest-radar",
+  "version": "0.2.0",
+  "description": "Finds crypto contests and bounties worth entering (GitHub, poidh, X, Reddit), ranks them, and pays for its own data through buy on Celo. Built on go165/bounty-radar.",
   "type": "module",
-  "mcpName": "io.github.go165/bounty-radar",
+  "mcpName": "io.github.safwaankira/contest-radar",
   "bin": {
-    "bounty-radar": "./scripts/mcp-server.mjs",
-    "bounty-radar-mcp": "./scripts/mcp-server.mjs",
-    "bounty-radar-shortlist": "./scripts/shortlist.mjs"
+    "contest-radar-mcp": "./scripts/mcp-server.mjs",
+    "contest-radar-shortlist": "./scripts/shortlist.mjs"
   },
   "scripts": {
-    "build:feed": "node scripts/build-feed.mjs",
+    "build:feed": "node --env-file-if-exists=.env scripts/build-feed.mjs",
     "audit:candidate": "node scripts/audit-candidate.mjs",
     "audit:shortlist": "node scripts/audit-shortlist.mjs",
     "mcp": "node scripts/mcp-server.mjs",
     "shortlist": "node scripts/shortlist.mjs",
-    "test": "node --test test/*.test.mjs"
+    "test": "node --test test/*.test.mjs",
+    "daily": "node --env-file-if-exists=.env scripts/daily.js",
+    "register": "node --env-file-if-exists=.env scripts/register.js",
+    "check": "node --env-file-if-exists=.env scripts/check.js",
+    "build": "vite build --config web/vite.config.js && node scripts/stage-static.mjs",
+    "dev": "vite --config web/vite.config.js"
   },
   "keywords": [
     "bounty",
@@ -24,17 +28,19 @@
     "x402",
     "usdc",
     "base",
-    "agent-tools"
+    "agent-tools",
+    "celo",
+    "contests",
+    "poidh",
+    "buy",
+    "erc-8004"
   ],
   "license": "MIT",
   "repository": {
     "type": "git",
-    "url": "https://github.com/go165/bounty-radar.git"
+    "url": "https://github.com/safwaankira/contest-radar.git"
   },
-  "homepage": "https://go165.github.io/bounty-radar/",
-  "bugs": {
-    "url": "https://github.com/go165/bounty-radar/issues"
-  },
+  "homepage": "https://contest-radar.vercel.app",
   "files": [
     "scripts/mcp-server.mjs",
     "scripts/shortlist.mjs",
@@ -43,6 +49,26 @@
     "LICENSE"
   ],
   "engines": {
-    "node": ">=20"
+    "node": ">=20.12"
+  },
+  "dependencies": {
+    "@celo/attribution-tags": "0.5.0",
+    "@radix-ui/react-slot": "^1.5.0",
+    "@x402/core": "2.29.0",
+    "@x402/evm": "2.29.0",
+    "@x402/fetch": "2.29.0",
+    "class-variance-authority": "^0.7.1",
+    "clsx": "^2.1.1",
+    "lucide-react": "^0.468.0",
+    "tailwind-merge": "^3.7.0",
+    "viem": "2.57.16"
+  },
+  "devDependencies": {
+    "@tailwindcss/vite": "^4.3.4",
+    "@vitejs/plugin-react": "^4.7.0",
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1",
+    "tailwindcss": "^4.3.4",
+    "vite": "^6.4.5"
   }
 }

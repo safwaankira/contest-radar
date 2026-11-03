@@ -1,5 +1,18 @@
 import { mkdir, readFile, writeFile } from 'node:fs/promises';
 import { buildRssFeed } from './feed-rss.mjs';
+import { scoreText, assessOpportunity } from './scoring.mjs';
+
+// Bot-generated roundups ("Bounty Alert: 11 New Opportunities found") list other people's
+// bounties; they are not bounties themselves.
+const ROUNDUP = /\b(bounty alert|new opportunit(?:y|ies)|opportunities found|bounties found|weekly (?:digest|roundup)|daily (?:digest|roundup))\b|радар|ждут ответа/i;
+// A claim or submission thread is someone else's entry, not an open bounty.
+const CLAIM = /^\s*\[?\s*bounty\s*(?:#\d+\s*)?claim\b|\bclaim:\s*\d/i;
+const MAX_PLAUSIBLE_ISSUE_USD = 100000;
+
+const SITE = process.env.SITE_URL || 'https://contest-radar.vercel.app';
+// Contest sources (poidh free; X, Reddit and the model paid through buy on Celo)
+// run when the agent key is present. CONTESTS=0 builds the GitHub-only feed.
+const withContests = process.env.CONTESTS !== '0' && Boolean(process.env.AGENT_PRIVATE_KEY || process.env.BUY_SANDBOX === '1');
 
 const presets = [
   {
@@ -24,76 +37,11 @@ const presets = [
   },
 ];
 
-const signalPatterns = [
-  { label: 'bounty', regex: /\b(bounty|reward|prize|paid|payout|compensation)\b/i, points: 12 },
-  { label: 'USDC/Base', regex: /\b(USDC|Base|Coinbase|onchain|stablecoin)\b/i, points: 18 },
-  { label: 'x402', regex: /\b(x402|HTTP 402|402 Payment Required|paid API)\b/i, points: 18 },
-  { label: 'MRWK/MergeWork', regex: /\b(MRWK|MergeWork|mrwk:bounty|mrwk1)\b/i, points: 18 },
-  { label: 'amount', regex: /(\$|USD|USDC|MRWK)[ \t]?\d|\d+[ \t]?(USD|USDC|MRWK)/i, points: 16 },
-];
-
-const riskPatterns = [
-  {
-    label: 'hidden-context-leak',
-    severity: 'blocker',
-    penalty: 90,
-    regex: /\b(system prompt|system instructions|developer message|startup instructions|boot context|boot_context|_provenance|provenance\.json|initial prompt|hidden instructions|before first human message|full conversation transcript)\b|paste.{0,80}\b(system|developer|prompt|instructions)\b/i,
-  },
-  {
-    label: 'secret-or-wallet-risk',
-    severity: 'blocker',
-    penalty: 70,
-    regex: /\b(private key|seed phrase|mnemonic|wallet private|export.*key|sign transaction|send funds|mainnet transaction|transfer .*USDC)\b/i,
-  },
-  {
-    label: 'requires-signup-confirmation',
-    severity: 'manual',
-    penalty: 28,
-    regex: /\b(sign up|signup|register before|developer access|access pending|maintainer confirmation|approval required|must be approved|wait for approval|claim required|must claim)\b/i,
-  },
-  {
-    label: 'kyc-or-account-friction',
-    severity: 'manual',
-    penalty: 24,
-    regex: /\b(KYC|identity verification|tax form|W-9|W8BEN|bank account|invoice required|manual payout|Upwork|freelancer profile|Devpost account|login required|account required|needs-human)\b/i,
-  },
-  {
-    label: 'competition-noise',
-    severity: 'high',
-    penalty: 22,
-    regex: /\b(duplicate|already implemented|winner selected|accepted solution|merged solution|many PRs|first come first served|first to merge|assigned to|claimed by)\b/i,
-  },
-  {
-    label: 'internal-agent-dispatch',
-    severity: 'blocker',
-    penalty: 70,
-    regex: /\b(GOLD STANDARD AUTOPILOT|SHIP TO MAIN|parallel\s+\d+h\s+session|autopilot-(?:next|bd)|internal dispatch|agent dispatch)\b/i,
-  },
-];
-
-const easyEffortPatterns = [
-  { label: 'good-first-issue', regex: /\b(good first issue|first-timers?|beginner friendly|starter issue|easy|low[- ]hanging|small change|simple fix)\b/i, points: -14 },
-  { label: 'docs-or-tests', regex: /\b(docs?|readme|changelog|example|template|unit tests?|test coverage|smoke test)\b/i, points: -10 },
-  { label: 'narrow-scope', regex: /\b(one file|single file|minimal change|small patch|stub|typo|copy edit)\b/i, points: -8 },
-];
-
-const hardEffortPatterns = [
-  { label: 'security-sensitive', regex: /\b(security|vulnerability|exploit|private key|seed phrase|wallet|smart contract|mainnet|sign transaction)\b/i, points: 24 },
-  { label: 'infra-or-migration', regex: /\b(migration|refactor|architecture|distributed|database|production|scalability|performance|e2e|flaky|race condition)\b/i, points: 18 },
-  { label: 'external-access', regex: /\b(sign up|signup|KYC|approval required|account required|manual payout|developer access)\b/i, points: 14 },
-];
-
-const addressPatterns = [
-  { type: 'EVM', regex: /0x[a-fA-F0-9]{40}/g },
-  { type: 'Stellar', regex: /G[A-Z2-7]{55}/g },
-  { type: 'MRWK', regex: /mrwk1[a-z0-9]{20,80}/gi },
-];
-
 const token = process.env.GITHUB_TOKEN;
 const SEARCH_TIMEOUT_MS = 15000;
 const headers = {
   Accept: 'application/vnd.github+json',
-  'User-Agent': 'bounty-radar-feed',
+  'User-Agent': 'contest-radar-feed',
   ...(token ? { Authorization: `Bearer ${token}` } : {}),
 };
 
@@ -144,9 +92,43 @@ for (const presetId of new Set(errors.map((error) => error.preset))) {
   }
 }
 
+let contestRun = null;
+if (withContests) {
+  const { runScan } = await import('../lib/scan.js');
+  try {
+    contestRun = await runScan({ label: 'daily', log: (m) => console.log('·', m) });
+    const found = new Set(contestRun.items.map((item) => item.url));
+    for (const item of contestRun.items) {
+      if (seen.has(item.url)) continue;
+      seen.add(item.url);
+      items.push({ ...item, first_seen: previousItems.find((p) => p.url === item.url)?.first_seen ?? contestRun.finishedAt });
+    }
+    // Contests stay listed until their deadline (or 10 days) even on days the search misses them.
+    const today = new Date().toISOString().slice(0, 10);
+    for (const item of previousItems.filter((p) => p.source && p.source !== 'github' && !found.has(p.url))) {
+      if (seen.has(item.url)) continue;
+      if (item.deadline && item.deadline < today) continue;
+      if (Date.now() - Date.parse(item.first_seen ?? item.updated_at ?? 0) > 10 * 864e5) continue;
+      seen.add(item.url);
+      items.push({ ...item, carried: true });
+    }
+    for (const message of contestRun.errors) errors.push({ preset: 'contests', status: 0, message: compactError(message) });
+  } catch (error) {
+    errors.push({ preset: 'contests', status: 0, message: error instanceof Error ? error.message : String(error) });
+  }
+}
+
+for (let i = items.length - 1; i >= 0; i--) if (items[i].opportunity_class === 'avoid' || items[i].score <= 0) items.splice(i, 1);
 items.sort((a, b) => b.score - a.score || new Date(b.updated_at) - new Date(a.updated_at));
+{
+  let github = 0;
+  for (let i = 0; i < items.length; i++) {
+    if ((items[i].source ?? 'github') !== 'github') continue;
+    if (++github > 20) items.splice(i--, 1);
+  }
+}
 const outputItems = items.length > 0 ? items : previousItems;
-const feedItems = outputItems.slice(0, 40);
+const feedItems = outputItems.slice(0, 80);
 if (items.length === 0 && outputItems.length > 0) {
   errors.push({
     preset: 'fallback',
@@ -157,11 +139,13 @@ if (items.length === 0 && outputItems.length > 0) {
 
 const feed = {
   generated_at: new Date().toISOString(),
-  source: 'https://github.com/go165/bounty-radar',
-  demo: 'https://go165.github.io/bounty-radar/',
-  manifest: 'https://go165.github.io/bounty-radar/feed/manifest.json',
-  schema: 'https://go165.github.io/bounty-radar/feed/schema.json',
-  methodology: 'Heuristic GitHub issue triage based on payout terms, payment rails, amount text, labels, payout address shapes, and negative risk signals such as hidden-context leakage, manual access friction, KYC/account requirements, and competition noise.',
+  source: 'https://github.com/safwaankira/contest-radar',
+  based_on: 'https://github.com/go165/bounty-radar',
+  demo: SITE,
+  manifest: `${SITE}/feed/manifest.json`,
+  schema: `${SITE}/feed/schema.json`,
+  methodology: 'GitHub issues, poidh bounties, and X and Reddit posts. A model reads each post for prize, deadline, effort and what to submit. Scoring is plain code: payout terms, payment rails, amount text, risk flags (scams, key requests, KYC friction), effort, deadline window and competition.',
+  run: contestRun ? { counts: contestRun.counts, model: contestRun.model, spent_usd: contestRun.spentUsd, agent: contestRun.agent, sandbox: contestRun.sandbox } : null,
   count: feedItems.length,
   errors,
   items: feedItems,
@@ -172,24 +156,26 @@ await writeFile('feed/latest.json', `${JSON.stringify(feed, null, 2)}\n`);
 await writeFile('feed/latest.csv', toCsv(feed.items));
 await writeFile('feed/latest.xml', buildRssFeed(feed));
 await writeFile('feed/manifest.json', `${JSON.stringify(buildManifest(feed), null, 2)}\n`);
+// Receipts of every paid call in this run, for the public ledger (scripts/daily.js).
+await writeFile('feed/run.json', `${JSON.stringify(contestRun ? { at: contestRun.finishedAt, spent_usd: contestRun.spentUsd, receipts: contestRun.receipts, errors: contestRun.errors } : null, null, 2)}\n`);
 console.log(`Wrote ${feed.count} items to feed/latest.json`);
 
 function buildManifest(feed) {
   return {
-    name: 'Bounty Radar daily feed',
-    description: 'Machine-readable GitHub bounty issue shortlist scored for payout clarity, payment rails, amount text, labels, address hints, opportunity class, and effort score.',
+    name: 'Contest Radar daily feed',
+    description: 'Machine-readable shortlist of open bounties and contests (GitHub, poidh, X, Reddit) scored for payout clarity, payment rails, amount, risk, effort, deadline and competition.',
     homepage: feed.demo,
     repository: feed.source,
-    latest_json: 'https://go165.github.io/bounty-radar/feed/latest.json',
-    latest_csv: 'https://go165.github.io/bounty-radar/feed/latest.csv',
-    latest_rss: 'https://go165.github.io/bounty-radar/feed/latest.xml',
+    latest_json: `${SITE}/feed/latest.json`,
+    latest_csv: `${SITE}/feed/latest.csv`,
+    latest_rss: `${SITE}/feed/latest.xml`,
     schema: feed.schema,
     generated_at: feed.generated_at,
     count: feed.count,
     errors: feed.errors,
     refresh: {
       cadence: 'daily',
-      github_actions_workflow: 'Daily bounty feed',
+      runner: 'scripts/daily.js on the agent host',
     },
     intended_consumers: [
       'developer dashboards',
@@ -254,211 +240,34 @@ function normalizeExistingItems(rows) {
 }
 
 function scoreIssue(issue, preset) {
-  const text = `${issue.title ?? ''}\n${issue.body ?? ''}`;
   const labels = (issue.labels ?? []).map((label) => label.name ?? '').filter(Boolean);
-  const labelText = labels.join(' ');
-  const signals = [];
-  let rawScore = 0;
-
-  for (const signal of signalPatterns) {
-    if (signal.regex.test(text) || signal.regex.test(labelText)) {
-      signals.push(signal.label);
-      rawScore += signal.points;
+  const scored = scoreText({ title: issue.title, body: issue.body, labels, updatedAt: issue.updated_at });
+  if (ROUNDUP.test(issue.title ?? '') || CLAIM.test(issue.title ?? '')) {
+    scored.score = 0;
+    scored.opportunity_class = 'avoid';
+    scored.decision_notes = ['roundup or claim thread, not an open bounty', ...scored.decision_notes].slice(0, 6);
+  }
+  // A seven-figure "bounty" on an issue is almost always a program page or a misread number.
+  for (const key of ['amount_usd', 'payout_amount_usd']) {
+    if ((scored[key] ?? 0) > MAX_PLAUSIBLE_ISSUE_USD) {
+      scored[key] = null;
+      if (!scored.signals.includes('implausible amount')) scored.signals.push('implausible amount');
     }
   }
-
-  if (/\b(bounty|reward|paid|help wanted)\b/i.test(labelText)) {
-    signals.push('label match');
-    rawScore += 8;
+  if (scored.signals.includes('implausible amount') && scored.opportunity_class === 'high-value') {
+    scored.opportunity_class = 'manual-review';
+    scored.score = Math.max(0, scored.score - 20);
   }
-
-  const addresses = extractAddresses(text);
-  if (addresses.length > 0) {
-    signals.push('payout address');
-    rawScore += 20;
-  }
-
-  const daysOld = (Date.now() - new Date(issue.updated_at).getTime()) / 86400000;
-  if (daysOld > 120) {
-    signals.push('stale');
-    rawScore -= 8;
-  }
-
-  const riskFlags = analyzeRisk(text, labelText);
-  const riskScore = riskFlags.reduce((total, flag) => total + flag.penalty, 0);
-  const manualFriction = riskFlags.some((flag) => flag.severity === 'manual');
-  const amountUsd = extractLargestAmountUsd(text);
-  const payoutAmountUsd = extractLargestPayoutAmountUsd(text, labelText);
-  const opportunity = assessOpportunity({
-    text,
-    labelText,
-    score: Math.max(0, rawScore - riskScore),
-    rawScore: Math.max(0, rawScore),
-    riskScore,
-    riskFlags,
-    manualFriction,
-    signals,
-    amountUsd,
-    payoutAmountUsd,
-  });
-
   return {
-    score: Math.max(0, rawScore - riskScore),
-    raw_score: Math.max(0, rawScore),
-    risk_score: riskScore,
-    opportunity_class: opportunity.opportunity_class,
-    effort_score: opportunity.effort_score,
-    effort_signals: opportunity.effort_signals,
-    decision_notes: opportunity.decision_notes,
-    risk_flags: riskFlags,
-    manual_friction: manualFriction,
+    ...scored,
+    source: 'github',
     preset: preset.id,
     preset_name: preset.name,
     repo: issue.repository_url?.replace('https://api.github.com/repos/', '') ?? 'unknown/repo',
     title: issue.title,
     url: issue.html_url,
     updated_at: issue.updated_at,
-    labels,
-    signals: [...new Set(signals)],
-    addresses,
-    amount_usd: amountUsd,
-    payout_amount_usd: payoutAmountUsd,
   };
-}
-
-function assessOpportunity({ text, labelText, score, rawScore, riskScore, riskFlags, manualFriction, signals, amountUsd, payoutAmountUsd }) {
-  const haystack = `${text}\n${labelText}`;
-  const effortSignals = [];
-  let effortScore = 40;
-
-  for (const pattern of easyEffortPatterns) {
-    if (pattern.regex.test(haystack)) {
-      effortSignals.push(pattern.label);
-      effortScore += pattern.points;
-    }
-  }
-
-  for (const pattern of hardEffortPatterns) {
-    if (pattern.regex.test(haystack)) {
-      effortSignals.push(pattern.label);
-      effortScore += pattern.points;
-    }
-  }
-
-  if (manualFriction) effortScore += 12;
-  if (riskScore >= 50) effortScore += 16;
-  effortScore = clamp(effortScore, 0, 100);
-
-  const amount = payoutAmountUsd ?? amountUsd ?? 0;
-  const hasRail = signals.some((signal) => /USDC|Base|x402|MRWK|MergeWork/i.test(signal));
-  const blocker = riskFlags.some((flag) => flag.severity === 'blocker') || riskScore >= 70;
-  let opportunityClass = 'standard';
-
-  if (blocker) opportunityClass = 'avoid';
-  else if (manualFriction || riskScore > 25) opportunityClass = 'manual-review';
-  else if (amount >= 250 && score >= 36) opportunityClass = 'high-value';
-  else if (effortScore <= 28 && amount >= 50 && score >= 30) opportunityClass = 'quick-win';
-  else if (hasRail && rawScore >= 36) opportunityClass = 'rail-watch';
-
-  const decisionNotes = [];
-  if (amount > 0) decisionNotes.push(`parsed payout amount: $${amount}`);
-  else decisionNotes.push('no explicit USD/USDC amount parsed');
-  if (hasRail) decisionNotes.push('payment rail signal present');
-  if (effortSignals.length > 0) decisionNotes.push(`effort signals: ${effortSignals.join(', ')}`);
-  if (riskFlags.length > 0) decisionNotes.push(`risk flags: ${riskFlags.map((flag) => flag.label).join(', ')}`);
-  if (manualFriction) decisionNotes.push('manual signup or approval friction detected');
-
-  return {
-    opportunity_class: opportunityClass,
-    effort_score: effortScore,
-    effort_signals: [...new Set(effortSignals)],
-    decision_notes: decisionNotes.slice(0, 5),
-  };
-}
-
-function analyzeRisk(text, labelText) {
-  const haystack = `${text}\n${labelText}`;
-  return riskPatterns
-    .filter((risk) => risk.regex.test(haystack))
-    .map((risk) => ({
-      label: risk.label,
-      severity: risk.severity,
-      penalty: risk.penalty,
-    }));
-}
-
-function extractAddresses(text) {
-  const matches = [];
-  for (const pattern of addressPatterns) {
-    for (const match of text.match(pattern.regex) ?? []) {
-      matches.push({ type: pattern.type, value: match });
-    }
-  }
-  return uniqueBy(matches, (item) => `${item.type}:${item.value.toLowerCase()}`);
-}
-
-function extractLargestAmountUsd(text) {
-  const amounts = [];
-  const patterns = [
-    /\$[ \t]?([\d,]+(?:\.\d+)?)/g,
-    /\b([\d,]+(?:\.\d+)?)[ \t]?(?:USD|USDC)\b/gi,
-  ];
-  for (const pattern of patterns) {
-    for (const match of text.matchAll(pattern)) {
-      const value = Number(String(match[1]).replaceAll(',', ''));
-      if (Number.isFinite(value)) amounts.push(value);
-    }
-  }
-  return amounts.length > 0 ? Math.max(...amounts) : null;
-}
-
-function extractLargestPayoutAmountUsd(text, labelText = '') {
-  const payoutContext = /\b(bounty|reward|prize|payout|compensation|paid|price|fee|grant|award)\b/i;
-  const explicitPayoutLabel = payoutContext.test(labelText);
-  const amounts = [];
-  for (const line of text.split(/\r?\n/)) {
-    const lineHasPayout = payoutContext.test(line);
-    for (const match of amountMatches(line)) {
-      const start = Math.max(0, match.index - 80);
-      const end = Math.min(line.length, match.index + match.raw.length + 80);
-      const nearby = line.slice(start, end);
-      if (lineHasPayout || explicitPayoutLabel || payoutContext.test(nearby)) {
-        amounts.push(match.value);
-      }
-    }
-  }
-  return amounts.length > 0 ? Math.max(...amounts) : null;
-}
-
-function amountMatches(text) {
-  const matches = [];
-  const patterns = [
-    /\$[ \t]?([\d,]+(?:\.\d+)?)/g,
-    /\b([\d,]+(?:\.\d+)?)[ \t]?(?:USD|USDC)\b/gi,
-  ];
-  for (const pattern of patterns) {
-    for (const match of text.matchAll(pattern)) {
-      const value = Number(String(match[1]).replaceAll(',', ''));
-      if (Number.isFinite(value)) {
-        matches.push({ value, index: match.index ?? 0, raw: match[0] });
-      }
-    }
-  }
-  return matches;
-}
-
-function uniqueBy(items, keyFn) {
-  const seenKeys = new Set();
-  return items.filter((item) => {
-    const key = keyFn(item);
-    if (seenKeys.has(key)) return false;
-    seenKeys.add(key);
-    return true;
-  });
-}
-
-function clamp(value, min, max) {
-  return Math.min(max, Math.max(min, value));
 }
 
 function toCsv(rows) {
