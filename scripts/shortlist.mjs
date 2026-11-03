@@ -2,7 +2,7 @@
 import { readFile } from 'node:fs/promises';
 import { pathToFileURL } from 'node:url';
 
-const DEFAULT_FEED_URL = 'https://go165.github.io/bounty-radar/feed/latest.json';
+const DEFAULT_FEED_URL = 'https://contest-radar.vercel.app/feed/latest.json';
 
 export async function loadFeed(source = DEFAULT_FEED_URL) {
   if (/^https?:\/\//i.test(source)) {

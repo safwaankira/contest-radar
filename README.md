@@ -1,290 +1,93 @@
-# Bounty Radar
+# Contest Radar
 
-[![CI](https://github.com/go165/bounty-radar/actions/workflows/ci.yml/badge.svg)](https://github.com/go165/bounty-radar/actions/workflows/ci.yml)
-[![Daily feed](https://github.com/go165/bounty-radar/actions/workflows/daily-feed.yml/badge.svg)](https://github.com/go165/bounty-radar/actions/workflows/daily-feed.yml)
-[![Demo](https://img.shields.io/badge/demo-GitHub%20Pages-blue)](https://go165.github.io/bounty-radar/)
-[![Feed](https://img.shields.io/badge/feed-JSON%2FCSV%2FRSS-green)](https://go165.github.io/bounty-radar/feed/latest.json)
+Open crypto contests and bounties worth entering, read and ranked every day by an agent that pays for its own data on Celo.
 
-**Find GitHub issues with real payout signals before you spend hours on the wrong bounty.**
+**Live:** https://contest-radar.vercel.app · **Agent wallet:** [`0x6859Abd01F1686E9DDfE809CC69Fab1054447457`](https://celo.blockscout.com/address/0x6859Abd01F1686E9DDfE809CC69Fab1054447457) · **Feed:** [`/feed/latest.json`](https://contest-radar.vercel.app/feed/latest.json) · **Built on** [go165/bounty-radar](https://github.com/go165/bounty-radar) (MIT)
 
-Bounty Radar is a zero-backend dashboard for developers and agent builders who hunt paid open-source work. It opens with a hosted daily shortlist, can run fresh GitHub issue searches in the browser, scores payout credibility signals, classifies each issue as `quick-win`, `high-value`, `rail-watch`, `manual-review`, or `avoid`, highlights Base/USDC/x402/MergeWork keywords, extracts payout addresses, and exports a shortlist you can review before opening a PR.
+Entry for Celo's *Agents on Open Rails* hackathon, **Build with buy** track.
 
-The browser checker now includes payout lint warnings for common irreversible-payment mistakes such as malformed EVM addresses, zero addresses, bad EIP-55 checksums, non-checksummed EVM addresses, and USDC text without explicit chain context. Use [Payout Address Lint](https://github.com/go165/payout-address-lint) when you want the same idea as a reusable CLI or GitHub Action in a bounty repository.
+## Who it is for
 
-Live demo: https://go165.github.io/bounty-radar/
+People who make money entering crypto contests: thread writers, meme makers, designers, video editors and small dev teams. Today they find contests by scrolling X, Reddit, poidh and GitHub for an hour a day. Most of what they find has already closed, needs a seed phrase, or has 400 entries. Contest Radar does that scrolling for them every morning. It reads each post and returns a short list ranked by prize, time left, effort and how crowded it already is.
 
-Daily feed: https://go165.github.io/bounty-radar/feed/latest.json
+## What the agent buys, and why
 
-RSS feed: https://go165.github.io/bounty-radar/feed/latest.xml
+The agent owns no data and no model. Every input is bought per request from a USDC float on Celo:
 
-Agent handoff: [docs/agent-handoff.md](docs/agent-handoff.md)
+| What | From | Price | Why |
+|---|---|---|---|
+| X post search (×2 per run) | [buy](https://usebuy.ai) gateway → TikHub | $0.005 | contests are announced on X first |
+| Reddit post search | buy gateway → TikHub | $0.005 | contests in r/CryptoCurrency-type communities |
+| Model reading of ~45 posts | [Agent402](https://agent402.tools) metered chat (listed in buy's catalogue) | ~$0.005 | pull out prize, deadline, effort and what to submit |
+| poidh bounties, GitHub issues | public feeds | free | already structured |
 
-Agent discovery: https://go165.github.io/bounty-radar/.well-known/agent.json
+A daily run costs about **$0.02**. Each run's receipts, with settlement transaction hashes, are in [`feed/ledger.json`](https://contest-radar.vercel.app/feed/ledger.json) and on the agent's [Blockscout page](https://celo.blockscout.com/address/0x6859Abd01F1686E9DDfE809CC69Fab1054447457). Payments to buy go to `0x20faAca5F980E29639A0FCC6dcA6988E18ed333B` and payments to Agent402 go to `0xaBF4FAbd7c416fB67202E5f9002389Fc75e2a9D0`.
 
-LLM context: https://go165.github.io/bounty-radar/llms.txt
+The agent also **earns**. Anyone, whether a person in the web app or another agent, can buy a personal scan for their own keywords: `POST /api/scan` over x402, $0.05 in USDC, USD₮ or USA₮. A scan costs the agent about $0.025 in buy and Agent402 calls, so each one pays for itself and funds about one more daily run.
 
-Claim-before-coding workflow: [docs/claim-before-coding.md](docs/claim-before-coding.md)
+## How it works
 
-Paid alert API deployment guide: [docs/paid-alert-api.md](docs/paid-alert-api.md)
+```
+                 free                       paid per request on Celo (x402)
+   poidh feed ───────────┐        X search ─┐ (buy)
+   GitHub issues ────────┤      Reddit ─────┤ (buy)
+                         │                  ▼
+                         │         prefilter: announcements with a prize
+                         │                  ▼
+                         │         model reads ~45 posts (Agent402)
+                         ▼                  ▼
+            bounty-radar scoring: payout terms, rails, amount, risk flags,
+            effort, + deadline window + "crowded" competition flag
+                         ▼
+     feed/latest.json · csv · rss · MCP · web app      keccak(feed) → tagged tx on Celo
+```
 
-![Bounty Radar screenshot](docs/screenshot.png)
+- **Scoring is plain code, not the model.** The model only reads and extracts. bounty-radar's scorer decides the class (`quick-win`, `high-value`, `rail-watch`, `standard`, `manual-review`, `avoid`), so the same inputs always rank the same way. Scams that ask for keys or seed phrases are scored `avoid` and dropped.
+- **Every agent transaction carries the ERC-8021 tag** `celo_683ee8609385` and pays gas in USDC through Celo fee abstraction. The agent holds no CELO.
+- **Personal scans settle themselves.** The agent verifies the buyer's EIP-3009 authorization with `@x402/evm`'s facilitator code and submits it from its own wallet, so settlements carry the attribution tag (the hosted facilitator can't tag them yet). The buyer is charged only if ranked results come back.
+- **The feed is anchored daily.** A zero-value self-transaction whose calldata is `keccak256(feed/latest.json)` ([`feed/anchors.json`](https://contest-radar.vercel.app/feed/anchors.json)).
+- **ERC-8004 identity:** see [`/agent.json`](https://contest-radar.vercel.app/agent.json) and [8004scan](https://8004scan.io).
 
-## Why This Exists
+## What is new here vs. the base
 
-GitHub has many issues labeled `bounty`, `reward`, or `paid`, but the quality varies. Developers need to answer a few questions quickly:
+[go165/bounty-radar](https://github.com/go165/bounty-radar) (MIT, June 2026, pinned at `343f0c7`) was a zero-backend GitHub bounty dashboard with a daily feed, CLI, MCP server and an unwired "402-style" paid-API prototype. Everything below was written during the hackathon. The git history separates it from the base commits.
 
-- Is there an actual payment path, or only vague marketing copy?
-- Does the issue mention USDC, Base, x402, MRWK, MergeWork, Gitcoin, TipLink, or another payout rail?
-- Is there a visible payout address or claim process?
-- Can I export a small list and inspect it before investing time?
+- New sources: poidh (free), X and Reddit (bought through buy), with a deadline parser and a competition ("crowded") flag
+- Model reading step bought per call (Agent402), with a hard per-call and per-run budget, and receipts for every payment
+- `scripts/scoring.mjs`: the base's scorer extracted unchanged (verified identical on samples) so every source shares it, plus filters for bot roundups, claim threads and implausible amounts
+- The paid API made real: x402 v2 on Celo in USDC/USD₮/USA₮, self-settled and tagged (`api/scan.js`, `lib/seller.js`)
+- Agent wallet, fee abstraction, attribution tags, daily onchain anchor, ERC-8004 registration (`lib/chain.js`, `scripts/daily.js`, `scripts/register.js`)
+- New web app (React + shadcn-style components): radar, paid personal scan from MiniPay or any wallet, and a live ledger of what the agent paid and earned
+- Removed: the base's GitHub Actions job that committed the feed daily, its in-browser token prompt, the remote esm.sh import, and its `gh auth token` fallback. GitHub search runs unauthenticated.
 
-Bounty Radar makes that triage fast without asking for your GitHub token by default.
-
-## Features
-
-- **Preset searches** for high-signal bounty issues, Base/USDC work, x402 paid APIs, and MergeWork/MRWK opportunities.
-- **Live hosted shortlist** loaded from the daily JSON feed so the demo has useful results immediately.
-- **Custom GitHub issue search** with optional minimum payout keyword filtering.
-- **Payout signal score** based on title/body labels, payment rail terms, reward amounts, address hints, and payout lint risk.
-- **Opportunity classes and effort scores** so agents and developers can filter for quick wins, high-value work, rail-specific leads, and manual-review cases.
-- **Best-effort repository quality signals** for stars, forks, recent push activity, and archived status.
-- **Saved watchlists** in local storage for repeated bounty scans.
-- **Shareable search URLs** for posting a preset, keyword set, and result limit to relevant communities.
-- **Daily JSON/CSV/RSS feed** generated by GitHub Actions for agents, dashboards, subscribers, and alert pipelines.
-- **Machine-readable feed manifest and JSON Schema** for automation that should validate the feed before consuming it.
-- **Agent discovery metadata and `llms.txt`** for directories, coding agents, and LLM-powered workflows.
-- **Zero-dependency shortlist CLI** for coding agents and CI jobs that need Markdown, JSON, or CSV output from the hosted feed.
-- **Zero-dependency MCP stdio server** with `search_bounties` and `get_bounty` tools for MCP-capable coding agents.
-- **Claim-before-coding audit** that checks comments and related PRs before a developer or agent spends time on a bounty.
-- **Paid alert API prototype** with a free preview route and a 402-style paid endpoint.
-- **x402 paid API deployment guide** for turning the feed into an agent-readable paid alert API.
-- **Address extraction and linting** for EVM `0x...`, Stellar `G...`, and MRWK `mrwk1...`-style addresses.
-- **CSV export** for shortlists.
-- **No backend**: runs as static HTML/CSS/JS on GitHub Pages.
-- **Optional GitHub token** stored only in browser session storage for higher API rate limits.
-
-## Quick Start
-
-Open the hosted demo, or run locally:
+## Run it
 
 ```bash
-git clone https://github.com/go165/bounty-radar.git
-cd bounty-radar
-python3 -m http.server 8080
+npm ci
+cp .env.example .env            # AGENT_PRIVATE_KEY: a fresh wallet holding a few dollars of USDC on Celo
+npm test                        # 37 tests
+BUY_SANDBOX=1 npm run daily     # free test run on Celo Sepolia (buy's sandbox)
+npm run daily                   # real run: ~$0.02, writes feed/, anchors onchain
+npm run build                   # web app + feeds into web/dist (Vercel)
 ```
 
-Then open http://localhost:8080.
-
-Try the hosted feed in 30 seconds:
+Ask for a personal scan from any x402 client:
 
 ```bash
-npm test
-npm run shortlist -- --min-score 50 --require-amount --require-rail --limit 10
-node scripts/shortlist.mjs --feed https://go165.github.io/bounty-radar/feed/latest.json --preset x402 --format markdown
+buy curl --max-amount 0.05 -X POST -H 'content-type: application/json' \
+  -d '{"keywords":"meme OR design"}' https://contest-radar.vercel.app/api/scan
 ```
 
-Run the agent-friendly shortlist CLI without installing runtime dependencies:
+The base's CLI and MCP server work unchanged on the new feed: `npm run shortlist -- --opportunity quick-win`, `node scripts/mcp-server.mjs`.
 
-```bash
-npm run shortlist -- --preset mergework --format json
-npm run shortlist -- --min-score 30 --opportunity quick-win --max-effort-score 30 --format markdown
-npm run shortlist -- --feed feed/latest.json --signal 'x402|USDC|MRWK' --format csv
-```
+## Feedback for buy
 
-Run the MCP server for Claude Desktop, Codex, or another MCP client:
+`/cencori/v1/chat/completions` only accepts `maximo-atlas-1.3`, which Cencori has retired, so every call is charged $0.01 and then fails upstream with a 400 (Nov 3 2026, settlement tx `0xe3525a10d78a865c458ba2e984a6be4b3fe6aef485ec757d48fe0594dddcedad`). Contest Radar keeps Cencori behind `LLM_PROVIDER=cencori` for when the allowlist is updated.
 
-```bash
-node scripts/mcp-server.mjs
-```
+## Limits
 
-Example client configuration:
-
-```json
-{
-  "mcpServers": {
-    "bounty-radar": {
-      "command": "node",
-      "args": ["/absolute/path/to/bounty-radar/scripts/mcp-server.mjs"]
-    }
-  }
-}
-```
-
-The server exposes:
-
-| Tool | Purpose |
-| --- | --- |
-| `search_bounties` | Filter the hosted or local feed by score, preset, rail, amount, opportunity class, effort score, and output format. |
-| `get_bounty` | Fetch one feed item by GitHub issue URL so an agent can inspect the exact payout signals and decision notes. |
-
-The npm package metadata includes `mcpName: io.github.go165/bounty-radar`, executable bins for the MCP server and shortlist CLI, and a `server.json` manifest for MCP Registry publishing. Publishing still requires a public npm release followed by `mcp-publisher publish`.
-
-Audit competition before opening a claim or PR:
-
-```bash
-npm run audit:shortlist -- --limit 8 --require-rail --min-amount-usd 50 --max-competition-score 40
-```
-
-## Usage
-
-1. Open the demo to see the latest hosted shortlist from `feed/latest.json`.
-2. Pick a preset such as `Base / USDC` or `x402 paid APIs` for a fresh browser-side scan.
-3. Add optional keywords like `good first issue`, `bug`, `docs`, or a specific ecosystem.
-4. Click **Copy Link** to share the exact search, or **Scan GitHub** to run it.
-5. Export CSV before deciding what to work on.
-
-Example share URL:
-
-```text
-https://go165.github.io/bounty-radar/?preset=base-usdc&q=good%20first%20issue&limit=20
-```
-
-## Scoring Model
-
-The score is intentionally simple and visible:
-
-| Signal | Weight |
-| --- | ---: |
-| Payout keywords (`bounty`, `reward`, `paid`, `prize`) | +12 |
-| Crypto rails (`USDC`, `Base`, `x402`, `MRWK`, `MergeWork`) | +18 |
-| Amount-like text (`$250`, `100 USDC`, `500 MRWK`) | +16 |
-| Payout address present | +20 |
-| Issue labels include bounty/reward/help wanted | +8 |
-| Repository quality: stars, forks, recent push activity | +3 to +15 |
-| Stale issue penalty | -8 |
-
-This is triage, not financial advice. Always inspect the issue, sponsor, repository history, and payout terms yourself.
-
-Repository quality metadata is fetched sequentially and capped to avoid burning unauthenticated GitHub API limits. Add a token for higher limits when scanning large result sets.
-
-## Opportunity Classes
-
-Every generated feed row includes a decision layer for agents and repeated manual triage:
-
-| Field | Meaning |
-| --- | --- |
-| `opportunity_class` | `quick-win`, `high-value`, `rail-watch`, `standard`, `manual-review`, or `avoid`. |
-| `effort_score` | 0-100 heuristic where lower usually means easier to attempt. |
-| `effort_signals` | Explainable hints such as `good-first-issue`, `docs-or-tests`, `security-sensitive`, or `external-access`. |
-| `decision_notes` | Short reasons an agent should inspect before claiming work. |
-
-Filter for lightweight candidates:
-
-```bash
-npm run shortlist -- --min-score 30 --opportunity quick-win --max-effort-score 30 --min-amount-usd 50
-```
-
-## Opportunity Assessment
-
-- **TAM / audience**: independent developers, agent builders, open-source maintainers, and onchain bounty operators who need faster paid-work discovery.
-- **Differentiation**: GitHub-native bounty triage focused on payout credibility, not another generic issue search or closed marketplace.
-- **Star-worthy hook**: a static, inspectable tool that developers can bookmark, run locally, and extend with their own bounty rails.
-- **Agent distribution hook**: MCP tools let coding agents search and inspect bounty opportunities without scraping the UI.
-- **Monetization path**: hosted alerts, JSON feeds, webhooks, and x402-paid API access for teams and autonomous coding agents.
-- **7-day demo feasibility**: the browser demo is already live; the next compounding features are daily digests, validators, and shareable feeds.
-
-## 7-Day Roadmap
-
-- Day 1: Static dashboard, presets, scoring, CSV export. Shipped.
-- Day 2: Add saved watchlists in local storage. Shipped.
-- Day 3: Add GitHub repo reputation panel: stars, forks, and activity signals. Shipped.
-- Day 4: Add shareable preset URLs for launch posts and community review. Shipped.
-- Day 5: Add GitHub Actions daily digest mode. Shipped.
-- Day 6: Add hosted JSON/CSV feed for agents and dashboards. Shipped.
-- Day 6.5: Auto-load the hosted feed into the demo so visitors see real current opportunities immediately. Shipped.
-- Day 7: Ship API/webhook plan for paid alerts. Shipped as `examples/paid-alert-api`.
-- Day 7.5: Add claim-before-coding audit workflow for competition and duplicate PR checks. Shipped.
-- Day 7.75: Add opportunity classes, effort scores, and CLI filters for better agent triage. Shipped.
-
-## Monetization Path
-
-- Free static dashboard for discovery.
-- Paid hosted alerts for teams and agents.
-- API endpoint for `new high-signal bounty` feeds.
-- RSS subscriptions for developers who want the same shortlist in their reader.
-- Shortlist CLI and JSON feed that can be wrapped by coding agents, CI jobs, or paid x402 endpoints.
-- Sponsored but clearly labeled bounty listings.
-- Optional x402-paid export endpoints for machine agents.
-
-## Daily Feed
-
-The scheduled feed is generated from the same public GitHub issue signals as the UI:
-
-- JSON: https://go165.github.io/bounty-radar/feed/latest.json
-- CSV: https://go165.github.io/bounty-radar/feed/latest.csv
-- RSS: https://go165.github.io/bounty-radar/feed/latest.xml
-- Manifest: https://go165.github.io/bounty-radar/feed/manifest.json
-- Schema: https://go165.github.io/bounty-radar/feed/schema.json
-- Agent discovery: https://go165.github.io/bounty-radar/.well-known/agent.json
-- LLM context: https://go165.github.io/bounty-radar/llms.txt
-
-Agents and dashboards can start from the [agent handoff guide](docs/agent-handoff.md) for endpoint contracts, a minimal consumer, and review rules.
-
-Use [examples/github-action-digest.yml](examples/github-action-digest.yml) to post a filtered bounty shortlist to a GitHub Actions job summary on a schedule or manual dispatch.
-
-Use [examples/github-action-claim-before-coding.yml](examples/github-action-claim-before-coding.yml) when you want the same digest plus comment and related-PR competition checks before choosing work.
-
-Use the included CLI when an agent or CI job needs a filtered shortlist instead
-of the full feed:
-
-```bash
-npm run shortlist -- --min-score 50 --require-amount --require-rail --format markdown
-npm run shortlist -- --opportunity high-value --max-risk-score 25 --format markdown
-npm run shortlist -- --feed https://go165.github.io/bounty-radar/feed/latest.json --preset x402 --limit 5 --format json
-```
-
-Use the included MCP server when an agent should call tools instead of shelling
-out to the CLI:
-
-```bash
-node scripts/mcp-server.mjs
-```
-
-Its `search_bounties` tool accepts the same practical filters as the CLI,
-including `min_score`, `preset`, `require_amount`, `require_rail`,
-`opportunity`, `max_effort_score`, `min_amount_usd`, and `format`.
-Its `get_bounty` tool returns the full JSON item for a specific issue URL.
-
-Regenerate the feed locally with a GitHub token for higher API limits:
-
-```bash
-GITHUB_TOKEN=your_token node scripts/build-feed.mjs
-```
-
-## Paid Alert API Prototype
-
-The `examples/paid-alert-api` server shows how the hosted feed can become a paid alert surface for agents or dashboards. It exposes a free preview route and a 402-style paid route that can later be wired to a real x402 facilitator verifier.
-
-```bash
-node examples/paid-alert-api/server.mjs
-curl 'http://localhost:8787/v1/alerts?min_score=40&limit=5'
-curl -i 'http://localhost:8787/v1/paid/alerts?min_score=40'
-curl -H 'X-Payment: demo-paid' 'http://localhost:8787/v1/paid/alerts?min_score=40'
-```
-
-For the full deployment path using `x402-paid-api-starter`, Cloudflare Workers, or official `@x402/express` middleware, see [docs/paid-alert-api.md](docs/paid-alert-api.md).
-
-## Legal and Ethical Publishing Checklist
-
-- Do not buy stars, trade stars, use fake accounts, spam comments, or mass-DM developers.
-- Publish only in relevant communities: Show HN, x402/Base developer channels, GitHub bounty communities, and project Discords where tool sharing is allowed.
-- Be transparent that the scoring is heuristic and requires manual verification.
-- Do not claim a bounty is guaranteed unless the linked issue states payout terms clearly.
-
-## Contributing
-
-Contributions are welcome when they improve real payout discovery or make the scoring model easier to inspect. Start with [CONTRIBUTING.md](CONTRIBUTING.md) and include public evidence for new payout rails, presets, or scoring signals.
-
-## Suggested Launch Posts
-
-Short version:
-
-> I built Bounty Radar, a static GitHub Pages tool that searches GitHub bounty issues and scores payout signals like USDC/Base/x402/MRWK keywords, amount text, and payout addresses. No backend, optional GitHub token only in session storage. Feedback welcome: https://go165.github.io/bounty-radar/
-
-Long version:
-
-> Developers waste time on vague bounty issues. Bounty Radar helps shortlist GitHub issues with clearer payout signals, export CSV, and inspect address/payment hints before starting work. It is open source and runs entirely in the browser.
+Scores are triage signals, not payout guarantees. Read each contest's rules at the source. The agent's float is small on purpose (one bounded hot wallet, ETHSkills' advice). Payments are final.
 
 ## License
 
-MIT
+MIT. Original bounty-radar code © its authors; see [LICENSE](LICENSE).

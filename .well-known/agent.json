@@ -1,25 +1,32 @@
 {
-  "name": "Bounty Radar",
-  "description": "Static GitHub bounty intelligence feed for developers and coding agents, scored for payout clarity, payment rails, amount text, labels, address hints, opportunity class, and effort score.",
-  "homepage": "https://go165.github.io/bounty-radar/",
-  "repository": "https://github.com/go165/bounty-radar",
+  "name": "Contest Radar",
+  "description": "Open crypto contests and bounties (GitHub, poidh, X, Reddit), read and ranked daily by an agent that pays for its own data on Celo. Scored for prize, deadline, effort, risk flags and competition.",
+  "homepage": "https://contest-radar.vercel.app",
+  "repository": "https://github.com/safwaankira/contest-radar",
   "license": "MIT",
-  "category": "developer-tools",
+  "category": "opportunities",
   "audience": [
-    "coding agents",
-    "open-source maintainers",
+    "crypto creators",
     "bounty hunters",
-    "paid API builders"
+    "coding agents",
+    "agents that buy data over x402"
   ],
   "endpoints": {
-    "feed": "https://go165.github.io/bounty-radar/feed/latest.json",
-    "csv": "https://go165.github.io/bounty-radar/feed/latest.csv",
-    "rss": "https://go165.github.io/bounty-radar/feed/latest.xml",
-    "manifest": "https://go165.github.io/bounty-radar/feed/manifest.json",
-    "schema": "https://go165.github.io/bounty-radar/feed/schema.json",
-    "llms": "https://go165.github.io/bounty-radar/llms.txt"
+    "feed": "https://contest-radar.vercel.app/feed/latest.json",
+    "csv": "https://contest-radar.vercel.app/feed/latest.csv",
+    "rss": "https://contest-radar.vercel.app/feed/latest.xml",
+    "manifest": "https://contest-radar.vercel.app/feed/manifest.json",
+    "schema": "https://contest-radar.vercel.app/feed/schema.json",
+    "llms": "https://contest-radar.vercel.app/llms.txt",
+    "ledger": "https://contest-radar.vercel.app/feed/ledger.json",
+    "anchors": "https://contest-radar.vercel.app/feed/anchors.json",
+    "paid_scan": "https://contest-radar.vercel.app/api/scan",
+    "erc8004_registration": "https://contest-radar.vercel.app/agent.json"
   },
   "capabilities": [
+    "daily contest and bounty shortlist from GitHub, poidh, X and Reddit",
+    "deadline, effort and competition (crowded) scoring",
+    "scam and key-request risk flags",
     "daily GitHub bounty shortlist",
     "payout signal scoring",
     "opportunity class and effort-score filtering",
@@ -29,7 +36,9 @@
     "RSS feed export for subscriptions",
     "zero-dependency shortlist CLI",
     "zero-dependency MCP stdio server for bounty search tools",
-    "402-style paid alert API prototype"
+    "x402 paid personal scan on Celo (USDC, USD₮, USA₮)",
+    "agent pays its own data through buy on Celo; receipts published",
+    "feed hash anchored onchain daily"
   ],
   "integration": {
     "cli": "npm run shortlist -- --min-score 50 --require-amount --require-rail --format markdown",
@@ -46,5 +55,18 @@
     "Scores are heuristic triage signals, not payout guarantees.",
     "Consumers must verify issue terms, sponsor reputation, and payment rules before doing work.",
     "Do not use the feed for automated spam comments, bulk outreach, or misleading bounty claims."
-  ]
+  ],
+  "based_on": "https://github.com/go165/bounty-radar",
+  "payments": {
+    "protocol": "x402 v2",
+    "scheme": "exact",
+    "network": "eip155:42220",
+    "assets": [
+      "USDC",
+      "USDT",
+      "USAT"
+    ],
+    "price_usd": "0.05",
+    "endpoint": "https://contest-radar.vercel.app/api/scan"
+  }
 }

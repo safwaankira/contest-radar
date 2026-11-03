@@ -2,7 +2,7 @@
 import { pathToFileURL } from 'node:url';
 import { loadFeed, buildShortlist, formatShortlist } from './shortlist.mjs';
 
-const DEFAULT_FEED_URL = 'https://go165.github.io/bounty-radar/feed/latest.json';
+const DEFAULT_FEED_URL = 'https://contest-radar.vercel.app/feed/latest.json';
 const SERVER_INFO = { name: 'bounty-radar', version: '0.1.0' };
 const PROTOCOL_VERSION = '2024-11-05';
 
