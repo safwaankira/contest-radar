@@ -259,6 +259,10 @@ function scoreIssue(issue, preset) {
     scored.opportunity_class = 'manual-review';
     scored.score = Math.max(0, scored.score - 20);
   }
+  const prize = scored.payout_amount_usd ?? scored.amount_usd;
+  if (scored.opportunity_class !== 'avoid') {
+    scored.score = Math.max(0, scored.score + (prize ? Math.max(-12, Math.min(24, Math.round(12 * Math.log10(Math.max(prize, 1)) - 12))) : -4));
+  }
   return {
     ...scored,
     source: 'github',
