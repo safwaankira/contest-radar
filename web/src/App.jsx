@@ -222,6 +222,11 @@ function Item({ i }) {
           {i.kind && i.kind !== "other" && <Badge variant="outline">{i.kind}</Badge>}
           <Badge variant="outline" className="max-w-[220px] truncate">{i.repo}</Badge>
           {i.restricted && <Badge variant="outline">{i.restricted.charAt(0).toUpperCase() + i.restricted.slice(1)}</Badge>}
+          {typeof i.rules_url === "string" && i.rules_url.startsWith("https://") && (
+            <a href={i.rules_url} target="_blank" rel="noopener noreferrer" title="The agent opened this contest's rules page and checked the deadline, prize and eligibility">
+              <Badge variant="success"><Check className="size-3" /> Rules checked</Badge>
+            </a>
+          )}
           {i.slots > 1 && <Badge variant="outline">{i.slots} open slots</Badge>}
           {i.crowded && <Badge variant="urgent"><Users className="size-3" /> Crowded</Badge>}
           {i.manual_friction && <Badge variant="outline"><ShieldAlert className="size-3" /> Manual steps</Badge>}

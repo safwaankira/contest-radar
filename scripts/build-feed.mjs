@@ -99,7 +99,7 @@ let contestRun = null;
 if (withContests) {
   const { runScan } = await import('../lib/scan.js');
   try {
-    contestRun = await runScan({ label: 'daily', log: (m) => console.log('·', m) });
+    contestRun = await runScan({ label: 'daily', rulesPages: Number(process.env.RULES_PAGES ?? 3), log: (m) => console.log('·', m) });
     const found = new Set(contestRun.items.map((item) => item.url));
     for (const item of contestRun.items) {
       if (seen.has(item.url)) continue;
@@ -157,7 +157,7 @@ const feed = {
   manifest: `${SITE}/feed/manifest.json`,
   schema: `${SITE}/feed/schema.json`,
   methodology: 'GitHub issues, poidh bounties, and X and Reddit posts. A model reads each post for prize, deadline, effort and what to submit. Scoring is plain code: payout terms, payment rails, amount text, risk flags (scams, key requests, KYC friction), effort, deadline window and competition.',
-  run: contestRun ? { counts: contestRun.counts, model: contestRun.model, spent_usd: contestRun.spentUsd, agent: contestRun.agent, sandbox: contestRun.sandbox } : null,
+  run: contestRun ? { counts: contestRun.counts, model: contestRun.model, rules_checked: contestRun.rules ?? [], spent_usd: contestRun.spentUsd, agent: contestRun.agent, sandbox: contestRun.sandbox } : null,
   count: feedItems.length,
   errors,
   items: feedItems,
