@@ -107,7 +107,7 @@ for (const [name, s] of Object.entries(byService)) {
   const payee = Object.keys(SERVICE).find((k) => SERVICE[k] === name);
   L.push(`| ${name} | [\`${short(payee)}\`](${EXPLORER}/address/${payee}) | ${s.n} | $${s.usd.toFixed(3)} | ${s.days.size} |`);
 }
-L.push("", `The first calls on 3 Nov were build and test runs while wiring up buy (including one charged-then-failed Cencori call, reported to buy in the README). Since then the agent makes one scheduled daily run (2 X searches, 1 Reddit search, 1 model read, about $0.02) plus whatever personal scans people buy. We don't make calls to pad the count.`, "");
+L.push("", `The first calls on 3 Nov were build and test runs while wiring up buy (including one charged-then-failed Cencori call, reported to buy in the README). Since then the agent makes one scheduled daily run (X and Reddit searches, a model read, and the rules check: a browser session and/or full-post fetches, about $0.04), one manual run after a feature change, plus whatever personal scans people buy. We don't make calls to pad the count.`, "");
 L.push("## Scan sales (x402, POST /api/scan)", "");
 L.push(`${received.length} paid scan(s) from ${payers.length} wallet(s); **${independents.length} independent user(s)** by the hackathon's definition (not ours, not funded by us, active on Celo before 6 Oct).`, "");
 if (received.length) {

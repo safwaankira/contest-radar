@@ -20,10 +20,11 @@ The agent owns no data and no model. Every input is bought per request from a US
 | Reddit post search | buy gateway → TikHub | $0.005 | contests in r/CryptoCurrency-type communities |
 | Model reading of ~45 posts | [Agent402](https://agent402.tools) metered chat (listed in buy's catalogue) | ~$0.005 | pull out prize, deadline, effort and what to submit |
 | Browser session to open the top 3 contests' rules pages | buy gateway → buy-browser-worker | ~$0.005 per 3-minute session | a post says "$5k, link below"; the rules page has the real deadline, prize and who can enter |
-| Model reading of those rules pages | Agent402 metered chat | ~$0.002 | extract deadline, prize, eligibility and whether it already closed |
+| Full text of top X posts with no rules link (×≤3) | buy gateway → TikHub tweet detail | $0.005 | search returns ~280 characters; the full post usually states the deadline and prize |
+| Model reading of those pages and posts | Agent402 metered chat | ~$0.003 | extract deadline, prize, eligibility and whether it already closed |
 | poidh bounties, GitHub issues | public feeds | free | already structured |
 
-A daily run costs about **$0.03**. Each run's receipts, with settlement transaction hashes, are in [`feed/ledger.json`](https://contest-radar-celo.vercel.app/feed/ledger.json) and on the agent's [Blockscout page](https://celo.blockscout.com/address/0x6859Abd01F1686E9DDfE809CC69Fab1054447457). Payments to buy go to `0x20faAca5F980E29639A0FCC6dcA6988E18ed333B` and payments to Agent402 go to `0xaBF4FAbd7c416fB67202E5f9002389Fc75e2a9D0`.
+A daily run costs about **$0.04**. Each run's receipts, with settlement transaction hashes, are in [`feed/ledger.json`](https://contest-radar-celo.vercel.app/feed/ledger.json) and on the agent's [Blockscout page](https://celo.blockscout.com/address/0x6859Abd01F1686E9DDfE809CC69Fab1054447457). Payments to buy go to `0x20faAca5F980E29639A0FCC6dcA6988E18ed333B` and payments to Agent402 go to `0xaBF4FAbd7c416fB67202E5f9002389Fc75e2a9D0`.
 
 The agent also **earns**. Anyone, whether a person in the web app or another agent, can buy a personal scan for their own keywords: `POST /api/scan` over x402, $0.01 in USDC, USD₮ or USA₮ (launch price). A scan costs the agent about $0.014 in buy and Agent402 calls, so for now the agent subsidises each scan by about half a cent to get first users.
 
@@ -44,7 +45,7 @@ The agent also **earns**. Anyone, whether a person in the web app or another age
      feed/latest.json · csv · rss · MCP · web app      keccak(feed) → tagged tx on Celo
 ```
 
-- **Rules pages are checked.** Each daily run takes the top three X/Reddit contests that link a rules page, opens them in one buy browser session, and has the model read the real deadline, prize and eligibility. The item gets a *Rules checked* badge; a contest the page says has closed is dropped. Page text is treated as untrusted data: the model can only return a date, a number, a short eligibility note and a closed flag, each validated before use.
+- **Rules are checked.** Each daily run takes the top three X/Reddit contests. If a post links its rules page (short links unwrapped), the agent opens it in one buy browser session; if not, it buys the post's full text through buy's TikHub tweet-detail route. The model then reads the real deadline, prize and eligibility. The item gets a *Rules checked* or *Full post read* badge; a contest the page says has closed is dropped. Page text is treated as untrusted data: the model can only return a date, a number, a short eligibility note and a closed flag, each validated before use.
 - **Scoring is plain code, not the model.** The model only reads and extracts. bounty-radar's scorer decides the class (`quick-win`, `high-value`, `rail-watch`, `standard`, `manual-review`, `avoid`), so the same inputs always rank the same way. Scams that ask for keys or seed phrases are scored `avoid` and dropped.
 - **Every agent transaction carries the ERC-8021 tag** `celo_683ee8609385` and pays gas in USDC through Celo fee abstraction. The agent holds no CELO.
 - **Personal scans settle themselves.** The agent verifies the buyer's EIP-3009 authorization with `@x402/evm`'s facilitator code and submits it from its own wallet, so settlements carry the attribution tag (the hosted facilitator can't tag them yet). The buyer is charged only if ranked results come back.

@@ -227,6 +227,11 @@ function Item({ i }) {
               <Badge variant="success"><Check className="size-3" /> Rules checked</Badge>
             </a>
           )}
+          {!i.rules_url && i.full_post_read && (
+            <span title="The agent read the full announcement post and checked the deadline, prize and eligibility">
+              <Badge variant="success"><Check className="size-3" /> Full post read</Badge>
+            </span>
+          )}
           {i.slots > 1 && <Badge variant="outline">{i.slots} open slots</Badge>}
           {i.crowded && <Badge variant="urgent"><Users className="size-3" /> Crowded</Badge>}
           {i.manual_friction && <Badge variant="outline"><ShieldAlert className="size-3" /> Manual steps</Badge>}

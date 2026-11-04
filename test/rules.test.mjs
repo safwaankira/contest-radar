@@ -90,3 +90,31 @@ test("unshorten reads the redirect target without following it", async () => {
   assert.equal(await unshorten("https://t.co/b", meta), "https://gleam.io/y");
   assert.equal(await unshorten("https://t.co/c", async () => { throw new Error("down"); }), null);
 });
+
+test("no rules link in the short text: the full post is fetched and read instead", async () => {
+  const items = [{ source: "x", url: "https://x.com/h/status/2117685408255369538", title: "Build on Portaldot", score: 77, deadline: null, payout_amount_usd: 5200, amount_usd: 5200, effort_score: 55, text_score: 20 }];
+  const cands = [{ url: items[0].url, text: "Hackathon deadlines this week https://t.co/photo1" }];
+  const resolve = async (u) => ({ "https://t.co/photo1": "https://x.com/h/status/1/photo/1", "https://t.co/site": "https://hacklist.io/hackathon/39d07d07" }[u] ?? null);
+  const long = "A lot of hackathon deadlines are coming up. Portaldot Hacker House: 5,200 USDT pool, submissions close Nov 7. ".repeat(3) + "More at https://t.co/site";
+  const calls = [];
+  const session = {
+    tweetDetail: async (id) => (calls.push(`detail ${id}`), { json: { output: { text: long } } }),
+    browser: async () => { calls.push("browser"); return { read: async () => "", close: async () => true }; },
+    chat: async () => ({ json: { choices: [{ message: { content: '{"i":0,"is_rules":true,"closed":false,"deadline":"2026-11-07","prizeUsd":5200,"restricted":null}' } }] } }),
+  };
+  const { checkRules } = await import("../lib/rules.js");
+  const r = await checkRules(session, items, cands, { n: 1, resolve });
+  // the full post links the contest's own page, so the browser opens it
+  assert.deepEqual(calls.slice(0, 2), ["detail 2117685408255369538", "browser"]);
+  // with nothing linkable, the post itself is read
+  // a bare homepage is not a rules page: the post itself is read
+  const long2 = long.replace("https://t.co/site", "https://hacklist.io/");
+  const calls2 = [];
+  const s2 = { ...session, tweetDetail: async () => ({ json: { output: { text: long2 } } }), browser: async () => { calls2.push("browser"); } };
+  const r2 = await checkRules(s2, items, cands, { n: 1, resolve });
+  assert.deepEqual(calls2, []);
+  assert.equal(r2.items[0].deadline, "2026-11-07");
+  assert.equal(r2.items[0].full_post_read, true);
+  assert.equal(r2.items[0].rules_url, undefined);
+  assert.equal(r2.checked[0].read, "post");
+});
