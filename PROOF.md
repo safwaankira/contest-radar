@@ -1,6 +1,6 @@
 # Contest Radar: proof of payment
 
-Generated 2026-11-04 03:51 UTC from the chain (Blockscout) and the agent's ledger. Live version: https://contest-radar-celo.vercel.app/feed/proof.md
+Generated 2026-11-04 04:04 UTC from the chain (Blockscout) and the agent's ledger. Live version: https://contest-radar-celo.vercel.app/feed/proof.md
 
 - **Agent wallet (x402 PayTo for scans):** [`0x6859abd01f1686e9ddfe809cc69fab1054447457`](https://celo.blockscout.com/address/0x6859abd01f1686e9ddfe809cc69fab1054447457)
 - **ERC-8004:** agentId 10034, registration [0x62b225b1…](https://celo.blockscout.com/tx/0x62b225b16d2e7bce4a2b4dfb8d7c59e2f9c8a5e00d23dfe30bc848f1f16d19b7)
@@ -11,10 +11,10 @@ Generated 2026-11-04 03:51 UTC from the chain (Blockscout) and the agent's ledge
 
 | Service | Payee | Paid calls | Spent | Days with calls |
 |---|---|---:|---:|---:|
-| buy gateway (TikHub X / Reddit search) | [`0x20fa…333b`](https://celo.blockscout.com/address/0x20faaca5f980e29639a0fcc6dca6988e18ed333b) | 30 | $0.155 | 2 |
-| Agent402 metered chat (gpt-4o-mini) | [`0xabf4…a9d0`](https://celo.blockscout.com/address/0xabf4fabd7c416fb67202e5f9002389fc75e2a9d0) | 9 | $0.038 | 2 |
+| buy gateway (X/Reddit search, browser, X post detail) | [`0x20fa…333b`](https://celo.blockscout.com/address/0x20faaca5f980e29639a0fcc6dca6988e18ed333b) | 35 | $0.180 | 2 |
+| Agent402 metered chat (gpt-4o-mini) | [`0xabf4…a9d0`](https://celo.blockscout.com/address/0xabf4fabd7c416fb67202e5f9002389fc75e2a9d0) | 11 | $0.043 | 2 |
 
-The first calls on 3 Nov were build and test runs while wiring up buy (including one charged-then-failed Cencori call, reported to buy in the README). Since then the agent makes one scheduled daily run (2 X searches, 1 Reddit search, 1 model read, about $0.02) plus whatever personal scans people buy. We don't make calls to pad the count.
+The first calls on 3 Nov were build and test runs while wiring up buy (including one charged-then-failed Cencori call, reported to buy in the README). Since then the agent makes one scheduled daily run (X and Reddit searches, a model read, and the rules check: a browser session and/or full-post fetches, about $0.04), one manual run after a feature change, plus whatever personal scans people buy. We don't make calls to pad the count.
 
 ## Scan sales (x402, POST /api/scan)
 
@@ -67,11 +67,19 @@ The first calls on 3 Nov were build and test runs while wiring up buy (including
 | 2026-11-04 03:23 UTC | buy gateway | `/v1/social/x/posts/search` (daily) | $0.0050 | [0xf0e391f6…](https://celo.blockscout.com/tx/0xf0e391f62f92f9430df8b3e428b12440910cb4326b44f437ad49f71e449d9b56) |
 | 2026-11-04 03:23 UTC | buy gateway | `/v1/social/x/posts/search` (daily) | $0.0050 | [0x41099c94…](https://celo.blockscout.com/tx/0x41099c9476fac33d8200377ce2cef355a0cd3f7c7bd7cc96fd0dea5d852df088) |
 | 2026-11-04 03:24 UTC | Agent402 metered chat | `/v1/metered/chat/completions` (daily) | $0.0042 | [0x719e4b23…](https://celo.blockscout.com/tx/0x719e4b23a04097a9feb2a8d81edf1cb3aa310a074334b4fc926265b8b4d7e1c0) |
+| 2026-11-04 04:01 UTC | buy gateway | `/v1/social/reddit/posts/search` (daily) | $0.0050 | [0x741ad93d…](https://celo.blockscout.com/tx/0x741ad93d40183bde1323633a0cb7c98f623c4e4debe66bd51ee238f7736e75b9) |
+| 2026-11-04 04:01 UTC | buy gateway | `/v1/social/x/posts/search` (daily) | $0.0050 | [0xfb558d65…](https://celo.blockscout.com/tx/0xfb558d6516a2957d68b33611c992a6456c332a3670a848513dd16fffc39322c4) |
+| 2026-11-04 04:02 UTC | buy gateway | `/v1/social/x/posts/search` (daily) | $0.0050 | [0x4e4699d3…](https://celo.blockscout.com/tx/0x4e4699d37f84e810aee290951953fb1306e9b80f3c9917947a7b52e88976a313) |
+| 2026-11-04 04:02 UTC | Agent402 metered chat | `/v1/metered/chat/completions` (daily) | $0.0041 | [0x659fdcee…](https://celo.blockscout.com/tx/0x659fdcee20fffed30dd90795b9ba56afa5f5274a33b6c622a79409b46c7647d1) |
+| 2026-11-04 04:02 UTC | buy gateway | `/v1/social/x/tools/tikhub-api-v1-twitter-web-fetch-tweet-detail` (daily) | $0.0050 | [0x30a80b0c…](https://celo.blockscout.com/tx/0x30a80b0cbbf47acdd92cf6d2593e34ff3aa9c4b5862c18589a6204b8c8675691) |
+| 2026-11-04 04:02 UTC | buy gateway | `/v1/browser/sessions` (daily) | $0.0048 | [0xed755eaa…](https://celo.blockscout.com/tx/0xed755eaafbcb6fc39ccdccf708f1c775f1e8136ff8a28bb2c17869c3a3725075) |
+| 2026-11-04 04:03 UTC | Agent402 metered chat | `/v1/metered/chat/completions` (daily) | $0.0013 | [0x6ed3c84d…](https://celo.blockscout.com/tx/0x6ed3c84d95b0d0c62ce91feab90a4d8a2661b79557c1c2cbea2be9eccaa31ddd) |
 
 ## Daily onchain anchors
 
 keccak256 of that day's `feed/latest.json`, written as calldata of a tagged zero-value self-transaction.
 
+- 2026-11-04 04:03 UTC: [0x9add2a65…](https://celo.blockscout.com/tx/0x9add2a656737cdb1928eb20671ec7f3a65cc6e111f8ee312102f84baa3a6cb44) (`0xfcda5e5f22ffe363…`)
 - 2026-11-04 03:24 UTC: [0x96b9accc…](https://celo.blockscout.com/tx/0x96b9accce0d98743f72466ca061b2a4a1ae1dd3a74bcd9acfb4b8cec7acd26a3) (`0x256d88a0d1fee74a…`)
 - 2026-11-03 18:53 UTC: [0x5b6e5045…](https://celo.blockscout.com/tx/0x5b6e5045628f782520447628c8c234c05cd480bc8799ca1f6bc92b9f6253e4d4) (`0x2bf230236fe81fc6…`)
 - 2026-11-03 18:48 UTC: [0xeaa04eb0…](https://celo.blockscout.com/tx/0xeaa04eb085a07272e174fc2ee96d597765b652457930e8bd68a39304c6c7566e) (`0xb95472bf4000ba24…`)

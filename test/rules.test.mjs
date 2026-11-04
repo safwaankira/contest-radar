@@ -36,12 +36,13 @@ test("model lines parse into a map by page", () => {
 });
 
 test("rules page updates deadline and prize, drops closed contests, ignores non-rules pages", () => {
-  const item = { source: "x", url: "https://x.com/a/status/1", title: "Hackathon", score: 50, deadline: "2026-11-10", payout_amount_usd: 1000, amount_usd: 1000, effort_score: 40, text_score: 20, decision_notes: ["prize used for ranking: $1000"] };
+  const item = { source: "x", url: "https://x.com/a/status/1", title: "Hackathon", score: 50, deadline: "2026-11-10", payout_amount_usd: 1000, amount_usd: 1000, effort_score: 40, text_score: 20, decision_notes: ["deadline 2026-11-10", "prize used for ranking: $1000"] };
   const up = applyRules(item, "https://lu.ma/ev1", { i: 0, is_rules: true, closed: false, deadline: "2026-11-25", prizeUsd: 5000, restricted: null }, NOW);
   assert.equal(up.deadline, "2026-11-25");
   assert.equal(up.payout_amount_usd, 5000);
   assert.equal(up.rules_url, "https://lu.ma/ev1");
   assert.ok(up.decision_notes[0].startsWith("rules page read"));
+  assert.ok(!up.decision_notes.includes("deadline 2026-11-10"));
   assert.ok(up.score > 0);
   assert.equal(applyRules(item, "https://lu.ma/ev1", { is_rules: true, closed: true }, NOW), null);
   assert.equal(applyRules(item, "https://lu.ma/ev1", { is_rules: false, closed: true }, NOW), item);

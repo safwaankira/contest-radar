@@ -1,15 +1,15 @@
 {
-  "generated_at": "2026-11-04T03:51:44.682Z",
+  "generated_at": "2026-11-04T04:04:16.845Z",
   "agent": "0x6859abd01f1686e9ddfe809cc69fab1054447457",
   "paid_calls": {
     "buy gateway (TikHub X / Reddit search)": {
-      "calls": 30,
-      "usd": 0.155,
+      "calls": 35,
+      "usd": 0.1798,
       "days": 2
     },
     "Agent402 metered chat (gpt-4o-mini)": {
-      "calls": 9,
-      "usd": 0.0377,
+      "calls": 11,
+      "usd": 0.0431,
       "days": 2
     }
   },

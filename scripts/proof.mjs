@@ -17,7 +17,7 @@ const HACKATHON_START = Date.parse(process.env.HACKATHON_START || "2026-10-06T00
 // Wallets that are ours or were funded by us; their payments never count as users.
 const OURS = new Set([AGENT, "0xd9aaa6234ac620cde2fe5c6a2ffd5a8cc86e7293", ...(process.env.OUR_WALLETS || "").split(",")]
   .map((a) => a.trim().toLowerCase()).filter(Boolean));
-const SERVICE = { [KNOWN_PAYEES[0]]: "buy gateway (TikHub X / Reddit search)", [KNOWN_PAYEES[1]]: "Agent402 metered chat (gpt-4o-mini)" };
+const SERVICE = { [KNOWN_PAYEES[0]]: "buy gateway (X/Reddit search, browser, X post detail)", [KNOWN_PAYEES[1]]: "Agent402 metered chat (gpt-4o-mini)" };
 // Celo fee abstraction bookkeeping when gas is paid in USDC: not purchases, not income.
 const ZERO = "0x0000000000000000000000000000000000000000";
 const FEE_SINKS = ["0x4200000000000000000000000000000000000011", "0xcd437749e43a154c07f3553504c68fbfd56b8778"];

@@ -143,3 +143,21 @@ test("aggregator repos keep at most two items", () => {
   assert.equal(out.filter((i) => i.repo === "x/bounty-plaza").length, 2);
   assert.equal(out.length, 4);
 });
+
+import { better, groupSlots as gs2, dedupeAnnouncements as da2 } from "../lib/rank.js";
+
+test("duplicates keep the rules-checked copy, then today's, then the higher score", () => {
+  const carried = { source: "x", title: "Swarm Alignment Hackathon", payout_amount_usd: 4000, repo: "@a", deadline: "2026-11-08", score: 75, carried: true, url: "u1" };
+  const checked = { ...carried, score: 71, carried: undefined, rules_checked_at: "2026-11-04T04:05:00Z", rules_url: "https://apartresearch.com/x", url: "u2" };
+  assert.equal(better(carried, checked), checked);
+  const fresh = { ...carried, carried: undefined, score: 60, url: "u3" };
+  assert.equal(better(carried, fresh), fresh);
+  const g = gs2([carried, checked]);
+  assert.equal(g.length, 1);
+  assert.equal(g[0].url, "u2");
+  assert.equal(g[0].slots, undefined); // X posts are not slots
+  assert.equal(g[0].also_posted, 1);
+  const d = da2([carried, { ...checked, title: "Join the hackathon" }]);
+  assert.equal(d.length, 1);
+  assert.equal(d[0].rules_url, "https://apartresearch.com/x");
+});
