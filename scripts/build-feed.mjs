@@ -1,7 +1,7 @@
 import { mkdir, readFile, writeFile } from 'node:fs/promises';
 import { buildRssFeed } from './feed-rss.mjs';
 import { scoreText, assessOpportunity } from './scoring.mjs';
-import { worthScore, rescore, groupSlots, dedupeAnnouncements, priceFromLabels, isPayingIssue } from '../lib/rank.js';
+import { worthScore, rescore, groupSlots, dedupeAnnouncements, priceFromLabels, isPayingIssue, capPerRepo } from '../lib/rank.js';
 
 // Bot-generated roundups ("Bounty Alert: 11 New Opportunities found") list other people's
 // bounties; they are not bounties themselves.
@@ -133,6 +133,7 @@ if (withContests) {
 
 for (let i = items.length - 1; i >= 0; i--) if (items[i].opportunity_class === 'avoid' || items[i].score <= 0) items.splice(i, 1);
 items.sort((a, b) => b.score - a.score || new Date(b.updated_at) - new Date(a.updated_at));
+items.splice(0, items.length, ...capPerRepo(items, 2));
 {
   let github = 0;
   for (let i = 0; i < items.length; i++) {

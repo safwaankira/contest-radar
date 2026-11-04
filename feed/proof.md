@@ -1,6 +1,6 @@
 # Contest Radar: proof of payment
 
-Generated 2026-11-03 20:10 UTC from the chain (Blockscout) and the agent's ledger. Live version: https://contest-radar-celo.vercel.app/feed/proof.md
+Generated 2026-11-04 03:51 UTC from the chain (Blockscout) and the agent's ledger. Live version: https://contest-radar-celo.vercel.app/feed/proof.md
 
 - **Agent wallet (x402 PayTo for scans):** [`0x6859abd01f1686e9ddfe809cc69fab1054447457`](https://celo.blockscout.com/address/0x6859abd01f1686e9ddfe809cc69fab1054447457)
 - **ERC-8004:** agentId 10034, registration [0x62b225b1…](https://celo.blockscout.com/tx/0x62b225b16d2e7bce4a2b4dfb8d7c59e2f9c8a5e00d23dfe30bc848f1f16d19b7)
@@ -11,8 +11,8 @@ Generated 2026-11-03 20:10 UTC from the chain (Blockscout) and the agent's ledge
 
 | Service | Payee | Paid calls | Spent | Days with calls |
 |---|---|---:|---:|---:|
-| buy gateway (TikHub X / Reddit search) | [`0x20fa…333b`](https://celo.blockscout.com/address/0x20faaca5f980e29639a0fcc6dca6988e18ed333b) | 27 | $0.140 | 1 |
-| Agent402 metered chat (gpt-4o-mini) | [`0xabf4…a9d0`](https://celo.blockscout.com/address/0xabf4fabd7c416fb67202e5f9002389fc75e2a9d0) | 8 | $0.034 | 1 |
+| buy gateway (TikHub X / Reddit search) | [`0x20fa…333b`](https://celo.blockscout.com/address/0x20faaca5f980e29639a0fcc6dca6988e18ed333b) | 30 | $0.155 | 2 |
+| Agent402 metered chat (gpt-4o-mini) | [`0xabf4…a9d0`](https://celo.blockscout.com/address/0xabf4fabd7c416fb67202e5f9002389fc75e2a9d0) | 9 | $0.038 | 2 |
 
 The first calls on 3 Nov were build and test runs while wiring up buy (including one charged-then-failed Cencori call, reported to buy in the README). Since then the agent makes one scheduled daily run (2 X searches, 1 Reddit search, 1 model read, about $0.02) plus whatever personal scans people buy. We don't make calls to pad the count.
 
@@ -63,11 +63,16 @@ The first calls on 3 Nov were build and test runs while wiring up buy (including
 | 2026-11-03 18:53 UTC | buy gateway | `/v1/social/x/posts/search` (daily) | $0.0050 | [0x359288a1…](https://celo.blockscout.com/tx/0x359288a1f6812b207b3c0d53cc612819a75981f27225a1ae44a5cfdf00194a5f) |
 | 2026-11-03 18:53 UTC | buy gateway | `/v1/social/x/posts/search` (daily) | $0.0050 | [0xd63dab03…](https://celo.blockscout.com/tx/0xd63dab03db9aa390a08feb307bc8089bea07724249f9a5f7fa0f3af75bbd143d) |
 | 2026-11-03 18:53 UTC | Agent402 metered chat | `/v1/metered/chat/completions` (daily) | $0.0041 | [0x7c2306fd…](https://celo.blockscout.com/tx/0x7c2306fd4ddb687f6640424674270a9b285511deb24adf54caa48ce892aadf1b) |
+| 2026-11-04 03:23 UTC | buy gateway | `/v1/social/reddit/posts/search` (daily) | $0.0050 | [0xa069cb8c…](https://celo.blockscout.com/tx/0xa069cb8c8925352c89c1c4fc9d5982a8d7dfbfc64d17ffb09e9ba3281e858968) |
+| 2026-11-04 03:23 UTC | buy gateway | `/v1/social/x/posts/search` (daily) | $0.0050 | [0xf0e391f6…](https://celo.blockscout.com/tx/0xf0e391f62f92f9430df8b3e428b12440910cb4326b44f437ad49f71e449d9b56) |
+| 2026-11-04 03:23 UTC | buy gateway | `/v1/social/x/posts/search` (daily) | $0.0050 | [0x41099c94…](https://celo.blockscout.com/tx/0x41099c9476fac33d8200377ce2cef355a0cd3f7c7bd7cc96fd0dea5d852df088) |
+| 2026-11-04 03:24 UTC | Agent402 metered chat | `/v1/metered/chat/completions` (daily) | $0.0042 | [0x719e4b23…](https://celo.blockscout.com/tx/0x719e4b23a04097a9feb2a8d81edf1cb3aa310a074334b4fc926265b8b4d7e1c0) |
 
 ## Daily onchain anchors
 
 keccak256 of that day's `feed/latest.json`, written as calldata of a tagged zero-value self-transaction.
 
+- 2026-11-04 03:24 UTC: [0x96b9accc…](https://celo.blockscout.com/tx/0x96b9accce0d98743f72466ca061b2a4a1ae1dd3a74bcd9acfb4b8cec7acd26a3) (`0x256d88a0d1fee74a…`)
 - 2026-11-03 18:53 UTC: [0x5b6e5045…](https://celo.blockscout.com/tx/0x5b6e5045628f782520447628c8c234c05cd480bc8799ca1f6bc92b9f6253e4d4) (`0x2bf230236fe81fc6…`)
 - 2026-11-03 18:48 UTC: [0xeaa04eb0…](https://celo.blockscout.com/tx/0xeaa04eb085a07272e174fc2ee96d597765b652457930e8bd68a39304c6c7566e) (`0xb95472bf4000ba24…`)
 - 2026-11-03 18:45 UTC: [0x563d0ec0…](https://celo.blockscout.com/tx/0x563d0ec080dc713427a168c5865deab27d0b6b79efa363fdc2c3051cede42797) (`0xe7b2dcf92523577e…`)

@@ -13,7 +13,7 @@ test("rules links skip social and media links and prefer contest platforms", () 
   assert.deepEqual(rulesLinks("http://insecure.com only"), []);
 });
 
-test("targets are the top social items that link a rules page", () => {
+test("targets are the top social items that link a rules page", async () => {
   const items = [
     { source: "x", url: "https://x.com/a/status/1", score: 80 },
     { source: "poidh", url: "https://poidh.xyz/base/bounty/1", score: 90 },
@@ -25,7 +25,7 @@ test("targets are the top social items that link a rules page", () => {
     { url: "https://x.com/b/status/2", text: "no link here" },
     { url: "https://www.reddit.com/r/x/1", text: "rules https://gleam.io/abc" },
   ];
-  const t = pickTargets(items, cands, 3);
+  const t = await pickTargets(items, cands, 3, async () => null);
   assert.deepEqual(t.map((x) => x.url), ["https://lu.ma/ev1", "https://gleam.io/abc"]);
 });
 
@@ -67,9 +67,26 @@ test("checkRules reads pages in one browser session, closes it, and applies the 
   const items = [{ source: "x", url: "https://x.com/a/status/1", title: "Contest", score: 40, deadline: null, payout_amount_usd: null, effort_score: 40, text_score: 10 }];
   const cands = [{ url: "https://x.com/a/status/1", text: "rules https://lu.ma/c1" }];
   const { checkRules } = await import("../lib/rules.js");
-  const r = await checkRules(session, items, cands, { n: 3 });
+  const r = await checkRules(session, items, cands, { n: 3, resolve: async () => null });
   assert.deepEqual(calls, ["open 3min", "read https://lu.ma/c1", "close"]);
   assert.equal(r.items[0].deadline, "2026-11-30");
   assert.equal(r.items[0].payout_amount_usd, 3000);
   assert.equal(r.checked.length, 1);
+});
+
+test("t.co links in X posts are unwrapped before picking the rules page", async () => {
+  const items = [{ source: "x", url: "https://x.com/a/status/1", score: 80 }];
+  const cands = [{ url: "https://x.com/a/status/1", text: "Hackathon $5k https://t.co/abc123 https://t.co/img999" }];
+  const map = { "https://t.co/abc123": "https://lu.ma/event1", "https://t.co/img999": "https://x.com/a/status/1/photo/1" };
+  const t = await pickTargets(items, cands, 3, async (u) => map[u] ?? null);
+  assert.deepEqual(t.map((x) => x.url), ["https://lu.ma/event1"]);
+});
+
+test("unshorten reads the redirect target without following it", async () => {
+  const { unshorten } = await import("../lib/rules.js");
+  const fake = async () => ({ headers: { get: (h) => (h === "location" ? "https://lu.ma/x" : null) }, text: async () => "" });
+  assert.equal(await unshorten("https://t.co/a", fake), "https://lu.ma/x");
+  const meta = async () => ({ headers: { get: () => null }, text: async () => '<meta http-equiv="refresh" content="0;URL=https://gleam.io/y">' });
+  assert.equal(await unshorten("https://t.co/b", meta), "https://gleam.io/y");
+  assert.equal(await unshorten("https://t.co/c", async () => { throw new Error("down"); }), null);
 });

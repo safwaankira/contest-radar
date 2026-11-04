@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-11-03T18:53:35.458Z",
+  "generated_at": "2026-11-04T03:24:05.328Z",
   "source": "https://github.com/safwaankira/contest-radar",
   "demo": "https://contest-radar-celo.vercel.app",
   "manifest": "https://contest-radar-celo.vercel.app/feed/manifest.json",
@@ -8,25 +8,72 @@
   "run": {
     "counts": {
       "poidh": 40,
-      "x": 35,
+      "x": 37,
       "reddit": 7,
-      "screened": 25,
-      "ranked": 37
+      "screened": 29,
+      "ranked": 38
     },
     "model": {
       "name": "openai/gpt-4o-mini",
-      "read": 25,
-      "kept": 8
+      "read": 29,
+      "kept": 9
     },
-    "spent_usd": 0.0191,
+    "rules_checked": [],
+    "spent_usd": 0.0192,
     "agent": "0x6859Abd01F1686E9DDfE809CC69Fab1054447457",
     "sandbox": false
   },
-  "count": 61,
+  "count": 60,
   "errors": [],
   "items": [
     {
-      "score": 83,
+      "score": 81,
+      "raw_score": 28,
+      "risk_score": 0,
+      "opportunity_class": "standard",
+      "effort_score": 30,
+      "effort_signals": [
+        "docs-or-tests"
+      ],
+      "decision_notes": [
+        "deadline 2026-11-13",
+        "effort signals: docs-or-tests"
+      ],
+      "risk_flags": [],
+      "manual_friction": false,
+      "labels": [
+        "other",
+        "x"
+      ],
+      "signals": [
+        "source:x",
+        "bounty",
+        "amount"
+      ],
+      "addresses": [],
+      "amount_usd": 2050,
+      "payout_amount_usd": 2000,
+      "text_score": 28,
+      "source": "x",
+      "preset": "x",
+      "preset_name": "X contests",
+      "repo": "@Z3NITSUxZz",
+      "title": "Participate in BitgetWallet Content Contest",
+      "url": "https://x.com/Z3NITSUxZz/status/2117108619955315198",
+      "updated_at": "2026-11-02T04:16:43.000Z",
+      "prize_text": "$2,000",
+      "deadline": "2026-11-13",
+      "kind": "other",
+      "task": "Participate in BitgetWallet Content Contest",
+      "name": "BitgetWallet Contest",
+      "crowded": false,
+      "first_seen": "2026-11-03T18:00:28.255Z",
+      "carried": true,
+      "slots": 1,
+      "restricted": null
+    },
+    {
+      "score": 77,
       "raw_score": 46,
       "risk_score": 0,
       "opportunity_class": "rail-watch",
@@ -69,11 +116,12 @@
       "task": "Build on Portaldot Network V3.0",
       "name": "Portaldot Hacker House",
       "crowded": false,
-      "slots": 1,
-      "first_seen": "2026-11-03T18:42:07.254Z"
+      "slots": 2,
+      "first_seen": "2026-11-03T18:42:07.254Z",
+      "carried": true
     },
     {
-      "score": 82,
+      "score": 76,
       "raw_score": 28,
       "risk_score": 0,
       "opportunity_class": "standard",
@@ -115,18 +163,70 @@
       "name": "AI Content Contest",
       "crowded": false,
       "slots": 1,
-      "first_seen": "2026-11-03T17:37:09.448Z"
+      "first_seen": "2026-11-03T17:37:09.448Z",
+      "carried": true
     },
     {
-      "score": 77,
-      "raw_score": 28,
+      "score": 75,
+      "raw_score": 46,
       "risk_score": 0,
-      "opportunity_class": "standard",
+      "opportunity_class": "high-value",
+      "effort_score": 40,
+      "effort_signals": [],
+      "decision_notes": [
+        "deadline 2026-12-20",
+        "prize used for ranking: $506",
+        "payment rail signal present"
+      ],
+      "risk_flags": [],
+      "manual_friction": false,
+      "labels": [
+        "other",
+        "poidh"
+      ],
+      "signals": [
+        "source:poidh",
+        "escrowed onchain",
+        "bounty",
+        "USDC/Base",
+        "amount"
+      ],
+      "addresses": [],
+      "amount_usd": 506.439,
+      "payout_amount_usd": 506.439,
+      "text_score": 46,
+      "source": "poidh",
+      "preset": "poidh",
+      "preset_name": "poidh bounties",
+      "repo": "poidh/mainnet",
+      "title": "Train a small offline reader model for Field Atlas",
+      "url": "https://poidh.xyz/mainnet/bounty/45",
+      "updated_at": "2026-11-04T02:01:47.000Z",
+      "restricted": null,
+      "issuer": "0xc698865c38ec12b475aa55764d447566dd54c758",
+      "timing_points": 12,
+      "trust_points": 10,
+      "prize_text": "$506.44 (mainnet)",
+      "deadline": "2026-12-20",
+      "kind": "other",
+      "task": null,
+      "name": "0xc698865c38ec12b475aa55764d447566dd54c7",
+      "crowded": false,
+      "slots": 1,
+      "first_seen": "2026-11-04T03:24:05.327Z"
+    },
+    {
+      "score": 75,
+      "raw_score": 64,
+      "risk_score": 0,
+      "opportunity_class": "high-value",
       "effort_score": 55,
       "effort_signals": [],
       "decision_notes": [
         "deadline 2026-11-08",
-        "parsed payout amount: $1500"
+        "already crowded: many entries or replies",
+        "prize used for ranking: $4,000",
+        "payment rail signal present"
       ],
       "risk_flags": [],
       "manual_friction": false,
@@ -137,29 +237,33 @@
       "signals": [
         "source:x",
         "bounty",
-        "amount"
+        "USDC/Base",
+        "x402",
+        "amount",
+        "crowded"
       ],
       "addresses": [],
-      "amount_usd": 1500,
-      "payout_amount_usd": 1500,
-      "text_score": 28,
+      "amount_usd": 4000,
+      "payout_amount_usd": 4000,
+      "text_score": 64,
       "source": "x",
       "preset": "x",
       "preset_name": "X contests",
-      "repo": "@stallionsearn",
-      "title": "Join women-only hackathon for AI solutions",
-      "url": "https://x.com/stallionsearn/status/2117679199154786315",
-      "updated_at": "2026-11-03T18:04:00.000Z",
-      "prize_text": "$1,500 prize pool",
+      "repo": "@RiyoX24",
+      "title": "Participate in Swarm Alignment Hackathon",
+      "url": "https://x.com/RiyoX24/status/2117228641323270372",
+      "updated_at": "2026-11-02T12:13:38.000Z",
+      "restricted": null,
+      "timing_points": 20,
+      "trust_points": 8,
+      "prize_text": "$4,000",
       "deadline": "2026-11-08",
       "kind": "other",
-      "task": "Join women-only hackathon for AI solutions",
-      "name": "EmpowerHER Hackathon",
-      "crowded": false,
+      "task": "Participate in Swarm Alignment Hackathon",
+      "name": "Apart Research",
+      "crowded": true,
       "slots": 1,
-      "first_seen": "2026-11-03T18:06:52.158Z",
-      "carried": true,
-      "also_posted": 1
+      "first_seen": "2026-11-04T03:24:05.327Z"
     },
     {
       "score": 74,
@@ -169,8 +273,7 @@
       "effort_score": 40,
       "effort_signals": [],
       "decision_notes": [
-        "deadline 2026-12-01",
-        "parsed payout amount: $100"
+        "deadline 2026-12-01"
       ],
       "risk_flags": [],
       "manual_friction": false,
@@ -208,18 +311,18 @@
       "carried": true
     },
     {
-      "score": 73,
+      "score": 72,
       "raw_score": 28,
       "risk_score": 0,
       "opportunity_class": "standard",
-      "effort_score": 30,
+      "effort_score": 64,
       "effort_signals": [
-        "docs-or-tests"
+        "security-sensitive"
       ],
       "decision_notes": [
-        "deadline 2026-11-13",
-        "parsed payout amount: $2050",
-        "effort signals: docs-or-tests"
+        "deadline 2026-11-05",
+        "prize used for ranking: $3,000",
+        "effort signals: security-sensitive"
       ],
       "risk_flags": [],
       "manual_friction": false,
@@ -233,25 +336,27 @@
         "amount"
       ],
       "addresses": [],
-      "amount_usd": 2050,
-      "payout_amount_usd": 2000,
+      "amount_usd": 3000,
+      "payout_amount_usd": 3000,
       "text_score": 28,
       "source": "x",
       "preset": "x",
       "preset_name": "X contests",
-      "repo": "@Z3NITSUxZz",
-      "title": "Participate in BitgetWallet Content Contest",
-      "url": "https://x.com/Z3NITSUxZz/status/2117108619955315198",
-      "updated_at": "2026-11-02T04:16:43.000Z",
-      "prize_text": "$2,000",
-      "deadline": "2026-11-13",
+      "repo": "@derrick__Bsc",
+      "title": "Create AI-generated content featuring selected streamers",
+      "url": "https://x.com/derrick__Bsc/status/2117745909685743637",
+      "updated_at": "2026-11-03T22:29:05.000Z",
+      "restricted": null,
+      "timing_points": 14,
+      "trust_points": 8,
+      "prize_text": "$3,000",
+      "deadline": "2026-11-05",
       "kind": "other",
-      "task": "Participate in BitgetWallet Content Contest",
-      "name": "BitgetWallet Contest",
+      "task": "Create AI-generated content featuring selected streamers",
+      "name": "AI Content Contest",
       "crowded": false,
-      "first_seen": "2026-11-03T18:00:28.255Z",
-      "carried": true,
-      "slots": 1
+      "slots": 1,
+      "first_seen": "2026-11-04T03:24:05.327Z"
     },
     {
       "score": 71,
@@ -295,7 +400,100 @@
       "name": "Apart Research",
       "crowded": false,
       "slots": 1,
-      "first_seen": "2026-11-03T17:37:09.448Z"
+      "first_seen": "2026-11-03T17:37:09.448Z",
+      "carried": true
+    },
+    {
+      "score": 69,
+      "raw_score": 28,
+      "risk_score": 0,
+      "opportunity_class": "standard",
+      "effort_score": 55,
+      "effort_signals": [],
+      "decision_notes": [
+        "deadline 2026-11-08"
+      ],
+      "risk_flags": [],
+      "manual_friction": false,
+      "labels": [
+        "other",
+        "x"
+      ],
+      "signals": [
+        "source:x",
+        "bounty",
+        "amount"
+      ],
+      "addresses": [],
+      "amount_usd": 1500,
+      "payout_amount_usd": 1500,
+      "text_score": 28,
+      "source": "x",
+      "preset": "x",
+      "preset_name": "X contests",
+      "repo": "@stallionsearn",
+      "title": "Join women-only hackathon for AI solutions",
+      "url": "https://x.com/stallionsearn/status/2117679199154786315",
+      "updated_at": "2026-11-03T18:04:00.000Z",
+      "prize_text": "$1,500 prize pool",
+      "deadline": "2026-11-08",
+      "kind": "other",
+      "task": "Join women-only hackathon for AI solutions",
+      "name": "EmpowerHER Hackathon",
+      "crowded": false,
+      "slots": 1,
+      "first_seen": "2026-11-03T18:06:52.158Z",
+      "carried": true,
+      "also_posted": 1,
+      "restricted": "women only"
+    },
+    {
+      "score": 68,
+      "raw_score": 28,
+      "risk_score": 0,
+      "opportunity_class": "standard",
+      "effort_score": 79,
+      "effort_signals": [
+        "security-sensitive"
+      ],
+      "decision_notes": [
+        "deadline 2026-12-25",
+        "prize used for ranking: $100,000",
+        "effort signals: security-sensitive"
+      ],
+      "risk_flags": [],
+      "manual_friction": false,
+      "labels": [
+        "other",
+        "x"
+      ],
+      "signals": [
+        "source:x",
+        "bounty",
+        "amount"
+      ],
+      "addresses": [],
+      "amount_usd": 100000,
+      "payout_amount_usd": 100000,
+      "text_score": 28,
+      "source": "x",
+      "preset": "x",
+      "preset_name": "X contests",
+      "repo": "@Stephcryptt",
+      "title": "Join the hackathon and apply",
+      "url": "https://x.com/Stephcryptt/status/2117564464081895708",
+      "updated_at": "2026-11-03T10:28:05.000Z",
+      "restricted": null,
+      "timing_points": 12,
+      "trust_points": 8,
+      "prize_text": "$100K prize pool",
+      "deadline": "2026-12-25",
+      "kind": "other",
+      "task": "Join the hackathon and apply",
+      "name": "OM Hackathon",
+      "crowded": false,
+      "slots": 1,
+      "first_seen": "2026-11-04T03:24:05.327Z"
     },
     {
       "score": 67,
@@ -308,7 +506,7 @@
       ],
       "decision_notes": [
         "deadline 2026-11-15",
-        "prize used for ranking: $63",
+        "prize used for ranking: $61",
         "payment rail signal present",
         "effort signals: docs-or-tests"
       ],
@@ -332,8 +530,8 @@
           "value": "0xee9069e8f520652e59674fad2120f6dea2671ba3"
         }
       ],
-      "amount_usd": 62.62019,
-      "payout_amount_usd": 62.62019,
+      "amount_usd": 61.12743,
+      "payout_amount_usd": 61.12743,
       "text_score": 66,
       "source": "poidh",
       "preset": "poidh",
@@ -346,7 +544,7 @@
       "issuer": "0xdface0bfef6ec11f4f0e669a9dbfe4bf21fcb907",
       "timing_points": 12,
       "trust_points": 10,
-      "prize_text": "$62.62 (base)",
+      "prize_text": "$61.13 (base)",
       "deadline": "2026-11-15",
       "kind": "other",
       "task": null,
@@ -354,6 +552,85 @@
       "crowded": false,
       "slots": 1,
       "first_seen": "2026-11-03T17:37:09.448Z"
+    },
+    {
+      "score": 66,
+      "raw_score": 54,
+      "risk_score": 0,
+      "opportunity_class": "high-value",
+      "effort_score": 30,
+      "effort_signals": [
+        "docs-or-tests"
+      ],
+      "decision_notes": [
+        "parsed payout amount: $300",
+        "payment rail signal present",
+        "effort signals: docs-or-tests"
+      ],
+      "risk_flags": [],
+      "manual_friction": false,
+      "labels": [
+        "bounty",
+        "hard"
+      ],
+      "signals": [
+        "bounty",
+        "USDC/Base",
+        "amount",
+        "label match"
+      ],
+      "addresses": [],
+      "amount_usd": 300,
+      "payout_amount_usd": 300,
+      "text_score": 54,
+      "source": "github",
+      "preset": "base-usdc",
+      "preset_name": "Base / USDC",
+      "repo": "illbnm/homelab-stack",
+      "title": "[BOUNTY $300] SSO \u2014 Authentik \u7edf\u4e00\u8eab\u4efd\u8ba4\u8bc1",
+      "url": "https://github.com/illbnm/homelab-stack/issues/9",
+      "updated_at": "2026-11-04T03:17:43Z"
+    },
+    {
+      "score": 66,
+      "raw_score": 66,
+      "risk_score": 0,
+      "opportunity_class": "manual-review",
+      "effort_score": 64,
+      "effort_signals": [
+        "security-sensitive"
+      ],
+      "decision_notes": [
+        "parsed payout amount: $15000",
+        "payment rail signal present",
+        "effort signals: security-sensitive"
+      ],
+      "risk_flags": [],
+      "manual_friction": false,
+      "labels": [],
+      "signals": [
+        "bounty",
+        "USDC/Base",
+        "amount",
+        "payout address",
+        "implausible amount"
+      ],
+      "addresses": [
+        {
+          "type": "EVM",
+          "value": "0x3a5E08708dd1CF22AAe94f913Ab69b17b80a3dC5"
+        }
+      ],
+      "amount_usd": null,
+      "payout_amount_usd": 15000,
+      "text_score": 46,
+      "source": "github",
+      "preset": "base-usdc",
+      "preset_name": "Base / USDC",
+      "repo": "Uniswap/v4-periphery",
+      "title": "fix(router): prevent sequential TAKE_PORTION compounding basis points error causing CurrencyNotSettled DoS",
+      "url": "https://github.com/Uniswap/v4-periphery/issues/624",
+      "updated_at": "2026-11-04T03:17:34Z"
     },
     {
       "score": 66,
@@ -397,21 +674,190 @@
       "name": "Meme Auction",
       "crowded": false,
       "slots": 1,
-      "first_seen": "2026-11-03T17:37:09.448Z"
+      "first_seen": "2026-11-03T17:37:09.448Z",
+      "carried": true
     },
     {
-      "score": 61,
-      "raw_score": 66,
+      "score": 63,
+      "raw_score": 56,
       "risk_score": 0,
-      "opportunity_class": "rail-watch",
+      "opportunity_class": "high-value",
+      "effort_score": 40,
+      "effort_signals": [],
+      "decision_notes": [
+        "parsed payout amount: $250"
+      ],
+      "risk_flags": [],
+      "manual_friction": false,
+      "labels": [
+        "bounty",
+        "real"
+      ],
+      "signals": [
+        "bounty",
+        "amount",
+        "label match",
+        "payout address"
+      ],
+      "addresses": [
+        {
+          "type": "EVM",
+          "value": "0xA5E6eB31868A85127B1ED82b8C760193356206ED"
+        }
+      ],
+      "amount_usd": 250,
+      "payout_amount_usd": 250,
+      "text_score": 56,
+      "source": "github",
+      "preset": "base-usdc",
+      "preset_name": "Base / USDC",
+      "repo": "zhangjiayang6835-cyber/bounty-plaza",
+      "title": "[Bounty] \ud83d\udcb0 Bounty Seguro ($$250): [Bounty] Preserve RFC 7239 `Forwarded` host author",
+      "url": "https://github.com/zhangjiayang6835-cyber/bounty-plaza/issues/4152",
+      "updated_at": "2026-11-04T03:17:21Z"
+    },
+    {
+      "score": 63,
+      "raw_score": 56,
+      "risk_score": 0,
+      "opportunity_class": "high-value",
+      "effort_score": 40,
+      "effort_signals": [],
+      "decision_notes": [
+        "parsed payout amount: $250"
+      ],
+      "risk_flags": [],
+      "manual_friction": false,
+      "labels": [
+        "bounty",
+        "real"
+      ],
+      "signals": [
+        "bounty",
+        "amount",
+        "label match",
+        "payout address"
+      ],
+      "addresses": [
+        {
+          "type": "EVM",
+          "value": "0xA5E6eB31868A85127B1ED82b8C760193356206ED"
+        }
+      ],
+      "amount_usd": 250,
+      "payout_amount_usd": 250,
+      "text_score": 56,
+      "source": "github",
+      "preset": "base-usdc",
+      "preset_name": "Base / USDC",
+      "repo": "zhangjiayang6835-cyber/bounty-plaza",
+      "title": "[Bounty] \ud83d\udcb0 Bounty Seguro ($$250): \ud83d\udcb0 Bounty Seguro ($$250): [Bounty] \ud83d\udcb0 Bounty Seguro ",
+      "url": "https://github.com/zhangjiayang6835-cyber/bounty-plaza/issues/4168",
+      "updated_at": "2026-11-04T03:17:20Z"
+    },
+    {
+      "score": 63,
+      "raw_score": 46,
+      "risk_score": 0,
+      "opportunity_class": "high-value",
+      "effort_score": 64,
+      "effort_signals": [
+        "security-sensitive"
+      ],
+      "decision_notes": [
+        "deadline 2026-11-08",
+        "already crowded: many entries or replies",
+        "prize used for ranking: $1,500",
+        "only open to: women only",
+        "payment rail signal present",
+        "effort signals: security-sensitive"
+      ],
+      "risk_flags": [],
+      "manual_friction": false,
+      "labels": [
+        "other",
+        "x"
+      ],
+      "signals": [
+        "source:x",
+        "bounty",
+        "USDC/Base",
+        "amount",
+        "crowded"
+      ],
+      "addresses": [],
+      "amount_usd": 1500,
+      "payout_amount_usd": 1500,
+      "text_score": 46,
+      "source": "x",
+      "preset": "x",
+      "preset_name": "X contests",
+      "repo": "@ShonenWeb3",
+      "title": "Participate in women-only hackathon",
+      "url": "https://x.com/ShonenWeb3/status/2117240148643451205",
+      "updated_at": "2026-11-02T12:59:22.000Z",
+      "restricted": "women only",
+      "timing_points": 20,
+      "trust_points": 8,
+      "prize_text": "$1,500 prize pool",
+      "deadline": "2026-11-08",
+      "kind": "other",
+      "task": "Participate in women-only hackathon",
+      "name": "EmpowerHER",
+      "crowded": true,
+      "slots": 1,
+      "first_seen": "2026-11-04T03:24:05.327Z"
+    },
+    {
+      "score": 62,
+      "raw_score": 36,
+      "risk_score": 0,
+      "opportunity_class": "high-value",
       "effort_score": 30,
       "effort_signals": [
         "docs-or-tests"
       ],
       "decision_notes": [
-        "parsed payout amount: $100",
-        "payment rail signal present",
+        "parsed payout amount: $250",
         "effort signals: docs-or-tests"
+      ],
+      "risk_flags": [],
+      "manual_friction": false,
+      "labels": [
+        "bounty",
+        "real"
+      ],
+      "signals": [
+        "bounty",
+        "amount",
+        "label match"
+      ],
+      "addresses": [],
+      "amount_usd": 250,
+      "payout_amount_usd": 250,
+      "text_score": 36,
+      "source": "github",
+      "preset": "base-usdc",
+      "preset_name": "Base / USDC",
+      "repo": "zhangjiayang6835-cyber/bounty-plaza",
+      "title": "[Bounty] Preserve RFC 7239 `Forwarded` host authority in sub-mounted ASGI `Request.scope_",
+      "url": "https://github.com/zhangjiayang6835-cyber/bounty-plaza/issues/4143",
+      "updated_at": "2026-11-04T03:17:25Z"
+    },
+    {
+      "score": 59,
+      "raw_score": 66,
+      "risk_score": 0,
+      "opportunity_class": "rail-watch",
+      "effort_score": 54,
+      "effort_signals": [
+        "docs-or-tests",
+        "security-sensitive"
+      ],
+      "decision_notes": [
+        "parsed payout amount: $150",
+        "payment rail signal present",
+        "effort signals: docs-or-tests, security-sensitive"
       ],
       "risk_flags": [],
       "manual_friction": false,
@@ -425,93 +871,19 @@
       "addresses": [
         {
           "type": "EVM",
-          "value": "0x73872B8fB7F1771C67911f03edc75aBdc9514973"
-        },
-        {
-          "type": "EVM",
-          "value": "0x036CbD53842c5426634e7929541eC2318f3dCF7e"
-        },
-        {
-          "type": "EVM",
-          "value": "0xa49B9352B2e8C2B79b58cb4C60dB43342e08Afa8"
-        },
-        {
-          "type": "EVM",
-          "value": "0x7C46870111257d8A3aaF846BC6D2F7DA7FBb76f1"
-        },
-        {
-          "type": "EVM",
-          "value": "0x5e4dC7639D2b94006c51aD5373173f5e01c248F9"
-        },
-        {
-          "type": "EVM",
-          "value": "0xe47BAea70DC68D6bDeFE08FD8021F84F69FdF8F4"
-        },
-        {
-          "type": "EVM",
-          "value": "0x554c6bB61eDF0CAfB90ff31813540369Cb0105e4"
-        },
-        {
-          "type": "EVM",
-          "value": "0xc5E42B0fB0c109E55f4A40CccfCF3fed1Fc39009"
+          "value": "0x71C836eB3F9354087961b72e04313B014Eb3E059"
         }
       ],
-      "amount_usd": 100,
-      "payout_amount_usd": null,
+      "amount_usd": 150,
+      "payout_amount_usd": 150,
       "text_score": 66,
       "source": "github",
       "preset": "base-usdc",
       "preset_name": "Base / USDC",
-      "repo": "scottonchain/microcredit-contract",
-      "title": "Hermes: attack and test the live pool on Base Sepolia (Circle USDC, 0x7387\u20264973, contracts 1812e7d). Do not redeploy",
-      "url": "https://github.com/scottonchain/microcredit-contract/issues/7",
-      "updated_at": "2026-11-03T18:44:47Z"
-    },
-    {
-      "score": 61,
-      "raw_score": 28,
-      "risk_score": 0,
-      "opportunity_class": "standard",
-      "effort_score": 40,
-      "effort_signals": [],
-      "decision_notes": [
-        "deadline 2026-11-07",
-        "prize used for ranking: $100",
-        "only open to: holders only"
-      ],
-      "risk_flags": [],
-      "manual_friction": false,
-      "labels": [
-        "meme",
-        "x"
-      ],
-      "signals": [
-        "source:x",
-        "bounty",
-        "amount"
-      ],
-      "addresses": [],
-      "amount_usd": 100,
-      "payout_amount_usd": 100,
-      "text_score": 28,
-      "source": "x",
-      "preset": "x",
-      "preset_name": "X contests",
-      "repo": "@FatRat_Crypto",
-      "title": "Create a meme centered around FatRat token",
-      "url": "https://x.com/FatRat_Crypto/status/2117626280938176787",
-      "updated_at": "2026-11-03T14:33:43.000Z",
-      "restricted": "holders only",
-      "timing_points": 20,
-      "trust_points": 8,
-      "prize_text": "$100",
-      "deadline": "2026-11-07",
-      "kind": "meme",
-      "task": "Create a meme centered around FatRat token",
-      "name": "FatRat",
-      "crowded": false,
-      "slots": 1,
-      "first_seen": "2026-11-03T17:37:09.448Z"
+      "repo": "paraloom-labs/paraloom-core",
+      "title": "[BOUNTY] Medium: Missing init_asset_vault, set_asset_deposit_cap, and set_min_token_stake instruction builders, discriminators, and derive_asset_config in bridge::solana",
+      "url": "https://github.com/paraloom-labs/paraloom-core/issues/1258",
+      "updated_at": "2026-11-04T03:17:35Z"
     },
     {
       "score": 59,
@@ -521,7 +893,7 @@
       "effort_score": 40,
       "effort_signals": [],
       "decision_notes": [
-        "prize used for ranking: $109"
+        "prize used for ranking: $107"
       ],
       "risk_flags": [],
       "manual_friction": false,
@@ -536,8 +908,8 @@
         "amount"
       ],
       "addresses": [],
-      "amount_usd": 109.41331,
-      "payout_amount_usd": 109.41331,
+      "amount_usd": 106.80507,
+      "payout_amount_usd": 106.80507,
       "text_score": 28,
       "source": "poidh",
       "preset": "poidh",
@@ -550,7 +922,7 @@
       "issuer": "0x4200ac338555e25b20c8fe82ac02a5c8d4e5a5b4",
       "timing_points": 8,
       "trust_points": 10,
-      "prize_text": "$109.41 (mainnet)",
+      "prize_text": "$106.81 (mainnet)",
       "deadline": null,
       "kind": "other",
       "task": null,
@@ -560,7 +932,82 @@
       "first_seen": "2026-11-03T17:37:09.448Z"
     },
     {
-      "score": 59,
+      "score": 58,
+      "raw_score": 54,
+      "risk_score": 0,
+      "opportunity_class": "rail-watch",
+      "effort_score": 40,
+      "effort_signals": [],
+      "decision_notes": [
+        "parsed payout amount: $100",
+        "payment rail signal present"
+      ],
+      "risk_flags": [],
+      "manual_friction": false,
+      "labels": [
+        "bounty",
+        "real"
+      ],
+      "signals": [
+        "bounty",
+        "USDC/Base",
+        "amount",
+        "label match"
+      ],
+      "addresses": [],
+      "amount_usd": 100,
+      "payout_amount_usd": 100,
+      "text_score": 54,
+      "source": "github",
+      "preset": "base-usdc",
+      "preset_name": "Base / USDC",
+      "repo": "zhangjiayang6835-cyber/bounty-plaza",
+      "title": "[Bounty] USDC-quoted pairs not having the correct marketcap displayed in tools",
+      "url": "https://github.com/zhangjiayang6835-cyber/bounty-plaza/issues/4107",
+      "updated_at": "2026-11-04T03:17:28Z"
+    },
+    {
+      "score": 58,
+      "raw_score": 36,
+      "risk_score": 22,
+      "opportunity_class": "standard",
+      "effort_score": 40,
+      "effort_signals": [],
+      "decision_notes": [
+        "parsed payout amount: $350",
+        "risk flags: competition-noise"
+      ],
+      "risk_flags": [
+        {
+          "label": "competition-noise",
+          "severity": "high",
+          "penalty": 22
+        }
+      ],
+      "manual_friction": false,
+      "labels": [
+        "bounty",
+        "real"
+      ],
+      "signals": [
+        "bounty",
+        "amount",
+        "label match"
+      ],
+      "addresses": [],
+      "amount_usd": 350,
+      "payout_amount_usd": 350,
+      "text_score": 14,
+      "source": "github",
+      "preset": "base-usdc",
+      "preset_name": "Base / USDC",
+      "repo": "zhangjiayang6835-cyber/bounty-plaza",
+      "title": "[Bounty] Flush buffered window elements when `_quorum_epoch_barrier_7c2b` timer preempts ",
+      "url": "https://github.com/zhangjiayang6835-cyber/bounty-plaza/issues/4142",
+      "updated_at": "2026-11-04T03:17:26Z"
+    },
+    {
+      "score": 58,
       "raw_score": 46,
       "risk_score": 0,
       "opportunity_class": "rail-watch",
@@ -568,7 +1015,7 @@
       "effort_signals": [],
       "decision_notes": [
         "deadline 2026-11-20",
-        "prize used for ranking: $29",
+        "prize used for ranking: $28",
         "payment rail signal present"
       ],
       "risk_flags": [],
@@ -585,8 +1032,8 @@
         "amount"
       ],
       "addresses": [],
-      "amount_usd": 28.67225,
-      "payout_amount_usd": 28.67225,
+      "amount_usd": 27.98875,
+      "payout_amount_usd": 27.98875,
       "text_score": 46,
       "source": "poidh",
       "preset": "poidh",
@@ -599,7 +1046,7 @@
       "issuer": "0x5676a53433cb8622093e500d787ab3113a2e7948",
       "timing_points": 12,
       "trust_points": 10,
-      "prize_text": "$28.67 (base)",
+      "prize_text": "$27.99 (base)",
       "deadline": "2026-11-20",
       "kind": "other",
       "task": null,
@@ -617,7 +1064,7 @@
       "effort_signals": [],
       "decision_notes": [
         "deadline 2026-11-30",
-        "prize used for ranking: $37"
+        "prize used for ranking: $36"
       ],
       "risk_flags": [],
       "manual_friction": false,
@@ -632,8 +1079,8 @@
         "amount"
       ],
       "addresses": [],
-      "amount_usd": 36.70048,
-      "payout_amount_usd": 36.70048,
+      "amount_usd": 35.8256,
+      "payout_amount_usd": 35.8256,
       "text_score": 28,
       "source": "poidh",
       "preset": "poidh",
@@ -646,7 +1093,7 @@
       "issuer": "0x39a7b6fa1597bb6657fe84e64e3b836c37d6f75d",
       "timing_points": 12,
       "trust_points": 10,
-      "prize_text": "$36.70 (base)",
+      "prize_text": "$35.83 (base)",
       "deadline": "2026-11-30",
       "kind": "other",
       "task": null,
@@ -654,6 +1101,54 @@
       "crowded": false,
       "slots": 1,
       "first_seen": "2026-11-03T18:00:28.255Z"
+    },
+    {
+      "score": 56,
+      "raw_score": 46,
+      "risk_score": 0,
+      "opportunity_class": "rail-watch",
+      "effort_score": 55,
+      "effort_signals": [],
+      "decision_notes": [
+        "deadline 2026-11-06",
+        "already crowded: many entries or replies",
+        "payment rail signal present"
+      ],
+      "risk_flags": [],
+      "manual_friction": false,
+      "labels": [
+        "other",
+        "x"
+      ],
+      "signals": [
+        "source:x",
+        "bounty",
+        "USDC/Base",
+        "amount",
+        "crowded"
+      ],
+      "addresses": [],
+      "amount_usd": 50,
+      "payout_amount_usd": 50,
+      "text_score": 46,
+      "source": "x",
+      "preset": "x",
+      "preset_name": "X contests",
+      "repo": "@juraucrypt",
+      "title": "Build dApps for DogeOS",
+      "url": "https://x.com/juraucrypt/status/2117103776968458735",
+      "updated_at": "2026-11-02T03:57:28.000Z",
+      "restricted": null,
+      "timing_points": 20,
+      "trust_points": 8,
+      "prize_text": "\u00d036,000",
+      "deadline": "2026-11-06",
+      "kind": "other",
+      "task": "Build dApps for DogeOS",
+      "name": "Doge Hackathon",
+      "crowded": true,
+      "slots": 1,
+      "first_seen": "2026-11-04T03:24:05.327Z"
     },
     {
       "score": 56,
@@ -666,7 +1161,7 @@
       ],
       "decision_notes": [
         "deadline 2026-11-07",
-        "prize used for ranking: $5",
+        "prize used for ranking: $4",
         "effort signals: good-first-issue"
       ],
       "risk_flags": [],
@@ -682,8 +1177,8 @@
         "amount"
       ],
       "addresses": [],
-      "amount_usd": 4.58756,
-      "payout_amount_usd": 4.58756,
+      "amount_usd": 4.4782,
+      "payout_amount_usd": 4.4782,
       "text_score": 28,
       "source": "poidh",
       "preset": "poidh",
@@ -696,7 +1191,7 @@
       "issuer": "0xf0465138c7e5a41cb97fa6838e81beab549789de",
       "timing_points": 20,
       "trust_points": 10,
-      "prize_text": "$4.59 (base)",
+      "prize_text": "$4.48 (base)",
       "deadline": "2026-11-07",
       "kind": "other",
       "task": null,
@@ -707,6 +1202,42 @@
     },
     {
       "score": 55,
+      "raw_score": 36,
+      "risk_score": 0,
+      "opportunity_class": "standard",
+      "effort_score": 30,
+      "effort_signals": [
+        "docs-or-tests"
+      ],
+      "decision_notes": [
+        "parsed payout amount: $75",
+        "effort signals: docs-or-tests"
+      ],
+      "risk_flags": [],
+      "manual_friction": false,
+      "labels": [
+        "bounty",
+        "real"
+      ],
+      "signals": [
+        "bounty",
+        "amount",
+        "label match"
+      ],
+      "addresses": [],
+      "amount_usd": 75,
+      "payout_amount_usd": 75,
+      "text_score": 36,
+      "source": "github",
+      "preset": "base-usdc",
+      "preset_name": "Base / USDC",
+      "repo": "zhangjiayang6835-cyber/bounty-plaza",
+      "title": "[Bounty] [Bounty: $75] Expose retry/backoff knobs for Stellar allowance wait and RPC-lag ",
+      "url": "https://github.com/zhangjiayang6835-cyber/bounty-plaza/issues/1904",
+      "updated_at": "2026-11-04T03:17:40Z"
+    },
+    {
+      "score": 55,
       "raw_score": 46,
       "risk_score": 0,
       "opportunity_class": "rail-watch",
@@ -714,7 +1245,7 @@
       "effort_signals": [],
       "decision_notes": [
         "deadline 2026-11-15",
-        "prize used for ranking: $16",
+        "prize used for ranking: $15",
         "payment rail signal present"
       ],
       "risk_flags": [],
@@ -731,8 +1262,8 @@
         "amount"
       ],
       "addresses": [],
-      "amount_usd": 15.82708,
-      "payout_amount_usd": 15.82708,
+      "amount_usd": 15.44979,
+      "payout_amount_usd": 15.44979,
       "text_score": 46,
       "source": "poidh",
       "preset": "poidh",
@@ -745,63 +1276,11 @@
       "issuer": "0xfb706da8ad6fc35777c041cd3ec049a4e431fd43",
       "timing_points": 12,
       "trust_points": 10,
-      "prize_text": "$15.83 (base)",
+      "prize_text": "$15.45 (base)",
       "deadline": "2026-11-15",
       "kind": "other",
       "task": null,
       "name": "0xfb706da8ad6fc35777c041cd3ec049a4e431fd",
-      "crowded": false,
-      "slots": 1,
-      "first_seen": "2026-11-03T18:00:28.255Z"
-    },
-    {
-      "score": 55,
-      "raw_score": 64,
-      "risk_score": 0,
-      "opportunity_class": "rail-watch",
-      "effort_score": 58,
-      "effort_signals": [
-        "infra-or-migration"
-      ],
-      "decision_notes": [
-        "prize used for ranking: $34",
-        "payment rail signal present",
-        "effort signals: infra-or-migration"
-      ],
-      "risk_flags": [],
-      "manual_friction": false,
-      "labels": [
-        "other",
-        "poidh"
-      ],
-      "signals": [
-        "source:poidh",
-        "escrowed onchain",
-        "bounty",
-        "USDC/Base",
-        "x402",
-        "amount"
-      ],
-      "addresses": [],
-      "amount_usd": 34.4067,
-      "payout_amount_usd": 34.4067,
-      "text_score": 64,
-      "source": "poidh",
-      "preset": "poidh",
-      "preset_name": "poidh bounties",
-      "repo": "poidh/base",
-      "title": "Try lasso.sh and tell me what you think",
-      "url": "https://poidh.xyz/base/bounty/1515",
-      "updated_at": "2026-10-28T05:27:21.000Z",
-      "restricted": null,
-      "issuer": "0xdd044684cfa651c491b844ae0e8646ad7c56205b",
-      "timing_points": 8,
-      "trust_points": 10,
-      "prize_text": "$34.41 (base)",
-      "deadline": null,
-      "kind": "other",
-      "task": null,
-      "name": "0xdd044684cfa651c491b844ae0e8646ad7c5620",
       "crowded": false,
       "slots": 1,
       "first_seen": "2026-11-03T18:00:28.255Z"
@@ -830,8 +1309,8 @@
         "amount"
       ],
       "addresses": [],
-      "amount_usd": 25.46096,
-      "payout_amount_usd": 25.46096,
+      "amount_usd": 24.85401,
+      "payout_amount_usd": 24.85401,
       "text_score": 28,
       "source": "poidh",
       "preset": "poidh",
@@ -844,7 +1323,7 @@
       "issuer": "0x7cccff608dda05bde58a28b6910ebc78aea1d4a3",
       "timing_points": 12,
       "trust_points": 10,
-      "prize_text": "$25.46 (arbitrum)",
+      "prize_text": "$24.85 (arbitrum)",
       "deadline": "2026-12-10",
       "kind": "other",
       "task": null,
@@ -852,6 +1331,102 @@
       "crowded": false,
       "slots": 1,
       "first_seen": "2026-11-03T18:00:28.255Z"
+    },
+    {
+      "score": 54,
+      "raw_score": 64,
+      "risk_score": 0,
+      "opportunity_class": "rail-watch",
+      "effort_score": 58,
+      "effort_signals": [
+        "infra-or-migration"
+      ],
+      "decision_notes": [
+        "prize used for ranking: $34",
+        "payment rail signal present",
+        "effort signals: infra-or-migration"
+      ],
+      "risk_flags": [],
+      "manual_friction": false,
+      "labels": [
+        "other",
+        "poidh"
+      ],
+      "signals": [
+        "source:poidh",
+        "escrowed onchain",
+        "bounty",
+        "USDC/Base",
+        "x402",
+        "amount"
+      ],
+      "addresses": [],
+      "amount_usd": 33.5865,
+      "payout_amount_usd": 33.5865,
+      "text_score": 64,
+      "source": "poidh",
+      "preset": "poidh",
+      "preset_name": "poidh bounties",
+      "repo": "poidh/base",
+      "title": "Try lasso.sh and tell me what you think",
+      "url": "https://poidh.xyz/base/bounty/1515",
+      "updated_at": "2026-10-28T05:27:21.000Z",
+      "restricted": null,
+      "issuer": "0xdd044684cfa651c491b844ae0e8646ad7c56205b",
+      "timing_points": 8,
+      "trust_points": 10,
+      "prize_text": "$33.59 (base)",
+      "deadline": null,
+      "kind": "other",
+      "task": null,
+      "name": "0xdd044684cfa651c491b844ae0e8646ad7c5620",
+      "crowded": false,
+      "slots": 1,
+      "first_seen": "2026-11-03T18:00:28.255Z"
+    },
+    {
+      "score": 53,
+      "raw_score": 46,
+      "risk_score": 22,
+      "opportunity_class": "rail-watch",
+      "effort_score": 64,
+      "effort_signals": [
+        "docs-or-tests",
+        "narrow-scope",
+        "security-sensitive",
+        "infra-or-migration"
+      ],
+      "decision_notes": [
+        "parsed payout amount: $200",
+        "payment rail signal present",
+        "effort signals: docs-or-tests, narrow-scope, security-sensitive, infra-or-migration",
+        "risk flags: competition-noise"
+      ],
+      "risk_flags": [
+        {
+          "label": "competition-noise",
+          "severity": "high",
+          "penalty": 22
+        }
+      ],
+      "manual_friction": false,
+      "labels": [],
+      "signals": [
+        "bounty",
+        "USDC/Base",
+        "amount"
+      ],
+      "addresses": [],
+      "amount_usd": 332.83,
+      "payout_amount_usd": 200,
+      "text_score": 24,
+      "source": "github",
+      "preset": "high-signal",
+      "preset_name": "High-signal bounties",
+      "repo": "Grimblaz-and-Friends/tradecraft",
+      "title": "Steward's page: where the lab is",
+      "url": "https://github.com/Grimblaz-and-Friends/tradecraft/issues/683",
+      "updated_at": "2026-11-04T03:23:25Z"
     },
     {
       "score": 53,
@@ -898,56 +1473,6 @@
       "first_seen": "2026-11-03T17:37:09.448Z"
     },
     {
-      "score": 53,
-      "raw_score": 28,
-      "risk_score": 0,
-      "opportunity_class": "standard",
-      "effort_score": 30,
-      "effort_signals": [
-        "docs-or-tests"
-      ],
-      "decision_notes": [
-        "deadline 2026-11-05",
-        "prize used for ranking: $2",
-        "effort signals: docs-or-tests"
-      ],
-      "risk_flags": [],
-      "manual_friction": false,
-      "labels": [
-        "other",
-        "poidh"
-      ],
-      "signals": [
-        "source:poidh",
-        "escrowed onchain",
-        "bounty",
-        "amount"
-      ],
-      "addresses": [],
-      "amount_usd": 2.29378,
-      "payout_amount_usd": 2.29378,
-      "text_score": 28,
-      "source": "poidh",
-      "preset": "poidh",
-      "preset_name": "poidh bounties",
-      "repo": "poidh/arbitrum",
-      "title": "find the most useful free API nobody knows about",
-      "url": "https://poidh.xyz/arbitrum/bounty/339",
-      "updated_at": "2026-10-26T18:50:19.000Z",
-      "restricted": null,
-      "issuer": "0x10fc964ef70c8467cd8c53e9ed9347422adf96a8",
-      "timing_points": 20,
-      "trust_points": 10,
-      "prize_text": "$2.29 (arbitrum)",
-      "deadline": "2026-11-05",
-      "kind": "other",
-      "task": null,
-      "name": "0x10fc964ef70c8467cd8c53e9ed9347422adf96",
-      "crowded": false,
-      "slots": 1,
-      "first_seen": "2026-11-03T18:00:28.255Z"
-    },
-    {
       "score": 52,
       "raw_score": 28,
       "risk_score": 0,
@@ -971,8 +1496,8 @@
         "amount"
       ],
       "addresses": [],
-      "amount_usd": 16.05646,
-      "payout_amount_usd": 16.05646,
+      "amount_usd": 15.6737,
+      "payout_amount_usd": 15.6737,
       "text_score": 28,
       "source": "poidh",
       "preset": "poidh",
@@ -985,11 +1510,56 @@
       "issuer": "0x41f2600443691cba7775f0488d87ada2f279a64d",
       "timing_points": 12,
       "trust_points": 10,
-      "prize_text": "$16.06 (base)",
+      "prize_text": "$15.67 (base)",
       "deadline": "2026-11-30",
       "kind": "other",
       "task": null,
       "name": "0x41f2600443691cba7775f0488d87ada2f279a6",
+      "crowded": false,
+      "slots": 1,
+      "first_seen": "2026-11-03T17:37:09.448Z"
+    },
+    {
+      "score": 51,
+      "raw_score": 28,
+      "risk_score": 0,
+      "opportunity_class": "standard",
+      "effort_score": 55,
+      "effort_signals": [],
+      "decision_notes": [
+        "deadline 2026-11-14",
+        "only open to: holders only"
+      ],
+      "risk_flags": [],
+      "manual_friction": false,
+      "labels": [
+        "other",
+        "x"
+      ],
+      "signals": [
+        "source:x",
+        "bounty",
+        "amount"
+      ],
+      "addresses": [],
+      "amount_usd": 100,
+      "payout_amount_usd": 100,
+      "text_score": 28,
+      "source": "x",
+      "preset": "x",
+      "preset_name": "X contests",
+      "repo": "@FatRat_Crypto",
+      "title": "Submit projects for NEAR Hackathon",
+      "url": "https://x.com/FatRat_Crypto/status/2117626280938176787",
+      "updated_at": "2026-11-03T14:33:43.000Z",
+      "restricted": "holders only",
+      "timing_points": 12,
+      "trust_points": 8,
+      "prize_text": "$250K prize pool",
+      "deadline": "2026-11-14",
+      "kind": "other",
+      "task": "Submit projects for NEAR Hackathon",
+      "name": "NEAR Hackathon",
       "crowded": false,
       "slots": 1,
       "first_seen": "2026-11-03T17:37:09.448Z"
@@ -1029,8 +1599,8 @@
           "value": "0xcfa6173616804aa9974bf7a648149a98b5ce6425"
         }
       ],
-      "amount_usd": 10.09263,
-      "payout_amount_usd": 10.09263,
+      "amount_usd": 9.85204,
+      "payout_amount_usd": 9.85204,
       "text_score": 66,
       "source": "poidh",
       "preset": "poidh",
@@ -1043,7 +1613,7 @@
       "issuer": "0x6a0ba3707df9d13a4445cd7e04274b2725930cd7",
       "timing_points": 8,
       "trust_points": 10,
-      "prize_text": "$10.09 (base)",
+      "prize_text": "$9.85 (base)",
       "deadline": null,
       "kind": "other",
       "task": null,
@@ -1060,49 +1630,7 @@
       "effort_score": 40,
       "effort_signals": [],
       "decision_notes": [
-        "parsed payout amount: $50"
-      ],
-      "risk_flags": [],
-      "manual_friction": false,
-      "labels": [
-        "thread",
-        "x"
-      ],
-      "signals": [
-        "source:x",
-        "bounty",
-        "amount"
-      ],
-      "addresses": [],
-      "amount_usd": 50,
-      "payout_amount_usd": 50,
-      "text_score": 28,
-      "source": "x",
-      "preset": "x",
-      "preset_name": "X contests",
-      "repo": "@Crypto_zapy",
-      "title": "Create a thread about $FEMININE",
-      "url": "https://x.com/Crypto_zapy/status/2117525300699344919",
-      "updated_at": "2026-11-03T07:52:28.000Z",
-      "prize_text": "$50 prize pool",
-      "deadline": null,
-      "kind": "thread",
-      "task": "Create a thread about $FEMININE",
-      "name": "Feminine Thread Contest",
-      "crowded": false,
-      "slots": 1,
-      "first_seen": "2026-11-03T17:37:09.448Z",
-      "carried": true
-    },
-    {
-      "score": 50,
-      "raw_score": 28,
-      "risk_score": 0,
-      "opportunity_class": "standard",
-      "effort_score": 40,
-      "effort_signals": [],
-      "decision_notes": [
-        "prize used for ranking: $21"
+        "prize used for ranking: $20"
       ],
       "risk_flags": [],
       "manual_friction": false,
@@ -1117,8 +1645,8 @@
         "amount"
       ],
       "addresses": [],
-      "amount_usd": 20.64402,
-      "payout_amount_usd": 20.64402,
+      "amount_usd": 20.1519,
+      "payout_amount_usd": 20.1519,
       "text_score": 28,
       "source": "poidh",
       "preset": "poidh",
@@ -1131,7 +1659,7 @@
       "issuer": "0x10fc964ef70c8467cd8c53e9ed9347422adf96a8",
       "timing_points": 8,
       "trust_points": 10,
-      "prize_text": "$20.64 (arbitrum)",
+      "prize_text": "$20.15 (arbitrum)",
       "deadline": null,
       "kind": "other",
       "task": null,
@@ -1150,7 +1678,7 @@
         "security-sensitive"
       ],
       "decision_notes": [
-        "prize used for ranking: $46",
+        "prize used for ranking: $45",
         "effort signals: security-sensitive"
       ],
       "risk_flags": [],
@@ -1166,8 +1694,8 @@
         "amount"
       ],
       "addresses": [],
-      "amount_usd": 45.8756,
-      "payout_amount_usd": 45.8756,
+      "amount_usd": 44.782,
+      "payout_amount_usd": 44.782,
       "text_score": 28,
       "source": "poidh",
       "preset": "poidh",
@@ -1180,7 +1708,7 @@
       "issuer": "0x10fc964ef70c8467cd8c53e9ed9347422adf96a8",
       "timing_points": 8,
       "trust_points": 10,
-      "prize_text": "$45.88 (mainnet)",
+      "prize_text": "$44.78 (mainnet)",
       "deadline": null,
       "kind": "other",
       "task": null,
@@ -1215,8 +1743,8 @@
         "amount"
       ],
       "addresses": [],
-      "amount_usd": 10.09263,
-      "payout_amount_usd": 10.09263,
+      "amount_usd": 9.85204,
+      "payout_amount_usd": 9.85204,
       "text_score": 28,
       "source": "poidh",
       "preset": "poidh",
@@ -1229,7 +1757,7 @@
       "issuer": "0x4123282cf01ff00d31ce2834863dd266a2fe6806",
       "timing_points": 8,
       "trust_points": 10,
-      "prize_text": "$10.09 (base)",
+      "prize_text": "$9.85 (base)",
       "deadline": null,
       "kind": "other",
       "task": null,
@@ -1265,8 +1793,8 @@
         "amount"
       ],
       "addresses": [],
-      "amount_usd": 2.29378,
-      "payout_amount_usd": 2.29378,
+      "amount_usd": 2.2391,
+      "payout_amount_usd": 2.2391,
       "text_score": 28,
       "source": "poidh",
       "preset": "poidh",
@@ -1279,7 +1807,7 @@
       "issuer": "0x10fc964ef70c8467cd8c53e9ed9347422adf96a8",
       "timing_points": 20,
       "trust_points": 10,
-      "prize_text": "$2.29 (base)",
+      "prize_text": "$2.24 (base)",
       "deadline": "2026-11-08",
       "kind": "other",
       "task": null,
@@ -1287,6 +1815,97 @@
       "crowded": false,
       "slots": 1,
       "first_seen": "2026-11-03T18:00:28.255Z"
+    },
+    {
+      "score": 47,
+      "raw_score": 28,
+      "risk_score": 0,
+      "opportunity_class": "standard",
+      "effort_score": 30,
+      "effort_signals": [
+        "docs-or-tests"
+      ],
+      "decision_notes": [
+        "deadline 2026-11-05",
+        "prize used for ranking: $2",
+        "effort signals: docs-or-tests"
+      ],
+      "risk_flags": [],
+      "manual_friction": false,
+      "labels": [
+        "other",
+        "poidh"
+      ],
+      "signals": [
+        "source:poidh",
+        "escrowed onchain",
+        "bounty",
+        "amount"
+      ],
+      "addresses": [],
+      "amount_usd": 2.2391,
+      "payout_amount_usd": 2.2391,
+      "text_score": 28,
+      "source": "poidh",
+      "preset": "poidh",
+      "preset_name": "poidh bounties",
+      "repo": "poidh/arbitrum",
+      "title": "find the most useful free API nobody knows about",
+      "url": "https://poidh.xyz/arbitrum/bounty/339",
+      "updated_at": "2026-10-26T18:50:19.000Z",
+      "restricted": null,
+      "issuer": "0x10fc964ef70c8467cd8c53e9ed9347422adf96a8",
+      "timing_points": 14,
+      "trust_points": 10,
+      "prize_text": "$2.24 (arbitrum)",
+      "deadline": "2026-11-05",
+      "kind": "other",
+      "task": null,
+      "name": "0x10fc964ef70c8467cd8c53e9ed9347422adf96",
+      "crowded": false,
+      "slots": 1,
+      "first_seen": "2026-11-03T18:00:28.255Z"
+    },
+    {
+      "score": 46,
+      "raw_score": 28,
+      "risk_score": 0,
+      "opportunity_class": "standard",
+      "effort_score": 40,
+      "effort_signals": [],
+      "decision_notes": [],
+      "risk_flags": [],
+      "manual_friction": false,
+      "labels": [
+        "thread",
+        "x"
+      ],
+      "signals": [
+        "source:x",
+        "bounty",
+        "amount"
+      ],
+      "addresses": [],
+      "amount_usd": 50,
+      "payout_amount_usd": 50,
+      "text_score": 28,
+      "source": "x",
+      "preset": "x",
+      "preset_name": "X contests",
+      "repo": "@Crypto_zapy",
+      "title": "Create a thread about $FEMININE",
+      "url": "https://x.com/Crypto_zapy/status/2117525300699344919",
+      "updated_at": "2026-11-03T07:52:28.000Z",
+      "prize_text": "$50 prize pool",
+      "deadline": null,
+      "kind": "thread",
+      "task": "Create a thread about $FEMININE",
+      "name": "Feminine Thread Contest",
+      "crowded": false,
+      "slots": 1,
+      "first_seen": "2026-11-03T17:37:09.448Z",
+      "carried": true,
+      "restricted": null
     },
     {
       "score": 46,
@@ -1311,8 +1930,8 @@
         "amount"
       ],
       "addresses": [],
-      "amount_usd": 9.82655,
-      "payout_amount_usd": 9.82655,
+      "amount_usd": 9.5923,
+      "payout_amount_usd": 9.5923,
       "text_score": 28,
       "source": "poidh",
       "preset": "poidh",
@@ -1325,7 +1944,7 @@
       "issuer": "0x8be2929d68cbc2b200c4363e7657d997ef80467f",
       "timing_points": 8,
       "trust_points": 10,
-      "prize_text": "$9.83 (base)",
+      "prize_text": "$9.59 (base)",
       "deadline": null,
       "kind": "other",
       "task": null,
@@ -1357,8 +1976,8 @@
         "amount"
       ],
       "addresses": [],
-      "amount_usd": 9.82655,
-      "payout_amount_usd": 9.82655,
+      "amount_usd": 9.5923,
+      "payout_amount_usd": 9.5923,
       "text_score": 28,
       "source": "poidh",
       "preset": "poidh",
@@ -1371,7 +1990,7 @@
       "issuer": "0x8be2929d68cbc2b200c4363e7657d997ef80467f",
       "timing_points": 8,
       "trust_points": 10,
-      "prize_text": "$9.83 (base)",
+      "prize_text": "$9.59 (base)",
       "deadline": null,
       "kind": "other",
       "task": null,
@@ -1389,7 +2008,7 @@
       "effort_signals": [],
       "decision_notes": [
         "open 33 days with no deadline",
-        "prize used for ranking: $87"
+        "prize used for ranking: $85"
       ],
       "risk_flags": [],
       "manual_friction": false,
@@ -1404,8 +2023,8 @@
         "amount"
       ],
       "addresses": [],
-      "amount_usd": 87.16364,
-      "payout_amount_usd": 87.16364,
+      "amount_usd": 85.0858,
+      "payout_amount_usd": 85.0858,
       "text_score": 28,
       "source": "poidh",
       "preset": "poidh",
@@ -1418,7 +2037,7 @@
       "issuer": "0x4200ac338555e25b20c8fe82ac02a5c8d4e5a5b4",
       "timing_points": 8,
       "trust_points": 10,
-      "prize_text": "$87.16 (mainnet)",
+      "prize_text": "$85.09 (mainnet)",
       "deadline": null,
       "kind": "other",
       "task": null,
@@ -1426,6 +2045,48 @@
       "crowded": false,
       "slots": 1,
       "first_seen": "2026-11-03T18:00:28.255Z"
+    },
+    {
+      "score": 45,
+      "raw_score": 46,
+      "risk_score": 22,
+      "opportunity_class": "rail-watch",
+      "effort_score": 82,
+      "effort_signals": [
+        "security-sensitive",
+        "infra-or-migration"
+      ],
+      "decision_notes": [
+        "parsed payout amount: $75",
+        "payment rail signal present",
+        "effort signals: security-sensitive, infra-or-migration",
+        "risk flags: competition-noise"
+      ],
+      "risk_flags": [
+        {
+          "label": "competition-noise",
+          "severity": "high",
+          "penalty": 22
+        }
+      ],
+      "manual_friction": false,
+      "labels": [],
+      "signals": [
+        "bounty",
+        "USDC/Base",
+        "amount"
+      ],
+      "addresses": [],
+      "amount_usd": 75,
+      "payout_amount_usd": 75,
+      "text_score": 24,
+      "source": "github",
+      "preset": "base-usdc",
+      "preset_name": "Base / USDC",
+      "repo": "limitlessprojects/Go-Hybrid",
+      "title": "[tooling] UTF-8 BOM causes false workflow failures and hides first-line conflict markers",
+      "url": "https://github.com/limitlessprojects/Go-Hybrid/issues/3454",
+      "updated_at": "2026-11-04T03:17:32Z"
     },
     {
       "score": 43,
@@ -1450,8 +2111,8 @@
         "amount"
       ],
       "addresses": [],
-      "amount_usd": 5.89501,
-      "payout_amount_usd": 5.89501,
+      "amount_usd": 5.75449,
+      "payout_amount_usd": 5.75449,
       "text_score": 28,
       "source": "poidh",
       "preset": "poidh",
@@ -1464,7 +2125,7 @@
       "issuer": "0x7385e1a824a405cbb13b64829bf1509cd2a471f7",
       "timing_points": 8,
       "trust_points": 10,
-      "prize_text": "$5.90 (base)",
+      "prize_text": "$5.75 (base)",
       "deadline": null,
       "kind": "other",
       "task": null,
@@ -1514,7 +2175,8 @@
       "name": "VIBE CODE ON DOGE Hackathon",
       "crowded": false,
       "slots": 1,
-      "first_seen": "2026-11-03T17:37:09.448Z"
+      "first_seen": "2026-11-03T17:37:09.448Z",
+      "carried": true
     },
     {
       "score": 42,
@@ -1551,8 +2213,8 @@
           "value": "0x33645304D9fF7B07404e524910cd456C041754eD"
         }
       ],
-      "amount_usd": 2.29378,
-      "payout_amount_usd": 2.29378,
+      "amount_usd": 2.2391,
+      "payout_amount_usd": 2.2391,
       "text_score": 66,
       "source": "poidh",
       "preset": "poidh",
@@ -1565,7 +2227,7 @@
       "issuer": "0xa21e61165a97cba8e02558ece645da45ae4eaf0a",
       "timing_points": 8,
       "trust_points": 10,
-      "prize_text": "$2.29 (base)",
+      "prize_text": "$2.24 (base)",
       "deadline": null,
       "kind": "other",
       "task": null,
@@ -1575,36 +2237,53 @@
       "first_seen": "2026-11-03T18:00:28.255Z"
     },
     {
-      "score": 37,
-      "raw_score": 16,
+      "score": 38,
+      "raw_score": 46,
       "risk_score": 0,
-      "opportunity_class": "standard",
-      "effort_score": 48,
-      "effort_signals": [
-        "docs-or-tests",
-        "infra-or-migration"
-      ],
+      "opportunity_class": "rail-watch",
+      "effort_score": 40,
+      "effort_signals": [],
       "decision_notes": [
-        "parsed payout amount: $9",
-        "effort signals: docs-or-tests, infra-or-migration"
+        "already crowded: many entries or replies",
+        "prize used for ranking: $100",
+        "only open to: holders only",
+        "payment rail signal present"
       ],
       "risk_flags": [],
       "manual_friction": false,
-      "labels": [],
+      "labels": [
+        "meme",
+        "x"
+      ],
       "signals": [
-        "amount"
+        "source:x",
+        "bounty",
+        "USDC/Base",
+        "amount",
+        "crowded"
       ],
       "addresses": [],
-      "amount_usd": 9,
-      "payout_amount_usd": null,
-      "text_score": 16,
-      "source": "github",
-      "preset": "high-signal",
-      "preset_name": "High-signal bounties",
-      "repo": "ibudasov/forseti",
-      "title": "Epic: Week 10 \u2013 Deploy Forseti to GCP (Cloud Run, Cloud SQL, Terraform)",
-      "url": "https://github.com/ibudasov/forseti/issues/121",
-      "updated_at": "2026-11-03T18:52:43Z"
+      "amount_usd": 100,
+      "payout_amount_usd": 100,
+      "text_score": 46,
+      "source": "x",
+      "preset": "x",
+      "preset_name": "X contests",
+      "repo": "@nguyenthambt",
+      "title": "Create a meme about FatRat token",
+      "url": "https://x.com/nguyenthambt/status/2117784184056094940",
+      "updated_at": "2026-11-04T01:01:10.000Z",
+      "restricted": "holders only",
+      "timing_points": 4,
+      "trust_points": 8,
+      "prize_text": "$100 prize pool",
+      "deadline": null,
+      "kind": "meme",
+      "task": "Create a meme about FatRat token",
+      "name": "FatRat",
+      "crowded": true,
+      "slots": 1,
+      "first_seen": "2026-11-04T03:24:05.327Z"
     },
     {
       "score": 37,
@@ -1633,8 +2312,8 @@
         "amount"
       ],
       "addresses": [],
-      "amount_usd": 2.29378,
-      "payout_amount_usd": 2.29378,
+      "amount_usd": 2.2391,
+      "payout_amount_usd": 2.2391,
       "text_score": 28,
       "source": "poidh",
       "preset": "poidh",
@@ -1647,7 +2326,7 @@
       "issuer": "0x2e34a510c818f18dc5385e950e84e69f36704dd2",
       "timing_points": 8,
       "trust_points": 10,
-      "prize_text": "$2.29 (base)",
+      "prize_text": "$2.24 (base)",
       "deadline": null,
       "kind": "other",
       "task": null,
@@ -1657,90 +2336,6 @@
       "first_seen": "2026-11-03T18:00:28.255Z"
     },
     {
-      "score": 35,
-      "raw_score": 28,
-      "risk_score": 0,
-      "opportunity_class": "standard",
-      "effort_score": 40,
-      "effort_signals": [],
-      "decision_notes": [
-        "deadline 2026-11-03",
-        "prize used for ranking: $2"
-      ],
-      "risk_flags": [],
-      "manual_friction": false,
-      "labels": [
-        "other",
-        "poidh"
-      ],
-      "signals": [
-        "source:poidh",
-        "escrowed onchain",
-        "bounty",
-        "amount"
-      ],
-      "addresses": [],
-      "amount_usd": 2.29378,
-      "payout_amount_usd": 2.29378,
-      "text_score": 28,
-      "source": "poidh",
-      "preset": "poidh",
-      "preset_name": "poidh bounties",
-      "repo": "poidh/base",
-      "title": "find the worst tech prediction from 2016",
-      "url": "https://poidh.xyz/base/bounty/1513",
-      "updated_at": "2026-10-26T18:15:37.000Z",
-      "restricted": null,
-      "issuer": "0x10fc964ef70c8467cd8c53e9ed9347422adf96a8",
-      "timing_points": 4,
-      "trust_points": 10,
-      "prize_text": "$2.29 (base)",
-      "deadline": "2026-11-03",
-      "kind": "other",
-      "task": null,
-      "name": "0x10fc964ef70c8467cd8c53e9ed9347422adf96",
-      "crowded": false,
-      "slots": 1,
-      "first_seen": "2026-11-03T18:00:28.255Z"
-    },
-    {
-      "score": 34,
-      "raw_score": 36,
-      "risk_score": 0,
-      "opportunity_class": "standard",
-      "effort_score": 40,
-      "effort_signals": [],
-      "decision_notes": [
-        "parsed payout amount: $2"
-      ],
-      "risk_flags": [],
-      "manual_friction": false,
-      "labels": [
-        "bounty",
-        "funded",
-        "available",
-        "claimed",
-        "delivered",
-        "needs-work"
-      ],
-      "signals": [
-        "bounty",
-        "amount",
-        "label match"
-      ],
-      "addresses": [],
-      "amount_usd": 2,
-      "payout_amount_usd": 2,
-      "text_score": 36,
-      "source": "github",
-      "preset": "base-usdc",
-      "preset_name": "Base / USDC",
-      "repo": "auscaster/frantic-board",
-      "title": "Frantic bounty #145: Install NitroMTA and send one real email to proof@nitromta.com",
-      "url": "https://github.com/auscaster/frantic-board/issues/574",
-      "updated_at": "2026-11-03T18:25:08Z"
-    },
-    {
       "score": 34,
       "raw_score": 28,
       "risk_score": 0,
@@ -1748,7 +2343,7 @@
       "effort_score": 40,
       "effort_signals": [],
       "decision_notes": [
-        "open 26 days with no deadline",
+        "open 27 days with no deadline",
         "prize used for ranking: $11"
       ],
       "risk_flags": [],
@@ -1764,8 +2359,8 @@
         "amount"
       ],
       "addresses": [],
-      "amount_usd": 10.78077,
-      "payout_amount_usd": 10.78077,
+      "amount_usd": 10.52377,
+      "payout_amount_usd": 10.52377,
       "text_score": 28,
       "source": "poidh",
       "preset": "poidh",
@@ -1778,7 +2373,7 @@
       "issuer": "0xd93a7c5d9ab42d3372332ed99e4c254ef43a5afc",
       "timing_points": 8,
       "trust_points": 10,
-      "prize_text": "$10.78 (base)",
+      "prize_text": "$10.52 (base)",
       "deadline": null,
       "kind": "other",
       "task": null,
@@ -1786,178 +2381,6 @@
       "crowded": false,
       "slots": 1,
       "first_seen": "2026-11-03T18:00:28.255Z"
-    },
-    {
-      "score": 33,
-      "raw_score": 46,
-      "risk_score": 0,
-      "opportunity_class": "rail-watch",
-      "effort_score": 54,
-      "effort_signals": [
-        "docs-or-tests",
-        "security-sensitive"
-      ],
-      "decision_notes": [
-        "no explicit USD/USDC amount parsed",
-        "payment rail signal present",
-        "effort signals: docs-or-tests, security-sensitive"
-      ],
-      "risk_flags": [],
-      "manual_friction": false,
-      "labels": [
-        "triaged",
-        "pinned"
-      ],
-      "signals": [
-        "bounty",
-        "MRWK/MergeWork",
-        "amount"
-      ],
-      "addresses": [],
-      "amount_usd": null,
-      "payout_amount_usd": null,
-      "text_score": 46,
-      "source": "github",
-      "preset": "mergework",
-      "preset_name": "MergeWork / MRWK",
-      "repo": "Scottcjn/Rustchain",
-      "title": "RFC: Federation bridge to mergework (RTC \u2194 MRWK)",
-      "url": "https://github.com/Scottcjn/Rustchain/issues/6522",
-      "updated_at": "2026-07-27T15:46:42Z"
-    },
-    {
-      "score": 32,
-      "raw_score": 28,
-      "risk_score": 0,
-      "opportunity_class": "standard",
-      "effort_score": 40,
-      "effort_signals": [],
-      "decision_notes": [
-        "no explicit USD/USDC amount parsed"
-      ],
-      "risk_flags": [],
-      "manual_friction": false,
-      "labels": [
-        "Priority: 2 (Medium)",
-        "Time: <2 Hours",
-        "Price: 150 USD"
-      ],
-      "signals": [
-        "bounty",
-        "amount"
-      ],
-      "addresses": [],
-      "amount_usd": null,
-      "payout_amount_usd": null,
-      "text_score": 28,
-      "source": "github",
-      "preset": "base-usdc",
-      "preset_name": "Base / USDC",
-      "repo": "devpool-directory/devpool-directory",
-      "title": "Validate reward generation behavior",
-      "url": "https://github.com/devpool-directory/devpool-directory/issues/5887",
-      "updated_at": "2026-11-03T18:23:25Z"
-    },
-    {
-      "score": 32,
-      "raw_score": 28,
-      "risk_score": 0,
-      "opportunity_class": "standard",
-      "effort_score": 40,
-      "effort_signals": [],
-      "decision_notes": [
-        "no explicit USD/USDC amount parsed"
-      ],
-      "risk_flags": [],
-      "manual_friction": false,
-      "labels": [
-        "Time: <1 Day",
-        "Priority: 2 (Medium)",
-        "Price: 600 USD"
-      ],
-      "signals": [
-        "bounty",
-        "amount"
-      ],
-      "addresses": [],
-      "amount_usd": null,
-      "payout_amount_usd": null,
-      "text_score": 28,
-      "source": "github",
-      "preset": "base-usdc",
-      "preset_name": "Base / USDC",
-      "repo": "devpool-directory/devpool-directory",
-      "title": "Implement Differential Reward Distribution for Reopened Issues",
-      "url": "https://github.com/devpool-directory/devpool-directory/issues/5012",
-      "updated_at": "2026-11-03T18:23:17Z"
-    },
-    {
-      "score": 32,
-      "raw_score": 28,
-      "risk_score": 0,
-      "opportunity_class": "standard",
-      "effort_score": 40,
-      "effort_signals": [],
-      "decision_notes": [
-        "no explicit USD/USDC amount parsed"
-      ],
-      "risk_flags": [],
-      "manual_friction": false,
-      "labels": [
-        "Priority: 1 (Normal)",
-        "Time: <15 Minutes",
-        "Price: 9 USD"
-      ],
-      "signals": [
-        "bounty",
-        "amount"
-      ],
-      "addresses": [],
-      "amount_usd": null,
-      "payout_amount_usd": null,
-      "text_score": 28,
-      "source": "github",
-      "preset": "base-usdc",
-      "preset_name": "Base / USDC",
-      "repo": "devpool-directory/devpool-directory",
-      "title": "Launch Another DoraHacks Bounty Post",
-      "url": "https://github.com/devpool-directory/devpool-directory/issues/5924",
-      "updated_at": "2026-11-03T18:23:03Z"
-    },
-    {
-      "score": 32,
-      "raw_score": 18,
-      "risk_score": 0,
-      "opportunity_class": "standard",
-      "effort_score": 30,
-      "effort_signals": [
-        "docs-or-tests"
-      ],
-      "decision_notes": [
-        "no explicit USD/USDC amount parsed",
-        "payment rail signal present",
-        "effort signals: docs-or-tests"
-      ],
-      "risk_flags": [],
-      "manual_friction": false,
-      "labels": [
-        "enhancement",
-        "status:ready"
-      ],
-      "signals": [
-        "MRWK/MergeWork"
-      ],
-      "addresses": [],
-      "amount_usd": null,
-      "payout_amount_usd": null,
-      "text_score": 18,
-      "source": "github",
-      "preset": "mergework",
-      "preset_name": "MergeWork / MRWK",
-      "repo": "opzero1/open-dot",
-      "title": "v1 follow-ups from A4",
-      "url": "https://github.com/opzero1/open-dot/issues/77",
-      "updated_at": "2026-10-30T20:41:04Z"
     },
     {
       "score": 32,
@@ -1986,8 +2409,8 @@
         "amount"
       ],
       "addresses": [],
-      "amount_usd": 5.04632,
-      "payout_amount_usd": 5.04632,
+      "amount_usd": 4.92602,
+      "payout_amount_usd": 4.92602,
       "text_score": 28,
       "source": "poidh",
       "preset": "poidh",
@@ -2000,7 +2423,7 @@
       "issuer": "0x10fc964ef70c8467cd8c53e9ed9347422adf96a8",
       "timing_points": 8,
       "trust_points": 10,
-      "prize_text": "$5.05 (base)",
+      "prize_text": "$4.93 (base)",
       "deadline": null,
       "kind": "other",
       "task": null,
@@ -2036,8 +2459,8 @@
         "amount"
       ],
       "addresses": [],
-      "amount_usd": 5.04632,
-      "payout_amount_usd": 5.04632,
+      "amount_usd": 4.92602,
+      "payout_amount_usd": 4.92602,
       "text_score": 28,
       "source": "poidh",
       "preset": "poidh",
@@ -2050,7 +2473,7 @@
       "issuer": "0x10fc964ef70c8467cd8c53e9ed9347422adf96a8",
       "timing_points": 8,
       "trust_points": 10,
-      "prize_text": "$5.05 (base)",
+      "prize_text": "$4.93 (base)",
       "deadline": null,
       "kind": "other",
       "task": null,
@@ -2058,39 +2481,6 @@
       "crowded": false,
       "slots": 1,
       "first_seen": "2026-11-03T18:00:28.255Z"
-    },
-    {
-      "score": 31,
-      "raw_score": 12,
-      "risk_score": 0,
-      "opportunity_class": "standard",
-      "effort_score": 30,
-      "effort_signals": [
-        "docs-or-tests"
-      ],
-      "decision_notes": [
-        "no explicit USD/USDC amount parsed",
-        "effort signals: docs-or-tests"
-      ],
-      "risk_flags": [],
-      "manual_friction": false,
-      "labels": [
-        "agent:research"
-      ],
-      "signals": [
-        "bounty"
-      ],
-      "addresses": [],
-      "amount_usd": null,
-      "payout_amount_usd": null,
-      "text_score": 12,
-      "source": "github",
-      "preset": "high-signal",
-      "preset_name": "High-signal bounties",
-      "repo": "fulton-ring/agent-content-demos",
-      "title": "Spike: The grid batteries no public map knows about",
-      "url": "https://github.com/fulton-ring/agent-content-demos/issues/183",
-      "updated_at": "2026-11-03T18:52:40Z"
     },
     {
       "score": 31,
@@ -2102,7 +2492,7 @@
         "infra-or-migration"
       ],
       "decision_notes": [
-        "open 34 days with no deadline",
+        "open 35 days with no deadline",
         "prize used for ranking: $10",
         "effort signals: infra-or-migration"
       ],
@@ -2119,8 +2509,8 @@
         "amount"
       ],
       "addresses": [],
-      "amount_usd": 10.32201,
-      "payout_amount_usd": 10.32201,
+      "amount_usd": 10.07595,
+      "payout_amount_usd": 10.07595,
       "text_score": 28,
       "source": "poidh",
       "preset": "poidh",
@@ -2133,7 +2523,7 @@
       "issuer": "0x0ac7d72e0a6e21fb840bbd07f2b8d0763b65c2c3",
       "timing_points": 8,
       "trust_points": 10,
-      "prize_text": "$10.32 (base)",
+      "prize_text": "$10.08 (base)",
       "deadline": null,
       "kind": "other",
       "task": null,
@@ -2141,214 +2531,6 @@
       "crowded": false,
       "slots": 1,
       "first_seen": "2026-11-03T18:00:28.255Z"
-    },
-    {
-      "score": 30,
-      "raw_score": 48,
-      "risk_score": 0,
-      "opportunity_class": "rail-watch",
-      "effort_score": 72,
-      "effort_signals": [
-        "docs-or-tests",
-        "security-sensitive",
-        "infra-or-migration"
-      ],
-      "decision_notes": [
-        "no explicit USD/USDC amount parsed",
-        "payment rail signal present",
-        "effort signals: docs-or-tests, security-sensitive, infra-or-migration"
-      ],
-      "risk_flags": [],
-      "manual_friction": false,
-      "labels": [],
-      "signals": [
-        "bounty",
-        "USDC/Base",
-        "x402"
-      ],
-      "addresses": [],
-      "amount_usd": null,
-      "payout_amount_usd": null,
-      "text_score": 48,
-      "source": "github",
-      "preset": "high-signal",
-      "preset_name": "High-signal bounties",
-      "repo": "ahmedmhmmad960-spec/bizlens",
-      "title": "[Approved, gated] Cap CSV upload at both Next and FastAPI ingress (test-first, isolated)",
-      "url": "https://github.com/ahmedmhmmad960-spec/bizlens/issues/25",
-      "updated_at": "2026-11-03T18:52:45Z"
-    },
-    {
-      "score": 30,
-      "raw_score": 64,
-      "risk_score": 22,
-      "opportunity_class": "rail-watch",
-      "effort_score": 64,
-      "effort_signals": [
-        "docs-or-tests",
-        "narrow-scope",
-        "security-sensitive",
-        "infra-or-migration"
-      ],
-      "decision_notes": [
-        "no explicit USD/USDC amount parsed",
-        "payment rail signal present",
-        "effort signals: docs-or-tests, narrow-scope, security-sensitive, infra-or-migration",
-        "risk flags: competition-noise"
-      ],
-      "risk_flags": [
-        {
-          "label": "competition-noise",
-          "severity": "high",
-          "penalty": 22
-        }
-      ],
-      "manual_friction": false,
-      "labels": [],
-      "signals": [
-        "bounty",
-        "USDC/Base",
-        "x402",
-        "amount"
-      ],
-      "addresses": [],
-      "amount_usd": 0,
-      "payout_amount_usd": null,
-      "text_score": 42,
-      "source": "github",
-      "preset": "x402",
-      "preset_name": "x402 paid APIs",
-      "repo": "ghith93/raawaa-autonomous-engine",
-      "title": "Implement a quota-enforced agent execution loop behind explicit opt-in",
-      "url": "https://github.com/ghith93/raawaa-autonomous-engine/issues/34",
-      "updated_at": "2026-11-03T18:52:02Z"
-    },
-    {
-      "score": 30,
-      "raw_score": 16,
-      "risk_score": 0,
-      "opportunity_class": "standard",
-      "effort_score": 40,
-      "effort_signals": [],
-      "decision_notes": [
-        "no explicit USD/USDC amount parsed"
-      ],
-      "risk_flags": [],
-      "manual_friction": false,
-      "labels": [
-        "Priority: 2 (Medium)",
-        "Price: 75 USD",
-        "Time: <1 Hour"
-      ],
-      "signals": [
-        "amount"
-      ],
-      "addresses": [],
-      "amount_usd": null,
-      "payout_amount_usd": null,
-      "text_score": 16,
-      "source": "github",
-      "preset": "base-usdc",
-      "preset_name": "Base / USDC",
-      "repo": "devpool-directory/devpool-directory",
-      "title": "Preserve 502 for exchange transport failures",
-      "url": "https://github.com/devpool-directory/devpool-directory/issues/6255",
-      "updated_at": "2026-11-03T18:24:01Z"
-    },
-    {
-      "score": 30,
-      "raw_score": 16,
-      "risk_score": 0,
-      "opportunity_class": "standard",
-      "effort_score": 40,
-      "effort_signals": [],
-      "decision_notes": [
-        "no explicit USD/USDC amount parsed"
-      ],
-      "risk_flags": [],
-      "manual_friction": false,
-      "labels": [
-        "Priority: 2 (Medium)",
-        "Price: 75 USD",
-        "Time: <1 Hour"
-      ],
-      "signals": [
-        "amount"
-      ],
-      "addresses": [],
-      "amount_usd": null,
-      "payout_amount_usd": null,
-      "text_score": 16,
-      "source": "github",
-      "preset": "base-usdc",
-      "preset_name": "Base / USDC",
-      "repo": "devpool-directory/devpool-directory",
-      "title": "Return 401 for rejected Passport exchange codes",
-      "url": "https://github.com/devpool-directory/devpool-directory/issues/6253",
-      "updated_at": "2026-11-03T18:24:00Z"
-    },
-    {
-      "score": 30,
-      "raw_score": 16,
-      "risk_score": 0,
-      "opportunity_class": "standard",
-      "effort_score": 40,
-      "effort_signals": [],
-      "decision_notes": [
-        "no explicit USD/USDC amount parsed"
-      ],
-      "risk_flags": [],
-      "manual_friction": false,
-      "labels": [
-        "Priority: 1 (Normal)",
-        "Price: 600 USD",
-        "Time: <1 Week"
-      ],
-      "signals": [
-        "amount"
-      ],
-      "addresses": [],
-      "amount_usd": null,
-      "payout_amount_usd": null,
-      "text_score": 16,
-      "source": "github",
-      "preset": "base-usdc",
-      "preset_name": "Base / USDC",
-      "repo": "devpool-directory/devpool-directory",
-      "title": "Cow Swap Cash Out",
-      "url": "https://github.com/devpool-directory/devpool-directory/issues/5066",
-      "updated_at": "2026-11-03T18:23:36Z"
-    },
-    {
-      "score": 30,
-      "raw_score": 18,
-      "risk_score": 0,
-      "opportunity_class": "standard",
-      "effort_score": 40,
-      "effort_signals": [],
-      "decision_notes": [
-        "no explicit USD/USDC amount parsed",
-        "payment rail signal present"
-      ],
-      "risk_flags": [],
-      "manual_friction": false,
-      "labels": [
-        "collaboration"
-      ],
-      "signals": [
-        "MRWK/MergeWork"
-      ],
-      "addresses": [],
-      "amount_usd": null,
-      "payout_amount_usd": null,
-      "text_score": 18,
-      "source": "github",
-      "preset": "mergework",
-      "preset_name": "MergeWork / MRWK",
-      "repo": "SEMOSS/Semoss",
-      "title": "[COLLABORATION] Several chats per work item",
-      "url": "https://github.com/SEMOSS/Semoss/issues/3246",
-      "updated_at": "2026-11-03T02:53:38Z"
     },
     {
       "score": 30,
@@ -2389,79 +2571,210 @@
       "updated_at": "2026-10-08T15:01:21Z"
     },
     {
-      "score": 29,
-      "raw_score": 12,
+      "score": 27,
+      "raw_score": 46,
       "risk_score": 0,
-      "opportunity_class": "standard",
+      "opportunity_class": "rail-watch",
       "effort_score": 40,
       "effort_signals": [],
       "decision_notes": [
-        "no explicit USD/USDC amount parsed"
+        "open 37 days with no deadline",
+        "prize used for ranking: $7",
+        "only open to: holders only",
+        "payment rail signal present"
       ],
       "risk_flags": [],
       "manual_friction": false,
       "labels": [
-        "agent-generated",
-        "severity/degraded",
-        "kind/tool_gap"
+        "other",
+        "poidh"
       ],
       "signals": [
-        "bounty"
+        "source:poidh",
+        "escrowed onchain",
+        "bounty",
+        "USDC/Base",
+        "amount"
       ],
       "addresses": [],
-      "amount_usd": null,
-      "payout_amount_usd": null,
-      "text_score": 12,
-      "source": "github",
-      "preset": "high-signal",
-      "preset_name": "High-signal bounties",
-      "repo": "minerval-ai/minerval",
-      "title": "The Steward cannot run code, so its own analysis of a source's figures costs a paid research run",
-      "url": "https://github.com/minerval-ai/minerval/issues/810",
-      "updated_at": "2026-11-03T18:52:58Z"
+      "amount_usd": 6.7173,
+      "payout_amount_usd": 6.7173,
+      "text_score": 46,
+      "source": "poidh",
+      "preset": "poidh",
+      "preset_name": "poidh bounties",
+      "repo": "poidh/base",
+      "title": "Move from Moltbook (or another agent forum) to musemaxxing",
+      "url": "https://poidh.xyz/base/bounty/1445",
+      "updated_at": "2026-09-27T16:23:11.000Z",
+      "restricted": "holders only",
+      "issuer": "0xf19f11dee16a341671e6ed3e209b704c1bbc3e57",
+      "timing_points": 8,
+      "trust_points": 10,
+      "prize_text": "$6.72 (base)",
+      "deadline": null,
+      "kind": "other",
+      "task": null,
+      "name": "0xf19f11dee16a341671e6ed3e209b704c1bbc3e",
+      "crowded": false,
+      "slots": 1,
+      "first_seen": "2026-11-03T18:00:28.255Z"
     },
     {
       "score": 27,
-      "raw_score": 18,
+      "raw_score": 46,
       "risk_score": 0,
-      "opportunity_class": "standard",
-      "effort_score": 58,
-      "effort_signals": [
-        "infra-or-migration"
-      ],
+      "opportunity_class": "rail-watch",
+      "effort_score": 40,
+      "effort_signals": [],
       "decision_notes": [
-        "no explicit USD/USDC amount parsed",
-        "payment rail signal present",
-        "effort signals: infra-or-migration"
+        "open 37 days with no deadline",
+        "prize used for ranking: $7",
+        "only open to: holders only",
+        "payment rail signal present"
       ],
       "risk_flags": [],
       "manual_friction": false,
-      "labels": [],
+      "labels": [
+        "other",
+        "poidh"
+      ],
       "signals": [
-        "USDC/Base"
+        "source:poidh",
+        "escrowed onchain",
+        "bounty",
+        "USDC/Base",
+        "amount"
       ],
       "addresses": [],
-      "amount_usd": null,
-      "payout_amount_usd": null,
-      "text_score": 18,
-      "source": "github",
-      "preset": "high-signal",
-      "preset_name": "High-signal bounties",
-      "repo": "moealf12/Nawaa",
-      "title": "R04 P1: non-product accessories outrank requested principal item in real 36-intent ranking audit",
-      "url": "https://github.com/moealf12/Nawaa/issues/263",
-      "updated_at": "2026-11-03T18:52:38Z"
+      "amount_usd": 6.7173,
+      "payout_amount_usd": 6.7173,
+      "text_score": 46,
+      "source": "poidh",
+      "preset": "poidh",
+      "preset_name": "poidh bounties",
+      "repo": "poidh/base",
+      "title": "Convince a Claude/Codex admin to switch to Muse and join musemaxxing",
+      "url": "https://poidh.xyz/base/bounty/1444",
+      "updated_at": "2026-09-27T16:22:51.000Z",
+      "restricted": "holders only",
+      "issuer": "0xf19f11dee16a341671e6ed3e209b704c1bbc3e57",
+      "timing_points": 8,
+      "trust_points": 10,
+      "prize_text": "$6.72 (base)",
+      "deadline": null,
+      "kind": "other",
+      "task": null,
+      "name": "0xf19f11dee16a341671e6ed3e209b704c1bbc3e",
+      "crowded": false,
+      "slots": 1,
+      "first_seen": "2026-11-03T18:00:28.255Z"
     },
     {
       "score": 27,
+      "raw_score": 46,
+      "risk_score": 0,
+      "opportunity_class": "rail-watch",
+      "effort_score": 40,
+      "effort_signals": [],
+      "decision_notes": [
+        "open 38 days with no deadline",
+        "prize used for ranking: $7",
+        "only open to: holders only",
+        "payment rail signal present"
+      ],
+      "risk_flags": [],
+      "manual_friction": false,
+      "labels": [
+        "other",
+        "poidh"
+      ],
+      "signals": [
+        "source:poidh",
+        "escrowed onchain",
+        "bounty",
+        "USDC/Base",
+        "amount"
+      ],
+      "addresses": [],
+      "amount_usd": 6.7173,
+      "payout_amount_usd": 6.7173,
+      "text_score": 46,
+      "source": "poidh",
+      "preset": "poidh",
+      "preset_name": "poidh bounties",
+      "repo": "poidh/base",
+      "title": "Recruit a verified Muse agent to musemaxxing (slot 20/20)",
+      "url": "https://poidh.xyz/base/bounty/1443",
+      "updated_at": "2026-09-27T14:39:23.000Z",
+      "restricted": "holders only",
+      "issuer": "0xf19f11dee16a341671e6ed3e209b704c1bbc3e57",
+      "timing_points": 8,
+      "trust_points": 10,
+      "prize_text": "$6.72 (base)",
+      "deadline": null,
+      "kind": "other",
+      "task": null,
+      "name": "0xf19f11dee16a341671e6ed3e209b704c1bbc3e",
+      "crowded": false,
+      "slots": 1,
+      "first_seen": "2026-11-03T18:00:28.255Z"
+    },
+    {
+      "score": 25,
+      "raw_score": 36,
+      "risk_score": 22,
+      "opportunity_class": "standard",
+      "effort_score": 40,
+      "effort_signals": [
+        "good-first-issue",
+        "docs-or-tests",
+        "security-sensitive"
+      ],
+      "decision_notes": [
+        "parsed payout amount: $0.1",
+        "effort signals: good-first-issue, docs-or-tests, security-sensitive",
+        "risk flags: competition-noise"
+      ],
+      "risk_flags": [
+        {
+          "label": "competition-noise",
+          "severity": "high",
+          "penalty": 22
+        }
+      ],
+      "manual_friction": false,
+      "labels": [
+        "bounty",
+        "propagation",
+        "easy",
+        "community"
+      ],
+      "signals": [
+        "bounty",
+        "amount",
+        "label match"
+      ],
+      "addresses": [],
+      "amount_usd": 0.1,
+      "payout_amount_usd": 0.1,
+      "text_score": 14,
+      "source": "github",
+      "preset": "mergework",
+      "preset_name": "MergeWork / MRWK",
+      "repo": "Scottcjn/rustchain-bounties",
+      "title": "[BOUNTY] Register on Beacon Atlas + Prove Commerce (Pool: 100 RTC)",
+      "url": "https://github.com/Scottcjn/rustchain-bounties/issues/3418",
+      "updated_at": "2026-09-29T17:41:14Z"
+    },
+    {
+      "score": 23,
       "raw_score": 0,
       "risk_score": 0,
       "opportunity_class": "standard",
       "effort_score": 40,
       "effort_signals": [],
-      "decision_notes": [
-        "no explicit USD/USDC amount parsed"
-      ],
+      "decision_notes": [],
       "risk_flags": [],
       "manual_friction": false,
       "labels": [
@@ -2490,219 +2803,8 @@
       "crowded": false,
       "first_seen": "2026-11-03T17:37:09.448Z",
       "carried": true,
-      "slots": 1
-    },
-    {
-      "score": 27,
-      "raw_score": 46,
-      "risk_score": 0,
-      "opportunity_class": "rail-watch",
-      "effort_score": 40,
-      "effort_signals": [],
-      "decision_notes": [
-        "open 37 days with no deadline",
-        "prize used for ranking: $7",
-        "only open to: holders only",
-        "payment rail signal present"
-      ],
-      "risk_flags": [],
-      "manual_friction": false,
-      "labels": [
-        "other",
-        "poidh"
-      ],
-      "signals": [
-        "source:poidh",
-        "escrowed onchain",
-        "bounty",
-        "USDC/Base",
-        "amount"
-      ],
-      "addresses": [],
-      "amount_usd": 6.88134,
-      "payout_amount_usd": 6.88134,
-      "text_score": 46,
-      "source": "poidh",
-      "preset": "poidh",
-      "preset_name": "poidh bounties",
-      "repo": "poidh/base",
-      "title": "Move from Moltbook (or another agent forum) to musemaxxing",
-      "url": "https://poidh.xyz/base/bounty/1445",
-      "updated_at": "2026-09-27T16:23:11.000Z",
-      "restricted": "holders only",
-      "issuer": "0xf19f11dee16a341671e6ed3e209b704c1bbc3e57",
-      "timing_points": 8,
-      "trust_points": 10,
-      "prize_text": "$6.88 (base)",
-      "deadline": null,
-      "kind": "other",
-      "task": null,
-      "name": "0xf19f11dee16a341671e6ed3e209b704c1bbc3e",
-      "crowded": false,
       "slots": 1,
-      "first_seen": "2026-11-03T18:00:28.255Z"
-    },
-    {
-      "score": 27,
-      "raw_score": 46,
-      "risk_score": 0,
-      "opportunity_class": "rail-watch",
-      "effort_score": 40,
-      "effort_signals": [],
-      "decision_notes": [
-        "open 37 days with no deadline",
-        "prize used for ranking: $7",
-        "only open to: holders only",
-        "payment rail signal present"
-      ],
-      "risk_flags": [],
-      "manual_friction": false,
-      "labels": [
-        "other",
-        "poidh"
-      ],
-      "signals": [
-        "source:poidh",
-        "escrowed onchain",
-        "bounty",
-        "USDC/Base",
-        "amount"
-      ],
-      "addresses": [],
-      "amount_usd": 6.88134,
-      "payout_amount_usd": 6.88134,
-      "text_score": 46,
-      "source": "poidh",
-      "preset": "poidh",
-      "preset_name": "poidh bounties",
-      "repo": "poidh/base",
-      "title": "Convince a Claude/Codex admin to switch to Muse and join musemaxxing",
-      "url": "https://poidh.xyz/base/bounty/1444",
-      "updated_at": "2026-09-27T16:22:51.000Z",
-      "restricted": "holders only",
-      "issuer": "0xf19f11dee16a341671e6ed3e209b704c1bbc3e57",
-      "timing_points": 8,
-      "trust_points": 10,
-      "prize_text": "$6.88 (base)",
-      "deadline": null,
-      "kind": "other",
-      "task": null,
-      "name": "0xf19f11dee16a341671e6ed3e209b704c1bbc3e",
-      "crowded": false,
-      "slots": 1,
-      "first_seen": "2026-11-03T18:00:28.255Z"
-    },
-    {
-      "score": 27,
-      "raw_score": 46,
-      "risk_score": 0,
-      "opportunity_class": "rail-watch",
-      "effort_score": 40,
-      "effort_signals": [],
-      "decision_notes": [
-        "open 37 days with no deadline",
-        "prize used for ranking: $7",
-        "only open to: holders only",
-        "payment rail signal present"
-      ],
-      "risk_flags": [],
-      "manual_friction": false,
-      "labels": [
-        "other",
-        "poidh"
-      ],
-      "signals": [
-        "source:poidh",
-        "escrowed onchain",
-        "bounty",
-        "USDC/Base",
-        "amount"
-      ],
-      "addresses": [],
-      "amount_usd": 6.88134,
-      "payout_amount_usd": 6.88134,
-      "text_score": 46,
-      "source": "poidh",
-      "preset": "poidh",
-      "preset_name": "poidh bounties",
-      "repo": "poidh/base",
-      "title": "Recruit a verified Muse agent to musemaxxing (slot 20/20)",
-      "url": "https://poidh.xyz/base/bounty/1443",
-      "updated_at": "2026-09-27T14:39:23.000Z",
-      "restricted": "holders only",
-      "issuer": "0xf19f11dee16a341671e6ed3e209b704c1bbc3e57",
-      "timing_points": 8,
-      "trust_points": 10,
-      "prize_text": "$6.88 (base)",
-      "deadline": null,
-      "kind": "other",
-      "task": null,
-      "name": "0xf19f11dee16a341671e6ed3e209b704c1bbc3e",
-      "crowded": false,
-      "slots": 1,
-      "first_seen": "2026-11-03T18:00:28.255Z"
-    },
-    {
-      "score": 26,
-      "raw_score": 12,
-      "risk_score": 0,
-      "opportunity_class": "standard",
-      "effort_score": 58,
-      "effort_signals": [
-        "infra-or-migration"
-      ],
-      "decision_notes": [
-        "no explicit USD/USDC amount parsed",
-        "effort signals: infra-or-migration"
-      ],
-      "risk_flags": [],
-      "manual_friction": false,
-      "labels": [],
-      "signals": [
-        "bounty"
-      ],
-      "addresses": [],
-      "amount_usd": null,
-      "payout_amount_usd": null,
-      "text_score": 12,
-      "source": "github",
-      "preset": "high-signal",
-      "preset_name": "High-signal bounties",
-      "repo": "moealf12/Nawaa",
-      "title": "R04 P3 \u2014 activate production recall: Meilisearch unconfigured, Neon catalog empty, source failures",
-      "url": "https://github.com/moealf12/Nawaa/issues/287",
-      "updated_at": "2026-11-03T18:52:39Z"
-    },
-    {
-      "score": 25,
-      "raw_score": 12,
-      "risk_score": 0,
-      "opportunity_class": "standard",
-      "effort_score": 64,
-      "effort_signals": [
-        "security-sensitive"
-      ],
-      "decision_notes": [
-        "no explicit USD/USDC amount parsed",
-        "effort signals: security-sensitive"
-      ],
-      "risk_flags": [],
-      "manual_friction": false,
-      "labels": [],
-      "signals": [
-        "bounty"
-      ],
-      "addresses": [],
-      "amount_usd": null,
-      "payout_amount_usd": null,
-      "text_score": 12,
-      "source": "github",
-      "preset": "high-signal",
-      "preset_name": "High-signal bounties",
-      "repo": "lilchristxan/Cueory",
-      "title": "Codex task queue",
-      "url": "https://github.com/lilchristxan/Cueory/issues/11",
-      "updated_at": "2026-11-03T18:52:47Z"
+      "restricted": null
     }
   ]
 }

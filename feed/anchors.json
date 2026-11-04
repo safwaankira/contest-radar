@@ -1,6 +1,11 @@
 {
   "anchors": [
     {
+      "at": "2026-11-04T03:24:05.328Z",
+      "feed_hash": "0x256d88a0d1fee74a0e1e5daba592ff33df375804e1c5b0b00b32d947172b15a0",
+      "tx": "0x96b9accce0d98743f72466ca061b2a4a1ae1dd3a74bcd9acfb4b8cec7acd26a3"
+    },
+    {
       "at": "2026-11-03T18:53:35.458Z",
       "feed_hash": "0x2bf230236fe81fc6b1c385a8c3cee98d54b923d3ac75af19920bc7eb7e79b7cc",
       "tx": "0x5b6e5045628f782520447628c8c234c05cd480bc8799ca1f6bc92b9f6253e4d4"

@@ -122,10 +122,24 @@ test("only issues that actually pay stay in the feed", () => {
   // labelled bounties and priced tickets stay
   assert.ok(isPayingIssue({ title: "Frantic bounty #145", labels: ["bounty", "funded"], signals: ["bounty"] }));
   assert.ok(isPayingIssue({ title: "Cow Swap Cash Out", labels: ["Price: 600 USD"], signals: ["amount"] }));
-  assert.ok(isPayingIssue({ title: "Hermes: attack and test the live pool", labels: [], signals: ["bounty", "amount"], amountUsd: 100 }));
+  assert.ok(isPayingIssue({ title: "Hermes: attack and test the live pool", labels: [], signals: ["bounty", "amount", "payout address"], amountUsd: 100 }));
+  assert.ok(isPayingIssue({ title: "[BOUNTY] Medium: Missing init_asset_vault", labels: [], signals: ["bounty", "amount"], amountUsd: 150 }));
+  assert.equal(isPayingIssue({ title: "fix(router): prevent sequential TAKE_PORTION compounding", labels: ["bounty"], signals: ["bounty", "amount", "payout address"], amountUsd: 15000 }), false);
+  // body mentions bounty + amount but no payout address: work ticket
+  assert.equal(isPayingIssue({ title: "Steward's page: where the lab is", labels: [], signals: ["bounty", "USDC/Base", "amount"], amountUsd: 332 }), false);
   // work tickets that merely mention the word go
   assert.equal(isPayingIssue({ title: "Epic: Week 10 – Deploy Forseti to GCP", labels: [], signals: ["amount"], amountUsd: 9 }), false);
   assert.equal(isPayingIssue({ title: "Codex task queue", labels: [], signals: ["bounty"] }), false);
   assert.equal(isPayingIssue({ title: "v1 follow-ups from A4", labels: ["enhancement", "status:ready"], signals: ["MRWK/MergeWork"] }), false);
   assert.equal(isPayingIssue({ title: "RFC: Federation bridge to mergework", labels: ["triaged"], signals: ["bounty", "amount"], amountUsd: null }), false);
+});
+
+import { capPerRepo } from "../lib/rank.js";
+
+test("aggregator repos keep at most two items", () => {
+  const items = [1, 2, 3, 4].map((k) => ({ source: "github", repo: "x/bounty-plaza", url: `u${k}`, score: 60 - k }))
+    .concat([{ source: "x", repo: "@a", url: "x1" }, { repo: "y/other", url: "g1" }]);
+  const out = capPerRepo(items);
+  assert.equal(out.filter((i) => i.repo === "x/bounty-plaza").length, 2);
+  assert.equal(out.length, 4);
 });

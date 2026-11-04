@@ -1,6 +1,57 @@
 {
   "runs": [
     {
+      "at": "2026-11-04T03:24:05.327Z",
+      "kind": "daily",
+      "spent_usd": 0.0192,
+      "receipts": [
+        {
+          "label": "daily",
+          "route": "/v1/social/reddit/posts/search",
+          "status": 200,
+          "paid": true,
+          "amountUsd": "0.005",
+          "tx": "0xa069cb8c8925352c89c1c4fc9d5982a8d7dfbfc64d17ffb09e9ba3281e858968",
+          "network": "celo",
+          "ms": 8712,
+          "at": "2026-11-04T03:23:45.127Z"
+        },
+        {
+          "label": "daily",
+          "route": "/v1/social/x/posts/search",
+          "status": 200,
+          "paid": true,
+          "amountUsd": "0.005",
+          "tx": "0xf0e391f62f92f9430df8b3e428b12440910cb4326b44f437ad49f71e449d9b56",
+          "network": "celo",
+          "ms": 11452,
+          "at": "2026-11-04T03:23:47.865Z"
+        },
+        {
+          "label": "daily",
+          "route": "/v1/social/x/posts/search",
+          "status": 200,
+          "paid": true,
+          "amountUsd": "0.005",
+          "tx": "0x41099c9476fac33d8200377ce2cef355a0cd3f7c7bd7cc96fd0dea5d852df088",
+          "network": "celo",
+          "ms": 8259,
+          "at": "2026-11-04T03:23:56.125Z"
+        },
+        {
+          "label": "daily",
+          "route": "/v1/metered/chat/completions",
+          "status": 200,
+          "paid": true,
+          "amountUsd": "0.004201",
+          "tx": "0x719e4b23a04097a9feb2a8d81edf1cb3aa310a074334b4fc926265b8b4d7e1c0",
+          "network": "celo",
+          "ms": 9147,
+          "at": "2026-11-04T03:24:05.323Z"
+        }
+      ]
+    },
+    {
       "at": "2026-11-03T18:53:35.458Z",
       "kind": "daily",
       "spent_usd": 0.0191,
