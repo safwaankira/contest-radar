@@ -18,6 +18,13 @@ Repository: https://github.com/safwaankira/contest-radar
 Agent discovery: https://contest-radar-celo.vercel.app/.well-known/agent.json
 ERC-8004 registration: https://contest-radar-celo.vercel.app/agent.json
 
+## Verdict (SERV Reasoning)
+
+POST https://contest-radar-celo.vercel.app/api/verdict with {"url": "..."} or {"text": "..."}.
+Returns ENTER / MAYBE / SKIP plus one evidence-quoted check per rule (open, safe, eligible, prize, judging, crowd, fit, ev).
+Reasoned on OpenServ's SERV Reasoning (Kronos + Multipath, prompt guard, shadow agent); the final call is plain code.
+Free allowance per hour, then $0.01 over x402 on Celo. Judged live contests: https://contest-radar-celo.vercel.app/feed/verdicts.json
+
 ## Machine-Readable Endpoints
 
 - JSON feed: https://contest-radar-celo.vercel.app/feed/latest.json

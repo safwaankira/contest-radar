@@ -1,5 +1,5 @@
 import { Fragment, useEffect, useMemo, useState } from "react";
-import { ArrowUpRight, Clock, Users, ShieldAlert, Wallet, Search, Check } from "lucide-react";
+import { ArrowUpRight, Clock, Users, ShieldAlert, Wallet, Search, Check, X as XIcon, HelpCircle, Gavel } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import { Input } from "@/components/ui/input";
@@ -12,20 +12,22 @@ const hasWallet = () => typeof window !== "undefined" && Boolean(window.ethereum
 const isMiniPay = () => Boolean(window.ethereum?.isMiniPay);
 
 const TABS = [
+  { id: "verdict", label: "Verdict" },
   { id: "radar", label: "Radar" },
   { id: "scan", label: "My scan" },
   { id: "agent", label: "The agent" },
 ];
+const TAB_IDS = ["verdict", "radar", "scan", "agent"];
 const SOURCES = [["all", "All sources"], ["x", "X"], ["poidh", "poidh"], ["reddit", "Reddit"], ["github", "GitHub"]];
 const CLASSES = [["all", "Any class"], ["quick-win", "Quick win"], ["high-value", "High value"], ["rail-watch", "Rail watch"], ["standard", "Standard"], ["manual-review", "Manual review"]];
 const PRESETS = ["meme", "thread", "design", "video", "code"];
 const AGENT402_PAYTO = "0xaBF4FAbd7c416fB67202E5f9002389Fc75e2a9D0";
 
 export default function App() {
-  const [tab, setTab] = useState(() => (["radar", "scan", "agent"].includes(location.hash.slice(1)) ? location.hash.slice(1) : "radar"));
+  const [tab, setTab] = useState(() => (TAB_IDS.includes(location.hash.slice(1)) ? location.hash.slice(1) : "verdict"));
   useEffect(() => { if (location.hash.slice(1) !== tab) history.pushState(null, "", `#${tab}`); window.scrollTo({ top: 0 }); }, [tab]);
   useEffect(() => {
-    const onHash = () => { const h = location.hash.slice(1); if (["radar", "scan", "agent"].includes(h)) setTab(h); };
+    const onHash = () => { const h = location.hash.slice(1); if (TAB_IDS.includes(h)) setTab(h); };
     window.addEventListener("hashchange", onHash);
     window.addEventListener("popstate", onHash);
     return () => { window.removeEventListener("hashchange", onHash); window.removeEventListener("popstate", onHash); };
@@ -36,12 +38,15 @@ export default function App() {
     fetch("/feed/latest.json").then((r) => r.json()).then(setFeed).catch(() => setFeed({ items: [], errors: [{ message: "feed unavailable" }] }));
   }, []);
   const goScan = (kw = "") => { setPrefill(kw); setTab("scan"); };
+  const [verdictUrl, setVerdictUrl] = useState("");
+  const goVerdict = (url) => { setVerdictUrl(url); setTab("verdict"); };
 
   return (
     <div className="min-h-screen">
       <TopNav tab={tab} setTab={setTab} />
       <main className="mx-auto max-w-[1080px] px-4 pb-24 sm:px-6">
-        {tab === "radar" && <RadarView feed={feed} onScan={goScan} />}
+        {tab === "verdict" && <VerdictView initialUrl={verdictUrl} />}
+        {tab === "radar" && <RadarView feed={feed} onScan={goScan} onVerdict={goVerdict} />}
         {tab === "scan" && <ScanView prefill={prefill} />}
         {tab === "agent" && <AgentView feed={feed} />}
       </main>
@@ -63,7 +68,7 @@ function TopNav({ tab, setTab }) {
   return (
     <header className="sticky top-0 z-20 border-b border-hairline bg-canvas/85 backdrop-blur">
       <div className="mx-auto flex h-14 max-w-[1080px] items-center justify-between gap-3 px-4 sm:px-6">
-        <a href="#radar" onClick={(e) => { e.preventDefault(); setTab("radar"); }} className="flex items-center gap-2 text-[15px] font-semibold tracking-[-0.3px]">
+        <a href="#verdict" onClick={(e) => { e.preventDefault(); setTab("verdict"); }} className="flex items-center gap-2 text-[15px] font-semibold tracking-[-0.3px]">
           <Mark className="size-7 text-primary" />
           <span className="hidden whitespace-nowrap min-[420px]:inline">Contest Radar</span>
         </a>
@@ -102,7 +107,7 @@ function Footer() {
   );
 }
 
-function RadarView({ feed, onScan }) {
+function RadarView({ feed, onScan, onVerdict }) {
   const [source, setSource] = useState("all");
   const [klass, setKlass] = useState("all");
   const [q, setQ] = useState("");
@@ -150,7 +155,7 @@ function RadarView({ feed, onScan }) {
           ) : items.length === 0 ? (
             <p className="p-10 text-center text-[14px] text-ink-subtle">Nothing matches. Try fewer filters.</p>
           ) : (
-            <ItemList items={items} />
+            <ItemList items={items} onVerdict={onVerdict} />
           )}
           {feed && (
             <div className="flex flex-wrap items-center justify-between gap-2 border-t border-hairline px-4 py-3 text-[12px] text-ink-subtle">
@@ -196,11 +201,11 @@ function Select({ value, onChange, options, label }) {
 const CLASS_LABEL = { "quick-win": "Quick win", "high-value": "High value", "rail-watch": "Rail watch", standard: "Standard", "manual-review": "Manual review", avoid: "Avoid" };
 const SOURCE_LABEL = { x: "X", poidh: "poidh", reddit: "Reddit", github: "GitHub" };
 
-function ItemList({ items }) {
-  return <ol className="divide-y divide-hairline">{items.map((i) => <Item key={i.url} i={i} />)}</ol>;
+function ItemList({ items, onVerdict }) {
+  return <ol className="divide-y divide-hairline">{items.map((i) => <Item key={i.url} i={i} onVerdict={onVerdict} />)}</ol>;
 }
 
-function Item({ i }) {
+function Item({ i, onVerdict }) {
   const days = daysLeft(i.deadline);
   const prize = i.prize_text || (i.payout_amount_usd ? usd(i.payout_amount_usd) : null);
   const good = i.opportunity_class === "quick-win" || i.opportunity_class === "high-value";
@@ -244,6 +249,11 @@ function Item({ i }) {
           {days == null ? "No deadline" : days <= 0 ? "Closes today" : days === 1 ? "1 day left" : `${days} days left`}
         </span>
         <span className="text-[12px] text-ink-tertiary">Effort {i.effort_score}/100</span>
+        {onVerdict && (
+          <button onClick={() => onVerdict(i.url)} className="mt-1 inline-flex h-7 items-center gap-1 rounded-full border border-hairline px-2.5 text-[12px] text-ink-subtle hover:bg-surface-1 hover:text-ink">
+            <Gavel className="size-3" /> Enter or skip?
+          </button>
+        )}
       </div>
     </li>
   );
@@ -510,6 +520,138 @@ function AgentView({ feed }) {
           </CardContent>
         </Card>
       </div>
+    </section>
+  );
+}
+
+// ---------------------------------------------------------------------------------------------------------------
+// Verdict: "should I enter this one?" — SERV Reasoning applies the rulebook, plain code makes the call.
+
+const VERDICT_STYLE = {
+  ENTER: { label: "Enter", cls: "bg-[color-mix(in_srgb,var(--success)_18%,transparent)] text-[#5fd97a] border-[color-mix(in_srgb,var(--success)_45%,transparent)]" },
+  MAYBE: { label: "Maybe", cls: "bg-[color-mix(in_srgb,#e2b93b_14%,transparent)] text-[#f0cf6a] border-[color-mix(in_srgb,#e2b93b_40%,transparent)]" },
+  SKIP: { label: "Skip", cls: "bg-[color-mix(in_srgb,var(--urgent)_12%,transparent)] text-[#ff9b9b] border-[color-mix(in_srgb,var(--urgent)_40%,transparent)]" },
+};
+
+function CheckIcon({ r }) {
+  if (r === "pass") return <Check className="size-3.5 text-[#5fd97a]" />;
+  if (r === "fail") return <XIcon className="size-3.5 text-[#ff9b9b]" />;
+  return <HelpCircle className="size-3.5 text-ink-tertiary" />;
+}
+
+function VerdictCard({ v, compact = false, onOpen }) {
+  const st = VERDICT_STYLE[v.verdict] || VERDICT_STYLE.MAYBE;
+  return (
+    <div className="rounded-[10px] border border-hairline bg-surface-1">
+      <div className="flex flex-wrap items-start gap-3 p-4 sm:p-5">
+        <span className={cn("rounded-[8px] border px-3 py-1.5 font-mono text-[18px] font-semibold tracking-[-0.4px]", st.cls)}>{st.label}</span>
+        <div className="min-w-0 flex-1">
+          <p className="text-[15px] font-medium text-ink">{v.contest || "Contest"}</p>
+          <p className="mt-0.5 text-[14px] text-ink-subtle">{v.summary}</p>
+          <div className="mt-2 flex flex-wrap gap-x-4 gap-y-1 font-mono text-[12px] text-ink-subtle">
+            <span>{v.prize_usd != null ? usd(v.prize_usd) : "prize ?"}</span>
+            <span>~{v.hours}h</span>
+            <span>{v.odds_pct}% odds</span>
+            <span className={v.ev_per_hour >= 10 ? "text-[#5fd97a]" : ""}>{v.ev_per_hour != null ? `$${v.ev_per_hour}/h EV` : "EV ?"}</span>
+            {v.deadline && <span>due {String(v.deadline).slice(0, 10)}</span>}
+          </div>
+        </div>
+        {compact && onOpen && <button onClick={onOpen} className="text-[12px] text-ink-subtle hover:text-ink">Why →</button>}
+      </div>
+      {!compact && (
+        <>
+          <ol className="divide-y divide-hairline border-t border-hairline">
+            {v.checks.map((c) => (
+              <li key={c.id} className="grid grid-cols-[20px_150px_1fr] gap-3 px-4 py-2.5 text-[13px] sm:px-5">
+                <span className="pt-0.5"><CheckIcon r={c.result} /></span>
+                <span className={cn("text-ink", c.hard && "font-medium")}>{c.label}{c.hard && <span className="ml-1 text-[11px] text-ink-tertiary">must</span>}</span>
+                <span className="min-w-0 text-ink-subtle">
+                  {c.evidence && <span className="mr-1 rounded bg-surface-3 px-1 font-mono text-[12px] text-ink-muted">“{c.evidence}”</span>}
+                  {c.why}
+                </span>
+              </li>
+            ))}
+          </ol>
+          <div className="flex flex-wrap gap-x-4 gap-y-1 border-t border-hairline px-4 py-3 text-[12px] text-ink-tertiary sm:px-5">
+            <span>Decided by code: {v.decided_by}</span>
+            {v.serv && <span>Reasoned on SERV · {v.serv.requested} · {v.serv.features.join(" + ")} · {(v.serv.ms / 1000).toFixed(1)}s{v.serv.usage ? ` · ${v.serv.usage.total_tokens} tokens` : ""}</span>}
+          </div>
+        </>
+      )}
+    </div>
+  );
+}
+
+function VerdictView({ initialUrl = "" }) {
+  const [input, setInput] = useState(initialUrl);
+  const [state, setState] = useState({ step: "idle" });
+  const [examples, setExamples] = useState(null);
+  const [open, setOpen] = useState(0);
+  useEffect(() => { fetch("/feed/verdicts.json").then((r) => r.json()).then(setExamples).catch(() => setExamples({ items: [] })); }, []);
+  useEffect(() => { if (initialUrl) { setInput(initialUrl); run(initialUrl); } }, [initialUrl]); // eslint-disable-line
+
+  async function run(value = input) {
+    const v = String(value).trim();
+    if (!v || state.step === "loading") return;
+    setState({ step: "loading" });
+    try {
+      const isUrl = /^https:\/\/\S+$/.test(v);
+      const r = await fetch("/api/verdict", { method: "POST", headers: { "content-type": "application/json" }, body: JSON.stringify(isUrl ? { url: v } : { text: v }) });
+      const body = await r.json();
+      if (r.status === 402) throw new Error("Free verdicts are used up for this hour. Agents can pay $0.01 over x402 at /api/verdict.");
+      if (!r.ok) throw new Error(body.error || `Verdict failed (${r.status})`);
+      setState({ step: "done", result: body });
+    } catch (e) {
+      setState({ step: "error", message: e.message });
+    }
+  }
+
+  const ex = examples?.items || [];
+  const tally = ex.reduce((t, x) => ({ ...t, [x.verdict]: (t[x.verdict] || 0) + 1 }), {});
+  return (
+    <section className="pt-14 pb-10 sm:pt-20">
+      <p className="eyebrow">Verdict · on SERV Reasoning</p>
+      <h1 className="display-md mt-3 max-w-[22ch]">Paste a contest. Get Enter or Skip.</h1>
+      <p className="mt-4 max-w-[60ch] text-[17px] text-ink-subtle">
+        Eight rules learned from 20+ real entries: still open, no scam, eligible, real prize, fair judging, not crowded, fits you, worth the hours. Each check quotes the line it rests on. The model reads; code makes the call.
+      </p>
+
+      <form onSubmit={(e) => { e.preventDefault(); run(); }} className="mt-8 flex flex-col gap-2 sm:flex-row">
+        <Input placeholder="https://x.com/…/status/…  or paste the rules" value={input} onChange={(e) => setInput(e.target.value)} aria-label="Contest link or text" />
+        <Button type="submit" size="lg" disabled={state.step === "loading" || input.trim().length < 10}>
+          <Gavel /> {state.step === "loading" ? "Reasoning… ~20s" : "Get verdict"}
+        </Button>
+      </form>
+      <p className="mt-2 text-[12px] text-ink-tertiary">Free to try. Agents: POST /api/verdict, $0.01 over x402 on Celo when the free hour runs out.</p>
+
+      {state.step === "error" && <p role="alert" className="mt-4 rounded-[8px] border border-[color-mix(in_srgb,var(--urgent)_35%,transparent)] bg-[color-mix(in_srgb,var(--urgent)_8%,transparent)] px-3 py-2 text-[14px] text-[#ff9b9b]">{state.message}</p>}
+      {state.step === "done" && <div className="mt-6"><VerdictCard v={state.result} /></div>}
+
+      {ex.length > 0 && (
+        <div className="mt-12">
+          <div className="mb-3 flex flex-wrap items-baseline justify-between gap-2">
+            <h2 className="text-[15px] font-medium text-ink">Live contests, judged {examples.generated_at ? ago(examples.generated_at) : ""}</h2>
+            <span className="font-mono text-[12px] text-ink-subtle">{tally.ENTER || 0} enter · {tally.MAYBE || 0} maybe · {tally.SKIP || 0} skip</span>
+          </div>
+          <div className="grid gap-3">
+            {ex.map((v, k) => <VerdictCard key={k} v={v} compact={open !== k} onOpen={() => setOpen(k)} />)}
+          </div>
+        </div>
+      )}
+
+      {examples?.backtest && (
+        <div className="mt-12 rounded-[10px] border border-hairline p-5">
+          <h2 className="text-[15px] font-medium text-ink">Does it work? Backtest on our own entries</h2>
+          <p className="mt-1 text-[14px] text-ink-subtle">{examples.backtest.summary}</p>
+          <ol className="mt-3 grid gap-1 font-mono text-[12px]">
+            {examples.backtest.rows.map((r, k) => (
+              <li key={k} className="grid grid-cols-[1fr_70px_90px_20px] gap-2 text-ink-subtle">
+                <span className="truncate text-ink-muted">{r.name}</span><span>{r.verdict}</span><span>{r.outcome}</span><span>{r.agree ? "✓" : "✗"}</span>
+              </li>
+            ))}
+          </ol>
+        </div>
+      )}
     </section>
   );
 }
