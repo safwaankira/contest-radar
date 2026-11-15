@@ -52,7 +52,7 @@ const feed = {
 test('tools list exposes bounty search and lookup tools', () => {
   assert.deepEqual(
     tools.map((tool) => tool.name),
-    ['search_bounties', 'get_bounty', 'scan_contests'],
+    ['search_bounties', 'get_bounty', 'scan_contests', 'contest_verdict'],
   );
 });
 
@@ -91,7 +91,7 @@ test('handleJsonRpcMessage supports initialize, tools/list, and tools/call', asy
     assert.equal(initialize.result.serverInfo.name, 'contest-radar');
 
     const list = await handleJsonRpcMessage({ jsonrpc: '2.0', id: 2, method: 'tools/list' });
-    assert.equal(list.result.tools.length, 3);
+    assert.equal(list.result.tools.length, 4);
 
     const called = await handleJsonRpcMessage({
       jsonrpc: '2.0',

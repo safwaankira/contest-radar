@@ -99,6 +99,17 @@ export const tools = [
       },
     },
   },
+  {
+    name: 'contest_verdict',
+    description: 'Should I enter this contest? Reads one contest or bounty (X post link, rules page link, or pasted text) and returns ENTER / MAYBE / SKIP with one evidence-quoted check per rule (open, safe, eligible, prize, judging, crowd, fit, EV per hour). Reasoned on OpenServ SERV Reasoning; the final call is plain code. Free hourly allowance, then $0.01 over x402.',
+    inputSchema: {
+      type: 'object',
+      properties: {
+        url: { type: 'string', description: 'https link to the contest post or rules page' },
+        text: { type: 'string', description: 'The contest rules as text, if there is no link' },
+      },
+    },
+  },
 ];
 
 export async function callTool(name, args = {}) {
@@ -151,6 +162,14 @@ export async function callTool(name, args = {}) {
     return {
       content: [{ type: 'text', text: `${JSON.stringify({ keywords, payment: body.payment, count: items.length, items }, null, 2)}\n` }],
     };
+  }
+
+  if (name === 'contest_verdict') {
+    const body = args.url ? { url: requiredString(args.url, 'url') } : { text: requiredString(args.text, 'text') };
+    const res = await fetch(`${SITE_URL}/api/verdict`, { method: 'POST', headers: { 'content-type': 'application/json' }, body: JSON.stringify(body) });
+    const json = await res.json().catch(() => ({}));
+    if (!res.ok) return { isError: true, content: [{ type: 'text', text: json.error || `verdict failed (${res.status})` }] };
+    return { content: [{ type: 'text', text: `${JSON.stringify(json, null, 2)}\n` }] };
   }
 
   throw new Error(`Unknown tool: ${name}`);
