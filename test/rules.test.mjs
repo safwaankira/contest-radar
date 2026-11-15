@@ -101,7 +101,7 @@ test("no rules link in the short text: the full post is fetched and read instead
   const session = {
     tweetDetail: async (id) => (calls.push(`detail ${id}`), { json: { output: { text: long } } }),
     browser: async () => { calls.push("browser"); return { read: async () => "", close: async () => true }; },
-    chat: async () => ({ json: { choices: [{ message: { content: '{"i":0,"is_rules":true,"closed":false,"deadline":"2026-11-07","prizeUsd":5200,"restricted":null}' } }] } }),
+    chat: async () => ({ json: { choices: [{ message: { content: '{"i":0,"is_rules":true,"closed":false,"deadline":"2099-11-07","prizeUsd":5200,"restricted":null}' } }] } }),
   };
   const { checkRules } = await import("../lib/rules.js");
   const r = await checkRules(session, items, cands, { n: 1, resolve });
@@ -114,7 +114,7 @@ test("no rules link in the short text: the full post is fetched and read instead
   const s2 = { ...session, tweetDetail: async () => ({ json: { output: { text: long2 } } }), browser: async () => { calls2.push("browser"); } };
   const r2 = await checkRules(s2, items, cands, { n: 1, resolve });
   assert.deepEqual(calls2, []);
-  assert.equal(r2.items[0].deadline, "2026-11-07");
+  assert.equal(r2.items[0].deadline, "2099-11-07");
   assert.equal(r2.items[0].full_post_read, true);
   assert.equal(r2.items[0].rules_url, undefined);
   assert.equal(r2.checked[0].read, "post");
